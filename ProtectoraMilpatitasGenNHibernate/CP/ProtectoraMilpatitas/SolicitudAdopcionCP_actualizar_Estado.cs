@@ -19,50 +19,62 @@ using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
 
 namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
 {
-public partial class SolicitudAdopcionCP : BasicCP
-{
-public void Actualizar_Estado (int p_SolicitudAdopcion, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum p_estado)
-{
-        /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_SolicitudAdopcion_actualizar_Estado) ENABLED START*/
-
-        ISolicitudAdopcionCAD solicitudAdopcionCAD = null;
-        SolicitudAdopcionCEN solicitudAdopcionCEN = null;
-
-
-
-        try
+    public partial class SolicitudAdopcionCP : BasicCP
+    {
+        public void Actualizar_Estado(int p_SolicitudAdopcion, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum p_estado)
         {
-                SessionInitializeTransaction ();
-                solicitudAdopcionCAD = new SolicitudAdopcionCAD (session);
-                solicitudAdopcionCEN = new  SolicitudAdopcionCEN (solicitudAdopcionCAD);
+            /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_SolicitudAdopcion_actualizar_Estado) ENABLED START*/
+
+            ISolicitudAdopcionCAD solicitudAdopcionCAD = null;
+            SolicitudAdopcionCEN solicitudAdopcionCEN = null;
+
+
+
+            try
+            {
+                SessionInitializeTransaction();
+                solicitudAdopcionCAD = new SolicitudAdopcionCAD(session);
+                solicitudAdopcionCEN = new SolicitudAdopcionCEN(solicitudAdopcionCAD);
 
 
 
 
                 SolicitudAdopcionEN solicitudAdopcionEN = null;
                 //Initialized SolicitudAdopcionEN
-                solicitudAdopcionEN = new SolicitudAdopcionEN ();
+                solicitudAdopcionEN = new SolicitudAdopcionEN();
                 solicitudAdopcionEN.Id = p_SolicitudAdopcion;
                 solicitudAdopcionEN.Estado = p_estado;
                 //Call to SolicitudAdopcionCAD
 
-                solicitudAdopcionCAD.Actualizar_Estado (solicitudAdopcionEN);
+                if (solicitudAdopcionEN.Estado.Equals("aceptado"))
+                {
+                    solicitudAdopcionEN.Animal.EstadoAdopcion = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum.EnContrato;
+                }
+                else
+                {
+                    if (solicitudAdopcionEN.Estado.Equals("enEspera"))
+                    {
+                        solicitudAdopcionEN.Animal.EstadoAdopcion = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum.EnSolicitud;
+                    }
+                }
+
+                solicitudAdopcionCAD.Actualizar_Estado(solicitudAdopcionEN);
 
 
-                SessionCommit ();
-        }
-        catch (Exception ex)
-        {
-                SessionRollBack ();
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 throw ex;
-        }
-        finally
-        {
-                SessionClose ();
-        }
+            }
+            finally
+            {
+                SessionClose();
+            }
 
 
-        /*PROTECTED REGION END*/
-}
-}
+            /*PROTECTED REGION END*/
+        }
+    }
 }
