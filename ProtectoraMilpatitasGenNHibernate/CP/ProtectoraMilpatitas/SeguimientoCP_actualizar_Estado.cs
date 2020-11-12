@@ -19,50 +19,59 @@ using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
 
 namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
 {
-public partial class SeguimientoCP : BasicCP
-{
-public void Actualizar_Estado (int p_Seguimiento, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSeguimientoEnum p_estado)
-{
-        /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_Seguimiento_actualizar_Estado) ENABLED START*/
-
-        ISeguimientoCAD seguimientoCAD = null;
-        SeguimientoCEN seguimientoCEN = null;
-
-
-
-        try
+    public partial class SeguimientoCP : BasicCP
+    {
+        public void Actualizar_Estado(int p_Seguimiento, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSeguimientoEnum p_estado)
         {
-                SessionInitializeTransaction ();
-                seguimientoCAD = new SeguimientoCAD (session);
-                seguimientoCEN = new  SeguimientoCEN (seguimientoCAD);
+            /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_Seguimiento_actualizar_Estado) ENABLED START*/
+
+            ISeguimientoCAD seguimientoCAD = null;
+            SeguimientoCEN seguimientoCEN = null;
+
+
+
+            try
+            {
+                SessionInitializeTransaction();
+                seguimientoCAD = new SeguimientoCAD(session);
+                seguimientoCEN = new SeguimientoCEN(seguimientoCAD);
 
 
 
 
                 SeguimientoEN seguimientoEN = null;
                 //Initialized SeguimientoEN
-                seguimientoEN = new SeguimientoEN ();
+                seguimientoEN = new SeguimientoEN();
                 seguimientoEN.Id = p_Seguimiento;
                 seguimientoEN.Estado = p_estado;
                 //Call to SeguimientoCAD
 
-                seguimientoCAD.Actualizar_Estado (seguimientoEN);
+                if (seguimientoEN.Estado.Equals("marcarQuitarAnimal"))
+                {
+                    seguimientoEN.Animal.EstadoAdopcion = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum.SinTramite;
+                }
+                else
+                {
+                    seguimientoEN.Animal.EstadoAdopcion = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum.EnSeguimiento;
+                }
+
+                seguimientoCAD.Actualizar_Estado(seguimientoEN);
 
 
-                SessionCommit ();
-        }
-        catch (Exception ex)
-        {
-                SessionRollBack ();
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 throw ex;
-        }
-        finally
-        {
-                SessionClose ();
-        }
+            }
+            finally
+            {
+                SessionClose();
+            }
 
 
-        /*PROTECTED REGION END*/
-}
-}
+            /*PROTECTED REGION END*/
+        }
+    }
 }
