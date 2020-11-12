@@ -19,51 +19,65 @@ using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
 
 namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
 {
-public partial class MensajeCP : BasicCP
-{
-public void Responder (int p_Mensaje, string p_texto, string p_usuario)
-{
-        /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_Mensaje_responder) ENABLED START*/
-
-        IMensajeCAD mensajeCAD = null;
-        MensajeCEN mensajeCEN = null;
-
-
-
-        try
+    public partial class MensajeCP : BasicCP
+    {
+        public void Responder(int p_Mensaje, string p_texto, string p_usuario)
         {
-                SessionInitializeTransaction ();
-                mensajeCAD = new MensajeCAD (session);
-                mensajeCEN = new  MensajeCEN (mensajeCAD);
+            /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_Mensaje_responder) ENABLED START*/
 
+            IMensajeCAD mensajeCAD = null;
+            MensajeCEN mensajeCEN = null;
 
-
+            try
+            {
+                SessionInitializeTransaction();
+                mensajeCAD = new MensajeCAD(session);
+                mensajeCEN = new MensajeCEN(mensajeCAD);
 
                 MensajeEN mensajeEN = null;
                 //Initialized MensajeEN
-                mensajeEN = new MensajeEN ();
+                mensajeEN = new MensajeEN();
                 mensajeEN.Id = p_Mensaje;
                 mensajeEN.Texto = p_texto;
-                mensajeEN.Usuario = p_usuario;
+                mensajeEN.Usuario.Email = p_usuario;
                 //Call to MensajeCAD
 
-                mensajeCAD.Responder (mensajeEN);
+                if (p_Mensaje != -1)
+                {
+                    NotificacionEN notificacionEN = new NotificacionEN();
+
+                    if (p_texto != "")
+                    {
+                        notificacionEN.Mensaje = p_texto;
+                        notificacionEN.Tipo = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.TipoNotificacionEnum.Chat;
+
+                        NotificacionCAD notificacionCAD = new NotificacionCAD(session);
+
+                        notificacionCAD.ModifyDefault(notificacionEN);
+
+                        NotificacionCEN notificacionCEN = new NotificacionCEN(notificacionCAD);
+
+                        notificacionCEN.Enviar(notificacionEN.Id, p_usuario, "Tienes un mensaje en el chat: " + p_texto);
+                    }
+                }
+
+                mensajeCAD.Responder(mensajeEN);
 
 
-                SessionCommit ();
-        }
-        catch (Exception ex)
-        {
-                SessionRollBack ();
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 throw ex;
-        }
-        finally
-        {
-                SessionClose ();
-        }
+            }
+            finally
+            {
+                SessionClose();
+            }
 
 
-        /*PROTECTED REGION END*/
-}
-}
+            /*PROTECTED REGION END*/
+        }
+    }
 }
