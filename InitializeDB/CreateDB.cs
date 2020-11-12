@@ -9,6 +9,7 @@ using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas;
+using ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas;
 /*PROTECTED REGION END*/
 namespace InitializeDB
 {
@@ -99,11 +100,11 @@ namespace InitializeDB
                 UsuarioCEN Antonio = new UsuarioCEN();
                 Antonio.Registrarse("Antonio53", "Antonio323@gmail.com", "villena92");
 
-                AnimalCEN chihua = new AnimalCEN();
+                AnimalCP chihua = new AnimalCP();
                 chihua.Nuevo("tobi", 3, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "amigable");
-                AnimalCEN yorkshire = new AnimalCEN();
+                AnimalCP yorkshire = new AnimalCP();
                 yorkshire.Nuevo("Pelusa", 3, 'M', "Albacete", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enRecuperacion, "carinoso");
-                AnimalCEN siames = new AnimalCEN();
+                AnimalCP siames = new AnimalCP();
                 siames.Nuevo("minino", 1, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso");
                 // Console.WriteLine(" El animal es ");
                 //Vamos a modificar el estado de tobi
