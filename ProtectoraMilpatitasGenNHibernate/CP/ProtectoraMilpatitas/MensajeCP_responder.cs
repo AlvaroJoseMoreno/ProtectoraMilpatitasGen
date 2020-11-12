@@ -44,7 +44,7 @@ public void Responder (int p_Mensaje, string p_texto, string p_usuario)
                 mensajeEN = new MensajeEN ();
                 mensajeEN.Id = p_Mensaje;
                 mensajeEN.Texto = p_texto;
-                mensajeEN.Usuario = p_usuario;
+                mensajeEN.Usuario.Email = p_usuario;
                 //Call to MensajeCAD
 
                 mensajeCAD.Responder (mensajeEN);
