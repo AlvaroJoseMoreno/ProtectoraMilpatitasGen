@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="ProtectoraMilpatitasGenNHibernate"
+		                   namespace="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas">
+		    
+		    
+			
+				<class name="MensajeEN" table="Mensaje"> 
+				  	
+						<id name="Id" column="id" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Texto" type="string"> 
+						<column name="texto"  not-null="true"/>
+					</property>
+			
+			
+			
+		  			
+						<many-to-one name="Administrador" class="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AdministradorEN" >	
+								<column name="FK_email_idAdministrador"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Usuario" class="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN" >	
+								<column name="FK_email_idUsuario"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<bag name="Notificacion" table="[chat_notificacion]"  >
+							<key>
+								
+									<column name="FK_id_idMensajeChat"/> 
+							</key>
+      						<many-to-many class="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.NotificacionEN">
+									<column name="FK_id_idNotificacion"/> 
+      						</many-to-many>
+    					</bag>
+			
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="MensajeENReadAllHQL">from MensajeEN</query>
+		</hibernate-mapping>
+	

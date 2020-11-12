@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="ProtectoraMilpatitasGenNHibernate"
+		                   namespace="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas">
+		    
+		    
+			
+				<class name="ContratoAdopcionEN" table="ContratoAdopcion"> 
+				  	
+						<id name="Id" column="id" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Nombre" type="string"> 
+						<column name="nombre"  not-null="true"/>
+					</property>
+					<property name="DNI_NIF_Pasaporte" type="string"> 
+						<column name="DNI_NIF_Pasaporte"  not-null="true"/>
+					</property>
+					<property name="EscrituraHogar" type="string"> 
+						<column name="escrituraHogar"  not-null="true"/>
+					</property>
+					<property name="JustificantePago" type="string"> 
+						<column name="justificantePago"  not-null="true"/>
+					</property>
+					<property name="LugarRecojida" type="string"> 
+						<column name="lugarRecojida"  not-null="true"/>
+					</property>
+					<property name="FirmaCompromiso" type="boolean"> 
+						<column name="firmaCompromiso"  not-null="true"/>
+					</property>
+					<property name="Estado" > 
+						<column name="estado"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<many-to-one name="Usuario" class="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN" >	
+								<column name="FK_email_idUsuario"/> 
+						</many-to-one>
+											 					
+			
+		  			
+					
+							<many-to-one name="SolicitudAdopcion" class="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN" >
+								<column name="FK_id_idSolicitudAdopcion"/> 
+        					</many-to-one>
+					 
+						
+			
+		  			
+						<many-to-one name="Animal" class="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN" >	
+								<column name="FK_id_idAnimal"/> 
+						</many-to-one>
+											 					
+			
+		  			
+					
+							   <one-to-one name="Seguimiento" class="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SeguimientoEN" property-ref="ContratoAdopcion" />							
+					 
+						
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="ContratoAdopcionENReadAllHQL">from ContratoAdopcionEN</query>
+		  <query name="ContratoAdopcionENObtener_Contrato_UsuarioHQL"><![CDATA[select con FROM ContratoAdopcionEN as con WHERE con.Usuario.Email=:p_email]]></query>
+		</hibernate-mapping>
+	

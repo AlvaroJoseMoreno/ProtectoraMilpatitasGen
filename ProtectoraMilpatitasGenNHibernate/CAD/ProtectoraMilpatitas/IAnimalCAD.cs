@@ -1,0 +1,49 @@
+
+using System;
+using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
+
+namespace ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas
+{
+public partial interface IAnimalCAD
+{
+AnimalEN ReadOIDDefault (int id
+                         );
+
+void ModifyDefault (AnimalEN animal);
+
+System.Collections.Generic.IList<AnimalEN> ReadAllDefault (int first, int size);
+
+
+
+int Nuevo (AnimalEN animal);
+
+void Modificar (AnimalEN animal);
+
+
+void Eliminar (int id
+               );
+
+
+AnimalEN Ver_Detalle_Animal (int id
+                             );
+
+
+
+System.Collections.Generic.IList<AnimalEN> Dame_Todos (int first, int size);
+
+
+void Actualizar_DatosMedicos (AnimalEN animal);
+
+
+void Actualizar_Estado (AnimalEN animal);
+
+
+System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> BuscarAnimales (string p_nombre, int? p_edad, char p_sexo, string p_centro, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum? p_datosMedicos, string p_caracter);
+
+
+System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> Dame_Animales_Por_Especie (int p_especie);
+
+
+System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> Obtener_Animal_Usuario (string p_email);
+}
+}

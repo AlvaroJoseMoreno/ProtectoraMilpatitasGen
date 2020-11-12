@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+		<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		  <PropertyGroup>
+		    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+		    <ProductVersion>8.0.30703</ProductVersion>
+		    <SchemaVersion>2.0</SchemaVersion>
+		    <ProjectGuid>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</ProjectGuid>
+		    <OutputType>Library</OutputType>
+		    <AppDesignerFolder>Properties</AppDesignerFolder>
+		    <RootNamespace>ProtectoraMilpatitasGenNHibernate</RootNamespace>
+		    <AssemblyName>ProtectoraMilpatitasGenNHibernate</AssemblyName>
+		    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+		    <FileAlignment>512</FileAlignment>
+		    <PublishUrl>publish\</PublishUrl>
+		    <Install>true</Install>
+		    <InstallFrom>Disk</InstallFrom>
+		    <UpdateEnabled>false</UpdateEnabled>
+		    <UpdateMode>Foreground</UpdateMode>
+		    <UpdateInterval>7</UpdateInterval>
+		    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+		    <UpdatePeriodically>false</UpdatePeriodically>
+		    <UpdateRequired>false</UpdateRequired>
+		    <MapFileExtensions>true</MapFileExtensions>
+		    <ApplicationRevision>0</ApplicationRevision>
+		    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+		    <IsWebBootstrapper>false</IsWebBootstrapper>
+		    <UseApplicationTrust>false</UseApplicationTrust>
+		    <BootstrapperEnabled>true</BootstrapperEnabled>
+		  </PropertyGroup>
+		  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		    <DebugSymbols>true</DebugSymbols>
+		    <DebugType>full</DebugType>
+		    <Optimize>false</Optimize>
+		    <OutputPath>bin\Debug\</OutputPath>
+		    <DefineConstants>DEBUG;TRACE</DefineConstants>
+		    <ErrorReport>prompt</ErrorReport>
+		    <WarningLevel>4</WarningLevel>
+		  </PropertyGroup>
+		  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		    <DebugType>pdbonly</DebugType>
+		    <Optimize>true</Optimize>
+		    <OutputPath>bin\Release\</OutputPath>
+		    <DefineConstants>TRACE</DefineConstants>
+		    <ErrorReport>prompt</ErrorReport>
+		    <WarningLevel>4</WarningLevel>
+		  </PropertyGroup>
+		<ItemGroup>
+		    <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\ProtectoraMilpatitasGenNHibernate\AppLib\Castle.DynamicProxy2.dll</HintPath>
+		    </Reference>
+		    <Reference Include="LinFu.DynamicProxy, Version=1.0.3.14911, Culture=neutral, PublicKeyToken=62a6874124340d6e, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\ProtectoraMilpatitasGenNHibernate\AppLib\LinFu.DynamicProxy.dll</HintPath>
+		    </Reference>
+		    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\ProtectoraMilpatitasGenNHibernate\AppLib\NHibernate.dll</HintPath>
+		    </Reference>
+		    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\ProtectoraMilpatitasGenNHibernate\AppLib\NHibernate.ByteCode.Castle.dll</HintPath>
+		    </Reference>
+		    <Reference Include="NHibernate.ByteCode.LinFu, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\ProtectoraMilpatitasGenNHibernate\AppLib\NHibernate.ByteCode.LinFu.dll</HintPath>
+		    </Reference>
+		    <Reference Include="Newtonsoft.Json, Version=4.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\ProtectoraMilpatitasGenNHibernate\AppLib\Newtonsoft.Json.dll</HintPath>
+		    </Reference>
+		     <Reference Include="jose-jwt, Version=4.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\ProtectoraMilpatitasGenNHibernate\AppLib\jose-jwt.dll</HintPath>
+		    </Reference>
+		    <Reference Include="System" />
+		    <Reference Include="System.Core">
+		      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+		    </Reference>
+		    
+		    <Reference Include="System.Transactions" />
+		    <Reference Include="System.Xml.Linq">
+		      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+		    </Reference>
+		    <Reference Include="System.Data.DataSetExtensions">
+		      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+		    </Reference>
+		    <Reference Include="System.Data" />
+		    <Reference Include="System.Xml" />
+		</ItemGroup>
+		
+		<ItemGroup>
+		    <Content Include="..\ProtectoraMilpatitasGenNHibernate\AppLib\Antlr3.Runtime.dll" />
+		    <Content Include="..\ProtectoraMilpatitasGenNHibernate\AppLib\Castle.DynamicProxy2.dll" />
+		    <Content Include="..\ProtectoraMilpatitasGenNHibernate\AppLib\Iesi.Collections.dll" />
+		    <Content Include="..\ProtectoraMilpatitasGenNHibernate\AppLib\LinFu.DynamicProxy.dll" />
+		    <Content Include="..\ProtectoraMilpatitasGenNHibernate\AppLib\log4net.dll" />
+		    <Content Include="..\ProtectoraMilpatitasGenNHibernate\AppLib\NHibernate.ByteCode.Castle.dll" />
+		    <Content Include="..\ProtectoraMilpatitasGenNHibernate\AppLib\NHibernate.ByteCode.LinFu.dll" />
+		    <Content Include="..\ProtectoraMilpatitasGenNHibernate\AppLib\NHibernate.dll" />
+		    <Content Include="..\ProtectoraMilpatitasGenNHibernate\AppLib\nunit.core.dll" />
+		    <Content Include="..\ProtectoraMilpatitasGenNHibernate\AppLib\nunit.framework.dll" />
+  		    <Content Include="..\ProtectoraMilpatitasGenNHibernate\AppLib\jose-jwt.dll" />
+  		</ItemGroup>
+  		
+		<ItemGroup>
+			<Compile Include="NHibernateHelper.cs" />
+		    <Compile Include="Utils\Util.cs" />
+		    <Compile Include="Exceptions\ModelException.cs"/>
+		    <Compile Include="Exceptions\DataLayerException.cs"/>
+		    
+	<Compile Include="CAD\BasicCAD.cs"/>
+	<Compile Include="CP\BasicCP.cs"/>
+	<Compile Include="EN\ProtectoraMilpatitas\UsuarioEN.cs" />
+	<Compile Include="CEN\ProtectoraMilpatitas\UsuarioCEN.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\IUsuarioCAD.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\UsuarioCAD.cs" />
+	<Compile Include="CP\ProtectoraMilpatitas\UsuarioCP.cs" />
+			<Compile Include="CEN\ProtectoraMilpatitas\UsuarioCEN_Cerrar_Sesion.cs" />
+			
+			
+			
+			
+			
+			
+			
+	<Compile Include="EN\ProtectoraMilpatitas\AdministradorEN.cs" />
+	<Compile Include="CEN\ProtectoraMilpatitas\AdministradorCEN.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\IAdministradorCAD.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\AdministradorCAD.cs" />
+	<Compile Include="CP\ProtectoraMilpatitas\AdministradorCP.cs" />
+			
+			
+			
+			
+			
+	<Compile Include="EN\ProtectoraMilpatitas\TestAnimalIdealEN.cs" />
+	<Compile Include="CEN\ProtectoraMilpatitas\TestAnimalIdealCEN.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\ITestAnimalIdealCAD.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\TestAnimalIdealCAD.cs" />
+	<Compile Include="CP\ProtectoraMilpatitas\TestAnimalIdealCP.cs" />
+			
+			
+			
+			
+			<Compile Include="CEN\ProtectoraMilpatitas\TestAnimalIdealCEN_Nuevo.cs" />
+			
+	<Compile Include="EN\ProtectoraMilpatitas\NotificacionEN.cs" />
+	<Compile Include="CEN\ProtectoraMilpatitas\NotificacionCEN.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\INotificacionCAD.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\NotificacionCAD.cs" />
+	<Compile Include="CP\ProtectoraMilpatitas\NotificacionCP.cs" />
+			
+			
+			
+			<Compile Include="CEN\ProtectoraMilpatitas\NotificacionCEN_Enviar.cs" />
+			
+			
+			
+	<Compile Include="EN\ProtectoraMilpatitas\SolicitudAdopcionEN.cs" />
+	<Compile Include="CEN\ProtectoraMilpatitas\SolicitudAdopcionCEN.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\ISolicitudAdopcionCAD.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\SolicitudAdopcionCAD.cs" />
+	<Compile Include="CP\ProtectoraMilpatitas\SolicitudAdopcionCP.cs" />
+			<Compile Include="CEN\ProtectoraMilpatitas\SolicitudAdopcionCEN_Nuevo.cs" />
+			
+			
+			<Compile Include="CEN\ProtectoraMilpatitas\SolicitudAdopcionCEN_Rellenar_Solicitud.cs" />
+			
+			
+			
+			<Compile Include="CP\ProtectoraMilpatitas\SolicitudAdopcionCP_Actualizar_Estado.cs" />
+			
+			
+			<Compile Include="CP\ProtectoraMilpatitas\SolicitudAdopcionCP_Aceptar_Solicitud.cs" />
+			
+			<Compile Include="CP\ProtectoraMilpatitas\SolicitudAdopcionCP_Rechazar_Solicitud.cs" />
+			
+	<Compile Include="EN\ProtectoraMilpatitas\ContratoAdopcionEN.cs" />
+	<Compile Include="CEN\ProtectoraMilpatitas\ContratoAdopcionCEN.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\IContratoAdopcionCAD.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\ContratoAdopcionCAD.cs" />
+	<Compile Include="CP\ProtectoraMilpatitas\ContratoAdopcionCP.cs" />
+			<Compile Include="CEN\ProtectoraMilpatitas\ContratoAdopcionCEN_Nuevo.cs" />
+			
+			
+			<Compile Include="CEN\ProtectoraMilpatitas\ContratoAdopcionCEN_Rellenar_Contrato.cs" />
+			
+			
+			
+			<Compile Include="CP\ProtectoraMilpatitas\ContratoAdopcionCP_Actualizar_Estado.cs" />
+			
+			
+	<Compile Include="EN\ProtectoraMilpatitas\AnimalEN.cs" />
+	<Compile Include="CEN\ProtectoraMilpatitas\AnimalCEN.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\IAnimalCAD.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\AnimalCAD.cs" />
+	<Compile Include="CP\ProtectoraMilpatitas\AnimalCP.cs" />
+			<Compile Include="CP\ProtectoraMilpatitas\AnimalCP_Nuevo.cs" />
+			
+			<Compile Include="CEN\ProtectoraMilpatitas\AnimalCEN_Modificar.cs" />
+			
+			
+			
+			<Compile Include="CEN\ProtectoraMilpatitas\AnimalCEN_Ver_Proceso_Adopcion.cs" />
+			
+			
+			<Compile Include="CEN\ProtectoraMilpatitas\AnimalCEN_Actualizar_DatosMedicos.cs" />
+			
+			<Compile Include="CEN\ProtectoraMilpatitas\AnimalCEN_Actualizar_Estado.cs" />
+			
+			
+			
+			
+	<Compile Include="EN\ProtectoraMilpatitas\EspecieEN.cs" />
+	<Compile Include="CEN\ProtectoraMilpatitas\EspecieCEN.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\IEspecieCAD.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\EspecieCAD.cs" />
+	<Compile Include="CP\ProtectoraMilpatitas\EspecieCP.cs" />
+			
+			
+			
+			
+			
+	<Compile Include="EN\ProtectoraMilpatitas\RazaEN.cs" />
+	<Compile Include="CEN\ProtectoraMilpatitas\RazaCEN.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\IRazaCAD.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\RazaCAD.cs" />
+	<Compile Include="CP\ProtectoraMilpatitas\RazaCP.cs" />
+			
+			
+			
+			
+			
+			
+	<Compile Include="EN\ProtectoraMilpatitas\MensajeEN.cs" />
+	<Compile Include="CEN\ProtectoraMilpatitas\MensajeCEN.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\IMensajeCAD.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\MensajeCAD.cs" />
+	<Compile Include="CP\ProtectoraMilpatitas\MensajeCP.cs" />
+			
+			
+			<Compile Include="CP\ProtectoraMilpatitas\MensajeCP_Responder.cs" />
+			
+			
+			
+	<Compile Include="EN\ProtectoraMilpatitas\SeguimientoEN.cs" />
+	<Compile Include="CEN\ProtectoraMilpatitas\SeguimientoCEN.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\ISeguimientoCAD.cs" />
+	<Compile Include="CAD\ProtectoraMilpatitas\SeguimientoCAD.cs" />
+	<Compile Include="CP\ProtectoraMilpatitas\SeguimientoCP.cs" />
+			<Compile Include="CEN\ProtectoraMilpatitas\SeguimientoCEN_Nuevo.cs" />
+			
+			<Compile Include="CEN\ProtectoraMilpatitas\SeguimientoCEN_Modificar.cs" />
+			
+			
+			<Compile Include="CP\ProtectoraMilpatitas\SeguimientoCP_Actualizar_Estado.cs" />
+			
+			
+			
+			
+	<Compile Include="Enumerated\ProtectoraMilpatitas\EstadoAdopcionEnum.cs" />
+	<Compile Include="Enumerated\ProtectoraMilpatitas\EstadoContratoEnum.cs" />
+	<Compile Include="Enumerated\ProtectoraMilpatitas\EstadoSaludEnum.cs" />
+	<Compile Include="Enumerated\ProtectoraMilpatitas\EstadoSeguimientoEnum.cs" />
+	<Compile Include="Enumerated\ProtectoraMilpatitas\TipoNotificacionEnum.cs" />
+	<Compile Include="Enumerated\ProtectoraMilpatitas\EstadoAnimalAdopcionEnum.cs" />
+	
+	
+
+		    
+	
+
+		    <Compile Include="Properties\AssemblyInfo.cs" />
+		    <Compile Include="Properties\Settings.Designer.cs">
+		      <AutoGen>True</AutoGen>
+		      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+		      <DependentUpon>Settings.settings</DependentUpon>
+		    </Compile>
+		  </ItemGroup>
+		  <ItemGroup>
+		  
+	<EmbeddedResource Include="Mappings\ProtectoraMilpatitas\usuario.hbm.xml" />
+	<EmbeddedResource Include="Mappings\ProtectoraMilpatitas\administrador.hbm.xml" />
+	<EmbeddedResource Include="Mappings\ProtectoraMilpatitas\testanimalideal.hbm.xml" />
+	<EmbeddedResource Include="Mappings\ProtectoraMilpatitas\notificacion.hbm.xml" />
+	<EmbeddedResource Include="Mappings\ProtectoraMilpatitas\solicitudadopcion.hbm.xml" />
+	<EmbeddedResource Include="Mappings\ProtectoraMilpatitas\contratoadopcion.hbm.xml" />
+	<EmbeddedResource Include="Mappings\ProtectoraMilpatitas\animal.hbm.xml" />
+	<EmbeddedResource Include="Mappings\ProtectoraMilpatitas\especie.hbm.xml" />
+	<EmbeddedResource Include="Mappings\ProtectoraMilpatitas\raza.hbm.xml" />
+	<EmbeddedResource Include="Mappings\ProtectoraMilpatitas\mensaje.hbm.xml" />
+	<EmbeddedResource Include="Mappings\ProtectoraMilpatitas\seguimiento.hbm.xml" />
+	
+	
+
+		  </ItemGroup>
+		  <ItemGroup>
+		    <Content Include="hibernate.cfg.xml">
+		      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		    </Content>
+		  </ItemGroup>
+		  <ItemGroup>
+		    <None Include="app.config" />
+		    <None Include="Properties\Settings.settings">
+		      <Generator>SettingsSingleFileGenerator</Generator>
+		      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		    </None>
+		        <None Include="Resources\xsd\nhibernate-configuration.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\xsd\nhibernate-mapping.xsd">
+      <SubType>Designer</SubType>
+    </None>
+		  </ItemGroup>
+	 	
+		
+	
+		<ItemGroup>
+		    <ProjectReference Include="..\APIExterna\APIExterna.csproj">
+		      <Project>{4ade35c8-a0c3-49da-9e1a-11a53ca19214}</Project>
+		      <Name>APIExterna</Name>
+		    </ProjectReference>
+	    </ItemGroup>
+	    
+		  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+		  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+		       Other similar extension points exist, see Microsoft.Common.targets.
+		  <Target Name="BeforeBuild">
+		  </Target>
+		  <Target Name="AfterBuild">
+		  </Target>
+		  -->
+		</Project>

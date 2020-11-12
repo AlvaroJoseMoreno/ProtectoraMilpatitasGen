@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="ProtectoraMilpatitasGenNHibernate"
+		                   namespace="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas">
+		    
+		    
+			
+				<class name="SeguimientoEN" table="Seguimiento"> 
+				  	
+						<id name="Id" column="id" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Estado" > 
+						<column name="estado"  not-null="true"/>
+					</property>
+					<property name="Fecha" type="date"> 
+						<column name="fecha"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+		  			
+						<many-to-one name="Usuario" class="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN" >	
+								<column name="FK_email_idUsuario"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Animal" class="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN" >	
+								<column name="FK_id_idAnimal"/> 
+						</many-to-one>
+											 					
+			
+		  			
+					
+							<many-to-one name="ContratoAdopcion" class="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN" >
+								<column name="FK_id_idContratoAdopcion"/> 
+        					</many-to-one>
+					 
+						
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="SeguimientoENReadAllHQL">from SeguimientoEN</query>
+		  <query name="SeguimientoENObtener_Seguimiento_UsuarioHQL"><![CDATA[select seg FROM SeguimientoEN as seg WHERE seg.Usuario=:p_usuario]]></query>
+		</hibernate-mapping>
+	

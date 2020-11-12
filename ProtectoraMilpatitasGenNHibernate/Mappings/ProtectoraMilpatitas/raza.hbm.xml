@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="ProtectoraMilpatitasGenNHibernate"
+		                   namespace="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas">
+		    
+		    
+			
+				<class name="RazaEN" table="Raza"> 
+				  	
+						<id name="Id" column="id" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Nombre" type="string"> 
+						<column name="nombre"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+		  			
+						<many-to-one name="Especie" class="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.EspecieEN" >	
+								<column name="FK_id_idEspecie"/> 
+						</many-to-one>
+											 					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="RazaENReadAllHQL">from RazaEN</query>
+		  <query name="RazaENdame_Raza_Por_EspecieHQL"><![CDATA[select raz FROM RazaEN as raz WHERE raz.Especie=:p_especie]]></query>
+		</hibernate-mapping>
+	

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="ProtectoraMilpatitasGenNHibernate"
+		                   namespace="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas">
+		    
+		    
+			
+				<class name="TestAnimalIdealEN" table="TestAnimalIdeal"> 
+				  	
+						<id name="Id" column="id" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="AficionFavorita" type="string"> 
+						<column name="aficionFavorita"  not-null="true"/>
+					</property>
+					<property name="Personalidad" type="string"> 
+						<column name="personalidad"  not-null="true"/>
+					</property>
+					<property name="ColorFavorito" type="string"> 
+						<column name="colorFavorito"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+		  			
+						<many-to-one name="Usuario" class="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN" >	
+								<column name="FK_email_idUsuario"/> 
+						</many-to-one>
+											 					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="TestAnimalIdealENReadAllHQL">from TestAnimalIdealEN</query>
+		</hibernate-mapping>
+	

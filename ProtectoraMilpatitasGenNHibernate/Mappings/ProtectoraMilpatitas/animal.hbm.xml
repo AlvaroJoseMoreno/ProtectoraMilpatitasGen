@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="ProtectoraMilpatitasGenNHibernate"
+		                   namespace="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas">
+		    
+		    
+			
+				<class name="AnimalEN" table="Animal"> 
+				  	
+						<id name="Id" column="id" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Nombre" type="string"> 
+						<column name="nombre"  not-null="true"/>
+					</property>
+					<property name="Edad" type="integer"> 
+						<column name="edad"  not-null="true"/>
+					</property>
+					<property name="Sexo" type="character"> 
+						<column name="sexo"  not-null="true"/>
+					</property>
+					<property name="Centro" type="string"> 
+						<column name="centro"  not-null="true"/>
+					</property>
+					<property name="DatosMedicos" > 
+						<column name="datosMedicos"  not-null="true"/>
+					</property>
+					<property name="Caracter" type="string"> 
+						<column name="caracter"  not-null="true"/>
+					</property>
+					<property name="EstadoAdopcion" > 
+						<column name="estadoAdopcion"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<bag name="SolicitudAdopcion" >
+							<key>
+							
+								
+								<column name="FK_id_idAnimal"/>
+					      	</key>
+							<one-to-many class="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="ContratoAdopcion" >
+							<key>
+							
+								
+								<column name="FK_id_idAnimal"/>
+					      	</key>
+							<one-to-many class="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN"/>
+					    </bag>
+					
+			
+		  			
+						<many-to-one name="Dueño" class="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN" >	
+								<column name="FK_email_idUsuario"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<bag name="Especie" >
+							<key>
+							
+								
+								<column name="FK_id_idAnimal"/>
+					      	</key>
+							<one-to-many class="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.EspecieEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Seguimiento" >
+							<key>
+							
+								
+								<column name="FK_id_idAnimal"/>
+					      	</key>
+							<one-to-many class="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SeguimientoEN"/>
+					    </bag>
+					
+			
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="AnimalENReadAllHQL">from AnimalEN</query>
+		  <query name="AnimalENbuscarAnimalesHQL"><![CDATA[select ani FROM AnimalEN as ani where ani.Nombre=:p_nombre OR ani.Edad=:p_edad OR ani.Sexo=:p_sexo OR ani.Centro=:p_centro OR ani.DatosMedicos=:p_datos OR ani.Caracter=:p_caracter]]></query>
+		  <query name="AnimalENdame_Animales_Por_EspecieHQL"><![CDATA[select ani FROM AnimalEN as ani WHERE ani.Especie=:p_especie]]></query>
+		  <query name="AnimalENObtener_Animal_UsuarioHQL"><![CDATA[select ani FROM AnimalEN as ani WHERE ani.Dueño is not empty and ani.Dueño.Email=:p_email]]></query>
+		</hibernate-mapping>
+	
