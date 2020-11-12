@@ -71,7 +71,7 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
                             notificacionEN.Mensaje = "Solicitud Aceptada";
                             mensaEn.Texto = "Solicitud aceptada";
                             solicitudAdopcionEN.Estado = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.aceptado;
-                            solicitudAdopcionCAD.Actualizar_Estado(solicitudAdopcionEN.Id, solicitudAdopcionEN.Estado);
+                            solicitudAdopcionCAD.Actualizar_Estado(solicitudAdopcionEN.Id, solicitudAdopcionEN.Estado); //tiene que ser solicitudAdopcionCP
                             notiCEN.Enviar(notificacionEN.Id, p_Usuario, mensaEn.Texto);
 
                         }
