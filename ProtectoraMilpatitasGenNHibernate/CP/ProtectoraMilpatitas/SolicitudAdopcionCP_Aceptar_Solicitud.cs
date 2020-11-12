@@ -29,6 +29,7 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
             SolicitudAdopcionCAD solicitudAdopcionCAD = null;
             SolicitudAdopcionCEN solicitudAdopcionCEN = null;
             SolicitudAdopcionEN solicitudAdopcionEN = null;
+            SolicitudAdopcionCP solicitudAdopcionCP = null;
             UsuarioCAD usuCAD = null;
             UsuarioCEN usuCEN = null;
             NotificacionCAD notiCAD = null;
@@ -37,7 +38,7 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
             MensajeCAD mensaCAD = null;
             MensajeCEN mensaCEN = null;
             MensajeEN mensaEn = null;
-
+            bool entra = false;
 
 
             try
@@ -45,6 +46,7 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
                 SessionInitializeTransaction();
                 solicitudAdopcionCAD = new SolicitudAdopcionCAD(session);
                 solicitudAdopcionCEN = new SolicitudAdopcionCEN(solicitudAdopcionCAD);
+                solicitudAdopcionCP = new SolicitudAdopcionCP();
                 solicitudAdopcionEN = new SolicitudAdopcionEN();
 
                 usuCAD = new UsuarioCAD(session);
@@ -71,7 +73,7 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
                             notificacionEN.Mensaje = "Solicitud Aceptada";
                             mensaEn.Texto = "Solicitud aceptada";
                             solicitudAdopcionEN.Estado = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.aceptado;
-                            solicitudAdopcionCAD.Actualizar_Estado(solicitudAdopcionEN.Id, solicitudAdopcionEN.Estado); //tiene que ser solicitudAdopcionCP
+                            solicitudAdopcionCP.Actualizar_Estado(solicitudAdopcionEN.Id, solicitudAdopcionEN.Estado); //tiene que ser solicitudAdopcionCP
                             notiCEN.Enviar(notificacionEN.Id, p_Usuario, mensaEn.Texto);
 
                         }

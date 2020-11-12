@@ -300,7 +300,7 @@ public System.Collections.Generic.IList<SolicitudAdopcionEN> Dame_Todas (int fir
         return result;
 }
 
-public void Actualizar_Estado (SolicitudAdopcionEN solicitudAdopcion)
+public void Actualizar_Estado (int id, SolicitudAdopcionEN solicitudAdopcion)
 {
         try
         {
