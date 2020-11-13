@@ -10,7 +10,13 @@ using ProtectoraMilpatitasGenNHibernate.Exceptions;
 using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
 using System.Net.Mail;
+using System.Configuration;
+//using System.Web.Configuration;
+using System.Net.Configuration;
 using System.Net;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
+using System.Linq;
 
 
 /*PROTECTED REGION ID(usingProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas_Notificacion_enviar) ENABLED START*/
@@ -25,44 +31,35 @@ public void Enviar (int p_Notificacion, string p_usuario, string p_mensaje)
 {
             /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas_Notificacion_enviar) ENABLED START*/
 
-            string usuario, contraseña, destinatario, asunto, mensaje;
+            AdministradorCEN adminCEN = new AdministradorCEN();
 
-            Console.WriteLine("\t\t----------------------------------------");
-            Console.WriteLine("\t\t\tEnviar Correo Electronico");
-            Console.WriteLine("\t\t----------------------------------------");
+            IList<AdministradorEN> admins = adminCEN.Dame_Todos(0, -1);
 
-
-            Console.WriteLine("\n");
-            Console.Write("\t\tIngresa tu correo electornico: ");
-            usuario = Console.ReadLine();
-            Console.Write("\t\tIngresa tu password: ");
-            contraseña = Console.ReadLine();
-            Console.Write("\t\tDestinatario: ");
-            destinatario = Console.ReadLine();
-            Console.Write("\t\tAsunto: ");
-            asunto = Console.ReadLine();
-            Console.Write("\t\tMensaje: ");
-            mensaje = Console.ReadLine();
-
-            MailMessage correo = new MailMessage(usuario, destinatario, asunto, mensaje);
-
-            SmtpClient servidor = new SmtpClient("smtp.live.com",
-            NetworkCredential credenciales = new NetworkCredential(usuario, contraseña);
-            servidor.Credentials = credenciales;
-            servidor.EnableSsl = true;
-
-            try
+            if (admins.Count() > 0)
             {
-                servidor.Send(correo);
-                Console.WriteLine("\t\tCorreo enviado de manera exitosa");
-                correo.Dispose();
-            }
-            catch (Exception ex)
+                AdministradorEN adminEN = admins[0];
+
+                MailMessage correo = new MailMessage();
+                correo.From = new MailAddress("pgm127@gcloud.ua.es", "Paula", System.Text.Encoding.UTF8);//Correo de salida
+                correo.To.Add("laurinanann@gmail.com"); //Correo destino?
+                correo.Subject = "Correo de prueba"; //Asunto
+                correo.Body = "Este es un correo de prueba desde c#"; //Mensaje del correo
+                correo.IsBodyHtml = true;
+                correo.Priority = MailPriority.Normal;
+                SmtpClient smtp = new SmtpClient();
+                smtp.UseDefaultCredentials = false;
+                smtp.Host = "smtp.gmail.com"; //Host del servidor de correo
+                smtp.Port = 25; //Puerto de salida
+                smtp.Credentials = new System.Net.NetworkCredential("pgm127@gcloud.ua.es", "Paura1701");//Cuenta de correo
+                ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
+                smtp.EnableSsl = true;//True si el servidor de correo permite ssl
+                smtp.Send(correo);
+            } else
             {
-                Console.WriteLine(ex.Message);
+                throw new ModelException("No hay administradores");
             }
 
             /*PROTECTED REGION END*/
         }
-}
+    }
 }
