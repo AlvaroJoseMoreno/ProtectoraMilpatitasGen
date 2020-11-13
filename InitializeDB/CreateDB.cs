@@ -100,12 +100,17 @@ namespace InitializeDB
                 UsuarioCEN Antonio = new UsuarioCEN();
                 Antonio.Registrarse("Antonio53", "Antonio323@gmail.com", "villena92");
 
+                AdministradorCEN protectora = new AdministradorCEN();
+                protectora.Registrarse("Milpatitas", "milpatitas@gmail.com", "1234");
+
                 AnimalCP chihua = new AnimalCP();
                 chihua.Nuevo("tobi", 3, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "amigable");
                 AnimalCP yorkshire = new AnimalCP();
                 yorkshire.Nuevo("Pelusa", 3, 'M', "Albacete", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enRecuperacion, "carinoso");
                 AnimalCP siames = new AnimalCP();
                 siames.Nuevo("minino", 1, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso");
+
+                
                 // Console.WriteLine(" El animal es ");
                 //Vamos a modificar el estado de tobi
                 //   chihua.Modificar(1, "tobi", 3, 'H', "Alicante", "desagradable");
