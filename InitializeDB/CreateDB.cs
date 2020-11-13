@@ -110,7 +110,7 @@ namespace InitializeDB
                 AnimalCP siames = new AnimalCP();
                 siames.Nuevo("minino", 1, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso");
 
-                
+
                 // Console.WriteLine(" El animal es ");
                 //Vamos a modificar el estado de tobi
                 //   chihua.Modificar(1, "tobi", 3, 'H', "Alicante", "desagradable");
