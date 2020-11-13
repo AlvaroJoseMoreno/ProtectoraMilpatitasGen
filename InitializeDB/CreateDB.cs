@@ -122,21 +122,47 @@ namespace InitializeDB
                 Console.WriteLine("Id del test: "+idtest1);
                 test1.Rellenar_Test(idtest1, "ver la television", "timido", "rojo");
                 TestAnimalIdealEN restest1 = test1.Ver_Resultado(idtest1);
-                Console.WriteLine("El resultado del test: "+restest1.Id+"es 60");
+                Console.WriteLine("El resultado del test: "+restest1.Id+" es 60");
 
-                // Console.WriteLine(" El animal es ");
-                //Vamos a modificar el estado de tobi
-                //   chihua.Modificar(1, "tobi", 3, 'H', "Alicante", "desagradable");
-                //vamos a ver sus datos
-                //  Console.WriteLine(chihua.Ver_Detalle_Animal(1));
+
+                //Solicitud de Adopcion
                 SolicitudAdopcionCEN solicitudAdopcionCEN = new SolicitudAdopcionCEN();
 
                 int idsol = solicitudAdopcionCEN.Nuevo("Juan", 3, "amigable", 4, true, "nos gustan animales", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera, juan, chi.Id);
                 int idsol1 = solicitudAdopcionCEN.Nuevo("Manuel", 2, "amigable", 3, true, "nos gustan animales", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera, manu, chi.Id);
 
-                Console.WriteLine(solicitudAdopcionCEN.Obtener_Solicitud_Usuario(juan));
-                
-                
+                IList<SolicitudAdopcionEN> sols = solicitudAdopcionCEN.Obtener_Solicitud_Usuario(juan);
+                foreach (SolicitudAdopcionEN sol in sols)
+                {
+                    Console.WriteLine("Solicitud : "+sol.Id+" "+sol.Nombre);
+                }
+
+
+                //Contrato de adopcion
+                ContratoAdopcionCEN contratoAdopcionCEN = new ContratoAdopcionCEN();
+
+                int idcon = contratoAdopcionCEN.Nuevo("Juan", "1111111F", "micasa.pdf", "pago.jpg", "alicante", true, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum.entregado, juan, idsol, chi.Id);
+                int idcon1 = contratoAdopcionCEN.Nuevo("Manuel", "22222221F", "micasa.pdf", "pago.jpg", "villena", true, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum.entregado, manu, idsol1, chi.Id);
+
+                IList<ContratoAdopcionEN> cons = contratoAdopcionCEN.Obtener_Contrato_Usuario(manu);
+                foreach (ContratoAdopcionEN con in cons)
+                {
+                    Console.WriteLine("Contrato : "+con.Id + " " + con.Nombre);
+                }
+
+
+                //Seguimiento de adopcion
+                SeguimientoCEN seguimientoCEN = new SeguimientoCEN();
+
+                DateTime date1 = new DateTime(2008, 5, 1, 8, 30, 52);
+
+                int idseg = seguimientoCEN.Nuevo(ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSeguimientoEnum.pendienteRevision, date1, manu, chi.Id, idcon1);
+
+                IList<SeguimientoEN> segs = seguimientoCEN.Obtener_Seguimiento_Usuario(manu);
+                foreach (SeguimientoEN seg in segs)
+                {
+                    Console.WriteLine("Seguimiento : " + seg.Id + " " + seg.Usuario);
+                }
 
 
                 /*PROTECTED REGION END*/
