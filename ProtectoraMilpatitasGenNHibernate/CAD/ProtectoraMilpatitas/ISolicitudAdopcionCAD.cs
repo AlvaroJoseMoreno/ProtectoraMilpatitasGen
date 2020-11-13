@@ -32,7 +32,7 @@ System.Collections.Generic.IList<SolicitudAdopcionEN> Dame_Todas (int first, int
 void Actualizar_Estado (SolicitudAdopcionEN solicitudAdopcion);
 
 
-System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN> Obtener_Solicitud_Usuario (int p_email);
+System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN> Obtener_Solicitud_Usuario (string p_email);
 
 
 

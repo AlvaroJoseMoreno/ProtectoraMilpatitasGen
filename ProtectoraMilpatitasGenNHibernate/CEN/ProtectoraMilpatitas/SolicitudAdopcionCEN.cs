@@ -61,7 +61,7 @@ public System.Collections.Generic.IList<SolicitudAdopcionEN> Dame_Todas (int fir
         list = _ISolicitudAdopcionCAD.Dame_Todas (first, size);
         return list;
 }
-public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN> Obtener_Solicitud_Usuario (int p_email)
+public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN> Obtener_Solicitud_Usuario (string p_email)
 {
         return _ISolicitudAdopcionCAD.Obtener_Solicitud_Usuario (p_email);
 }

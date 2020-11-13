@@ -129,12 +129,12 @@ namespace InitializeDB
                 //   chihua.Modificar(1, "tobi", 3, 'H', "Alicante", "desagradable");
                 //vamos a ver sus datos
                 //  Console.WriteLine(chihua.Ver_Detalle_Animal(1));
-                /*SolicitudAdopcionCEN solicitudAdopcionCEN = new SolicitudAdopcionCEN();
+                SolicitudAdopcionCEN solicitudAdopcionCEN = new SolicitudAdopcionCEN();
 
                 solicitudAdopcionCEN.Nuevo("juan20@gmail.com", 65536);
                 solicitudAdopcionCEN.Nuevo("Manueljumilla@gmail.com", 65536);
 
-                Console.WriteLine(solicitudAdopcionCEN.Obtener_Solicitud_Usuario("juan20@gmail.com"));*/
+                Console.WriteLine(solicitudAdopcionCEN.Obtener_Solicitud_Usuario("juan20@gmail.com"));
                 
                 
 
