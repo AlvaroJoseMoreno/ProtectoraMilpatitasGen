@@ -89,6 +89,7 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
                             {
                                 UsuarioEN usuen = usu;
 
+                                Console.WriteLine("Correo enviado a : " + usuen.Nombre);
                                 MensajeCP mensajeCP = new MensajeCP(session);
 
                                 MensajeCEN mensajeCEN = new MensajeCEN();
