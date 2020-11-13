@@ -45,21 +45,6 @@ public void Eliminar (int id
         _ITestAnimalIdealCAD.Eliminar (id);
 }
 
-public void Rellenar_Test (int p_TestAnimalIdeal, string p_aficionFavorita, string p_personalidad, string p_colorFavorito)
-{
-        TestAnimalIdealEN testAnimalIdealEN = null;
-
-        //Initialized TestAnimalIdealEN
-        testAnimalIdealEN = new TestAnimalIdealEN ();
-        testAnimalIdealEN.Id = p_TestAnimalIdeal;
-        testAnimalIdealEN.AficionFavorita = p_aficionFavorita;
-        testAnimalIdealEN.Personalidad = p_personalidad;
-        testAnimalIdealEN.ColorFavorito = p_colorFavorito;
-        //Call to TestAnimalIdealCAD
-
-        _ITestAnimalIdealCAD.Rellenar_Test (testAnimalIdealEN);
-}
-
 public TestAnimalIdealEN Ver_Resultado (int id
                                         )
 {

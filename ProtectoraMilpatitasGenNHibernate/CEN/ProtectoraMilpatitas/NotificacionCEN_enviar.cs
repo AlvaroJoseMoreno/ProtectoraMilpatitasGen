@@ -38,10 +38,9 @@ public void Enviar (int p_Notificacion, string p_usuario, string p_mensaje)
             if (admins.Count() > 0)
             {
                 AdministradorEN adminEN = admins[0];
-
                 MailMessage correo = new MailMessage();
-                correo.From = new MailAddress("protectoramilpatitasalicante@gmail.com", "Protectora Milpatitas", System.Text.Encoding.UTF8);//Correo de salida
-                correo.To.Add("protectoramilpatitasalicante@gmail.com"); //Correo destino?
+                correo.From = new MailAddress(adminEN.Email, "Protectora Milpatitas", System.Text.Encoding.UTF8);//Correo de salida
+                correo.To.Add(p_usuario); //Correo destino?
                 correo.Subject = "Correo de prueba"; //Asunto
                 correo.Body = "Este es un correo de prueba desde c#"; //Mensaje del correo
                 correo.IsBodyHtml = true;
@@ -50,7 +49,7 @@ public void Enviar (int p_Notificacion, string p_usuario, string p_mensaje)
                 smtp.UseDefaultCredentials = false;
                 smtp.Host = "smtp.gmail.com"; //Host del servidor de correo
                 smtp.Port = 25; //Puerto de salida
-                smtp.Credentials = new System.Net.NetworkCredential("protectoramilpatitasalicante@gmail.com", "josemanuel25");//Cuenta de correo
+                smtp.Credentials = new System.Net.NetworkCredential(adminEN.Email, "josemanuel25");//Cuenta de correo
                 ServicePointManager.ServerCertificateValidationCallback = delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
                 smtp.EnableSsl = true;//True si el servidor de correo permite ssl
                 smtp.Send(correo);

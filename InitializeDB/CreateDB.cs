@@ -79,57 +79,61 @@ namespace InitializeDB
             /*PROTECTED REGION ID(initializeDataMethod) ENABLED START*/
             try
             {
-                // Insert the initilizations of entities using the CEN classes
-
-
-                // p.e. CustomerCEN customer = new CustomerCEN();
-                // customer.New_ (p_user:"user", p_password:"1234");
-
+                //Creacion de un administrador
                 AdministradorCEN adminCEN = new AdministradorCEN();
-                adminCEN.Registrarse("Protectora", "milpatitas@gmail.com", "patitas");
+                adminCEN.Registrarse("Protectora", "protectoramilpatitasalicante@gmail.com", "patitas");
 
-                if (adminCEN.Iniciar_Sesion("milpatitas@gmail.com", "patitas") != null)
+                if (adminCEN.Iniciar_Sesion("protectoramilpatitasalicante@gmail.com", "patitas") != null)
                 {
                     Console.WriteLine("El login de administrador es correcto");
                 }
 
+
+                //Creacion de usuarios
                 UsuarioCEN usuCEN = new UsuarioCEN();
-                usuCEN.Registrarse("Perico", "perico10@ciclismo", "1235");
+                string idusu = usuCEN.Registrarse("Perico", "perico10@ciclismo", "1235");
 
                 if (usuCEN.Iniciar_Sesion("perico10@ciclismo", "1235") != null)
                 {
-                    Console.WriteLine("El login es correcto");
+                    Console.WriteLine("El login de: "+idusu+" es correcto");
                 }
 
                 UsuarioCEN juan99 = new UsuarioCEN();
-                juan99.Registrarse("Juan", "juan20@gmail.com", "constantino1");
+                string juan = juan99.Registrarse("Juan", "juan20@gmail.com", "constantino1");
                 UsuarioCEN manuel = new UsuarioCEN();
-                manuel.Registrarse("Manuel45", "Manueljumilla@gmail.com", "password=5");
+                string manu = manuel.Registrarse("Manuel45", "Manueljumilla@gmail.com", "password=5");
                 UsuarioCEN Antonio = new UsuarioCEN();
-                Antonio.Registrarse("Antonio53", "Antonio323@gmail.com", "villena92");
+                string anto = Antonio.Registrarse("Antonio53", "Antonio323@gmail.com", "villena92");
 
-                MensajeCEN mensaCEN = new MensajeCEN();
-                mensaCEN.Nuevo("milpatitas@gmail.com", "juan20@gmail.com", "prueba");
 
+                //Creación de animales
                 AnimalCP chihua = new AnimalCP();
-                chihua.Nuevo("tobi", 3, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "amigable");
+                AnimalEN chi = chihua.Nuevo("tobi", 3, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "amigable");
+                
                 AnimalCP yorkshire = new AnimalCP();
-                yorkshire.Nuevo("Pelusa", 3, 'M', "Albacete", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enRecuperacion, "carinoso");
+                AnimalEN yor = yorkshire.Nuevo("Pelusa", 3, 'M', "Albacete", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enRecuperacion, "carinoso");
+                
                 AnimalCP siames = new AnimalCP();
-                siames.Nuevo("minino", 1, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso");
+                AnimalEN sia = siames.Nuevo("minino", 1, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso");
 
+                //Creacion de tests
+                TestAnimalIdealCEN test1 = new TestAnimalIdealCEN();
+                int idtest1 = test1.Nuevo(juan);
+                test1.Rellenar_Test(idtest1, "ver la television", "timido", "rojo");
+                TestAnimalIdealEN restest1 = test1.Ver_Resultado(idtest1);
+                Console.WriteLine("El resultado del test: "+restest1.Id+"es 60");
 
                 // Console.WriteLine(" El animal es ");
                 //Vamos a modificar el estado de tobi
                 //   chihua.Modificar(1, "tobi", 3, 'H', "Alicante", "desagradable");
                 //vamos a ver sus datos
                 //  Console.WriteLine(chihua.Ver_Detalle_Animal(1));
-                SolicitudAdopcionCEN solicitudAdopcionCEN = new SolicitudAdopcionCEN();
+                /*SolicitudAdopcionCEN solicitudAdopcionCEN = new SolicitudAdopcionCEN();
 
                 solicitudAdopcionCEN.Nuevo("juan20@gmail.com", 65536);
                 solicitudAdopcionCEN.Nuevo("Manueljumilla@gmail.com", 65536);
 
-                Console.WriteLine(solicitudAdopcionCEN.Obtener_Solicitud_Usuario("juan20@gmail.com"));
+                Console.WriteLine(solicitudAdopcionCEN.Obtener_Solicitud_Usuario("juan20@gmail.com"));*/
                 
                 
 
