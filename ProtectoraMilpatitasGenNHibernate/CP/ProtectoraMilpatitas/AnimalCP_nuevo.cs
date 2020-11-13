@@ -11,6 +11,7 @@ using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
 using System.Linq;
+using ProtectoraMilpatitasGenNHibernate.Exceptions;
 
 
 
@@ -35,8 +36,8 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
             NotificacionCAD notiCAD = null;
             NotificacionCEN notiCEN = null;
             NotificacionEN notificacionEN = null;
-            MensajeCAD mensajeCAD = null;
-            MensajeCEN mensajeCEN = null;
+
+            AdministradorCEN adminCEN = new AdministradorCEN();
 
             ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN result = null;
 
@@ -52,9 +53,6 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
 
                 notiCAD = new NotificacionCAD(session);
                 notiCEN = new NotificacionCEN(notiCAD);
-
-                mensajeCAD = new MensajeCAD(session);
-                mensajeCEN = new MensajeCEN(mensajeCAD);
 
                 int oid;
                 //Initialized AnimalEN
@@ -77,30 +75,43 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
 
                 IList<UsuarioEN> usuarios = usuCEN.Dame_Todos(0, -1);
 
-                if (usuarios.Count() > 0)
+                IList<AdministradorEN> admins = adminCEN.Dame_Todos(0, -1);
+
+                if (admins.Count() > 0)
                 {
-                    foreach (UsuarioEN usu in usuarios)
+                    AdministradorEN adminEN = admins[0];
+
+                    if (usuarios.Count() > 0)
                     {
-                        Console.WriteLine("hol k ase");
-                        UsuarioEN usuen = usu;
+                        foreach (UsuarioEN usu in usuarios)
+                        {
+                            if ((usu is AdministradorEN)==false)
+                            {
+                                Console.WriteLine("hol k ase");
+                                UsuarioEN usuen = usu;
 
-                        //mensajeCEN = (MensajeCEN)usuen.MensajeChat;
+                                MensajeCP mensajeCP = new MensajeCP(session);
 
-                        MensajeCP mensajeCP = new MensajeCP(session);
+                                MensajeCEN mensajeCEN = new MensajeCEN();
 
-                        //mensajeCP = (MensajeCP)usuen.MensajeChat;
+                                int idmen = mensajeCEN.Nuevo(adminEN.Email, usuen.Email, notificacionEN.Mensaje);
 
-                        MensajeEN mensajeEN = new MensajeEN();
-                        mensajeCP.Responder(mensajeEN.Id, notificacionEN.Mensaje, usuen.Email);
+                                mensajeCP.Responder(idmen, notificacionEN.Mensaje, usuen.Email);
+                            }
+                        }
+                    } else
+                    {
+                        throw new ModelException("No hay usuarios a los que avisar");
                     }
+                } else
+                {
+                    throw new ModelException("No hay administradores que avisen");
                 }
 
                 //Call to AnimalCAD
 
                 oid = animalCAD.Nuevo(animalEN);
                 result = animalCAD.ReadOIDDefault(oid);
-
-
 
                 SessionCommit();
             }

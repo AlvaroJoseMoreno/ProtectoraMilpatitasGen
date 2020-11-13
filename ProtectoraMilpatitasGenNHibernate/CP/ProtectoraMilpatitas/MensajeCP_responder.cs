@@ -69,10 +69,8 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
                         notificacionCEN.Enviar(notificacionEN.Id, p_usuario, "Tienes un mensaje en el chat: " + p_texto);
                     }
                 }
-                Console.WriteLine("Linea 72 "+mensajeEN.Id);
 
                 mensajeCAD.Responder(mensajeEN);
-                Console.WriteLine("hasta aqui 77");
 
                 SessionCommit();
             }

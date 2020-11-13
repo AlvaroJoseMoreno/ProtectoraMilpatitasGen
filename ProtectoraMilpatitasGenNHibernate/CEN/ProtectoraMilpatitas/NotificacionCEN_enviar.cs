@@ -37,8 +37,6 @@ public void Enviar (int p_Notificacion, string p_usuario, string p_mensaje)
 
             if (admins.Count() > 0)
             {
-                Console.WriteLine("Linea 40 enviar "+p_Notificacion+ " "+p_usuario+" "+p_mensaje);
-
                 AdministradorEN adminEN = admins[0];
 
                 MailMessage correo = new MailMessage();
