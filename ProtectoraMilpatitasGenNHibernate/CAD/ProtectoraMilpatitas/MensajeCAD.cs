@@ -188,7 +188,7 @@ public void Responder (MensajeEN mensaje)
                 MensajeEN mensajeEN = (MensajeEN)session.Load (typeof(MensajeEN), mensaje.Id);
                 
                 mensajeEN.Texto = mensaje.Texto;
-                Console.WriteLine("Linea 191 " + mensaje.Texto);
+                Console.WriteLine(mensaje.Texto+" a la Protectora Milpatitas");
                 session.Update (mensajeEN);
                 
                 SessionCommit ();
