@@ -40,15 +40,17 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
                 mensajeEN = new MensajeEN();
                 mensajeEN.Id = p_Mensaje;
                 mensajeEN.Texto = p_texto;
+                mensajeEN.Usuario = new ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN();
+
+
                 if (!(p_usuario != null))
                 {
                     throw new ModelException("El email de usuario esta vacio");
                 }
                 else
                 {
-                    
-                    Console.WriteLine(mensajeEN.Usuario.Email + " linea 45");
                     mensajeEN.Usuario.Email = p_usuario;
+                    Console.WriteLine(mensajeEN.Usuario.Email + " linea 45");
                 }
                 
                 //Call to MensajeCAD
@@ -62,11 +64,7 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
                         notificacionEN.Mensaje = p_texto;
                         notificacionEN.Tipo = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.TipoNotificacionEnum.Chat;
 
-                        NotificacionCAD notificacionCAD = new NotificacionCAD(session);
-
-                        notificacionCAD.ModifyDefault(notificacionEN);
-
-                        NotificacionCEN notificacionCEN = new NotificacionCEN(notificacionCAD);
+                        NotificacionCEN notificacionCEN = new NotificacionCEN();
 
                         notificacionCEN.Enviar(notificacionEN.Id, p_usuario, "Tienes un mensaje en el chat: " + p_texto);
                     }

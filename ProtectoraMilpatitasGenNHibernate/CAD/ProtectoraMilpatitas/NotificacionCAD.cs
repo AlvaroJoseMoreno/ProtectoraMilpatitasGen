@@ -94,9 +94,6 @@ public void ModifyDefault (NotificacionEN notificacion)
 
                 notificacionEN.Tipo = notificacion.Tipo;
 
-
-
-
                 notificacionEN.Mensaje = notificacion.Mensaje;
 
                 session.Update (notificacionEN);
