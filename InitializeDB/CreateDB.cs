@@ -131,10 +131,10 @@ namespace InitializeDB
                 //  Console.WriteLine(chihua.Ver_Detalle_Animal(1));
                 SolicitudAdopcionCEN solicitudAdopcionCEN = new SolicitudAdopcionCEN();
 
-                solicitudAdopcionCEN.Nuevo("juan20@gmail.com", 65536);
-                solicitudAdopcionCEN.Nuevo("Manueljumilla@gmail.com", 65536);
+                int idsol = solicitudAdopcionCEN.Nuevo("Juan", 3, "amigable", 4, true, "nos gustan animales", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera, juan, chi.Id);
+                int idsol1 = solicitudAdopcionCEN.Nuevo("Manuel", 2, "amigable", 3, true, "nos gustan animales", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera, manu, chi.Id);
 
-                Console.WriteLine(solicitudAdopcionCEN.Obtener_Solicitud_Usuario("juan20@gmail.com"));
+                Console.WriteLine(solicitudAdopcionCEN.Obtener_Solicitud_Usuario(juan));
                 
                 
 

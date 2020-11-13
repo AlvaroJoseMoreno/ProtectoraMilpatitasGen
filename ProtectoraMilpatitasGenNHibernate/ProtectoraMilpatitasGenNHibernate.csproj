@@ -136,7 +136,6 @@
     <Compile Include="CAD\ProtectoraMilpatitas\ISolicitudAdopcionCAD.cs" />
     <Compile Include="CAD\ProtectoraMilpatitas\SolicitudAdopcionCAD.cs" />
     <Compile Include="CP\ProtectoraMilpatitas\SolicitudAdopcionCP.cs" />
-    <Compile Include="CEN\ProtectoraMilpatitas\SolicitudAdopcionCEN_Nuevo.cs" />
     <Compile Include="CEN\ProtectoraMilpatitas\SolicitudAdopcionCEN_Rellenar_Solicitud.cs" />
     <Compile Include="CP\ProtectoraMilpatitas\SolicitudAdopcionCP_Actualizar_Estado.cs" />
     <Compile Include="CP\ProtectoraMilpatitas\SolicitudAdopcionCP_Aceptar_Solicitud.cs" />
@@ -146,7 +145,6 @@
     <Compile Include="CAD\ProtectoraMilpatitas\IContratoAdopcionCAD.cs" />
     <Compile Include="CAD\ProtectoraMilpatitas\ContratoAdopcionCAD.cs" />
     <Compile Include="CP\ProtectoraMilpatitas\ContratoAdopcionCP.cs" />
-    <Compile Include="CEN\ProtectoraMilpatitas\ContratoAdopcionCEN_Nuevo.cs" />
     <Compile Include="CEN\ProtectoraMilpatitas\ContratoAdopcionCEN_Rellenar_Contrato.cs" />
     <Compile Include="CP\ProtectoraMilpatitas\ContratoAdopcionCP_Actualizar_Estado.cs" />
     <Compile Include="EN\ProtectoraMilpatitas\AnimalEN.cs" />
@@ -180,7 +178,6 @@
     <Compile Include="CAD\ProtectoraMilpatitas\ISeguimientoCAD.cs" />
     <Compile Include="CAD\ProtectoraMilpatitas\SeguimientoCAD.cs" />
     <Compile Include="CP\ProtectoraMilpatitas\SeguimientoCP.cs" />
-    <Compile Include="CEN\ProtectoraMilpatitas\SeguimientoCEN_Nuevo.cs" />
     <Compile Include="CEN\ProtectoraMilpatitas\SeguimientoCEN_Modificar.cs" />
     <Compile Include="CP\ProtectoraMilpatitas\SeguimientoCP_Actualizar_Estado.cs" />
     <Compile Include="Enumerated\ProtectoraMilpatitas\EstadoAdopcionEnum.cs" />
