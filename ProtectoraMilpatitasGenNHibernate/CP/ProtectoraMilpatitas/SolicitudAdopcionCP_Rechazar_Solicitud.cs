@@ -25,36 +25,71 @@ public void Rechazar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
 {
         /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_SolicitudAdopcion_Rechazar_Solicitud) ENABLED START*/
 
-        ISolicitudAdopcionCAD solicitudAdopcionCAD = null;
-        SolicitudAdopcionCEN solicitudAdopcionCEN = null;
+                 /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_SolicitudAdopcion_Aceptar_Solicitud) ENABLED START*/
+
+            SolicitudAdopcionCAD solicitudAdopcionCAD = null;
+            SolicitudAdopcionCEN solicitudAdopcionCEN = null;
+            SolicitudAdopcionEN solicitudAdopcionEN = null;
+            SolicitudAdopcionCP solicitudAdopcionCP = null;
+            UsuarioCAD usuCAD = null;
+            UsuarioCEN usuCEN = null;
+            NotificacionCAD notiCAD = null;
+            NotificacionCEN notiCEN = null;
+            NotificacionEN notificacionEN = null;
+            MensajeCAD mensaCAD = null;
+            MensajeCEN mensaCEN = null;
+            MensajeEN mensaEn = null;
+            bool entra = false;
+
+
+            try
+            {
+                SessionInitializeTransaction();
+                solicitudAdopcionCAD = new SolicitudAdopcionCAD(session);
+                solicitudAdopcionCEN = new SolicitudAdopcionCEN(solicitudAdopcionCAD);
+                solicitudAdopcionCP = new SolicitudAdopcionCP();
+                solicitudAdopcionEN = new SolicitudAdopcionEN();
+
+                usuCAD = new UsuarioCAD(session);
+                usuCEN = new UsuarioCEN(usuCAD);
+
+                notiCAD = new NotificacionCAD(session);
+                notiCEN = new NotificacionCEN(notiCAD);
+                notificacionEN = new NotificacionEN();
+
+                mensaCAD = new MensajeCAD(session);
+                mensaCEN = new MensajeCEN(mensaCAD);
+                mensaEn = new MensajeEN();
+                        
+                       
+            notificacionEN.Mensaje = "Solicitud Denegada";
+            mensaEn.Texto = "Solicitud denegada";
+            solicitudAdopcionEN.Estado = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.rechazado;
+            solicitudAdopcionCP.Actualizar_Estado(p_SolicitudAdopcion, solicitudAdopcionEN.Estado);
+            notiCEN.Enviar(notificacionEN.Id, p_Usuario, mensaEn.Texto);
+            entra = true;
+
+                        
+
+                    
+                
 
 
 
-        try
-        {
-                SessionInitializeTransaction ();
-                solicitudAdopcionCAD = new SolicitudAdopcionCAD (session);
-                solicitudAdopcionCEN = new  SolicitudAdopcionCEN (solicitudAdopcionCAD);
-
-
-
-                // Write here your custom transaction ...
-
-                throw new NotImplementedException ("Method Rechazar_Solicitud() not yet implemented.");
-
-
-
-                SessionCommit ();
-        }
-        catch (Exception ex)
-        {
-                SessionRollBack ();
+                SessionCommit();
+            }
+            catch (Exception ex)
+            {
+                SessionRollBack();
                 throw ex;
-        }
-        finally
-        {
-                SessionClose ();
-        }
+            }
+            finally
+            {
+                SessionClose();
+            }
+
+
+            /*PROTECTED REGION END*/
 
 
         /*PROTECTED REGION END*/
