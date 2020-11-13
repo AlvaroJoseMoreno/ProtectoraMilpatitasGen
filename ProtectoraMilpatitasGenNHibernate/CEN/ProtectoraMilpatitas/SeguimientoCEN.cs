@@ -65,5 +65,45 @@ public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.Pro
 {
         return _ISeguimientoCAD.Obtener_Seguimiento_Usuario (p_usuario);
 }
+public int Nuevo (ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSeguimientoEnum p_estado, Nullable<DateTime> p_fecha, string p_usuario, int p_animal, int p_contratoAdopcion)
+{
+        SeguimientoEN seguimientoEN = null;
+        int oid;
+
+        //Initialized SeguimientoEN
+        seguimientoEN = new SeguimientoEN ();
+        seguimientoEN.Estado = p_estado;
+
+        seguimientoEN.Fecha = p_fecha;
+
+
+        if (p_usuario != null) {
+                // El argumento p_usuario -> Property usuario es oid = false
+                // Lista de oids id
+                seguimientoEN.Usuario = new ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN ();
+                seguimientoEN.Usuario.Email = p_usuario;
+        }
+
+
+        if (p_animal != -1) {
+                // El argumento p_animal -> Property animal es oid = false
+                // Lista de oids id
+                seguimientoEN.Animal = new ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN ();
+                seguimientoEN.Animal.Id = p_animal;
+        }
+
+
+        if (p_contratoAdopcion != -1) {
+                // El argumento p_contratoAdopcion -> Property contratoAdopcion es oid = false
+                // Lista de oids id
+                seguimientoEN.ContratoAdopcion = new ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN ();
+                seguimientoEN.ContratoAdopcion.Id = p_contratoAdopcion;
+        }
+
+        //Call to SeguimientoCAD
+
+        oid = _ISeguimientoCAD.Nuevo (seguimientoEN);
+        return oid;
+}
 }
 }

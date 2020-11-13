@@ -4,36 +4,39 @@ using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 
 namespace ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas
 {
-    public partial interface ISolicitudAdopcionCAD
-    {
-        SolicitudAdopcionEN ReadOIDDefault(int id
-                                            );
+public partial interface ISolicitudAdopcionCAD
+{
+SolicitudAdopcionEN ReadOIDDefault (int id
+                                    );
 
-        void ModifyDefault(SolicitudAdopcionEN solicitudAdopcion);
+void ModifyDefault (SolicitudAdopcionEN solicitudAdopcion);
 
-        System.Collections.Generic.IList<SolicitudAdopcionEN> ReadAllDefault(int first, int size);
-
-
-
-        int Nuevo(SolicitudAdopcionEN solicitudAdopcion);
-
-        void Eliminar(int id
-                       );
+System.Collections.Generic.IList<SolicitudAdopcionEN> ReadAllDefault (int first, int size);
 
 
-        void Rellenar_Solicitud(SolicitudAdopcionEN solicitudAdopcion);
+
+void Eliminar (int id
+               );
 
 
-        SolicitudAdopcionEN Ver_Solicitud(int id
-                                           );
+void Rellenar_Solicitud (SolicitudAdopcionEN solicitudAdopcion);
 
 
-        System.Collections.Generic.IList<SolicitudAdopcionEN> Dame_Todas(int first, int size);
+SolicitudAdopcionEN Ver_Solicitud (int id
+                                   );
 
 
-        void Actualizar_Estado(SolicitudAdopcionEN solicitudAdopcion);
+System.Collections.Generic.IList<SolicitudAdopcionEN> Dame_Todas (int first, int size);
 
 
-        System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN> Obtener_Solicitud_Usuario(string p_email);
-    }
+void Actualizar_Estado (SolicitudAdopcionEN solicitudAdopcion);
+
+
+System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN> Obtener_Solicitud_Usuario (int p_email);
+
+
+
+
+int Nuevo (SolicitudAdopcionEN solicitudAdopcion);
+}
 }

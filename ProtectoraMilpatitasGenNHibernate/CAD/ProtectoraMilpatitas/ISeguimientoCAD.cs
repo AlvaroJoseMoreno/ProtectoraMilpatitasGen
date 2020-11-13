@@ -15,8 +15,6 @@ System.Collections.Generic.IList<SeguimientoEN> ReadAllDefault (int first, int s
 
 
 
-int Nuevo (SeguimientoEN seguimiento);
-
 void Modificar (SeguimientoEN seguimiento);
 
 
@@ -35,5 +33,8 @@ SeguimientoEN Dame_Por_Id (int id
 
 
 System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SeguimientoEN> Obtener_Seguimiento_Usuario (string p_usuario);
+
+
+int Nuevo (SeguimientoEN seguimiento);
 }
 }

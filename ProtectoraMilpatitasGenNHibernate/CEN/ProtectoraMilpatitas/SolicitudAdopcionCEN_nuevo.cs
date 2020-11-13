@@ -39,12 +39,11 @@ public int Nuevo (string p_usuario, int p_animal)
         if (p_animal != -1) {
                 solicitudAdopcionEN.Animal = new ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN ();
                 solicitudAdopcionEN.Animal.Id = p_animal;
-            }
+        }
 
-            //Call to SolicitudAdopcionCAD
-            
+        //Call to SolicitudAdopcionCAD
+
         oid = _ISolicitudAdopcionCAD.Nuevo (solicitudAdopcionEN);
-            
         return oid;
         /*PROTECTED REGION END*/
 }

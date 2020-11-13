@@ -15,8 +15,6 @@ System.Collections.Generic.IList<ContratoAdopcionEN> ReadAllDefault (int first, 
 
 
 
-int Nuevo (ContratoAdopcionEN contratoAdopcion);
-
 void Eliminar (int id
                );
 
@@ -35,5 +33,8 @@ void Actualizar_Estado (ContratoAdopcionEN contratoAdopcion);
 
 
 System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN> Obtener_Contrato_Usuario (string p_email);
+
+
+int Nuevo (ContratoAdopcionEN contratoAdopcion);
 }
 }

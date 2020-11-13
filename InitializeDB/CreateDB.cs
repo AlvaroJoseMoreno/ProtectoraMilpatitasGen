@@ -118,7 +118,8 @@ namespace InitializeDB
 
                 //Creacion de tests
                 TestAnimalIdealCEN test1 = new TestAnimalIdealCEN();
-                int idtest1 = test1.Nuevo(juan);
+                int idtest1 = test1.Nuevo("","","",juan);
+                Console.WriteLine("Id del test: "+idtest1);
                 test1.Rellenar_Test(idtest1, "ver la television", "timido", "rojo");
                 TestAnimalIdealEN restest1 = test1.Ver_Resultado(idtest1);
                 Console.WriteLine("El resultado del test: "+restest1.Id+"es 60");

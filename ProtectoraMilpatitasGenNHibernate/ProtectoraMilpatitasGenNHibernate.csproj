@@ -125,7 +125,6 @@
     <Compile Include="CAD\ProtectoraMilpatitas\ITestAnimalIdealCAD.cs" />
     <Compile Include="CAD\ProtectoraMilpatitas\TestAnimalIdealCAD.cs" />
     <Compile Include="CP\ProtectoraMilpatitas\TestAnimalIdealCP.cs" />
-    <Compile Include="CEN\ProtectoraMilpatitas\TestAnimalIdealCEN_Nuevo.cs" />
     <Compile Include="EN\ProtectoraMilpatitas\NotificacionEN.cs" />
     <Compile Include="CEN\ProtectoraMilpatitas\NotificacionCEN.cs" />
     <Compile Include="CAD\ProtectoraMilpatitas\INotificacionCAD.cs" />

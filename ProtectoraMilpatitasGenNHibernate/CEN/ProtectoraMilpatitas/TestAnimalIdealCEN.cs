@@ -61,5 +61,31 @@ public System.Collections.Generic.IList<TestAnimalIdealEN> Dame_Todos (int first
         list = _ITestAnimalIdealCAD.Dame_Todos (first, size);
         return list;
 }
+public int Nuevo (string p_aficionFavorita, string p_personalidad, string p_colorFavorito, string p_usuario)
+{
+        TestAnimalIdealEN testAnimalIdealEN = null;
+        int oid;
+
+        //Initialized TestAnimalIdealEN
+        testAnimalIdealEN = new TestAnimalIdealEN ();
+        testAnimalIdealEN.AficionFavorita = p_aficionFavorita;
+
+        testAnimalIdealEN.Personalidad = p_personalidad;
+
+        testAnimalIdealEN.ColorFavorito = p_colorFavorito;
+
+
+        if (p_usuario != null) {
+                // El argumento p_usuario -> Property usuario es oid = false
+                // Lista de oids id
+                testAnimalIdealEN.Usuario = new ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN ();
+                testAnimalIdealEN.Usuario.Email = p_usuario;
+        }
+
+        //Call to TestAnimalIdealCAD
+
+        oid = _ITestAnimalIdealCAD.Nuevo (testAnimalIdealEN);
+        return oid;
+}
 }
 }

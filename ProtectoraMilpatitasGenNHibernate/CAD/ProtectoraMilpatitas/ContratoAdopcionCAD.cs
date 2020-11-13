@@ -134,53 +134,6 @@ public void ModifyDefault (ContratoAdopcionEN contratoAdopcion)
 }
 
 
-public int Nuevo (ContratoAdopcionEN contratoAdopcion)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                if (contratoAdopcion.Usuario != null) {
-                        // Argumento OID y no colección.
-                        contratoAdopcion.Usuario = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN), contratoAdopcion.Usuario.Email);
-
-                        contratoAdopcion.Usuario.ContratoAdopcion
-                        .Add (contratoAdopcion);
-                }
-                if (contratoAdopcion.SolicitudAdopcion != null) {
-                        // Argumento OID y no colección.
-                        contratoAdopcion.SolicitudAdopcion = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN), contratoAdopcion.SolicitudAdopcion.Id);
-
-                        contratoAdopcion.SolicitudAdopcion.ContratoAdopcion
-                                = contratoAdopcion;
-                }
-                if (contratoAdopcion.Animal != null) {
-                        // Argumento OID y no colección.
-                        contratoAdopcion.Animal = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN), contratoAdopcion.Animal.Id);
-
-                        contratoAdopcion.Animal.ContratoAdopcion
-                        .Add (contratoAdopcion);
-                }
-
-                session.Save (contratoAdopcion);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is ProtectoraMilpatitasGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new ProtectoraMilpatitasGenNHibernate.Exceptions.DataLayerException ("Error in ContratoAdopcionCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-
-        return contratoAdopcion.Id;
-}
-
 public void Eliminar (int id
                       )
 {
@@ -362,6 +315,52 @@ public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.Pro
         }
 
         return result;
+}
+public int Nuevo (ContratoAdopcionEN contratoAdopcion)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                if (contratoAdopcion.Usuario != null) {
+                        // Argumento OID y no colección.
+                        contratoAdopcion.Usuario = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN), contratoAdopcion.Usuario.Email);
+
+                        contratoAdopcion.Usuario.ContratoAdopcion
+                        .Add (contratoAdopcion);
+                }
+                if (contratoAdopcion.SolicitudAdopcion != null) {
+                        // Argumento OID y no colección.
+                        contratoAdopcion.SolicitudAdopcion = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN), contratoAdopcion.SolicitudAdopcion.Id);
+
+                        contratoAdopcion.SolicitudAdopcion.ContratoAdopcion
+                                = contratoAdopcion;
+                }
+                if (contratoAdopcion.Animal != null) {
+                        // Argumento OID y no colección.
+                        contratoAdopcion.Animal = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN), contratoAdopcion.Animal.Id);
+
+                        contratoAdopcion.Animal.ContratoAdopcion
+                        .Add (contratoAdopcion);
+                }
+
+                session.Save (contratoAdopcion);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is ProtectoraMilpatitasGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new ProtectoraMilpatitasGenNHibernate.Exceptions.DataLayerException ("Error in ContratoAdopcionCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return contratoAdopcion.Id;
 }
 }
 }

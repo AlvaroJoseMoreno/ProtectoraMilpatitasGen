@@ -118,53 +118,6 @@ public void ModifyDefault (SeguimientoEN seguimiento)
 }
 
 
-public int Nuevo (SeguimientoEN seguimiento)
-{
-        try
-        {
-                SessionInitializeTransaction ();
-                if (seguimiento.Usuario != null) {
-                        // Argumento OID y no colección.
-                        seguimiento.Usuario = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN), seguimiento.Usuario.Email);
-
-                        seguimiento.Usuario.Seguimiento
-                        .Add (seguimiento);
-                }
-                if (seguimiento.Animal != null) {
-                        // Argumento OID y no colección.
-                        seguimiento.Animal = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN), seguimiento.Animal.Id);
-
-                        seguimiento.Animal.Seguimiento
-                        .Add (seguimiento);
-                }
-                if (seguimiento.ContratoAdopcion != null) {
-                        // Argumento OID y no colección.
-                        seguimiento.ContratoAdopcion = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN), seguimiento.ContratoAdopcion.Id);
-
-                        seguimiento.ContratoAdopcion.Seguimiento
-                                = seguimiento;
-                }
-
-                session.Save (seguimiento);
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is ProtectoraMilpatitasGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new ProtectoraMilpatitasGenNHibernate.Exceptions.DataLayerException ("Error in SeguimientoCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-
-        return seguimiento.Id;
-}
-
 public void Modificar (SeguimientoEN seguimiento)
 {
         try
@@ -331,6 +284,52 @@ public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.Pro
         }
 
         return result;
+}
+public int Nuevo (SeguimientoEN seguimiento)
+{
+        try
+        {
+                SessionInitializeTransaction ();
+                if (seguimiento.Usuario != null) {
+                        // Argumento OID y no colección.
+                        seguimiento.Usuario = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN), seguimiento.Usuario.Email);
+
+                        seguimiento.Usuario.Seguimiento
+                        .Add (seguimiento);
+                }
+                if (seguimiento.Animal != null) {
+                        // Argumento OID y no colección.
+                        seguimiento.Animal = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN), seguimiento.Animal.Id);
+
+                        seguimiento.Animal.Seguimiento
+                        .Add (seguimiento);
+                }
+                if (seguimiento.ContratoAdopcion != null) {
+                        // Argumento OID y no colección.
+                        seguimiento.ContratoAdopcion = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN), seguimiento.ContratoAdopcion.Id);
+
+                        seguimiento.ContratoAdopcion.Seguimiento
+                                = seguimiento;
+                }
+
+                session.Save (seguimiento);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is ProtectoraMilpatitasGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new ProtectoraMilpatitasGenNHibernate.Exceptions.DataLayerException ("Error in SeguimientoCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return seguimiento.Id;
 }
 }
 }

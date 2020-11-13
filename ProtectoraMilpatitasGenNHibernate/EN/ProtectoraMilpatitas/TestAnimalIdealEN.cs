@@ -6,16 +6,16 @@ namespace ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas
 public partial class TestAnimalIdealEN
 {
 /**
- *	Atributo aficionFavorita
+ *	Atributo id
  */
-private string aficionFavorita;
+private int id;
 
 
 
 /**
- *	Atributo id
+ *	Atributo aficionFavorita
  */
-private int id;
+private string aficionFavorita;
 
 
 
@@ -43,14 +43,14 @@ private ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN usua
 
 
 
-public virtual string AficionFavorita {
-        get { return aficionFavorita; } set { aficionFavorita = value;  }
+public virtual int Id {
+        get { return id; } set { id = value;  }
 }
 
 
 
-public virtual int Id {
-        get { return id; } set { id = value;  }
+public virtual string AficionFavorita {
+        get { return aficionFavorita; } set { aficionFavorita = value;  }
 }
 
 
