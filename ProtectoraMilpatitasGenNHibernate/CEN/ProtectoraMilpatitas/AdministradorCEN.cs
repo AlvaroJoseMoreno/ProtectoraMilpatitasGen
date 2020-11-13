@@ -78,7 +78,7 @@ public void Eliminar (string email
         _IAdministradorCAD.Eliminar (email);
 }
 
-public System.Collections.Generic.IList<AdministradorEN> Dame_Todos (int first, int size)
+        public System.Collections.Generic.IList<AdministradorEN> Dame_Todos (int first, int size)
 {
         System.Collections.Generic.IList<AdministradorEN> list = null;
 

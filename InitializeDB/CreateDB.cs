@@ -85,6 +85,14 @@ namespace InitializeDB
                 // p.e. CustomerCEN customer = new CustomerCEN();
                 // customer.New_ (p_user:"user", p_password:"1234");
 
+                AdministradorCEN adminCEN = new AdministradorCEN();
+                adminCEN.Registrarse("Protectora", "milpatitas@gmail.com", "patitas");
+
+                if (((UsuarioCEN)adminCEN).Iniciar_Sesion("milpatitas@gmail.com","patitas") != null)
+                {
+                    Console.WriteLine("El login es correcto");
+                }
+
                 UsuarioCEN usuCEN = new UsuarioCEN();
                 usuCEN.Registrarse("Perico", "perico10@ciclismo", "1235");
 

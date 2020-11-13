@@ -72,7 +72,6 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
 
                 mensajeCAD.Responder(mensajeEN);
 
-
                 SessionCommit();
             }
             catch (Exception ex)
