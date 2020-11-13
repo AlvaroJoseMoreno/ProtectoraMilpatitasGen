@@ -88,7 +88,7 @@ namespace InitializeDB
                 AdministradorCEN adminCEN = new AdministradorCEN();
                 adminCEN.Registrarse("Protectora", "milpatitas@gmail.com", "patitas");
 
-                if (adminCEN.Iniciar_Sesion("milpatitas@gmail.com","patitas") != null)
+                if (adminCEN.Iniciar_Sesion("milpatitas@gmail.com", "patitas") != null)
                 {
                     Console.WriteLine("El login de administrador es correcto");
                 }
@@ -117,13 +117,19 @@ namespace InitializeDB
                 yorkshire.Nuevo("Pelusa", 3, 'M', "Albacete", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enRecuperacion, "carinoso");
                 AnimalCP siames = new AnimalCP();
                 siames.Nuevo("minino", 1, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso");
-                
-                
+
+
                 // Console.WriteLine(" El animal es ");
                 //Vamos a modificar el estado de tobi
                 //   chihua.Modificar(1, "tobi", 3, 'H', "Alicante", "desagradable");
                 //vamos a ver sus datos
                 //  Console.WriteLine(chihua.Ver_Detalle_Animal(1));
+                SolicitudAdopcionCEN solicitudAdopcionCEN = new SolicitudAdopcionCEN();
+
+                solicitudAdopcionCEN.Nuevo("juan20@gmail.com", 65536);
+                solicitudAdopcionCEN.Nuevo("Manueljumilla@gmail.com", 65536);
+
+
                 /*PROTECTED REGION END*/
 
 
