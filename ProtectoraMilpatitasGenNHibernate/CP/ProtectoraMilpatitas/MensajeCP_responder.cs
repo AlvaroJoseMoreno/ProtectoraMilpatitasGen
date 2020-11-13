@@ -50,7 +50,6 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
                 else
                 {
                     mensajeEN.Usuario.Email = p_usuario;
-                    Console.WriteLine(mensajeEN.Usuario.Email + " linea 45");
                 }
                 
                 //Call to MensajeCAD
@@ -58,19 +57,24 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
                 if (p_Mensaje != -1)
                 {
                     NotificacionEN notificacionEN = new NotificacionEN();
+                    Console.WriteLine("entro 61");
 
                     if (p_texto != "")
                     {
                         notificacionEN.Mensaje = p_texto;
+
+                        Console.WriteLine(notificacionEN.Mensaje + " linea 64");
+
                         notificacionEN.Tipo = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.TipoNotificacionEnum.Chat;
 
                         NotificacionCEN notificacionCEN = new NotificacionCEN();
 
                         notificacionCEN.Enviar(notificacionEN.Id, p_usuario, "Tienes un mensaje en el chat: " + p_texto);
                     }
-                }
 
-                mensajeCAD.Responder(mensajeEN);
+                    mensajeCAD.Responder(mensajeEN);
+                    Console.WriteLine("hasta aqui 72");
+                }
 
                 SessionCommit();
             }

@@ -88,9 +88,9 @@ namespace InitializeDB
                 AdministradorCEN adminCEN = new AdministradorCEN();
                 adminCEN.Registrarse("Protectora", "milpatitas@gmail.com", "patitas");
 
-                if (((UsuarioCEN)adminCEN).Iniciar_Sesion("milpatitas@gmail.com","patitas") != null)
+                if (adminCEN.Iniciar_Sesion("milpatitas@gmail.com","patitas") != null)
                 {
-                    Console.WriteLine("El login es correcto");
+                    Console.WriteLine("El login de administrador es correcto");
                 }
 
                 UsuarioCEN usuCEN = new UsuarioCEN();
