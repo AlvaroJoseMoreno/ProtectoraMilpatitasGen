@@ -129,6 +129,10 @@ namespace InitializeDB
                 solicitudAdopcionCEN.Nuevo("juan20@gmail.com", 65536);
                 solicitudAdopcionCEN.Nuevo("Manueljumilla@gmail.com", 65536);
 
+                Console.WriteLine(solicitudAdopcionCEN.Obtener_Solicitud_Usuario("juan20@gmail.com"));
+                
+                
+
 
                 /*PROTECTED REGION END*/
 

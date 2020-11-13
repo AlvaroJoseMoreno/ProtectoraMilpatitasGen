@@ -1,4 +1,3 @@
-
 using System;
 using System.Text;
 using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
@@ -337,7 +336,7 @@ namespace ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas
                 SessionClose();
             }
         }
-        public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN> Obtener_Solicitud_Usuario(int p_email)
+        public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN> Obtener_Solicitud_Usuario(string p_email)
         {
             System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN> result;
             try
