@@ -126,10 +126,16 @@ namespace InitializeDB
                 //  Console.WriteLine(chihua.Ver_Detalle_Animal(1));
                 SolicitudAdopcionCEN solicitudAdopcionCEN = new SolicitudAdopcionCEN();
 
-                solicitudAdopcionCEN.Nuevo("juan20@gmail.com", 65536);
-                solicitudAdopcionCEN.Nuevo("Manueljumilla@gmail.com", 65536);
+              //  Console.WriteLine();
+                
+               
+                int idsol1 = solicitudAdopcionCEN.Nuevo("Manueljumilla@gmail.com", 65536);
 
-                Console.WriteLine(solicitudAdopcionCEN.Obtener_Solicitud_Usuario("juan20@gmail.com"));
+             //   Console.WriteLine(idsol + ' ' + idsol1);
+
+               // solicitudAdopcionCEN.Rellenar_Solicitud(int, "Manuel45", 1, "Agradable", 4, true, "");
+
+               // Console.WriteLine(solicitudAdopcionCEN.Obtener_Solicitud_Usuario("juan20@gmail.com"));
                 
                 
 

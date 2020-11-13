@@ -87,7 +87,7 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
                         {
                             if ((usu is AdministradorEN)==false)
                             {
-                                Console.WriteLine("hol k ase");
+                                
                                 UsuarioEN usuen = usu;
 
                                 MensajeCP mensajeCP = new MensajeCP(session);
