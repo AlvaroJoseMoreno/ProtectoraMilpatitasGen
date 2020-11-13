@@ -81,10 +81,11 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
                 {
                     foreach (UsuarioEN usu in usuarios)
                     {
+                        Console.WriteLine("hol k ase");
                         UsuarioEN usuen = usu;
-                        mensajeCEN = (MensajeCEN)usuen.MensajeChat;
+                     //   mensajeCEN = (MensajeCEN)usuen.MensajeChat;
                         MensajeCP mensajeCP = new MensajeCP(session);
-                        mensajeCP = (MensajeCP)usuen.MensajeChat;
+                       // mensajeCP = (MensajeCP)usuen.MensajeChat;
                         MensajeEN mensajeEN = new MensajeEN();
                         mensajeCP.Responder(mensajeEN.Id, notificacionEN.Mensaje, usuen.Email);
                     }

@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
+using ProtectoraMilpatitasGenNHibernate.Exceptions;
 
 
 
@@ -39,7 +40,17 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
                 mensajeEN = new MensajeEN();
                 mensajeEN.Id = p_Mensaje;
                 mensajeEN.Texto = p_texto;
-                mensajeEN.Usuario.Email = p_usuario;
+                if (!(p_usuario != null))
+                {
+                    throw new ModelException("El email de usuario esta vacio");
+                }
+                else
+                {
+                    
+                    Console.WriteLine(mensajeEN.Usuario.Email + " linea 45");
+                    mensajeEN.Usuario.Email = p_usuario;
+                }
+                
                 //Call to MensajeCAD
 
                 if (p_Mensaje != -1)
@@ -75,8 +86,6 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
             {
                 SessionClose();
             }
-
-
             /*PROTECTED REGION END*/
         }
     }
