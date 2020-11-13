@@ -108,6 +108,9 @@ namespace InitializeDB
                 UsuarioCEN Antonio = new UsuarioCEN();
                 Antonio.Registrarse("Antonio53", "Antonio323@gmail.com", "villena92");
 
+                MensajeCEN mensaCEN = new MensajeCEN();
+                mensaCEN.Nuevo("milpatitas@gmail.com", "juan20@gmail.com", "prueba");
+
                 AnimalCP chihua = new AnimalCP();
                 chihua.Nuevo("tobi", 3, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "amigable");
                 AnimalCP yorkshire = new AnimalCP();

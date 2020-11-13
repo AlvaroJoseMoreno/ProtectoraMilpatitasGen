@@ -186,10 +186,11 @@ public void Responder (MensajeEN mensaje)
         {
                 SessionInitializeTransaction ();
                 MensajeEN mensajeEN = (MensajeEN)session.Load (typeof(MensajeEN), mensaje.Id);
-
+                
                 mensajeEN.Texto = mensaje.Texto;
-
+                Console.WriteLine("Linea 191 " + mensaje.Texto);
                 session.Update (mensajeEN);
+                
                 SessionCommit ();
         }
 

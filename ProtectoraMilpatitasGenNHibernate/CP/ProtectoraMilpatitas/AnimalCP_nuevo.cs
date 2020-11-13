@@ -73,7 +73,7 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
                 animalEN.Caracter = p_caracter;
 
                 notificacionEN = new NotificacionEN();
-                notificacionEN.Mensaje = "Ha llegado" + animalEN.Nombre;
+                notificacionEN.Mensaje = "Ha llegado " + animalEN.Nombre;
 
                 IList<UsuarioEN> usuarios = usuCEN.Dame_Todos(0, -1);
 

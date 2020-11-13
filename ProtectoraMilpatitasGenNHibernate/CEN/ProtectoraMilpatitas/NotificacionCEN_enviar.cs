@@ -37,11 +37,13 @@ public void Enviar (int p_Notificacion, string p_usuario, string p_mensaje)
 
             if (admins.Count() > 0)
             {
+                Console.WriteLine("Linea 40 enviar "+p_Notificacion+ " "+p_usuario+" "+p_mensaje);
+
                 AdministradorEN adminEN = admins[0];
 
                 MailMessage correo = new MailMessage();
                 correo.From = new MailAddress("protectoramilpatitasalicante@gmail.com", "Protectora Milpatitas", System.Text.Encoding.UTF8);//Correo de salida
-                correo.To.Add("laurinanann@gmail.com"); //Correo destino?
+                correo.To.Add("protectoramilpatitasalicante@gmail.com"); //Correo destino?
                 correo.Subject = "Correo de prueba"; //Asunto
                 correo.Body = "Este es un correo de prueba desde c#"; //Mensaje del correo
                 correo.IsBodyHtml = true;
