@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InitializeDB", "InitializeD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtectoraMilpatitasGenNHibernate", "ProtectoraMilpatitasGenNHibernate\ProtectoraMilpatitasGenNHibernate.csproj", "{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtectoraMilPatitas", "ProtectoraMilPatitas\ProtectoraMilPatitas.csproj", "{B591C8BF-7138-4FF8-B206-84C538F7E9C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,14 @@ Global
 		{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}.Release|x86.ActiveCfg = Release|Any CPU
 		{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}.Release|x86.Build.0 = Release|Any CPU
+		{B591C8BF-7138-4FF8-B206-84C538F7E9C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B591C8BF-7138-4FF8-B206-84C538F7E9C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B591C8BF-7138-4FF8-B206-84C538F7E9C1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B591C8BF-7138-4FF8-B206-84C538F7E9C1}.Debug|x86.Build.0 = Debug|Any CPU
+		{B591C8BF-7138-4FF8-B206-84C538F7E9C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B591C8BF-7138-4FF8-B206-84C538F7E9C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B591C8BF-7138-4FF8-B206-84C538F7E9C1}.Release|x86.ActiveCfg = Release|Any CPU
+		{B591C8BF-7138-4FF8-B206-84C538F7E9C1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
