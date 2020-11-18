@@ -21,43 +21,43 @@ using ProtectoraMilpatitasGenNHibernate.Exceptions;
 
 namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
 {
-    public partial class AnimalCP : BasicCP
-    {
-        public ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN Nuevo(string p_nombre, int p_edad, char p_sexo, string p_centro, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum p_datosMedicos, string p_caracter)
+public partial class AnimalCP : BasicCP
+{
+public ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN Nuevo (string p_nombre, int p_edad, char p_sexo, string p_centro, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum p_datosMedicos, string p_caracter)
+{
+        /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_Animal_nuevo) ENABLED START*/
+
+        IAnimalCAD animalCAD = null;
+        AnimalCEN animalCEN = null;
+
+        UsuarioCAD usuCAD = null;
+        UsuarioCEN usuCEN = null;
+
+        NotificacionCAD notiCAD = null;
+        NotificacionCEN notiCEN = null;
+        NotificacionEN notificacionEN = null;
+
+        AdministradorCEN adminCEN = new AdministradorCEN ();
+
+        ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN result = null;
+
+
+        try
         {
-            /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_Animal_nuevo) ENABLED START*/
+                SessionInitializeTransaction ();
+                animalCAD = new AnimalCAD (session);
+                animalCEN = new AnimalCEN (animalCAD);
 
-            IAnimalCAD animalCAD = null;
-            AnimalCEN animalCEN = null;
+                usuCAD = new UsuarioCAD (session);
+                usuCEN = new UsuarioCEN (usuCAD);
 
-            UsuarioCAD usuCAD = null;
-            UsuarioCEN usuCEN = null;
-
-            NotificacionCAD notiCAD = null;
-            NotificacionCEN notiCEN = null;
-            NotificacionEN notificacionEN = null;
-
-            AdministradorCEN adminCEN = new AdministradorCEN();
-
-            ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN result = null;
-
-
-            try
-            {
-                SessionInitializeTransaction();
-                animalCAD = new AnimalCAD(session);
-                animalCEN = new AnimalCEN(animalCAD);
-
-                usuCAD = new UsuarioCAD(session);
-                usuCEN = new UsuarioCEN(usuCAD);
-
-                notiCAD = new NotificacionCAD(session);
-                notiCEN = new NotificacionCEN(notiCAD);
+                notiCAD = new NotificacionCAD (session);
+                notiCEN = new NotificacionCEN (notiCAD);
 
                 int oid;
                 //Initialized AnimalEN
                 AnimalEN animalEN;
-                animalEN = new AnimalEN();
+                animalEN = new AnimalEN ();
                 animalEN.Nombre = p_nombre;
 
                 animalEN.Edad = p_edad;
@@ -85,10 +85,11 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
                     {
                         foreach (UsuarioEN usu in usuarios)
                         {
-                            if ((usu is AdministradorEN)==false)
+                            if ((usu is AdministradorEN) == false)
                             {
                                 UsuarioEN usuen = usu;
 
+                                Console.WriteLine(notificacionEN.Mensaje);
                                 Console.WriteLine("Correo enviado a : " + usuen.Nombre);
                                 MensajeCP mensajeCP = new MensajeCP(session);
 
@@ -99,35 +100,37 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
                                 mensajeCP.Responder(idmen, notificacionEN.Mensaje, usuen.Email);
                             }
                         }
-                    } else
+                    }
+                    else
                     {
                         throw new ModelException("No hay usuarios a los que avisar");
                     }
-                } else
+                }
+                else
                 {
                     throw new ModelException("No hay administradores que avisen");
                 }
 
                 //Call to AnimalCAD
 
-                oid = animalCAD.Nuevo(animalEN);
-                result = animalCAD.ReadOIDDefault(oid);
+                oid = animalCAD.Nuevo (animalEN);
+                result = animalCAD.ReadOIDDefault (oid);
 
-                SessionCommit();
-            }
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                throw ex;
-            }
-            finally
-            {
-                SessionClose();
-            }
-            return result;
-
-
-            /*PROTECTED REGION END*/
+                SessionCommit ();
         }
-    }
+        catch (Exception ex)
+        {
+                SessionRollBack ();
+                throw ex;
+        }
+        finally
+        {
+                SessionClose ();
+        }
+        return result;
+
+
+        /*PROTECTED REGION END*/
+}
+}
 }

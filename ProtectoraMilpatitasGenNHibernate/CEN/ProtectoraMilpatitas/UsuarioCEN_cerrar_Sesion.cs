@@ -17,23 +17,23 @@ using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
 
 namespace ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas
 {
-    public partial class UsuarioCEN
-    {
-        public string Cerrar_Sesion(string p_email)
-        {
-            /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas_Usuario_cerrar_Sesion) ENABLED START*/
+public partial class UsuarioCEN
+{
+public string Cerrar_Sesion (string p_email)
+{
+        /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas_Usuario_cerrar_Sesion) ENABLED START*/
 
-            // Write here your custom code...
+        // Write here your custom code...
 
-            string result = null;
-            UsuarioEN en = _IUsuarioCAD.ReadOIDDefault(p_email);
+        string result = null;
+        UsuarioEN en = _IUsuarioCAD.ReadOIDDefault (p_email);
 
-            if (en != null)
-                result = "Se ha cerrado la sesión del usuario: " + this.GetToken(en.Email);
+        if (en != null)
+                result = "Se ha cerrado la sesiï¿½n del usuario: " + this.GetToken (en.Email);
 
-            return result;
+        return result;
 
-            /*PROTECTED REGION END*/
-        }
-    }
+        /*PROTECTED REGION END*/
+}
+}
 }

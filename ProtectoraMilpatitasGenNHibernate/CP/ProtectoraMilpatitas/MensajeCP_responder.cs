@@ -20,17 +20,17 @@ using ProtectoraMilpatitasGenNHibernate.Exceptions;
 
 namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
 {
-    public partial class MensajeCP : BasicCP
-    {
-        public void Responder(int p_Mensaje, string p_texto, string p_usuario)
+public partial class MensajeCP : BasicCP
+{
+public void Responder (int p_Mensaje, string p_texto, string p_usuario)
+{
+        /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_Mensaje_responder) ENABLED START*/
+
+        IMensajeCAD mensajeCAD = null;
+        MensajeCEN mensajeCEN = null;
+
+        try
         {
-            /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_Mensaje_responder) ENABLED START*/
-
-            IMensajeCAD mensajeCAD = null;
-            MensajeCEN mensajeCEN = null;
-
-            try
-            {
                 SessionInitializeTransaction();
                 mensajeCAD = new MensajeCAD(session);
                 mensajeCEN = new MensajeCEN(mensajeCAD);
@@ -51,7 +51,7 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
                 {
                     mensajeEN.Usuario.Email = p_usuario;
                 }
-                
+
                 //Call to MensajeCAD
 
                 if (p_Mensaje != -1)
@@ -74,16 +74,16 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
 
                 SessionCommit();
             }
-            catch (Exception ex)
-            {
-                SessionRollBack();
+        catch (Exception ex)
+        {
+                SessionRollBack ();
                 throw ex;
-            }
-            finally
-            {
-                SessionClose();
-            }
-            /*PROTECTED REGION END*/
         }
-    }
+        finally
+        {
+                SessionClose ();
+        }
+        /*PROTECTED REGION END*/
+}
+}
 }

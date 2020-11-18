@@ -59,9 +59,7 @@ public string Registrarse (string p_nombre, string p_email, String p_password)
 }
 
 public void Modificar (string p_Usuario_OID, string p_nombre, String p_password)
-{       
-       
-
+{
         UsuarioEN usuarioEN = null;
 
         //Initialized UsuarioEN

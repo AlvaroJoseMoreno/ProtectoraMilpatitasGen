@@ -19,59 +19,57 @@ using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
 
 namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
 {
-    public partial class ContratoAdopcionCP : BasicCP
-    {
-        public void Actualizar_Estado(int p_ContratoAdopcion, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum p_estado)
+public partial class ContratoAdopcionCP : BasicCP
+{
+public void Actualizar_Estado (int p_ContratoAdopcion, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum p_estado)
+{
+        /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_ContratoAdopcion_actualizar_Estado) ENABLED START*/
+
+        IContratoAdopcionCAD contratoAdopcionCAD = null;
+        ContratoAdopcionCEN contratoAdopcionCEN = null;
+
+
+
+        try
         {
-            /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_ContratoAdopcion_actualizar_Estado) ENABLED START*/
-
-            IContratoAdopcionCAD contratoAdopcionCAD = null;
-            ContratoAdopcionCEN contratoAdopcionCEN = null;
-
-
-
-            try
-            {
-                SessionInitializeTransaction();
-                contratoAdopcionCAD = new ContratoAdopcionCAD(session);
-                contratoAdopcionCEN = new ContratoAdopcionCEN(contratoAdopcionCAD);
+                SessionInitializeTransaction ();
+                contratoAdopcionCAD = new ContratoAdopcionCAD (session);
+                contratoAdopcionCEN = new ContratoAdopcionCEN (contratoAdopcionCAD);
 
 
 
 
                 ContratoAdopcionEN contratoAdopcionEN = null;
                 //Initialized ContratoAdopcionEN
-                contratoAdopcionEN = new ContratoAdopcionEN();
+                contratoAdopcionEN = new ContratoAdopcionEN ();
                 contratoAdopcionEN.Id = p_ContratoAdopcion;
                 contratoAdopcionEN.Estado = p_estado;
                 //Call to ContratoAdopcionCAD
 
-                if (contratoAdopcionEN.Estado.Equals("firmado"))
-                {
-                    contratoAdopcionEN.Animal.EstadoAdopcion = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum.EnSeguimiento;
+                if (contratoAdopcionEN.Estado.Equals ("firmado")) {
+                        contratoAdopcionEN.Animal.EstadoAdopcion = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum.EnSeguimiento;
                 }
-                else
-                {
-                    contratoAdopcionEN.Animal.EstadoAdopcion = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum.EnContrato;
+                else{
+                        contratoAdopcionEN.Animal.EstadoAdopcion = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum.EnContrato;
                 }
 
-                contratoAdopcionCAD.Actualizar_Estado(contratoAdopcionEN);
+                contratoAdopcionCAD.Actualizar_Estado (contratoAdopcionEN);
 
 
-                SessionCommit();
-            }
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                throw ex;
-            }
-            finally
-            {
-                SessionClose();
-            }
-
-
-            /*PROTECTED REGION END*/
+                SessionCommit ();
         }
-    }
+        catch (Exception ex)
+        {
+                SessionRollBack ();
+                throw ex;
+        }
+        finally
+        {
+                SessionClose ();
+        }
+
+
+        /*PROTECTED REGION END*/
+}
+}
 }

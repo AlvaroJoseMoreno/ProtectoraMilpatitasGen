@@ -20,92 +20,85 @@ using System.Linq;
 
 namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
 {
-    public partial class SolicitudAdopcionCP : BasicCP
-    {
-        public void Aceptar_Solicitud(int p_SolicitudAdopcion, string p_Usuario)
+public partial class SolicitudAdopcionCP : BasicCP
+{
+public void Aceptar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
+{
+        /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_SolicitudAdopcion_Aceptar_Solicitud) ENABLED START*/
+
+        SolicitudAdopcionCAD solicitudAdopcionCAD = null;
+        SolicitudAdopcionCEN solicitudAdopcionCEN = null;
+        SolicitudAdopcionEN solicitudAdopcionEN = null;
+        SolicitudAdopcionCP solicitudAdopcionCP = null;
+        UsuarioCAD usuCAD = null;
+        UsuarioCEN usuCEN = null;
+        NotificacionCAD notiCAD = null;
+        NotificacionCEN notiCEN = null;
+        NotificacionEN notificacionEN = null;
+        MensajeCAD mensaCAD = null;
+        MensajeCEN mensaCEN = null;
+        MensajeEN mensaEn = null;
+        bool entra = false;
+
+
+        try
         {
-            /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_SolicitudAdopcion_Aceptar_Solicitud) ENABLED START*/
+                SessionInitializeTransaction ();
+                solicitudAdopcionCAD = new SolicitudAdopcionCAD (session);
+                solicitudAdopcionCEN = new SolicitudAdopcionCEN (solicitudAdopcionCAD);
+                solicitudAdopcionCP = new SolicitudAdopcionCP ();
+                solicitudAdopcionEN = new SolicitudAdopcionEN ();
 
-            SolicitudAdopcionCAD solicitudAdopcionCAD = null;
-            SolicitudAdopcionCEN solicitudAdopcionCEN = null;
-            SolicitudAdopcionEN solicitudAdopcionEN = null;
-            SolicitudAdopcionCP solicitudAdopcionCP = null;
-            UsuarioCAD usuCAD = null;
-            UsuarioCEN usuCEN = null;
-            NotificacionCAD notiCAD = null;
-            NotificacionCEN notiCEN = null;
-            NotificacionEN notificacionEN = null;
-            MensajeCAD mensaCAD = null;
-            MensajeCEN mensaCEN = null;
-            MensajeEN mensaEn = null;
-            bool entra = false;
+                usuCAD = new UsuarioCAD (session);
+                usuCEN = new UsuarioCEN (usuCAD);
 
+                notiCAD = new NotificacionCAD (session);
+                notiCEN = new NotificacionCEN (notiCAD);
+                notificacionEN = new NotificacionEN ();
 
-            try
-            {
-                SessionInitializeTransaction();
-                solicitudAdopcionCAD = new SolicitudAdopcionCAD(session);
-                solicitudAdopcionCEN = new SolicitudAdopcionCEN(solicitudAdopcionCAD);
-                solicitudAdopcionCP = new SolicitudAdopcionCP();
-                solicitudAdopcionEN = new SolicitudAdopcionEN();
-
-                usuCAD = new UsuarioCAD(session);
-                usuCEN = new UsuarioCEN(usuCAD);
-
-                notiCAD = new NotificacionCAD(session);
-                notiCEN = new NotificacionCEN(notiCAD);
-                notificacionEN = new NotificacionEN();
-
-                mensaCAD = new MensajeCAD(session);
-                mensaCEN = new MensajeCEN(mensaCAD);
-                mensaEn = new MensajeEN();
+                mensaCAD = new MensajeCAD (session);
+                mensaCEN = new MensajeCEN (mensaCAD);
+                mensaEn = new MensajeEN ();
 
 
 
-                IList<UsuarioEN> usuarios = usuCEN.Dame_Todos(0, -1);
+                IList<UsuarioEN> usuarios = usuCEN.Dame_Todos (0, -1);
 
-                if (usuarios.Count() > 0)
-                {
-                    foreach (UsuarioEN usu in usuarios)
-                    {
-                        if (usu.Email.Equals(p_Usuario))
-                        {
-                            notificacionEN.Mensaje = "Solicitud Aceptada";
-                            mensaEn.Texto = "Solicitud aceptada";
-                            solicitudAdopcionEN.Estado = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.aceptado;
-                            solicitudAdopcionCP.Actualizar_Estado(solicitudAdopcionEN.Id, solicitudAdopcionEN.Estado); //tiene que ser solicitudAdopcionCP
-                            notiCEN.Enviar(notificacionEN.Id, p_Usuario, mensaEn.Texto);
+                if (usuarios.Count () > 0) {
+                        foreach (UsuarioEN usu in usuarios) {
+                                if (usu.Email.Equals (p_Usuario)) {
+                                        notificacionEN.Mensaje = "Solicitud Aceptada";
+                                        mensaEn.Texto = "Solicitud aceptada";
+                                        solicitudAdopcionEN.Estado = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.aceptado;
+                                        solicitudAdopcionCP.Actualizar_Estado (solicitudAdopcionEN.Id, solicitudAdopcionEN.Estado); //tiene que ser solicitudAdopcionCP
+                                        notiCEN.Enviar (notificacionEN.Id, p_Usuario, mensaEn.Texto);
+                                }
+                                else{
+                                        notificacionEN.Mensaje = "Solicitud Denegada";
+                                        mensaEn.Texto = "Solicitud denegada";
 
+                                        notiCEN.Enviar (notificacionEN.Id, p_Usuario, mensaEn.Texto);
+                                        entra = true;
+                                }
                         }
-                        else
-                        {
-                            notificacionEN.Mensaje = "Solicitud Denegada";
-                            mensaEn.Texto = "Solicitud denegada";
-
-                            notiCEN.Enviar(notificacionEN.Id, p_Usuario, mensaEn.Texto);
-                            entra = true;
-
-                        }
-
-                    }
                 }
 
 
 
-                SessionCommit();
-            }
-            catch (Exception ex)
-            {
-                SessionRollBack();
-                throw ex;
-            }
-            finally
-            {
-                SessionClose();
-            }
-
-
-            /*PROTECTED REGION END*/
+                SessionCommit ();
         }
-    }
+        catch (Exception ex)
+        {
+                SessionRollBack ();
+                throw ex;
+        }
+        finally
+        {
+                SessionClose ();
+        }
+
+
+        /*PROTECTED REGION END*/
+}
+}
 }

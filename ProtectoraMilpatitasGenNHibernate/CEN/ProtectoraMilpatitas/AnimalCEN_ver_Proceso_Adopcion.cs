@@ -17,23 +17,23 @@ using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
 
 namespace ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas
 {
-    public partial class AnimalCEN
-    {
-        public ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum Ver_Proceso_Adopcion(int p_Animal)
-        {
-            /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas_Animal_ver_Proceso_Adopcion) ENABLED START*/
+public partial class AnimalCEN
+{
+public ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum Ver_Proceso_Adopcion (int p_Animal)
+{
+        /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas_Animal_ver_Proceso_Adopcion) ENABLED START*/
 
-            // Write here your custom code...
+        // Write here your custom code...
 
-            ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum estado = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum.SinTramite;
-            AnimalEN en = _IAnimalCAD.ReadOIDDefault(p_Animal);
+        ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum estado = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum.SinTramite;
+        AnimalEN en = _IAnimalCAD.ReadOIDDefault (p_Animal);
 
-            if (en != null)
+        if (en != null)
                 estado = en.EstadoAdopcion;
 
-            return estado;
+        return estado;
 
-            /*PROTECTED REGION END*/
-        }
-    }
+        /*PROTECTED REGION END*/
+}
+}
 }

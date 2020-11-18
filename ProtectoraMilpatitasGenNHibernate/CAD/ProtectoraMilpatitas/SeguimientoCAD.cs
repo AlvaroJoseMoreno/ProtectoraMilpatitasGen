@@ -261,7 +261,7 @@ public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.Pro
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM SeguimientoEN self where select seg FROM SeguimientoEN as seg WHERE seg.Usuario=:p_usuario";
+                //String sql = @"FROM SeguimientoEN self where select seg FROM SeguimientoEN as seg WHERE seg.Usuario.Email=:p_usuario";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("SeguimientoENObtener_Seguimiento_UsuarioHQL");
                 query.SetParameter ("p_usuario", p_usuario);
