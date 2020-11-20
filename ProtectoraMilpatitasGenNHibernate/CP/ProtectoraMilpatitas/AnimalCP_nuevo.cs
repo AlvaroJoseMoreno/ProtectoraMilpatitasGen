@@ -10,14 +10,16 @@ using System.Collections.Generic;
 using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
-using System.Linq;
-using ProtectoraMilpatitasGenNHibernate.Exceptions;
+
 
 
 
 /*PROTECTED REGION ID(usingProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_Animal_nuevo) ENABLED START*/
 //  references to other libraries
+using System.Linq;
+using ProtectoraMilpatitasGenNHibernate.Exceptions;
 /*PROTECTED REGION END*/
+
 
 namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
 {
@@ -70,45 +72,39 @@ public ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN Nuevo 
 
                 animalEN.Caracter = p_caracter;
 
-                notificacionEN = new NotificacionEN();
+                notificacionEN = new NotificacionEN ();
                 notificacionEN.Mensaje = "Ha llegado " + animalEN.Nombre;
 
-                IList<UsuarioEN> usuarios = usuCEN.Dame_Todos(0, -1);
+                IList<UsuarioEN> usuarios = usuCEN.Dame_Todos (0, -1);
 
-                IList<AdministradorEN> admins = adminCEN.Dame_Todos(0, -1);
+                IList<AdministradorEN> admins = adminCEN.Dame_Todos (0, -1);
 
-                if (admins.Count() > 0)
-                {
-                    AdministradorEN adminEN = admins[0];
+                if (admins.Count () > 0) {
+                        AdministradorEN adminEN = admins [0];
 
-                    if (usuarios.Count() > 0)
-                    {
-                        foreach (UsuarioEN usu in usuarios)
-                        {
-                            if ((usu is AdministradorEN) == false)
-                            {
-                                UsuarioEN usuen = usu;
+                        if (usuarios.Count () > 0) {
+                                foreach (UsuarioEN usu in usuarios) {
+                                        if ((usu is AdministradorEN) == false) {
+                                                UsuarioEN usuen = usu;
 
-                                Console.WriteLine(notificacionEN.Mensaje);
-                                Console.WriteLine("Correo enviado a : " + usuen.Nombre);
-                                MensajeCP mensajeCP = new MensajeCP(session);
+                                                Console.WriteLine (notificacionEN.Mensaje);
+                                                Console.WriteLine ("Correo enviado a : " + usuen.Nombre);
+                                                MensajeCP mensajeCP = new MensajeCP (session);
 
-                                MensajeCEN mensajeCEN = new MensajeCEN();
+                                                MensajeCEN mensajeCEN = new MensajeCEN ();
 
-                                int idmen = mensajeCEN.Nuevo(adminEN.Email, usuen.Email, notificacionEN.Mensaje);
+                                                int idmen = mensajeCEN.Nuevo (adminEN.Email, usuen.Email, notificacionEN.Mensaje);
 
-                                mensajeCP.Responder(idmen, notificacionEN.Mensaje, usuen.Email);
-                            }
+                                                mensajeCP.Responder (idmen, notificacionEN.Mensaje, usuen.Email);
+                                        }
+                                }
                         }
-                    }
-                    else
-                    {
-                        throw new ModelException("No hay usuarios a los que avisar");
-                    }
+                        else{
+                                throw new ModelException ("No hay usuarios a los que avisar");
+                        }
                 }
-                else
-                {
-                    throw new ModelException("No hay administradores que avisen");
+                else{
+                        throw new ModelException ("No hay administradores que avisen");
                 }
 
                 //Call to AnimalCAD

@@ -9,15 +9,16 @@ using NHibernate.Exceptions;
 using ProtectoraMilpatitasGenNHibernate.Exceptions;
 using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
+
+
+
+/*PROTECTED REGION ID(usingProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas_Notificacion_enviar) ENABLED START*/
+//  references to other libraries
 using System.Linq;
 using System.Net.Mail;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
-
-
-/*PROTECTED REGION ID(usingProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas_Notificacion_enviar) ENABLED START*/
-//  references to other libraries
 /*PROTECTED REGION END*/
 
 namespace ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas

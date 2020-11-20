@@ -82,21 +82,23 @@ public static void InitializeData ()
                 AdministradorCEN adminCEN = new AdministradorCEN ();
                 adminCEN.Registrarse ("Protectora", "protectoramilpatitasalicante@gmail.com", "patitas");
 
-                if (adminCEN.Iniciar_Sesion ("protectoramilpatitasalicante@gmail.com", "patitas") != null) {
+                UsuarioCEN aduCEN = new UsuarioCEN();
+
+                if (aduCEN.Iniciar_Sesion ("protectoramilpatitasalicante@gmail.com", "patitas") != null) {
                         Console.WriteLine ("El login de administrador es correcto");
                 }
 
 
                 //Creacion de usuarios
                 UsuarioCEN usuCEN = new UsuarioCEN ();
-                string idusu = usuCEN.Registrarse ("Perico", "perico10@ciclismo", "1235");
+                string idusu = usuCEN.Registrarse ("Perico", "pericoinventado5@gmail.com", "12356794");
 
-                if (usuCEN.Iniciar_Sesion ("perico10@ciclismo", "1235") != null) {
+                if (usuCEN.Iniciar_Sesion ("pericoinventado5@gmail.com", "12356794") != null) {
                         Console.WriteLine ("El login de: " + idusu + " es correcto");
                 }
 
                 UsuarioCEN juan99 = new UsuarioCEN ();
-                string juan = juan99.Registrarse ("Juan", "juan20@gmail.com", "constantino1");
+                string juan = juan99.Registrarse ("Juan", "juaninventado243@gmail.com", "constantino12");
                 UsuarioCEN manuel = new UsuarioCEN ();
                 string manu = manuel.Registrarse ("Manuel45", "Manueljumilla@gmail.com", "password=5");
                 UsuarioCEN Antonio = new UsuarioCEN ();
@@ -115,7 +117,7 @@ public static void InitializeData ()
 
                 //Creacion de tests
                 TestAnimalIdealCEN test1 = new TestAnimalIdealCEN ();
-                int idtest1 = test1.Nuevo ("", "", "", juan);
+                int idtest1 = test1.Nuevo (juan);
                 Console.WriteLine ("Id del test: " + idtest1);
                 test1.Rellenar_Test (idtest1, "ver la television", "timido", "rojo");
                 TestAnimalIdealEN restest1 = test1.Ver_Resultado (idtest1);
@@ -155,7 +157,7 @@ public static void InitializeData ()
 
                 IList<SeguimientoEN> segs = seguimientoCEN.Obtener_Seguimiento_Usuario (manu);
                 foreach (SeguimientoEN seg in segs) {
-                        Console.WriteLine ("Seguimiento : " + seg.Id + " " + seg.Usuario);
+                        Console.WriteLine ("Seguimiento de Manu : " + seg.Id);
                 }
 
 

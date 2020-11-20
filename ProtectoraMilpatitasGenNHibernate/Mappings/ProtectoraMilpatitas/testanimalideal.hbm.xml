@@ -13,13 +13,13 @@
 			
 					
 					<property name="AficionFavorita" type="string"> 
-						<column name="aficionFavorita"  not-null="true"/>
+						<column name="aficionFavorita" />
 					</property>
 					<property name="Personalidad" type="string"> 
-						<column name="personalidad"  not-null="true"/>
+						<column name="personalidad" />
 					</property>
 					<property name="ColorFavorito" type="string"> 
-						<column name="colorFavorito"  not-null="true"/>
+						<column name="colorFavorito" />
 					</property>
 			
 			

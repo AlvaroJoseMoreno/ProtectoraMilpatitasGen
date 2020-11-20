@@ -10,12 +10,13 @@ using System.Collections.Generic;
 using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
-using System.Linq;
+
 
 
 
 /*PROTECTED REGION ID(usingProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_SolicitudAdopcion_Aceptar_Solicitud) ENABLED START*/
 //  references to other libraries
+using System.Linq;
 /*PROTECTED REGION END*/
 
 namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
