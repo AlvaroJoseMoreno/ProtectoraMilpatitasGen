@@ -100,9 +100,9 @@ public static void InitializeData ()
                 UsuarioCEN juan99 = new UsuarioCEN ();
                 string juan = juan99.Registrarse ("Juan", "juaninventado243@gmail.com", "constantino12");
                 UsuarioCEN manuel = new UsuarioCEN ();
-                string manu = manuel.Registrarse ("Manuel45", "Manueljumilla@gmail.com", "password=5");
+                string manu = manuel.Registrarse ("Manuel45", "manuelinventado03@gmail.com", "password=5");
                 UsuarioCEN Antonio = new UsuarioCEN ();
-                string anto = Antonio.Registrarse ("Antonio53", "Antonio323@gmail.com", "villena92");
+                string anto = Antonio.Registrarse ("Antonio53", "antonioinventado780@gmail.com", "villena92");
 
 
                 //Creaci�n de animales
