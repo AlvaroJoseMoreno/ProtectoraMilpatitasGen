@@ -13,13 +13,11 @@ using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
 
 
 
-
 /*PROTECTED REGION ID(usingProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_Animal_nuevo) ENABLED START*/
 //  references to other libraries
 using System.Linq;
 using ProtectoraMilpatitasGenNHibernate.Exceptions;
 /*PROTECTED REGION END*/
-
 
 namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
 {
@@ -95,7 +93,7 @@ public ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN Nuevo 
 
                                                 int idmen = mensajeCEN.Nuevo (adminEN.Email, usuen.Email, notificacionEN.Mensaje);
 
-                                                mensajeCP.Responder (idmen, notificacionEN.Mensaje, usuen.Email);
+                                                //mensajeCP.Responder (idmen, notificacionEN.Mensaje, usuen.Email);
                                         }
                                 }
                         }

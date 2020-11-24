@@ -13,25 +13,25 @@
 			
 					
 					<property name="Nombre" type="string"> 
-						<column name="nombre"  not-null="true"/>
+						<column name="nombre" />
 					</property>
 					<property name="DNI_NIF_Pasaporte" type="string"> 
-						<column name="DNI_NIF_Pasaporte"  not-null="true"/>
+						<column name="DNI_NIF_Pasaporte" />
 					</property>
 					<property name="EscrituraHogar" type="string"> 
-						<column name="escrituraHogar"  not-null="true"/>
+						<column name="escrituraHogar" />
 					</property>
 					<property name="JustificantePago" type="string"> 
-						<column name="justificantePago"  not-null="true"/>
+						<column name="justificantePago" />
 					</property>
 					<property name="LugarRecojida" type="string"> 
-						<column name="lugarRecojida"  not-null="true"/>
+						<column name="lugarRecojida" />
 					</property>
 					<property name="FirmaCompromiso" type="boolean"> 
-						<column name="firmaCompromiso"  not-null="true"/>
+						<column name="firmaCompromiso" />
 					</property>
 					<property name="Estado" > 
-						<column name="estado"  not-null="true"/>
+						<column name="estado" />
 					</property>
 			
 			

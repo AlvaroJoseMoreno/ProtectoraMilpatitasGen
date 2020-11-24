@@ -13,7 +13,6 @@ using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
 
 
 
-
 /*PROTECTED REGION ID(usingProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_Mensaje_responder) ENABLED START*/
 //  references to other libraries
 using ProtectoraMilpatitasGenNHibernate.Exceptions;

@@ -65,17 +65,13 @@ public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.Pro
 {
         return _ISeguimientoCAD.Obtener_Seguimiento_Usuario (p_usuario);
 }
-public int Nuevo (ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSeguimientoEnum p_estado, Nullable<DateTime> p_fecha, string p_usuario, int p_animal, int p_contratoAdopcion)
+public int Nuevo (string p_usuario, int p_animal, int p_contratoAdopcion)
 {
         SeguimientoEN seguimientoEN = null;
         int oid;
 
         //Initialized SeguimientoEN
         seguimientoEN = new SeguimientoEN ();
-        seguimientoEN.Estado = p_estado;
-
-        seguimientoEN.Fecha = p_fecha;
-
 
         if (p_usuario != null) {
                 // El argumento p_usuario -> Property usuario es oid = false

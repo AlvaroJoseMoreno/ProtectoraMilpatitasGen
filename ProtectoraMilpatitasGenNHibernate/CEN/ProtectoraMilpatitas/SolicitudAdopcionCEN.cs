@@ -65,27 +65,13 @@ public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.Pro
 {
         return _ISolicitudAdopcionCAD.Obtener_Solicitud_Usuario (p_email);
 }
-public int Nuevo (string p_nombre, int p_animalesAcargo, string p_ambienteConvivencia, int p_tiempoLibre, bool p_todosAcuerdo, string p_motivosAdopcion, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum p_estado, string p_usuario, int p_animal)
+public int Nuevo (string p_usuario, int p_animal)
 {
         SolicitudAdopcionEN solicitudAdopcionEN = null;
         int oid;
 
         //Initialized SolicitudAdopcionEN
         solicitudAdopcionEN = new SolicitudAdopcionEN ();
-        solicitudAdopcionEN.Nombre = p_nombre;
-
-        solicitudAdopcionEN.AnimalesAcargo = p_animalesAcargo;
-
-        solicitudAdopcionEN.AmbienteConvivencia = p_ambienteConvivencia;
-
-        solicitudAdopcionEN.TiempoLibre = p_tiempoLibre;
-
-        solicitudAdopcionEN.TodosAcuerdo = p_todosAcuerdo;
-
-        solicitudAdopcionEN.MotivosAdopcion = p_motivosAdopcion;
-
-        solicitudAdopcionEN.Estado = p_estado;
-
 
         if (p_usuario != null) {
                 // El argumento p_usuario -> Property usuario es oid = false

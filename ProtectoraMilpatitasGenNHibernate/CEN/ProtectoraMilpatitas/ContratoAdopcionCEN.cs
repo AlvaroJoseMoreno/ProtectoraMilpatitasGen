@@ -65,27 +65,13 @@ public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.Pro
 {
         return _IContratoAdopcionCAD.Obtener_Contrato_Usuario (p_email);
 }
-public int Nuevo (string p_nombre, string p_DNI_NIF_Pasaporte, string p_escrituraHogar, string p_justificantePago, string p_lugarRecojida, bool p_firmaCompromiso, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum p_estado, string p_usuario, int p_solicitudAdopcion, int p_animal)
+public int Nuevo (string p_usuario, int p_solicitudAdopcion, int p_animal)
 {
         ContratoAdopcionEN contratoAdopcionEN = null;
         int oid;
 
         //Initialized ContratoAdopcionEN
         contratoAdopcionEN = new ContratoAdopcionEN ();
-        contratoAdopcionEN.Nombre = p_nombre;
-
-        contratoAdopcionEN.DNI_NIF_Pasaporte = p_DNI_NIF_Pasaporte;
-
-        contratoAdopcionEN.EscrituraHogar = p_escrituraHogar;
-
-        contratoAdopcionEN.JustificantePago = p_justificantePago;
-
-        contratoAdopcionEN.LugarRecojida = p_lugarRecojida;
-
-        contratoAdopcionEN.FirmaCompromiso = p_firmaCompromiso;
-
-        contratoAdopcionEN.Estado = p_estado;
-
 
         if (p_usuario != null) {
                 // El argumento p_usuario -> Property usuario es oid = false

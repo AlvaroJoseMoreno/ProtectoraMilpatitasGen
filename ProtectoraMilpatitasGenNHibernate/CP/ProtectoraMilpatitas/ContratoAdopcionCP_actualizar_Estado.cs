@@ -46,6 +46,12 @@ public void Actualizar_Estado (int p_ContratoAdopcion, ProtectoraMilpatitasGenNH
                 contratoAdopcionEN.Estado = p_estado;
                 //Call to ContratoAdopcionCAD
 
+                Console.WriteLine("Linea 49: " + contratoAdopcionEN.Id);
+
+                AnimalEN ani = contratoAdopcionEN.Animal;
+
+                Console.WriteLine("Linea 53: " + ani.Id);
+
                 if (contratoAdopcionEN.Estado.Equals ("firmado")) {
                         contratoAdopcionEN.Animal.EstadoAdopcion = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum.EnSeguimiento;
                 }

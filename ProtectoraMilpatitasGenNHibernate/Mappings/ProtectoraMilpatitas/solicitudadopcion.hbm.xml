@@ -13,25 +13,25 @@
 			
 					
 					<property name="Nombre" type="string"> 
-						<column name="nombre"  not-null="true"/>
+						<column name="nombre" />
 					</property>
 					<property name="AnimalesAcargo" type="integer"> 
-						<column name="animalesAcargo"  not-null="true"/>
+						<column name="animalesAcargo" />
 					</property>
 					<property name="AmbienteConvivencia" type="string"> 
-						<column name="ambienteConvivencia"  not-null="true"/>
+						<column name="ambienteConvivencia" />
 					</property>
 					<property name="TiempoLibre" type="integer"> 
-						<column name="tiempoLibre"  not-null="true"/>
+						<column name="tiempoLibre" />
 					</property>
 					<property name="TodosAcuerdo" type="boolean"> 
-						<column name="todosAcuerdo"  not-null="true"/>
+						<column name="todosAcuerdo" />
 					</property>
 					<property name="MotivosAdopcion" type="string"> 
-						<column name="motivosAdopcion"  not-null="true"/>
+						<column name="motivosAdopcion" />
 					</property>
 					<property name="Estado" > 
-						<column name="estado"  not-null="true"/>
+						<column name="estado" />
 					</property>
 			
 			

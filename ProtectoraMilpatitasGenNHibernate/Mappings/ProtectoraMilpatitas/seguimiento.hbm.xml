@@ -13,10 +13,10 @@
 			
 					
 					<property name="Estado" > 
-						<column name="estado"  not-null="true"/>
+						<column name="estado" />
 					</property>
 					<property name="Fecha" type="date"> 
-						<column name="fecha"  not-null="true"/>
+						<column name="fecha" />
 					</property>
 			
 			

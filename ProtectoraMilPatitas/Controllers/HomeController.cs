@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
 
 namespace ProtectoraMilPatitas.Controllers
 {
@@ -10,6 +11,8 @@ namespace ProtectoraMilPatitas.Controllers
     {
         public ActionResult Index()
         {
+            AnimalCEN animalcen = new AnimalCEN();
+            animalcen.Dame_Todos(0, -1);
             return View();
         }
 

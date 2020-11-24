@@ -82,7 +82,7 @@ public static void InitializeData ()
                 AdministradorCEN adminCEN = new AdministradorCEN ();
                 adminCEN.Registrarse ("Protectora", "protectoramilpatitasalicante@gmail.com", "patitas");
 
-                UsuarioCEN aduCEN = new UsuarioCEN();
+                UsuarioCEN aduCEN = new UsuarioCEN ();
 
                 if (aduCEN.Iniciar_Sesion ("protectoramilpatitasalicante@gmail.com", "patitas") != null) {
                         Console.WriteLine ("El login de administrador es correcto");
@@ -127,8 +127,11 @@ public static void InitializeData ()
                 //Solicitud de Adopcion
                 SolicitudAdopcionCEN solicitudAdopcionCEN = new SolicitudAdopcionCEN ();
 
-                int idsol = solicitudAdopcionCEN.Nuevo ("Juan", 3, "amigable", 4, true, "nos gustan animales", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera, juan, chi.Id);
-                int idsol1 = solicitudAdopcionCEN.Nuevo ("Manuel", 2, "amigable", 3, true, "nos gustan animales", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera, manu, chi.Id);
+                int idsol = solicitudAdopcionCEN.Nuevo (juan, chi.Id);
+                int idsol1 = solicitudAdopcionCEN.Nuevo (manu, chi.Id);
+
+                solicitudAdopcionCEN.Rellenar_Solicitud (idsol, "Juan", 2, "lugar tranquilo", 3, true, "nos gustan los animales");
+                solicitudAdopcionCEN.Rellenar_Solicitud (idsol1, "Manu", 1, "lugar natural y tranquilo", 4, true, "necesito compañia");
 
                 IList<SolicitudAdopcionEN> sols = solicitudAdopcionCEN.Obtener_Solicitud_Usuario (juan);
                 foreach (SolicitudAdopcionEN sol in sols) {
@@ -138,9 +141,16 @@ public static void InitializeData ()
 
                 //Contrato de adopcion
                 ContratoAdopcionCEN contratoAdopcionCEN = new ContratoAdopcionCEN ();
+                ContratoAdopcionCP contratoAdopcionCP = new ContratoAdopcionCP ();
 
-                int idcon = contratoAdopcionCEN.Nuevo ("Juan", "1111111F", "micasa.pdf", "pago.jpg", "alicante", true, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum.entregado, juan, idsol, chi.Id);
-                int idcon1 = contratoAdopcionCEN.Nuevo ("Manuel", "22222221F", "micasa.pdf", "pago.jpg", "villena", true, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum.entregado, manu, idsol1, chi.Id);
+                int idcon = contratoAdopcionCEN.Nuevo (juan, idsol, chi.Id);
+                contratoAdopcionCP.Actualizar_Estado (idcon, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum.entregado);
+
+                int idcon1 = contratoAdopcionCEN.Nuevo (manu, idsol1, chi.Id);
+                contratoAdopcionCP.Actualizar_Estado (idcon1, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum.entregado);
+
+                contratoAdopcionCEN.Rellenar_Contrato (idcon, "Juan", "1111111F", "micasa.pdf", "pago.jpg", "alicante", true);
+                contratoAdopcionCEN.Rellenar_Contrato (idcon1, "Manuel", "22222221F", "micasa.pdf", "pago.jpg", "villena", true);
 
                 IList<ContratoAdopcionEN> cons = contratoAdopcionCEN.Obtener_Contrato_Usuario (manu);
                 foreach (ContratoAdopcionEN con in cons) {
@@ -150,10 +160,13 @@ public static void InitializeData ()
 
                 //Seguimiento de adopcion
                 SeguimientoCEN seguimientoCEN = new SeguimientoCEN ();
+                SeguimientoCP seguimientoCP = new SeguimientoCP();
 
                 DateTime date1 = new DateTime (2008, 5, 1, 8, 30, 52);
 
-                int idseg = seguimientoCEN.Nuevo (ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSeguimientoEnum.pendienteRevision, date1, manu, chi.Id, idcon1);
+                int idseg = seguimientoCEN.Nuevo (manu, chi.Id, idcon1);
+                seguimientoCEN.Modificar(idseg, date1);
+                seguimientoCP.Actualizar_Estado(idseg, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSeguimientoEnum.pendienteRevision);
 
                 IList<SeguimientoEN> segs = seguimientoCEN.Obtener_Seguimiento_Usuario (manu);
                 foreach (SeguimientoEN seg in segs) {
