@@ -27,12 +27,22 @@ public void Modificar (int p_Animal, string p_nombre, int p_edad, char p_sexo, s
 
         //Initialized AnimalEN
         animalEN = new AnimalEN ();
+        
+    
         animalEN.Id = p_Animal;
+        
+        if(p_nombre != null && p_nombre != animalEN.Nombre)
         animalEN.Nombre = p_nombre;
+        if(p_edad != -1 && p_edad != animalEN.Edad)
         animalEN.Edad = p_edad;
+        if(p_sexo != null && p_sexo != animalEN.Sexo)
         animalEN.Sexo = p_sexo;
+        if(p_centro != null && p_centro != animalEN.Centro)
         animalEN.Centro = p_centro;
+        if(p_caracter != null && p_caracter != animalEN.caracter)
         animalEN.Caracter = p_caracter;
+
+
         //Call to AnimalCAD
 
         _IAnimalCAD.Modificar (animalEN);
