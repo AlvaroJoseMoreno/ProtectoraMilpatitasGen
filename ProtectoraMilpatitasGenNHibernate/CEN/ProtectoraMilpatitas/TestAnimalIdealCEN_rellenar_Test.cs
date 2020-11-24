@@ -28,14 +28,25 @@ public void Rellenar_Test (int p_TestAnimalIdeal, string p_aficionFavorita, stri
         //Initialized TestAnimalIdealEN
         testAnimalIdealEN = new TestAnimalIdealEN ();
         testAnimalIdealEN.Id = p_TestAnimalIdeal;
+       
+        if(p_aficionFavorita != null && p_personalidad != null 
+        && p_colorFavorito != null && p_aficionFavorita != testAnimalIdealEN.AficionFavorita
+        && p_personalidad != testAnimalIdealEN.Personalidad && p_colorFavorito != testAnimalIdealEN.ColorFavorito)
+        {
+        
         testAnimalIdealEN.AficionFavorita = p_aficionFavorita;
         testAnimalIdealEN.Personalidad = p_personalidad;
         testAnimalIdealEN.ColorFavorito = p_colorFavorito;
         //Call to TestAnimalIdealCAD
+       
+       
+        }else{
+            throw new ModelException("error al completar test");
+            }
 
-        _ITestAnimalIdealCAD.Rellenar_Test (testAnimalIdealEN);
-
+         _ITestAnimalIdealCAD.Rellenar_Test (testAnimalIdealEN);
         /*PROTECTED REGION END*/
+
 }
 }
 }

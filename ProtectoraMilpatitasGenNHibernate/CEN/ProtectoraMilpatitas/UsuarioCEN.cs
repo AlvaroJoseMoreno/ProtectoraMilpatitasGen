@@ -65,7 +65,9 @@ public void Modificar (string p_Usuario_OID, string p_nombre, String p_password)
         //Initialized UsuarioEN
         usuarioEN = new UsuarioEN ();
         usuarioEN.Email = p_Usuario_OID;
+        if(p_nombre != null && p_nombre != usuarioEN.Nombre)
         usuarioEN.Nombre = p_nombre;
+        if(p_password != null && p_password != usuarioEN.Password)
         usuarioEN.Password = Utils.Util.GetEncondeMD5 (p_password);
         //Call to UsuarioCAD
 

@@ -28,11 +28,17 @@ public void Rellenar_Contrato (int p_ContratoAdopcion, string p_nombre, string p
         //Initialized ContratoAdopcionEN
         contratoAdopcionEN = new ContratoAdopcionEN ();
         contratoAdopcionEN.Id = p_ContratoAdopcion;
+            if(p_nombre != null && p_nombre != contratoAdopcionEN.Nombre)
         contratoAdopcionEN.Nombre = p_nombre;
+            if(p_DNI_NIF_Pasaporte != null && contratoAdopcionEN.DNI_NIF_Pasaporte)
         contratoAdopcionEN.DNI_NIF_Pasaporte = p_DNI_NIF_Pasaporte;
+            if(p_escrituraHogar != null && contratoAdopcionEN.EscrituraHogar != p_escrituraHogar)
         contratoAdopcionEN.EscrituraHogar = p_escrituraHogar;
+            if(p_justificantePago != null && p_justificantePago != contratoAdopcionEN.JustificantePago)
         contratoAdopcionEN.JustificantePago = p_justificantePago;
+            if(p_lugarRecojida != null && contratoAdopcionEN.LugarRecojida != p_lugarRecojida)
         contratoAdopcionEN.LugarRecojida = p_lugarRecojida;
+            if(p_firmaCompromiso != null && p_firmaCompromiso != contratoAdopcionEN.FirmaCompromiso)
         contratoAdopcionEN.FirmaCompromiso = p_firmaCompromiso;
         //Call to ContratoAdopcionCAD
 
