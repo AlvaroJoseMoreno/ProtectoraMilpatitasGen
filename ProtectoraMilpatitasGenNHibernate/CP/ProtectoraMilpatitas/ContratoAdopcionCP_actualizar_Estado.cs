@@ -28,8 +28,6 @@ public void Actualizar_Estado (int p_ContratoAdopcion, ProtectoraMilpatitasGenNH
         IContratoAdopcionCAD contratoAdopcionCAD = null;
         ContratoAdopcionCEN contratoAdopcionCEN = null;
 
-
-
         try
         {
                 SessionInitializeTransaction ();
@@ -45,12 +43,6 @@ public void Actualizar_Estado (int p_ContratoAdopcion, ProtectoraMilpatitasGenNH
                 contratoAdopcionEN.Id = p_ContratoAdopcion;
                 contratoAdopcionEN.Estado = p_estado;
                 //Call to ContratoAdopcionCAD
-
-                Console.WriteLine("Linea 49: " + contratoAdopcionEN.Id);
-
-                AnimalEN ani = contratoAdopcionEN.Animal;
-
-                Console.WriteLine("Linea 53: " + ani.Id);
 
                 if (contratoAdopcionEN.Estado.Equals ("firmado")) {
                         contratoAdopcionEN.Animal.EstadoAdopcion = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum.EnSeguimiento;
