@@ -104,16 +104,34 @@ public static void InitializeData ()
                 UsuarioCEN Antonio = new UsuarioCEN ();
                 string anto = Antonio.Registrarse ("Antonio53", "antonioinventado780@gmail.com", "villena92");
 
+                //Creacion de especies
+                EspecieCEN espCEN = new EspecieCEN();
+                int esp = espCEN.Nuevo("perro");
+                Console.WriteLine("Id de la especie perro: " + esp);
+
+                int esp1 = espCEN.Nuevo("gato");
+                Console.WriteLine("Id de la especie gato: " + esp1);
+
+                //Creacion de razas
+                RazaCEN razCEN = new RazaCEN();
+                int per = razCEN.Nuevo("carlino", esp);
+                Console.WriteLine("Id de la raza carlino: " + per);
+                int per1 = razCEN.Nuevo("yorkshire", esp);
+                Console.WriteLine("Id de la raza yorkshine: " + per1);
+                int gat = razCEN.Nuevo("siames", esp1);
+                Console.WriteLine("Id de la raza siames: " + gat);
+                int gat1 = razCEN.Nuevo("europeo", esp1);
+                Console.WriteLine("Id de la raza europeo: " + gat1);
 
                 //Creaci�n de animales
                 AnimalCP chihua = new AnimalCP ();
-                AnimalEN chi = chihua.Nuevo ("tobi", 3, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "amigable");
+                AnimalEN chi = chihua.Nuevo ("tobi", 3, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "amigable", esp);
 
                 AnimalCP yorkshire = new AnimalCP ();
-                AnimalEN yor = yorkshire.Nuevo ("Pelusa", 3, 'M', "Albacete", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enRecuperacion, "carinoso");
+                AnimalEN yor = yorkshire.Nuevo ("Pelusa", 3, 'M', "Albacete", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enRecuperacion, "carinoso", esp);
 
                 AnimalCP siames = new AnimalCP ();
-                AnimalEN sia = siames.Nuevo ("minino", 1, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso");
+                AnimalEN sia = siames.Nuevo ("minino", 1, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso", esp1);
 
                 //Creacion de tests
                 TestAnimalIdealCEN test1 = new TestAnimalIdealCEN ();
@@ -126,13 +144,13 @@ public static void InitializeData ()
 
                 //Solicitud de Adopcion
                 SolicitudAdopcionCEN solicitudAdopcionCEN = new SolicitudAdopcionCEN ();
-                SolicitudAdopcionCP solicitudAdopcionCP = new SolicitudAdopcionCP();
+                SolicitudAdopcionCP solicitudAdopcionCP = new SolicitudAdopcionCP ();
 
                 int idsol = solicitudAdopcionCEN.Nuevo (juan, chi.Id);
-                solicitudAdopcionCP.Actualizar_Estado(idsol, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
+                solicitudAdopcionCP.Actualizar_Estado (idsol, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
 
                 int idsol1 = solicitudAdopcionCEN.Nuevo (manu, chi.Id);
-                solicitudAdopcionCP.Actualizar_Estado(idsol1, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
+                solicitudAdopcionCP.Actualizar_Estado (idsol1, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
 
                 solicitudAdopcionCEN.Rellenar_Solicitud (idsol, "Juan", 2, "lugar tranquilo", 3, true, "nos gustan los animales");
                 solicitudAdopcionCEN.Rellenar_Solicitud (idsol1, "Manu", 1, "lugar natural y tranquilo", 4, true, "necesito compañia");
@@ -164,13 +182,13 @@ public static void InitializeData ()
 
                 //Seguimiento de adopcion
                 SeguimientoCEN seguimientoCEN = new SeguimientoCEN ();
-                SeguimientoCP seguimientoCP = new SeguimientoCP();
+                SeguimientoCP seguimientoCP = new SeguimientoCP ();
 
                 DateTime date1 = new DateTime (2008, 5, 1, 8, 30, 52);
 
                 int idseg = seguimientoCEN.Nuevo (manu, chi.Id, idcon1);
-                seguimientoCEN.Modificar(idseg, date1);
-                seguimientoCP.Actualizar_Estado(idseg, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSeguimientoEnum.pendienteRevision);
+                seguimientoCEN.Modificar (idseg, date1);
+                seguimientoCP.Actualizar_Estado (idseg, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSeguimientoEnum.pendienteRevision);
 
                 IList<SeguimientoEN> segs = seguimientoCEN.Obtener_Seguimiento_Usuario (manu);
                 foreach (SeguimientoEN seg in segs) {

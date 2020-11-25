@@ -22,7 +22,7 @@ private int id;
 /**
  *	Atributo animal
  */
-private ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN animal;
+private System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> animal;
 
 
 
@@ -48,7 +48,7 @@ public virtual int Id {
 
 
 
-public virtual ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN Animal {
+public virtual System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> Animal {
         get { return animal; } set { animal = value;  }
 }
 
@@ -64,12 +64,13 @@ public virtual System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernat
 
 public EspecieEN()
 {
+        animal = new System.Collections.Generic.List<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN>();
         raza = new System.Collections.Generic.List<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.RazaEN>();
 }
 
 
 
-public EspecieEN(int id, string nombre, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN animal, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.RazaEN> raza
+public EspecieEN(int id, string nombre, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> animal, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.RazaEN> raza
                  )
 {
         this.init (Id, nombre, animal, raza);
@@ -82,7 +83,7 @@ public EspecieEN(EspecieEN especie)
 }
 
 private void init (int id
-                   , string nombre, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN animal, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.RazaEN> raza)
+                   , string nombre, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> animal, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.RazaEN> raza)
 {
         this.Id = id;
 

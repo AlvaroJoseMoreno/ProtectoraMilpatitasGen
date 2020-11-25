@@ -36,8 +36,8 @@ public void Actualizar_Estado (int p_ContratoAdopcion, ProtectoraMilpatitasGenNH
 
                 ContratoAdopcionEN contratoAdopcionEN = null;
                 //Initialized ContratoAdopcionEN
-                contratoAdopcionEN = contratoAdopcionCAD.Ver_Contrato(p_ContratoAdopcion);
-               // contratoAdopcionEN.Id = p_ContratoAdopcion;
+                contratoAdopcionEN = contratoAdopcionCAD.Ver_Contrato (p_ContratoAdopcion);
+                // contratoAdopcionEN.Id = p_ContratoAdopcion;
                 contratoAdopcionEN.Estado = p_estado;
                 //Call to ContratoAdopcionCAD
 

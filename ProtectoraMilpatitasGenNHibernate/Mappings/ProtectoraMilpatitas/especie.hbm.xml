@@ -20,10 +20,15 @@
 			
 			
 		  			
-						<many-to-one name="Animal" class="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN" >	
-								<column name="FK_id_idAnimal"/> 
-						</many-to-one>
-											 					
+						<bag name="Animal" >
+							<key>
+							
+								
+								<column name="FK_id_idEspecie_0"/>
+					      	</key>
+							<one-to-many class="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN"/>
+					    </bag>
+					
 			
 		  			
 						<bag name="Raza" >

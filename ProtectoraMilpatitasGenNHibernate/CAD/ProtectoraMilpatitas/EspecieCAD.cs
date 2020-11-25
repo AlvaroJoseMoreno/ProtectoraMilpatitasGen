@@ -119,13 +119,6 @@ public int Nuevo (EspecieEN especie)
         try
         {
                 SessionInitializeTransaction ();
-                if (especie.Animal != null) {
-                        // Argumento OID y no colección.
-                        especie.Animal = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN), especie.Animal.Id);
-
-                        especie.Animal.Especie
-                        .Add (especie);
-                }
 
                 session.Save (especie);
                 SessionCommit ();

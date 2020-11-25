@@ -39,7 +39,7 @@ public IEspecieCAD get_IEspecieCAD ()
         return this._IEspecieCAD;
 }
 
-public int Nuevo (string p_nombre, int p_animal)
+public int Nuevo (string p_nombre)
 {
         EspecieEN especieEN = null;
         int oid;
@@ -48,27 +48,19 @@ public int Nuevo (string p_nombre, int p_animal)
         especieEN = new EspecieEN ();
         especieEN.Nombre = p_nombre;
 
-
-        if (p_animal != -1) {
-                // El argumento p_animal -> Property animal es oid = false
-                // Lista de oids id
-                especieEN.Animal = new ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN ();
-                especieEN.Animal.Id = p_animal;
-        }
-
         //Call to EspecieCAD
 
         oid = _IEspecieCAD.Nuevo (especieEN);
         return oid;
 }
 
-public void Modifcar (int p_Especie, string p_nombre)
+public void Modifcar (int p_Especie_OID, string p_nombre)
 {
         EspecieEN especieEN = null;
 
         //Initialized EspecieEN
         especieEN = new EspecieEN ();
-        especieEN.Id = p_Especie;
+        especieEN.Id = p_Especie_OID;
         especieEN.Nombre = p_nombre;
         //Call to EspecieCAD
 
