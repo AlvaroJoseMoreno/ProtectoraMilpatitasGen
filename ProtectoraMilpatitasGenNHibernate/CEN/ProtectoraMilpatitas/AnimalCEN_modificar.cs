@@ -39,7 +39,7 @@ public void Modificar (int p_Animal, string p_nombre, int p_edad, char p_sexo, s
         animalEN.Sexo = p_sexo;
         if(p_centro != null && p_centro != animalEN.Centro)
         animalEN.Centro = p_centro;
-        if(p_caracter != null && p_caracter != animalEN.caracter)
+        if(p_caracter != null && p_caracter != animalEN.Caracter)
         animalEN.Caracter = p_caracter;
 
 

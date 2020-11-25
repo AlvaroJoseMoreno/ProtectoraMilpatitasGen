@@ -34,9 +34,6 @@ public void Actualizar_Estado (int p_ContratoAdopcion, ProtectoraMilpatitasGenNH
                 contratoAdopcionCAD = new ContratoAdopcionCAD (session);
                 contratoAdopcionCEN = new ContratoAdopcionCEN (contratoAdopcionCAD);
 
-
-
-
                 ContratoAdopcionEN contratoAdopcionEN = null;
                 //Initialized ContratoAdopcionEN
                 contratoAdopcionEN = new ContratoAdopcionEN ();

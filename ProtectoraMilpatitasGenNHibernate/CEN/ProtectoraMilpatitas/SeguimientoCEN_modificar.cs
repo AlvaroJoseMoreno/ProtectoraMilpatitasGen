@@ -27,7 +27,7 @@ public void Modificar (int p_Seguimiento, Nullable<DateTime> p_fecha)
 
         //Initialized SeguimientoEN
         seguimientoEN = new SeguimientoEN ();
-        if(p_Seguimiento != null && p_Seguimiento != seguimientoEN.Id)
+        if(p_Seguimiento != -1 && p_Seguimiento != seguimientoEN.Id)
         seguimientoEN.Id = p_Seguimiento;
         if(p_fecha != null && p_fecha != seguimientoEN.Fecha)
         seguimientoEN.Fecha = p_fecha;

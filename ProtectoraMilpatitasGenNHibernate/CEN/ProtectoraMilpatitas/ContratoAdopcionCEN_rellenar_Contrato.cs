@@ -30,7 +30,7 @@ public void Rellenar_Contrato (int p_ContratoAdopcion, string p_nombre, string p
         contratoAdopcionEN.Id = p_ContratoAdopcion;
             if(p_nombre != null && p_nombre != contratoAdopcionEN.Nombre)
         contratoAdopcionEN.Nombre = p_nombre;
-            if(p_DNI_NIF_Pasaporte != null && contratoAdopcionEN.DNI_NIF_Pasaporte)
+            if(p_DNI_NIF_Pasaporte != null && contratoAdopcionEN.DNI_NIF_Pasaporte!=p_DNI_NIF_Pasaporte)
         contratoAdopcionEN.DNI_NIF_Pasaporte = p_DNI_NIF_Pasaporte;
             if(p_escrituraHogar != null && contratoAdopcionEN.EscrituraHogar != p_escrituraHogar)
         contratoAdopcionEN.EscrituraHogar = p_escrituraHogar;
