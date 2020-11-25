@@ -99,7 +99,6 @@ public int Nuevo (string p_usuario, int p_solicitudAdopcion, int p_animal)
         //Call to ContratoAdopcionCAD
 
         oid = _IContratoAdopcionCAD.Nuevo (contratoAdopcionEN);
-
         return oid;
 }
 }

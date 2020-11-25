@@ -126,13 +126,13 @@ public static void InitializeData ()
 
                 //Solicitud de Adopcion
                 SolicitudAdopcionCEN solicitudAdopcionCEN = new SolicitudAdopcionCEN ();
-                SolicitudAdopcionCP solicitudAdopcionCP = new SolicitudAdopcionCP();
+                SolicitudAdopcionCP solicitudAdopcionCP = new SolicitudAdopcionCP ();
 
                 int idsol = solicitudAdopcionCEN.Nuevo (juan, chi.Id);
-                solicitudAdopcionCP.Actualizar_Estado(idsol, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
+                solicitudAdopcionCP.Actualizar_Estado (idsol, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
 
                 int idsol1 = solicitudAdopcionCEN.Nuevo (manu, chi.Id);
-                solicitudAdopcionCP.Actualizar_Estado(idsol1, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
+                solicitudAdopcionCP.Actualizar_Estado (idsol1, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
 
                 solicitudAdopcionCEN.Rellenar_Solicitud (idsol, "Juan", 2, "lugar tranquilo", 3, true, "nos gustan los animales");
                 solicitudAdopcionCEN.Rellenar_Solicitud (idsol1, "Manu", 1, "lugar natural y tranquilo", 4, true, "necesito compañia");
@@ -164,13 +164,13 @@ public static void InitializeData ()
 
                 //Seguimiento de adopcion
                 SeguimientoCEN seguimientoCEN = new SeguimientoCEN ();
-                SeguimientoCP seguimientoCP = new SeguimientoCP();
+                SeguimientoCP seguimientoCP = new SeguimientoCP ();
 
                 DateTime date1 = new DateTime (2008, 5, 1, 8, 30, 52);
 
                 int idseg = seguimientoCEN.Nuevo (manu, chi.Id, idcon1);
-                seguimientoCEN.Modificar(idseg, date1);
-                seguimientoCP.Actualizar_Estado(idseg, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSeguimientoEnum.pendienteRevision);
+                seguimientoCEN.Modificar (idseg, date1);
+                seguimientoCP.Actualizar_Estado (idseg, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSeguimientoEnum.pendienteRevision);
 
                 IList<SeguimientoEN> segs = seguimientoCEN.Obtener_Seguimiento_Usuario (manu);
                 foreach (SeguimientoEN seg in segs) {
