@@ -126,9 +126,13 @@ public static void InitializeData ()
 
                 //Solicitud de Adopcion
                 SolicitudAdopcionCEN solicitudAdopcionCEN = new SolicitudAdopcionCEN ();
+                SolicitudAdopcionCP solicitudAdopcionCP = new SolicitudAdopcionCP();
 
                 int idsol = solicitudAdopcionCEN.Nuevo (juan, chi.Id);
+                solicitudAdopcionCP.Actualizar_Estado(idsol, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
+
                 int idsol1 = solicitudAdopcionCEN.Nuevo (manu, chi.Id);
+                solicitudAdopcionCP.Actualizar_Estado(idsol1, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
 
                 solicitudAdopcionCEN.Rellenar_Solicitud (idsol, "Juan", 2, "lugar tranquilo", 3, true, "nos gustan los animales");
                 solicitudAdopcionCEN.Rellenar_Solicitud (idsol1, "Manu", 1, "lugar natural y tranquilo", 4, true, "necesito compañia");

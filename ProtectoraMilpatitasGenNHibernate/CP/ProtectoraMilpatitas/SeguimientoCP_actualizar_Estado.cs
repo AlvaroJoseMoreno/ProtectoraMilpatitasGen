@@ -41,8 +41,8 @@ public void Actualizar_Estado (int p_Seguimiento, ProtectoraMilpatitasGenNHibern
 
                 SeguimientoEN seguimientoEN = null;
                 //Initialized SeguimientoEN
-                seguimientoEN = new SeguimientoEN ();
-                seguimientoEN.Id = p_Seguimiento;
+                seguimientoEN = seguimientoCEN.Dame_Por_Id(p_Seguimiento);
+                //seguimientoEN.Id = p_Seguimiento;
                 seguimientoEN.Estado = p_estado;
                 //Call to SeguimientoCAD
 

@@ -41,8 +41,8 @@ public void Actualizar_Estado (int p_SolicitudAdopcion, ProtectoraMilpatitasGenN
 
                 SolicitudAdopcionEN solicitudAdopcionEN = null;
                 //Initialized SolicitudAdopcionEN
-                solicitudAdopcionEN = new SolicitudAdopcionEN ();
-                solicitudAdopcionEN.Id = p_SolicitudAdopcion;
+                solicitudAdopcionEN = solicitudAdopcionCEN.Ver_Solicitud(p_SolicitudAdopcion);
+                //solicitudAdopcionEN.Id = p_SolicitudAdopcion;
                 solicitudAdopcionEN.Estado = p_estado;
                 //Call to SolicitudAdopcionCAD
 
