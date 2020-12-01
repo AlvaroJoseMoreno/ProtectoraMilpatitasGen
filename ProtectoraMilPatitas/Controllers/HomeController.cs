@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
+using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 
 namespace ProtectoraMilPatitas.Controllers
 {
@@ -11,9 +12,9 @@ namespace ProtectoraMilPatitas.Controllers
     {
         public ActionResult Index()
         {
-            AnimalCEN animalcen = new AnimalCEN();
-            animalcen.Dame_Todos(0, -1);
-            return View();
+            UsuarioCEN usucen = new UsuarioCEN();
+            IEnumerable<UsuarioEN> listaUsuarios =  usucen.Dame_Todos(0, -1).ToList();
+            return View(listaUsuarios);
         }
 
         public ActionResult About()

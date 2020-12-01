@@ -88,7 +88,6 @@ public static void InitializeData ()
                         Console.WriteLine ("El login de administrador es correcto");
                 }
 
-
                 //Creacion de usuarios
                 UsuarioCEN usuCEN = new UsuarioCEN ();
                 string idusu = usuCEN.Registrarse ("Perico", "pericoinventado5@gmail.com", "12356794");
@@ -105,25 +104,25 @@ public static void InitializeData ()
                 string anto = Antonio.Registrarse ("Antonio53", "antonioinventado780@gmail.com", "villena92");
 
                 //Creacion de especies
-                EspecieCEN espCEN = new EspecieCEN();
-                int esp = espCEN.Nuevo("perro");
-                Console.WriteLine("Id de la especie perro: " + esp);
+                EspecieCEN espCEN = new EspecieCEN ();
+                int esp = espCEN.Nuevo ("perro");
+                Console.WriteLine ("Id de la especie perro: " + esp);
 
-                int esp1 = espCEN.Nuevo("gato");
-                Console.WriteLine("Id de la especie gato: " + esp1);
+                int esp1 = espCEN.Nuevo ("gato");
+                Console.WriteLine ("Id de la especie gato: " + esp1);
 
                 //Creacion de razas
-                RazaCEN razCEN = new RazaCEN();
-                int per = razCEN.Nuevo("carlino", esp);
-                Console.WriteLine("Id de la raza carlino: " + per);
-                int per1 = razCEN.Nuevo("yorkshire", esp);
-                Console.WriteLine("Id de la raza yorkshine: " + per1);
-                int gat = razCEN.Nuevo("siames", esp1);
-                Console.WriteLine("Id de la raza siames: " + gat);
-                int gat1 = razCEN.Nuevo("europeo", esp1);
-                Console.WriteLine("Id de la raza europeo: " + gat1);
+                RazaCEN razCEN = new RazaCEN ();
+                int per = razCEN.Nuevo ("carlino", esp);
+                Console.WriteLine ("Id de la raza carlino: " + per);
+                int per1 = razCEN.Nuevo ("yorkshire", esp);
+                Console.WriteLine ("Id de la raza yorkshine: " + per1);
+                int gat = razCEN.Nuevo ("siames", esp1);
+                Console.WriteLine ("Id de la raza siames: " + gat);
+                int gat1 = razCEN.Nuevo ("europeo", esp1);
+                Console.WriteLine ("Id de la raza europeo: " + gat1);
 
-                //Creaci�n de animales
+                //Creacion de animales
                 AnimalCP chihua = new AnimalCP ();
                 AnimalEN chi = chihua.Nuevo ("tobi", 3, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "amigable", esp);
 
