@@ -3,15 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
+using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
+using ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas;
+using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
+using WebProtectoraMilpatitas.Assemblers;
+using WebProtectoraMilpatitas.Models;
 
 namespace WebProtectoraMilpatitas.Controllers
 {
-    public class AnimalController : Controller
+    public class AnimalController : BasicController
     {
         // GET: Animal
         public ActionResult Index()
         {
-            return View();
+            SessionInitialize();
+
+            AnimalCAD animalCAD = new AnimalCAD(session);
+            AnimalCEN animalCEN = new AnimalCEN(animalCAD);
+
+            IList<AnimalEN> listaAnimal = animalCEN.Dame_Todos(0, -1);
+            IEnumerable<AnimalViewModel> listaView = new AnimalAssembler().ConvertListENToModel(listaAnimal).ToList();
+
+            SessionClose();
+
+            return View(listaView);
         }
 
         // GET: Animal/Details/5
@@ -28,11 +44,14 @@ namespace WebProtectoraMilpatitas.Controllers
 
         // POST: Animal/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(AnimalViewModel ani)
         {
             try
             {
                 // TODO: Add insert logic here
+
+                AnimalCP animalCP = new AnimalCP();
+                animalCP.Nuevo(ani.Nombre, 3, 'f', "alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "carinyoso", 3);
 
                 return RedirectToAction("Index");
             }

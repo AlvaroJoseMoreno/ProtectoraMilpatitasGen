@@ -9,16 +9,24 @@ namespace WebProtectoraMilpatitas.Assemblers
 {
     public class AnimalAssembler
     {
-        public AnimalViewModel ConverENToModelUI(AnimalEN anim)
+        public AnimalViewModel ConvertENToModelUI(AnimalEN ani)
         {
             AnimalViewModel animal = new AnimalViewModel();
-
-            animal.Id = anim.Id;
-            animal.Nombre = anim.Nombre;
+            animal.Id = ani.Id;
+            animal.Nombre = ani.Nombre;
 
             return animal;
         }
 
+        public IList<AnimalViewModel> ConvertListENToModel(IList<AnimalEN> anims)
+        {
+            IList<AnimalViewModel> animales = new List<AnimalViewModel>();
 
+            foreach (AnimalEN ani in anims)
+            {
+                animales.Add(ConvertENToModelUI(ani));
+            }
+            return animales;
+        }
     }
 }
