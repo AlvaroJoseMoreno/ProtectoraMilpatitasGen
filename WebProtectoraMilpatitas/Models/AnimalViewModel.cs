@@ -14,7 +14,7 @@ namespace WebProtectoraMilpatitas.Models
             get;set;
         }
 
-        [Display(Prompt = "Descripcion del animal", Description= "Descripcion del animal", Name = "Nombre")]
+        [Display(Prompt = "Nombre del animal", Description= "Nombre del animal", Name = "Nombre")]
         [Required (ErrorMessage =  "Debe indicar un nombre para el animal")]
         [StringLength (maximumLength: 50, ErrorMessage ="El nombre del animal no puede tener mas de 50 caracteres")]
     
