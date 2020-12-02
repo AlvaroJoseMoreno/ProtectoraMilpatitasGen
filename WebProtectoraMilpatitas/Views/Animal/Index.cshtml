@@ -8,12 +8,22 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo Animal", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Edad)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Centro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Caracter)
         </th>
         <th></th>
     </tr>
