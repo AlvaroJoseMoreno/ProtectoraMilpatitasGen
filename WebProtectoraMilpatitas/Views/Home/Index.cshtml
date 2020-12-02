@@ -1,18 +1,57 @@
 ﻿@model IEnumerable<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN>
+
 @{
-    ViewBag.Title = "Protectora Milpatitas";
+    ViewBag.Title = "Index";
 }
 
-<h3>Ultimos animales</h3>
+<h2>Index</h2>
+@{ Html.Partial("Nombre del a vista a cargar")}
+<p>
+    @Html.ActionLink("Create New", "Create", "Animal")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Edad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Centro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Caracter)
+        </th>
+        <th></th>
+    </tr>
 
-<table>
-    @foreach (var item in Model)
-    {
+@foreach (var item in Model) {
     <tr>
         <td>
-           @Html.DisplayFor(modelItem->item.Nombre);
+            @Html.DisplayFor(modelItem => item.Nombre)
         </td>
-        <td>@Html.ActionLink("Ver Animal", "Animal", routeValues: new { id = item.Id }, htmlAttributes: null)</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Edad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Centro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Caracter)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
     </tr>
-    }
+}
+
 </table>
