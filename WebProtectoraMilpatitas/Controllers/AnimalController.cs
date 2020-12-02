@@ -51,7 +51,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 // TODO: Add insert logic here
 
                 AnimalCP animalCP = new AnimalCP();
-                animalCP.Nuevo(ani.Nombre, ani.Edad, 'f', ani.Centro, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "carinyoso", 3);
+                animalCP.Nuevo(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter, 3);
 
                 return RedirectToAction("Index");
             }

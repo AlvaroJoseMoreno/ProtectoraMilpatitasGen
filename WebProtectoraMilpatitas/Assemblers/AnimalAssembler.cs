@@ -14,6 +14,11 @@ namespace WebProtectoraMilpatitas.Assemblers
             AnimalViewModel animal = new AnimalViewModel();
             animal.Id = ani.Id;
             animal.Nombre = ani.Nombre;
+            animal.Edad = ani.Edad;
+            animal.Sexo = ani.Sexo;
+            animal.Centro = ani.Centro;
+            animal.Caracter = ani.Caracter;
+            animal.DatosMedicos = ani.DatosMedicos;
 
             return animal;
         }
