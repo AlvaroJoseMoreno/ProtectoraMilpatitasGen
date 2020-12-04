@@ -14,7 +14,9 @@ namespace WebProtectoraMilpatitas.Controllers
         {
             AnimalCEN animal = new AnimalCEN();
             IEnumerable<AnimalEN> listAni = animal.Dame_Todos(0, -1).ToList();
- 
+            UsuarioCEN usuario = new UsuarioCEN();
+            IEnumerable<UsuarioEN> listUsuas = usuario.Dame_Todos(0, -1).ToList();
+
             return View(listAni);
         }
 
