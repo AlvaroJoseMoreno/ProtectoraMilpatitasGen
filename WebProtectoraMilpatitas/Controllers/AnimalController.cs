@@ -84,7 +84,7 @@ namespace WebProtectoraMilpatitas.Controllers
         }
 
         // GET: Animal/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(AnimalViewModel ani)
         {
             return View();
         }
