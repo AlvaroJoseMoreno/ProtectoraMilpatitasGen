@@ -26,14 +26,14 @@ namespace WebProtectoraMilpatitas.Models
         [Display(Prompt = "Escritura del hogar", Description = "Escritura del hogar", Name = "Escritura del hogar")]
         [Required(ErrorMessage = "Debe indicar una escritura del hogar del usuario")]
         [StringLength(maximumLength: 30, ErrorMessage = "La escritura del hogar del usuario no puede tener mas de 30 caracteres")]
-        [RegularExpression(" ^[a - zA - Z0 - 9_\\.-] +\\.([a - zA - Z0 - 9 -] +\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "El formato de fichero no es valido")]
+        [RegularExpression(" ^[a-zA-Z0-9]+[.]{1}[a-zA-Z0-9] + $", ErrorMessage = "El formato de fichero no es valido")]
 
         public String EscrituraHogar { get; set; }
 
         [Display(Prompt = "Justificante del pago", Description = "Justificante del pago", Name = "Justificante del pago")]
         [Required(ErrorMessage = "Debe indicar un justificante del pago")]
         [StringLength(maximumLength: 30, ErrorMessage = "El justificante de pago del usuario no puede tener mas de 30 caracteres")]
-        [RegularExpression(" ^[a - zA - Z0 - 9_\\.-] +\\.([a - zA - Z0 - 9 -] +\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "El formato de fichero no es valido")]
+        //[RegularExpression(" ^[a - zA - Z0 - 9_\\.-] +[\\.]([a - zA - Z0 - 9 -] +\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "El formato de fichero no es valido")]
 
         public String JustificantePago { get; set; }
 

@@ -281,11 +281,12 @@
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Usuario\Create.cshtml" />
     <Content Include="Views\Animal\Delete.cshtml" />
+    <Content Include="Views\ContratoAdopcion\Index.cshtml" />
+    <Content Include="Views\ContratoAdopcion\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Basic\" />
-    <Folder Include="Views\ContratoAdopcion\" />
     <Folder Include="Views\SolicitudAdopcion\" />
   </ItemGroup>
   <ItemGroup>

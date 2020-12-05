@@ -51,7 +51,9 @@ namespace WebProtectoraMilpatitas.Controllers
                 // TODO: Add insert logic here
                 ContratoAdopcionCEN contCEN = new ContratoAdopcionCEN();
 
-                contCEN.Nuevo(con.)
+                //ver como pasar el animal y el usuario
+                contCEN.Nuevo("juanito", con.Id, 2);
+
                 return RedirectToAction("Index");
             }
             catch
