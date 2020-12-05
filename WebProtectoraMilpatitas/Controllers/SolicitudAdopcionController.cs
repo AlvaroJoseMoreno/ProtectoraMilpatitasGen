@@ -8,10 +8,20 @@ namespace WebProtectoraMilpatitas.Controllers
 {
     public class SolicitudAdopcionController : BasicController
     {
-        // GET: SolicitudAdopcion
         public ActionResult Index()
         {
-            return View();
+            SessionInitialize();
+
+            SolicitudAdopcionCAD conCAD = new SolicitudAdopcionCAD(session);
+            SolicitudAdopcionCEN conCEN = new SolicitudAdopcionCEN(conCAD);
+
+            IList<SolicitudAdopcionEN> contsEN = conCEN.Dame_Todos(0, -1);
+
+            IEnumerable<SolicitudAdopcionViewModel> listaSolicitudes = new SolicitudAdopcionAssembler().ConvertListENToModel(contsEN).ToList();
+
+            SessionClose();
+
+            return View(listaSolicitudes);
         }
 
         // GET: SolicitudAdopcion/Details/5
@@ -21,19 +31,21 @@ namespace WebProtectoraMilpatitas.Controllers
         }
 
         // GET: SolicitudAdopcion/Create
-        public ActionResult Create()
+        public ActionResult Create(int num, string nom)
         {
             return View();
         }
 
         // POST: SolicitudAdopcion/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(SolicitudAdopcionViewModel con)
         {
             try
             {
                 // TODO: Add insert logic here
+                SolicitudAdopcionCEN contCEN = new SolicitudAdopcionCEN();
 
+                contCEN.Nuevo(con.)
                 return RedirectToAction("Index");
             }
             catch
