@@ -198,20 +198,26 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Assemblers\AnimalAssembler.cs" />
+    <Compile Include="Assemblers\ContratoAdopcionAssembler.cs" />
+    <Compile Include="Assemblers\SolicitudAdopcionAssembler.cs" />
     <Compile Include="Assemblers\UsuarioAssembler.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnimalController.cs" />
     <Compile Include="Controllers\BasicController.cs" />
+    <Compile Include="Controllers\ContratoAdopcionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SolicitudAdopcionController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AnimalViewModel.cs" />
+    <Compile Include="Models\ContratoAdopcionViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\SolicitudAdopcionViewModel.cs" />
     <Compile Include="Models\UsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -278,6 +284,10 @@
     <Content Include="Views\Usuario\Create.cshtml" />
     <Content Include="Views\Animal\Delete.cshtml" />
     <Content Include="Views\Animal\Edit.cshtml" />
+    <Content Include="Views\Usuario\Delete.cshtml" />
+    <Content Include="Views\Usuario\Edit.cshtml" />
+    <Content Include="Views\ContratoAdopcion\Create.cshtml" />
+    <Content Include="Views\ContratoAdopcion\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

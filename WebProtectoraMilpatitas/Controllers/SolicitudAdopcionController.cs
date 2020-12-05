@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
+using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
+using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
+using WebProtectoraMilpatitas.Assemblers;
+using WebProtectoraMilpatitas.Models;
 
 namespace WebProtectoraMilpatitas.Controllers
 {
@@ -12,12 +17,12 @@ namespace WebProtectoraMilpatitas.Controllers
         {
             SessionInitialize();
 
-            SolicitudAdopcionCAD conCAD = new SolicitudAdopcionCAD(session);
-            SolicitudAdopcionCEN conCEN = new SolicitudAdopcionCEN(conCAD);
+            SolicitudAdopcionCAD solCAD = new SolicitudAdopcionCAD(session);
+            SolicitudAdopcionCEN solCEN = new SolicitudAdopcionCEN(solCAD);
 
-            IList<SolicitudAdopcionEN> contsEN = conCEN.Dame_Todos(0, -1);
+            IList<SolicitudAdopcionEN> solsEN = solCEN.Dame_Todas(0, -1);
 
-            IEnumerable<SolicitudAdopcionViewModel> listaSolicitudes = new SolicitudAdopcionAssembler().ConvertListENToModel(contsEN).ToList();
+            IEnumerable<SolicitudAdopcionViewModel> listaSolicitudes = new SolicitudAdopcionAssembler().ConvertListENToModel(solsEN).ToList();
 
             SessionClose();
 
@@ -38,14 +43,14 @@ namespace WebProtectoraMilpatitas.Controllers
 
         // POST: SolicitudAdopcion/Create
         [HttpPost]
-        public ActionResult Create(SolicitudAdopcionViewModel con)
+        public ActionResult Create(SolicitudAdopcionViewModel sol)
         {
             try
             {
                 // TODO: Add insert logic here
-                SolicitudAdopcionCEN contCEN = new SolicitudAdopcionCEN();
+                SolicitudAdopcionCEN soliCEN = new SolicitudAdopcionCEN();
 
-                contCEN.Nuevo(con.)
+              //  soliCEN.Nuevo(sol.Nombre, sol.)
                 return RedirectToAction("Index");
             }
             catch
