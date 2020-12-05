@@ -86,16 +86,19 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Animal/Delete/5
         public ActionResult Delete(int id)
         {
+            AnimalCEN animalCEN = new AnimalCEN();
+            animalCEN.Eliminar(id);
             return View();
         }
 
         // POST: Animal/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(AnimalViewModel ani)
         {
             try
             {
                 // TODO: Add delete logic here
+                
 
                 return RedirectToAction("Index");
             }
