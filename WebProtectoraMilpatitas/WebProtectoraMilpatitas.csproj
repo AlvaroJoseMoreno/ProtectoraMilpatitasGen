@@ -278,6 +278,8 @@
     <Content Include="Views\Usuario\Create.cshtml" />
     <Content Include="Views\Animal\Delete.cshtml" />
     <Content Include="Views\Animal\Edit.cshtml" />
+    <Content Include="Views\SolicitudAdopcion\Create.cshtml" />
+    <Content Include="Views\SolicitudAdopcion\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

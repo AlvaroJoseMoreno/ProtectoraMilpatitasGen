@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -43,16 +44,13 @@ namespace WebProtectoraMilpatitas.Models
         [Required(ErrorMessage = "Debe indicar un motivo mínimo para adoptar")]
         [StringLength(maximumLength: 100, ErrorMessage = "La descripción del motivo no puede superar los 100 caracteres")]
 
-        public String TiempoLibre { get; set; }
+        public String MotivosAdopcion { get; set; }
 
 
         [Display(Prompt = "Estado de solicitud", Description = "Estado de solicitud animal", Name = "Estado de solicitud")]
         [Required(ErrorMessage = "Debe indicar un estado de solicitud de animal")]
 
-        public ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSolicitudEnum EstadoSolicitud { get; set; }
-
-    }
-}
+        public ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum EstadoSolicitud { get; set; }
 
     }
 }

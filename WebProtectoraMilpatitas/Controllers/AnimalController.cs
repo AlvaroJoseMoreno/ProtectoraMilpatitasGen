@@ -1,4 +1,4 @@
-﻿using System;
+﻿sing System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -64,25 +64,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Animal/Edit/5
         public ActionResult Edit(int id)
         {
-            AnimalViewModel ani = null;
-            SessionInitialize();
-            AnimalEN aniEN = new AnimalCAD(session).ReadOIDDefault(id);
-            ani = new AnimalAssembler().ConvertENToModelUI(aniEN);
-            SessionClose();
-            return View(ani);
+            return View();
         }
 
         // POST: Animal/Edit/5
         [HttpPost]
-        public ActionResult Edit(AnimalViewModel ani)
+        public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add update logic here
-                AnimalCEN animalCEN = new AnimalCEN();
-                animalCEN.Modificar(ani.Id, ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.Caracter);
+
                 return RedirectToAction("Index");
-       
             }
             catch
             {
@@ -93,16 +86,9 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Animal/Delete/5
         public ActionResult Delete(int id)
         {
-            try
-            {
-                AnimalCEN animalCEN = new AnimalCEN();
-                animalCEN.Eliminar(id);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            AnimalCEN animalCEN = new AnimalCEN();
+            animalCEN.Eliminar(id);
+            return View();
         }
 
         // POST: Animal/Delete/5
@@ -112,6 +98,7 @@ namespace WebProtectoraMilpatitas.Controllers
             try
             {
                 // TODO: Add delete logic here
+                
 
                 return RedirectToAction("Index");
             }
