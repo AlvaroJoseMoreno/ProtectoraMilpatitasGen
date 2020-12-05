@@ -26,6 +26,8 @@ namespace WebProtectoraMilpatitas.Models
         [Display(Prompt = "Sexo del animal", Description = "Sexo del animal", Name = "Sexo")]
         [Required(ErrorMessage = "Debe indicar un sexo para el animal")]
         [RegularExpression("^[MH]{1}$", ErrorMessage = "Marca M si es macho y H si es hembra")]
+        //como cerrar un char
+        //   [StringLength(maximumLength: 1, ErrorMessage = "El sexo del animal no puede tener mas de 1 caracter")]
 
         public char Sexo { get; set; }
 
