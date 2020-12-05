@@ -64,18 +64,25 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Animal/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            AnimalViewModel ani = null;
+            SessionInitialize();
+            AnimalEN aniEN = new AnimalCAD(session).ReadOIDDefault(id);
+            ani = new AnimalAssembler().ConvertENToModelUI(aniEN);
+            SessionClose();
+            return View(ani);
         }
 
         // POST: Animal/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(AnimalViewModel ani)
         {
             try
             {
                 // TODO: Add update logic here
-
+                AnimalCEN animalCEN = new AnimalCEN();
+                animalCEN.Modificar(ani.Id, ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.Caracter);
                 return RedirectToAction("Index");
+       
             }
             catch
             {
@@ -86,9 +93,16 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Animal/Delete/5
         public ActionResult Delete(int id)
         {
-            AnimalCEN animalCEN = new AnimalCEN();
-            animalCEN.Eliminar(id);
-            return View();
+            try
+            {
+                AnimalCEN animalCEN = new AnimalCEN();
+                animalCEN.Eliminar(id);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         // POST: Animal/Delete/5
@@ -98,7 +112,6 @@ namespace WebProtectoraMilpatitas.Controllers
             try
             {
                 // TODO: Add delete logic here
-                
 
                 return RedirectToAction("Index");
             }

@@ -83,19 +83,30 @@ namespace WebProtectoraMilpatitas.Controllers
         }
 
         // GET: Usuario/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Usuario/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(string email)
         {
             try
             {
                 // TODO: Add delete logic here
+                UsuarioCEN usucen = new UsuarioCEN();
+                usucen.Eliminar(email);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
+        // POST: Usuario/Delete/5
+        [HttpPost]
+        public ActionResult Delete(UsuarioViewModel usuario)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                UsuarioCEN usucen = new UsuarioCEN();
+                usucen.Eliminar(usuario.Email);
                 return RedirectToAction("Index");
             }
             catch
