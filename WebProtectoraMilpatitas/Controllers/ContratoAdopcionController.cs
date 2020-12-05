@@ -5,54 +5,53 @@ using System.Web;
 using System.Web.Mvc;
 using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
-using ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 using WebProtectoraMilpatitas.Assemblers;
 using WebProtectoraMilpatitas.Models;
 
 namespace WebProtectoraMilpatitas.Controllers
 {
-    public class AnimalController : BasicController
+    public class ContratoAdopcionController : BasicController
     {
-        // GET: Animal
+        // GET: ContratoAdopcion
         public ActionResult Index()
         {
             SessionInitialize();
 
-            AnimalCAD animalCAD = new AnimalCAD(session);
-            AnimalCEN animalCEN = new AnimalCEN(animalCAD);
+            ContratoAdopcionCAD conCAD = new ContratoAdopcionCAD(session);
+            ContratoAdopcionCEN conCEN = new ContratoAdopcionCEN(conCAD);
 
-            IList<AnimalEN> listaAnimal = animalCEN.Dame_Todos(0, -1);
-            IEnumerable<AnimalViewModel> listaView = new AnimalAssembler().ConvertListENToModel(listaAnimal).ToList();
+            IList<ContratoAdopcionEN> contsEN = conCEN.Dame_Todos(0, -1);
+
+            IEnumerable<ContratoAdopcionViewModel> listaContratos = new ContratoAdopcionAssembler().ConvertListENToModel(contsEN).ToList();
 
             SessionClose();
 
-            return View(listaView);
+            return View(listaContratos);
         }
 
-        // GET: Animal/Details/5
+        // GET: ContratoAdopcion/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Animal/Create
+        // GET: ContratoAdopcion/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Animal/Create
+        // POST: ContratoAdopcion/Create
         [HttpPost]
-        public ActionResult Create(AnimalViewModel ani)
+        public ActionResult Create(ContratoAdopcionViewModel con)
         {
             try
             {
                 // TODO: Add insert logic here
+                ContratoAdopcionCEN contCEN = new ContratoAdopcionCEN();
 
-                AnimalCP animalCP = new AnimalCP();
-                animalCP.Nuevo(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter, 3);
-
+                contCEN.Nuevo(con.)
                 return RedirectToAction("Index");
             }
             catch
@@ -61,13 +60,13 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
-        // GET: Animal/Edit/5
+        // GET: ContratoAdopcion/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Animal/Edit/5
+        // POST: ContratoAdopcion/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -83,22 +82,19 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
-        // GET: Animal/Delete/5
+        // GET: ContratoAdopcion/Delete/5
         public ActionResult Delete(int id)
         {
-            AnimalCEN animalCEN = new AnimalCEN();
-            animalCEN.Eliminar(id);
             return View();
         }
 
-        // POST: Animal/Delete/5
+        // POST: ContratoAdopcion/Delete/5
         [HttpPost]
-        public ActionResult Delete(AnimalViewModel ani)
+        public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
-                
 
                 return RedirectToAction("Index");
             }

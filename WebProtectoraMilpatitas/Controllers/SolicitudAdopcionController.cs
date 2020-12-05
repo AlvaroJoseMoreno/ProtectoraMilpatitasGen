@@ -3,55 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
-using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
-using ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas;
-using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
-using WebProtectoraMilpatitas.Assemblers;
-using WebProtectoraMilpatitas.Models;
 
 namespace WebProtectoraMilpatitas.Controllers
 {
-    public class AnimalController : BasicController
+    public class SolicitudAdopcionController : BasicController
     {
-        // GET: Animal
+        // GET: SolicitudAdopcion
         public ActionResult Index()
         {
-            SessionInitialize();
-
-            AnimalCAD animalCAD = new AnimalCAD(session);
-            AnimalCEN animalCEN = new AnimalCEN(animalCAD);
-
-            IList<AnimalEN> listaAnimal = animalCEN.Dame_Todos(0, -1);
-            IEnumerable<AnimalViewModel> listaView = new AnimalAssembler().ConvertListENToModel(listaAnimal).ToList();
-
-            SessionClose();
-
-            return View(listaView);
+            return View();
         }
 
-        // GET: Animal/Details/5
+        // GET: SolicitudAdopcion/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Animal/Create
+        // GET: SolicitudAdopcion/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Animal/Create
+        // POST: SolicitudAdopcion/Create
         [HttpPost]
-        public ActionResult Create(AnimalViewModel ani)
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
                 // TODO: Add insert logic here
-
-                AnimalCP animalCP = new AnimalCP();
-                animalCP.Nuevo(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter, 3);
 
                 return RedirectToAction("Index");
             }
@@ -61,13 +42,13 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
-        // GET: Animal/Edit/5
+        // GET: SolicitudAdopcion/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Animal/Edit/5
+        // POST: SolicitudAdopcion/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -83,22 +64,19 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
-        // GET: Animal/Delete/5
+        // GET: SolicitudAdopcion/Delete/5
         public ActionResult Delete(int id)
         {
-            AnimalCEN animalCEN = new AnimalCEN();
-            animalCEN.Eliminar(id);
             return View();
         }
 
-        // POST: Animal/Delete/5
+        // POST: SolicitudAdopcion/Delete/5
         [HttpPost]
-        public ActionResult Delete(AnimalViewModel ani)
+        public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
                 // TODO: Add delete logic here
-                
 
                 return RedirectToAction("Index");
             }
