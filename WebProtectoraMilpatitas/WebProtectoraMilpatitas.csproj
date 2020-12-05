@@ -8,7 +8,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{383E665A-213E-4227-9268-6D2B217F889D}</ProjectGuid>
+    <ProjectGuid>{5BF730E3-A6FE-4EF8-A75A-A9E0CCDFFAA3}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -47,38 +47,38 @@
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ProtectoraMilpatitasGenNHibernate\AppLib\Antlr3.Runtime.dll</HintPath>
+      <HintPath>..\..\..\ProtectoraMilpatitasGen\ProtectoraMilpatitasGenNHibernate\AppLib\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Castle.DynamicProxy2">
-      <HintPath>..\ProtectoraMilpatitasGenNHibernate\AppLib\Castle.DynamicProxy2.dll</HintPath>
+      <HintPath>..\..\..\ProtectoraMilpatitasGen\ProtectoraMilpatitasGenNHibernate\AppLib\Castle.DynamicProxy2.dll</HintPath>
     </Reference>
     <Reference Include="Iesi.Collections">
-      <HintPath>..\ProtectoraMilpatitasGenNHibernate\AppLib\Iesi.Collections.dll</HintPath>
+      <HintPath>..\..\..\ProtectoraMilpatitasGen\ProtectoraMilpatitasGenNHibernate\AppLib\Iesi.Collections.dll</HintPath>
     </Reference>
     <Reference Include="jose-jwt">
-      <HintPath>..\ProtectoraMilpatitasGenNHibernate\AppLib\jose-jwt.dll</HintPath>
+      <HintPath>..\..\..\ProtectoraMilpatitasGen\ProtectoraMilpatitasGenNHibernate\AppLib\jose-jwt.dll</HintPath>
     </Reference>
     <Reference Include="LinFu.DynamicProxy">
-      <HintPath>..\ProtectoraMilpatitasGenNHibernate\AppLib\LinFu.DynamicProxy.dll</HintPath>
+      <HintPath>..\..\..\ProtectoraMilpatitasGen\ProtectoraMilpatitasGenNHibernate\AppLib\LinFu.DynamicProxy.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>..\ProtectoraMilpatitasGenNHibernate\AppLib\log4net.dll</HintPath>
+      <HintPath>..\..\..\ProtectoraMilpatitasGen\ProtectoraMilpatitasGenNHibernate\AppLib\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="NHibernate">
-      <HintPath>..\ProtectoraMilpatitasGenNHibernate\AppLib\NHibernate.dll</HintPath>
+      <HintPath>..\..\..\ProtectoraMilpatitasGen\ProtectoraMilpatitasGenNHibernate\AppLib\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate.ByteCode.Castle">
-      <HintPath>..\ProtectoraMilpatitasGenNHibernate\AppLib\NHibernate.ByteCode.Castle.dll</HintPath>
+      <HintPath>..\..\..\ProtectoraMilpatitasGen\ProtectoraMilpatitasGenNHibernate\AppLib\NHibernate.ByteCode.Castle.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate.ByteCode.LinFu">
-      <HintPath>..\ProtectoraMilpatitasGenNHibernate\AppLib\NHibernate.ByteCode.LinFu.dll</HintPath>
+      <HintPath>..\..\..\ProtectoraMilpatitasGen\ProtectoraMilpatitasGenNHibernate\AppLib\NHibernate.ByteCode.LinFu.dll</HintPath>
     </Reference>
     <Reference Include="nunit.core">
-      <HintPath>..\ProtectoraMilpatitasGenNHibernate\AppLib\nunit.core.dll</HintPath>
+      <HintPath>..\..\..\ProtectoraMilpatitasGen\ProtectoraMilpatitasGenNHibernate\AppLib\nunit.core.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>..\ProtectoraMilpatitasGenNHibernate\AppLib\nunit.framework.dll</HintPath>
+      <HintPath>..\..\..\ProtectoraMilpatitasGen\ProtectoraMilpatitasGenNHibernate\AppLib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -257,6 +257,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -269,29 +270,29 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Animal\Index.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Animal\Create.cshtml" />
-    <Content Include="Views\Usuario\Index.cshtml" />
-    <Content Include="Views\Usuario\Create.cshtml" />
     <Content Include="Views\Animal\Delete.cshtml" />
     <Content Include="Views\Animal\Edit.cshtml" />
+    <Content Include="Views\Animal\Index.cshtml" />
+    <Content Include="Views\Usuario\Create.cshtml" />
     <Content Include="Views\Usuario\Delete.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\ContratoAdopcion\Create.cshtml" />
     <Content Include="Views\ContratoAdopcion\Index.cshtml" />
+    <Content Include="Views\SolicitudAdopcion\Index.cshtml" />
+    <Content Include="Views\SolicitudAdopcion\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Basic\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -328,7 +329,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>55170</DevelopmentServerPort>
+          <DevelopmentServerPort>54701</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>https://localhost:44303/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
