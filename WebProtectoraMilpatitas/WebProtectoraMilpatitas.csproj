@@ -294,7 +294,9 @@
     <Content Include="Views\SolicitudAdopcion\Index.cshtml" />
     <Content Include="Views\SolicitudAdopcion\Create.cshtml" />
     <Content Include="Views\Seguimiento\Index.cshtml" />
-    <Content Include="Views\Seguimiento\Create.cshtml" />
+    <Content Include="Views\ContratoAdopcion\Edit.cshtml" />
+    <Content Include="Views\ContratoAdopcion\Details.cshtml" />
+    <Content Include="Views\ContratoAdopcion\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

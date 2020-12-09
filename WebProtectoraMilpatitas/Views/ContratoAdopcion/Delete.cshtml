@@ -1,0 +1,73 @@
+﻿@model WebProtectoraMilpatitas.Models.ContratoAdopcionViewModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ContratoAdopcionViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DNI_NIF_Pasaporte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DNI_NIF_Pasaporte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EscrituraHogar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EscrituraHogar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JustificantePago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JustificantePago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LugarRecojida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LugarRecojida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirmaCompromiso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirmaCompromiso)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
