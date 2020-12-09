@@ -21,6 +21,10 @@ namespace WebProtectoraMilpatitas.Assemblers
             contrato.FirmaCompromiso = con.FirmaCompromiso;
             contrato.Estado = con.Estado;
 
+            contrato.idUsuario = con.Usuario.Email;
+            contrato.idAnimal = con.Animal.Id;
+            contrato.idSolicitud = con.SolicitudAdopcion.Id;
+
             return contrato;
         }
 
