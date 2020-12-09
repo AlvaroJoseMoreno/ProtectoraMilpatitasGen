@@ -36,9 +36,9 @@
             @Html.DisplayFor(modelItem => item.Password)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Email }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Email }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Email })
+            @Html.ActionLink("Edit", "Edit", new { email = item.Email }) |
+            @Html.ActionLink("Details", "Details", new { email = item.Email }) |
+            @Html.ActionLink("Delete", "Delete", new { email = item.Email })
         </td>
     </tr>
 }

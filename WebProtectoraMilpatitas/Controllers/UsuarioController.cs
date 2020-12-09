@@ -31,7 +31,7 @@ namespace WebProtectoraMilpatitas.Controllers
         }
 
         // GET: Usuario/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string email)
         {
             return View();
         }
@@ -61,12 +61,12 @@ namespace WebProtectoraMilpatitas.Controllers
         }
 
         // GET: Usuario/Edit/5
-        public ActionResult Edit(String id)
+        public ActionResult Edit(String email)
         {
             //esto no funciona bien
             UsuarioViewModel usu = null;
             SessionInitialize();
-            UsuarioEN usuEN = new UsuarioCAD(session).Dame_Por_Email(id);
+            UsuarioEN usuEN = new UsuarioCAD(session).Dame_Por_Email(email);
             usu = new UsuarioAssembler().ConvertENToModelUI(usuEN);
             SessionClose();
             return View(usu);
@@ -90,14 +90,14 @@ namespace WebProtectoraMilpatitas.Controllers
         }
 
         // GET: Usuario/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(string email)
         {
             try
             {
                 //El delete de usuario no funciona
                 // TODO: Add delete logic here
                 UsuarioCEN usucen = new UsuarioCEN();
-                usucen.Eliminar(id);
+                usucen.Eliminar(email);
                 return RedirectToAction("Index");
             }
             catch
