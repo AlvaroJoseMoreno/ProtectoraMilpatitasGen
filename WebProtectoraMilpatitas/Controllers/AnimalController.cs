@@ -64,17 +64,23 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Animal/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            AnimalViewModel ani = null;
+            SessionInitialize();
+            AnimalEN artEN = new AnimalCAD(session).ReadOIDDefault(id);
+            ani = new AnimalAssembler().ConvertENToModelUI(artEN);
+            SessionClose();
+            return View(ani);
         }
 
         // POST: Animal/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(AnimalViewModel ani)
         {
             try
             {
                 // TODO: Add update logic here
-
+                AnimalCEN anicen = new AnimalCEN();
+                anicen.Modificar(ani.Id,ani.Nombre,ani.Edad,ani.Sexo,ani.Centro,ani.Caracter);
                 return RedirectToAction("Index");
             }
             catch
