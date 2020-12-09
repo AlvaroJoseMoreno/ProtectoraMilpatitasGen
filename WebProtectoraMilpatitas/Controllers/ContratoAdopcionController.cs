@@ -33,7 +33,17 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: ContratoAdopcion/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            ContratoAdopcionViewModel con = null;
+
+            SessionInitialize();
+
+            ContratoAdopcionEN conEN = new ContratoAdopcionCAD(session).ReadOIDDefault(id);
+
+            con = new ContratoAdopcionAssembler().ConvertENToModelUI(conEN);
+
+            SessionClose();
+
+            return View(con);
         }
 
         // GET: ContratoAdopcion/Create
@@ -95,16 +105,29 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: ContratoAdopcion/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            ContratoAdopcionViewModel con = null;
+
+            SessionInitialize();
+
+            ContratoAdopcionEN conEN = new ContratoAdopcionCAD(session).ReadOIDDefault(id);
+
+            con = new ContratoAdopcionAssembler().ConvertENToModelUI(conEN);
+
+            SessionClose();
+
+            return View(con);
         }
 
         // POST: ContratoAdopcion/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(ContratoAdopcionViewModel con)
         {
             try
             {
                 // TODO: Add update logic here
+                ContratoAdopcionCEN conCEN = new ContratoAdopcionCEN();
+
+                conCEN.Rellenar_Contrato(con.Id, con.Nombre, con.DNI_NIF_Pasaporte, con.EscrituraHogar, con.JustificantePago, con.LugarRecojida, con.FirmaCompromiso);
 
                 return RedirectToAction("Index");
             }
@@ -117,7 +140,17 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: ContratoAdopcion/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            try
+            {
+                ContratoAdopcionCEN conCEN = new ContratoAdopcionCEN();
+
+                conCEN.Eliminar(id);
+
+                return RedirectToAction("Index");
+            } catch
+            {
+                return View();
+            } 
         }
 
         // POST: ContratoAdopcion/Delete/5
