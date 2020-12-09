@@ -39,7 +39,7 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: ContratoAdopcion/Create
         public ActionResult Create()
         {
-            IList<UsuarioEN> listaUsuarios = new UsuarioCEN.Dame_Todos(0,-1);
+            IList<UsuarioEN> listaUsuarios = new UsuarioCEN().Dame_Todos(0, -1);
             IList<SelectListItem> usuariosItems = new List<SelectListItem>();
 
             foreach (UsuarioEN usu in listaUsuarios)
@@ -49,7 +49,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
             ViewData["idUsuario"] = usuariosItems;
 
-            IList<SolicitudAdopcionEN> listaSolicitudes = new SolicitudAdopcionCEN.Dame_Todas(0, -1);
+            IList<SolicitudAdopcionEN> listaSolicitudes = new SolicitudAdopcionCEN().Dame_Todas(0, -1);
             IList<SelectListItem> solicitudesItems = new List<SelectListItem>();
 
             foreach (SolicitudAdopcionEN sol in listaSolicitudes)
@@ -59,7 +59,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
             ViewData["idSolicitud"] = solicitudesItems;
 
-            IList<AnimalEN> listaAnimales = new AnimalCEN.Dame_Todos(0, -1);
+            IList<AnimalEN> listaAnimales = new AnimalCEN().Dame_Todos(0, -1);
             IList<SelectListItem> animalesItems = new List<SelectListItem>();
 
             foreach (AnimalEN ani in listaAnimales)
@@ -82,7 +82,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 ContratoAdopcionCEN contCEN = new ContratoAdopcionCEN();
 
                 //ver como pasar el animal y el usuario
-                contCEN.Nuevo("juanito", con.Id, 2);
+                contCEN.Nuevo(con.idUsuario, con.idSolicitud, con.idAnimal);
 
                 return RedirectToAction("Index");
             }

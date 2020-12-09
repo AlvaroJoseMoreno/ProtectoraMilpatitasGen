@@ -52,5 +52,20 @@ namespace WebProtectoraMilpatitas.Models
         [Required(ErrorMessage = "Debe indicar un estado del contrato")]
 
         public ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum Estado { get; set; }
+
+        [ScaffoldColumn(false)]
+        [Display(Prompt = "Usuario para el contrato", Description = "Usuario para el contrato", Name = "Usuario")]
+
+        public string idUsuario { get; set; }
+
+        [ScaffoldColumn(false)]
+        [Display(Prompt = "Animal para el contrato", Description = "Animal para el contrato", Name = "Animal")]
+
+        public int idAnimal { get; set; }
+
+        [ScaffoldColumn(false)]
+        [Display(Prompt = "Solicitud para el contrato", Description = "Solicitud para el contrato", Name = "Solicitud")]
+
+        public int idSolicitud { get; set; }
     }
 }
