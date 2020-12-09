@@ -199,6 +199,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Assemblers\AnimalAssembler.cs" />
     <Compile Include="Assemblers\ContratoAdopcionAssembler.cs" />
+    <Compile Include="Assemblers\SeguimientoAssembler.cs" />
     <Compile Include="Assemblers\SolicitudAdopcionAssembler.cs" />
     <Compile Include="Assemblers\UsuarioAssembler.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -207,6 +208,7 @@
     <Compile Include="Controllers\ContratoAdopcionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SeguimientoController.cs" />
     <Compile Include="Controllers\SolicitudAdopcionController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -217,6 +219,7 @@
     <Compile Include="Models\ContratoAdopcionViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\SeguimientoViewModel.cs" />
     <Compile Include="Models\SolicitudAdopcionViewModel.cs" />
     <Compile Include="Models\UsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -290,6 +293,7 @@
     <Content Include="Views\ContratoAdopcion\Index.cshtml" />
     <Content Include="Views\SolicitudAdopcion\Index.cshtml" />
     <Content Include="Views\SolicitudAdopcion\Create.cshtml" />
+    <Content Include="Views\Seguimiento\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
