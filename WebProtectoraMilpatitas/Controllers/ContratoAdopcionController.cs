@@ -39,6 +39,36 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: ContratoAdopcion/Create
         public ActionResult Create()
         {
+            IList<UsuarioEN> listaUsuarios = new UsuarioCEN.Dame_Todos(0,-1);
+            IList<SelectListItem> usuariosItems = new List<SelectListItem>();
+
+            foreach (UsuarioEN usu in listaUsuarios)
+            {
+                usuariosItems.Add(new SelectListItem { Text = usu.Nombre, Value = usu.Email });
+            }
+
+            ViewData["idUsuario"] = usuariosItems;
+
+            IList<SolicitudAdopcionEN> listaSolicitudes = new SolicitudAdopcionCEN.Dame_Todas(0, -1);
+            IList<SelectListItem> solicitudesItems = new List<SelectListItem>();
+
+            foreach (SolicitudAdopcionEN sol in listaSolicitudes)
+            {
+                solicitudesItems.Add(new SelectListItem { Text = sol.Nombre, Value = sol.Id.ToString() });
+            }
+
+            ViewData["idSolicitud"] = solicitudesItems;
+
+            IList<AnimalEN> listaAnimales = new AnimalCEN.Dame_Todos(0, -1);
+            IList<SelectListItem> animalesItems = new List<SelectListItem>();
+
+            foreach (AnimalEN ani in listaAnimales)
+            {
+                animalesItems.Add(new SelectListItem { Text = ani.Nombre, Value = ani.Id.ToString() });
+            }
+
+            ViewData["idAnimal"] = animalesItems;
+
             return View();
         }
 
