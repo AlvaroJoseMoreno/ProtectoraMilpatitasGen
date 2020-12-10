@@ -11,6 +11,7 @@ using WebProtectoraMilpatitas.Models;
 
 namespace WebProtectoraMilpatitas.Controllers
 {
+    //[Authorize]
     public class ContratoAdopcionController : BasicController
     {
         // GET: ContratoAdopcion
