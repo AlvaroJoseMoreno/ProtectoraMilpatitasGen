@@ -1,0 +1,67 @@
+﻿@model WebProtectoraMilpatitas.Models.SolicitudAdopcionViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SolicitudAdopcionViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnimalesAcargo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnimalesAcargo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AmbienteConvivencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AmbienteConvivencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TiempoLibre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TiempoLibre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TodosAcuerdo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TodosAcuerdo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MotivosAdopcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MotivosAdopcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
