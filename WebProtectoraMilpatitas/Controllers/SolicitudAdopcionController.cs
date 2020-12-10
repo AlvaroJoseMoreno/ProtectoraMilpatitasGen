@@ -37,8 +37,29 @@ namespace WebProtectoraMilpatitas.Controllers
         }
 
         // GET: SolicitudAdopcion/Create
-        public ActionResult Create(int num, string nom)
+        public ActionResult Create()
         {
+            IList<UsuarioEN> listausuarios = new UsuarioCEN().Dame_Todos(0, -1);
+            IList<SelectListItem> usuariositems = new List<SelectListItem>();
+
+            foreach (UsuarioEN usu in listausuarios)
+            {
+                usuariositems.Add(new SelectListItem { Text = usu.Nombre, Value = usu.Email });
+
+            }
+
+            ViewData["idUsuario"] = usuariositems;
+
+            IList<AnimalEN> listaAnimales = new AnimalCEN().Dame_Todos(0, -1);
+            IList<SelectListItem> animalesItems = new List<SelectListItem>();
+
+            foreach (AnimalEN ani in listaAnimales)
+            {
+                animalesItems.Add(new SelectListItem { Text = ani.Nombre, Value = ani.Id.ToString() });
+            }
+
+            ViewData["idAnimal"] = animalesItems;
+
             return View();
         }
 
@@ -51,7 +72,8 @@ namespace WebProtectoraMilpatitas.Controllers
                 // TODO: Add insert logic here
                 SolicitudAdopcionCEN soliCEN = new SolicitudAdopcionCEN();
 
-              //  soliCEN.Nuevo(sol.Nombre, sol.)
+                soliCEN.Nuevo(sol.idUsuario, sol.idAnimal);
+
                 return RedirectToAction("Index");
             }
             catch

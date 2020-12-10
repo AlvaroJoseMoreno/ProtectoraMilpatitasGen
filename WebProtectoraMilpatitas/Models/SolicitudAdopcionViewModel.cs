@@ -52,5 +52,18 @@ namespace WebProtectoraMilpatitas.Models
 
         public ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum Estado { get; set; }
 
+        [ScaffoldColumn(false)]
+
+        [Display(Prompt = "Usuario solicitante", Description = "Usuario que solicita adopción", Name = "Usuario")]
+
+        public string idUsuario { get; set; }
+
+        [ScaffoldColumn(false)]
+
+        [Display(Prompt = "Animal Solicitado", Description = "Animal que solicitan en adopción", Name = "Animal")]
+
+        public int idAnimal { get; set; }
+
+
     }
 }
