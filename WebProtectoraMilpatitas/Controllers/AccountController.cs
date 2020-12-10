@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
 using WebProtectoraMilpatitas.Models;
 
 namespace WebProtectoraMilpatitas.Controllers
@@ -79,7 +80,21 @@ namespace WebProtectoraMilpatitas.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    UsuarioCEN usuCEN = new UsuarioCEN();
+
+                    string token = usuCEN.Iniciar_Sesion(model.Email, model.Password);
+
+                    if (token!=null)
+                    {
+                        return RedirectToLocal(returnUrl);
+                    } else
+                    {
+                        ModelState.AddModelError("", "Fallo al iniciar sesion");
+
+                        return View(model);
+                    }
+
+                    
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -147,7 +162,7 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(UsuarioViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -156,7 +171,11 @@ namespace WebProtectoraMilpatitas.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
+                    UsuarioCEN usuCEN = new UsuarioCEN();
+
+                    usuCEN.Registrarse(model.Nombre, model.Email, model.Password);
+
                     // Para obtener más información sobre cómo habilitar la confirmación de cuentas y el restablecimiento de contraseña, visite https://go.microsoft.com/fwlink/?LinkID=320771
                     // Enviar correo electrónico con este vínculo
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace WebProtectoraMilpatitas.Models
 {
-    public class UsuarioViewModel
+    public class UsuarioViewModel : RegisterViewModel
     {
         
         [Display(Prompt = "Nombre del usuario", Description = "Nombre de usuario", Name = "Nombre")]
