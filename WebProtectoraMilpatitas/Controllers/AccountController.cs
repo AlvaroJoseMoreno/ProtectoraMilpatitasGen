@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -9,6 +10,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
+using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 using WebProtectoraMilpatitas.Models;
 
 namespace WebProtectoraMilpatitas.Controllers
@@ -83,6 +85,10 @@ namespace WebProtectoraMilpatitas.Controllers
                     UsuarioCEN usuCEN = new UsuarioCEN();
 
                     string token = usuCEN.Iniciar_Sesion(model.Email, model.Password);
+
+                    UsuarioEN usuario = usuCEN.Dame_Por_Email(model.Email);
+
+                    Session["Usuario"] = usuario;
 
                     if (token!=null)
                     {
@@ -175,6 +181,8 @@ namespace WebProtectoraMilpatitas.Controllers
                     UsuarioCEN usuCEN = new UsuarioCEN();
 
                     usuCEN.Registrarse(model.Nombre, model.Email, model.Password);
+
+                    Session["Usuario"] = usuCEN.Dame_Por_Email(model.Email);
 
                     // Para obtener más información sobre cómo habilitar la confirmación de cuentas y el restablecimiento de contraseña, visite https://go.microsoft.com/fwlink/?LinkID=320771
                     // Enviar correo electrónico con este vínculo
