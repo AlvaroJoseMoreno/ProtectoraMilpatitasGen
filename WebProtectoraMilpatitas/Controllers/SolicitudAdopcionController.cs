@@ -33,7 +33,17 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: SolicitudAdopcion/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            SolicitudAdopcionViewModel sol = null;
+
+            SessionInitialize();
+
+            SolicitudAdopcionEN solEN = new SolicitudAdopcionCAD(session).ReadOIDDefault(id);
+
+            sol = new SolicitudAdopcionAssembler().ConvertENToModelUI(solEN);
+
+            SessionClose();
+
+            return View(sol);
         }
 
         // GET: SolicitudAdopcion/Create
@@ -85,17 +95,34 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: SolicitudAdopcion/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            SolicitudAdopcionViewModel sol = null;
+
+            SessionInitialize();
+
+            SolicitudAdopcionEN solEN = new SolicitudAdopcionCAD(session).ReadOIDDefault(id);
+
+            sol = new SolicitudAdopcionAssembler().ConvertENToModelUI(solEN);
+
+            SessionClose();
+
+            return View(sol);
+           
         }
 
         // POST: SolicitudAdopcion/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(SolicitudAdopcionViewModel sol)
         {
             try
             {
                 // TODO: Add update logic here
+               
+                SolicitudAdopcionCEN solCEN = new SolicitudAdopcionCEN();
 
+                solCEN.Rellenar_Solicitud(sol.Id, sol.Nombre, sol.AnimalesAcargo,
+                    sol.AmbienteConvivencia, sol.TiempoLibre, sol.TodosAcuerdo, sol.MotivosAdopcion);
+
+               
                 return RedirectToAction("Index");
             }
             catch
@@ -107,7 +134,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: SolicitudAdopcion/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            try
+            {
+              SolicitudAdopcionCEN solCEN = new SolicitudAdopcionCEN();
+
+                solCEN.Eliminar(id);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         // POST: SolicitudAdopcion/Delete/5
