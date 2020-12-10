@@ -28,8 +28,6 @@
                     <li>@Html.ActionLink("Solicitudes Adopcion", "Index", "SolicitudAdopcion")</li>
                     <li>@Html.ActionLink("Contratos Adopcion", "Index", "ContratoAdopcion")</li>
                     <li>@Html.ActionLink("Seguimientos", "Index", "Seguimiento")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -40,6 +38,10 @@
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+            <ul>
+                <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+                <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+            </ul>            
         </footer>
     </div>
 
