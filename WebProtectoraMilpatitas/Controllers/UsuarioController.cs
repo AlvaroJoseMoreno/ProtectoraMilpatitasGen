@@ -12,6 +12,7 @@ using WebProtectoraMilpatitas.Models;
 
 namespace WebProtectoraMilpatitas.Controllers
 {
+    //[Authorize]
     public class UsuarioController : BasicController
     {
         // GET: Usuario
@@ -31,7 +32,7 @@ namespace WebProtectoraMilpatitas.Controllers
         }
 
         // GET: Usuario/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string email)
         {
             return View();
         }
@@ -61,19 +62,26 @@ namespace WebProtectoraMilpatitas.Controllers
         }
 
         // GET: Usuario/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(String email)
         {
-            return View();
+            //esto no funciona bien
+            UsuarioViewModel usu = null;
+            SessionInitialize();
+            UsuarioEN usuEN = new UsuarioCAD(session).Dame_Por_Email(email);
+            usu = new UsuarioAssembler().ConvertENToModelUI(usuEN);
+            SessionClose();
+            return View(usu);
         }
 
         // POST: Usuario/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(UsuarioViewModel usu)
         {
             try
             {
                 // TODO: Add update logic here
-
+                UsuarioCEN usuarioCEN = new UsuarioCEN();
+                usuarioCEN.Modificar(usu.Email, usu.Nombre, usu.Password);
                 return RedirectToAction("Index");
             }
             catch
@@ -87,6 +95,7 @@ namespace WebProtectoraMilpatitas.Controllers
         {
             try
             {
+                //El delete de usuario no funciona
                 // TODO: Add delete logic here
                 UsuarioCEN usucen = new UsuarioCEN();
                 usucen.Eliminar(email);
@@ -105,8 +114,6 @@ namespace WebProtectoraMilpatitas.Controllers
             try
             {
                 // TODO: Add delete logic here
-                UsuarioCEN usucen = new UsuarioCEN();
-                usucen.Eliminar(usuario.Email);
                 return RedirectToAction("Index");
             }
             catch

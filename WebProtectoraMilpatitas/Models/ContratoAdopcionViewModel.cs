@@ -26,7 +26,7 @@ namespace WebProtectoraMilpatitas.Models
         [Display(Prompt = "Escritura del hogar", Description = "Escritura del hogar", Name = "Escritura del hogar")]
         [Required(ErrorMessage = "Debe indicar una escritura del hogar del usuario")]
         [StringLength(maximumLength: 30, ErrorMessage = "La escritura del hogar del usuario no puede tener mas de 30 caracteres")]
-        [RegularExpression(" ^[a-zA-Z0-9]+[.]{1}[a-zA-Z0-9] + $", ErrorMessage = "El formato de fichero no es valido")]
+        //[RegularExpression(" ^[a-zA-Z0-9]+[.]{1}[a-zA-Z0-9] + $", ErrorMessage = "El formato de fichero no es valido")]
 
         public String EscrituraHogar { get; set; }
 
@@ -52,5 +52,20 @@ namespace WebProtectoraMilpatitas.Models
         [Required(ErrorMessage = "Debe indicar un estado del contrato")]
 
         public ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum Estado { get; set; }
+
+        [ScaffoldColumn(false)]
+        [Display(Prompt = "Usuario para el contrato", Description = "Usuario para el contrato", Name = "Usuario")]
+
+        public string idUsuario { get; set; }
+
+        [ScaffoldColumn(false)]
+        [Display(Prompt = "Animal para el contrato", Description = "Animal para el contrato", Name = "Animal")]
+
+        public int idAnimal { get; set; }
+
+        [ScaffoldColumn(false)]
+        [Display(Prompt = "Solicitud para el contrato", Description = "Solicitud para el contrato", Name = "Solicitud")]
+
+        public int idSolicitud { get; set; }
     }
 }

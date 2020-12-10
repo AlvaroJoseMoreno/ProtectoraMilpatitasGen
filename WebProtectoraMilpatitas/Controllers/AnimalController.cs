@@ -12,6 +12,7 @@ using WebProtectoraMilpatitas.Models;
 
 namespace WebProtectoraMilpatitas.Controllers
 {
+    //[Authorize]
     public class AnimalController : BasicController
     {
         // GET: Animal
@@ -66,8 +67,8 @@ namespace WebProtectoraMilpatitas.Controllers
         {
             AnimalViewModel ani = null;
             SessionInitialize();
-            AnimalEN aniEN = new AnimalCAD(session).ReadOIDDefault(id);
-            ani = new AnimalAssembler().ConvertENToModelUI(aniEN);
+            AnimalEN artEN = new AnimalCAD(session).ReadOIDDefault(id);
+            ani = new AnimalAssembler().ConvertENToModelUI(artEN);
             SessionClose();
             return View(ani);
         }
@@ -79,10 +80,9 @@ namespace WebProtectoraMilpatitas.Controllers
             try
             {
                 // TODO: Add update logic here
-                AnimalCEN animalCEN = new AnimalCEN();
-                animalCEN.Modificar(ani.Id, ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.Caracter);
+                AnimalCEN anicen = new AnimalCEN();
+                anicen.Modificar(ani.Id,ani.Nombre,ani.Edad,ani.Sexo,ani.Centro,ani.Caracter);
                 return RedirectToAction("Index");
-       
             }
             catch
             {
@@ -93,16 +93,9 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Animal/Delete/5
         public ActionResult Delete(int id)
         {
-            try
-            {
-                AnimalCEN animalCEN = new AnimalCEN();
-                animalCEN.Eliminar(id);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            AnimalCEN animalCEN = new AnimalCEN();
+            animalCEN.Eliminar(id);
+            return View();
         }
 
         // POST: Animal/Delete/5
@@ -112,6 +105,7 @@ namespace WebProtectoraMilpatitas.Controllers
             try
             {
                 // TODO: Add delete logic here
+                
 
                 return RedirectToAction("Index");
             }
