@@ -20,7 +20,8 @@ namespace WebProtectoraMilpatitas.Assemblers
             solicitud.TodosAcuerdo = soli.TodosAcuerdo;
             solicitud.MotivosAdopcion = soli.MotivosAdopcion;
             solicitud.Estado = soli.Estado;
-
+            solicitud.idUsuario = soli.Usuario.Email;
+            solicitud.idAnimal = soli.Animal.Id;
             return solicitud;
         }
 

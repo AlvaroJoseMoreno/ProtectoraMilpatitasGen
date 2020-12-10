@@ -29,35 +29,47 @@
         <th>
             @Html.DisplayNameFor(model => model.MotivosAdopcion)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idAnimal)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AnimalesAcargo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AmbienteConvivencia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TiempoLibre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TodosAcuerdo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MotivosAdopcion)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AnimalesAcargo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AmbienteConvivencia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TiempoLibre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TodosAcuerdo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MotivosAdopcion)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.idUsuario)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.idAnimal)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+    </td>
+</tr>
 }
 
 </table>
