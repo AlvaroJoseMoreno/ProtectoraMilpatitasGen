@@ -34,7 +34,17 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Seguimiento/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            SeguimientoViewModel seg = null;
+
+            SessionInitialize();
+
+            SeguimientoEN segEn = new SeguimientoCAD(session).ReadOIDDefault(id);
+
+            seg = new SeguimientoAssembler().ConvertENToModelUI(segEn);
+
+            SessionClose();
+
+            return View(seg);
         }
 
         // GET: Seguimiento/Create
@@ -89,16 +99,37 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Seguimiento/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            SeguimientoViewModel seg = null;
+
+            SessionInitialize();
+
+            SeguimientoEN segEn = new SeguimientoCAD(session).ReadOIDDefault(id);
+            
+            seg = new SeguimientoAssembler().ConvertENToModelUI(segEn);
+
+            SessionClose();
+
+            return View(seg);
         }
 
         // POST: Seguimiento/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(SeguimientoViewModel segui)
         {
             try
             {
                 // TODO: Add update logic here
+                SeguimientoCEN segCEN = new SeguimientoCEN();
+
+                segCEN.Modificar(segui.id, segui.fecha);
+                SessionInitialize();
+                SeguimientoCAD segCAD = new SeguimientoCAD();
+                SeguimientoEN segEn = new SeguimientoCAD(session).ReadOIDDefault(segui.id);
+                segCAD.Actualizar_Estado(segEn);
+
+
+
+            SessionClose();
 
                 return RedirectToAction("Index");
             }
@@ -111,6 +142,9 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Seguimiento/Delete/5
         public ActionResult Delete(int id)
         {
+            SeguimientoCEN segui = new SeguimientoCEN();
+            segui.Eliminar(id);
+
             return View();
         }
 
