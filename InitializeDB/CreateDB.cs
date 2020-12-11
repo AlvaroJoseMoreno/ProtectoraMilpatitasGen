@@ -147,15 +147,30 @@ public static void InitializeData ()
                 AnimalCP siames = new AnimalCP ();
                 AnimalEN sia = siames.Nuevo ("minino", 1, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso", esp1);
 
+                AnimalCP gatEuropeo = new AnimalCP();
+                AnimalEN gatiEuropeo = gatEuropeo.Nuevo("milky", 2, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso", esp1);
+
                 Console.WriteLine();
 
                 AnimalCEN aniCEN = new AnimalCEN();
+
+                Console.WriteLine("Datos medicos de " + gatiEuropeo.Nombre + " antes de cambiarlo -> " + gatiEuropeo.DatosMedicos);
+                aniCEN.Actualizar_DatosMedicos(gatiEuropeo.Id, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano);
+                Console.WriteLine("Datos medicos de " + gatiEuropeo.Nombre + " despues de cambiarlo -> " + (aniCEN.Ver_Detalle_Animal(gatiEuropeo.Id)).DatosMedicos);
+
+                Console.WriteLine();
+
                 IList<AnimalEN> animales = aniCEN.Dame_Animales_Por_Especie(esp1);
                 Console.WriteLine("animales de la especie: " + (espCEN.Dame_Por_Id(esp)).Nombre);
                 foreach (AnimalEN ani in animales)
                 {
                     Console.WriteLine("-" + ani.Nombre);
                 }
+
+                Console.WriteLine();
+
+                ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum estadoSia = aniCEN.Ver_Proceso_Adopcion(sia.Id);
+                Console.WriteLine("Estado de adopcion de " + sia.Nombre + " -> " + estadoSia);
 
                 Console.WriteLine();
 
