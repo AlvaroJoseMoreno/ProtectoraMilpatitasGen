@@ -86,12 +86,13 @@ namespace WebProtectoraMilpatitas.Controllers
 
                     string token = usuCEN.Iniciar_Sesion(model.Email, model.Password);
 
-                    UsuarioEN usuario = usuCEN.Dame_Por_Email(model.Email);
-
-                    Session["Usuario"] = usuario;
 
                     if (token!=null)
                     {
+                        UsuarioEN usuario = usuCEN.Dame_Por_Email(model.Email);
+
+                        Session["Usuario"] = usuario;
+
                         return RedirectToLocal(returnUrl);
                     } else
                     {

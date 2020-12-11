@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<WebProtectoraMilpatitas.Models.AnimalViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Index animales";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Animales</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Subir nuevo animal", "Create")
 </p>
 <table class="table">
     <tr>
@@ -55,6 +55,8 @@
     </td>
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("ActualizarEstado", "ActualizarEstado", new { id = item.Id }) |
+        @Html.ActionLink("ActualizarDatosMedicos", "ActualizarDatosMedicos", new { id = item.Id }) |
         @Html.ActionLink("Details", "Details", new { id = item.Id }) |
         @Html.ActionLink("Delete", "Delete", new { id = item.Id })
     </td>

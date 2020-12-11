@@ -48,5 +48,10 @@ namespace WebProtectoraMilpatitas.Models
 
         public ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum DatosMedicos { get; set; }
 
+        [Display(Prompt = "Estado de adopcion del animal", Description = "Estado de adopcion del animal", Name = "Estado de adopcion")]
+        [Required(ErrorMessage = "Debe indicar un estado de adopcion para el animal")]
+
+        public ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum EstadoAdopcion { get; set; }
+
     }
 }

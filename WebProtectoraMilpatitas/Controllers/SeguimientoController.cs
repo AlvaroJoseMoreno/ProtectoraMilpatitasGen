@@ -11,7 +11,7 @@ using WebProtectoraMilpatitas.Models;
 
 namespace WebProtectoraMilpatitas.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class SeguimientoController : BasicController
     {
         // GET: Seguimiento

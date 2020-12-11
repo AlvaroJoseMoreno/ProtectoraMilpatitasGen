@@ -12,7 +12,7 @@ using WebProtectoraMilpatitas.Models;
 
 namespace WebProtectoraMilpatitas.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class UsuarioController : BasicController
     {
         // GET: Usuario
