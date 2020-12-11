@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
+using ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 using WebProtectoraMilpatitas.Assemblers;
 using WebProtectoraMilpatitas.Models;
@@ -37,7 +38,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
             SessionInitialize();
 
-            SolicitudAdopcionEN solEN = new SolicitudAdopcionCAD(session).ReadOIDDefault(id);
+            SolicitudAdopcionEN solEN = new SolicitudAdopcionCAD(session).Ver_Solicitud(id);
 
             sol = new SolicitudAdopcionAssembler().ConvertENToModelUI(solEN);
 
@@ -99,7 +100,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
             SessionInitialize();
 
-            SolicitudAdopcionEN solEN = new SolicitudAdopcionCAD(session).ReadOIDDefault(id);
+            SolicitudAdopcionEN solEN = new SolicitudAdopcionCAD(session).Ver_Solicitud(id);
 
             sol = new SolicitudAdopcionAssembler().ConvertENToModelUI(solEN);
 
@@ -123,6 +124,43 @@ namespace WebProtectoraMilpatitas.Controllers
                     sol.AmbienteConvivencia, sol.TiempoLibre, sol.TodosAcuerdo, sol.MotivosAdopcion);
 
                
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult ActualizarEstado(int id)
+        {
+            SolicitudAdopcionViewModel sol = null;
+
+            SessionInitialize();
+
+            SolicitudAdopcionEN solEN = new SolicitudAdopcionCAD(session).Ver_Solicitud(id);
+
+            sol = new SolicitudAdopcionAssembler().ConvertENToModelUI(solEN);
+
+            SessionClose();
+
+            return View(sol);
+
+        }
+
+        // POST: SolicitudAdopcion/Edit/5
+        [HttpPost]
+        public ActionResult ActualizarEstado(SolicitudAdopcionViewModel sol)
+        {
+            try
+            {
+                // TODO: Add update logic here
+
+                SolicitudAdopcionCP solCP = new SolicitudAdopcionCP();
+
+                solCP.Actualizar_Estado(sol.Id, sol.Estado);
+
+
                 return RedirectToAction("Index");
             }
             catch

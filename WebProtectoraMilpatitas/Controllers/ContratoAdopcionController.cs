@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
+using ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 using WebProtectoraMilpatitas.Assemblers;
 using WebProtectoraMilpatitas.Models;
@@ -38,7 +39,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
             SessionInitialize();
 
-            ContratoAdopcionEN conEN = new ContratoAdopcionCAD(session).ReadOIDDefault(id);
+            ContratoAdopcionEN conEN = new ContratoAdopcionCAD(session).Ver_Contrato(id);
 
             con = new ContratoAdopcionAssembler().ConvertENToModelUI(conEN);
 
@@ -110,7 +111,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
             SessionInitialize();
 
-            ContratoAdopcionEN conEN = new ContratoAdopcionCAD(session).ReadOIDDefault(id);
+            ContratoAdopcionEN conEN = new ContratoAdopcionCAD(session).Ver_Contrato(id);
 
             con = new ContratoAdopcionAssembler().ConvertENToModelUI(conEN);
 
@@ -129,6 +130,40 @@ namespace WebProtectoraMilpatitas.Controllers
                 ContratoAdopcionCEN conCEN = new ContratoAdopcionCEN();
 
                 conCEN.Rellenar_Contrato(con.Id, con.Nombre, con.DNI_NIF_Pasaporte, con.EscrituraHogar, con.JustificantePago, con.LugarRecojida, con.FirmaCompromiso);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult ActualizarEstado(int id)
+        {
+            ContratoAdopcionViewModel con = null;
+
+            SessionInitialize();
+
+            ContratoAdopcionEN conEN = new ContratoAdopcionCAD(session).Ver_Contrato(id);
+
+            con = new ContratoAdopcionAssembler().ConvertENToModelUI(conEN);
+
+            SessionClose();
+
+            return View(con);
+        }
+
+        // POST: ContratoAdopcion/Edit/5
+        [HttpPost]
+        public ActionResult ActualizarEstado(ContratoAdopcionViewModel con)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                ContratoAdopcionCP conCP = new ContratoAdopcionCP();
+
+                conCP.Actualizar_Estado(con.Id, con.Estado);
 
                 return RedirectToAction("Index");
             }
