@@ -34,8 +34,12 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Animal/Details/5
         public ActionResult Details(int id)
         {
-
-            return View();
+            AnimalViewModel ani = null;
+            SessionInitialize();
+            AnimalEN artEN = new AnimalCAD(session).Ver_Detalle_Animal(id);
+            ani = new AnimalAssembler().ConvertENToModelUI(artEN);
+            SessionClose();
+            return View(ani);
         }
 
         // GET: Animal/Create
