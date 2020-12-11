@@ -34,7 +34,12 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Usuario/Details/5
         public ActionResult Details(string email)
         {
-            return View();
+            UsuarioViewModel usu = null;
+            SessionInitialize();
+            UsuarioEN usuEN = new UsuarioCAD(session).Dame_Por_Email(email);
+            usu = new UsuarioAssembler().ConvertENToModelUI(usuEN);
+            SessionClose();
+            return View(usu);
         }
 
         // GET: Usuario/Create

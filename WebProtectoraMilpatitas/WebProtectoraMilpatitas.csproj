@@ -306,6 +306,7 @@
     <Content Include="Views\Animal\ActualizarEstado.cshtml" />
     <Content Include="Views\Animal\ActualizarDatosMedicos.cshtml" />
     <Content Include="Views\Animal\Details.cshtml" />
+    <Content Include="Views\Usuario\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
