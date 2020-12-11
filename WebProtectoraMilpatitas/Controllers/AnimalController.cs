@@ -12,10 +12,10 @@ using WebProtectoraMilpatitas.Models;
 
 namespace WebProtectoraMilpatitas.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class AnimalController : BasicController
     {
-        // GET: Animal
+        //GET: Animal
         public ActionResult Index()
         {
             SessionInitialize();

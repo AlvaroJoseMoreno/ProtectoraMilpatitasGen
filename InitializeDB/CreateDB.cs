@@ -80,7 +80,7 @@ public static void InitializeData ()
         {
                 //Creacion de un administrador
                 AdministradorCEN adminCEN = new AdministradorCEN ();
-                adminCEN.Registrarse ("Protectora", "protectoramilpatitasalicante@gmail.com", "patitas");
+                adminCEN.Registrarse ("Protectora", "protectoramilpatitasalicante@gmail.com", "Patitas-20");
 
                 UsuarioCEN aduCEN = new UsuarioCEN ();
 
