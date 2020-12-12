@@ -1,55 +1,55 @@
-@model IEnumerable<WebProtectoraMilpatitas.Models.SolicitudAdopcionViewModel>
+﻿@model IEnumerable<WebProtectoraMilpatitas.Models.SeguimientoViewModel>
 
 @{
-    ViewBag.Title = "ObtenerSolicitudUsuario";
+    ViewBag.Title = "ObtenerSeguimientoUsuario";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Obtener Seguimiento Usuario</h2>
+<h2>Listado de seguimientos del usuario: @ViewData["NombreUsuario"]</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <p>
-    @Html.ActionLink("Usuarios", "Index", "Usuario")
+    @Html.ActionLink("Volver a usuarios", "Index", "Usuario")
 </p>
 <table class="table">
     @{
         if (Model.Any())
         {
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.fecha)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Estado)
-            </th>
-        
-            <th></th>
-        </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+
+                <th></th>
+            </tr>
         }
         else
         {
-        <tr>No hay seguimientos</tr>
+            <tr>No hay seguimientos</tr>
         }
     }
 
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.fecha)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-      
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-        </td>
-    </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
     }
 
 </table>

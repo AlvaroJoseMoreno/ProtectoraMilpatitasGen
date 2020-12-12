@@ -123,7 +123,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 // TODO: Add update logic here
                 SeguimientoCEN segCEN = new SeguimientoCEN();
 
-                segCEN.Modificar(segui.Id, segui.fecha);
+                segCEN.Modificar(segui.Id, segui.Fecha);
             
 
                 return RedirectToAction("Index");
@@ -166,6 +166,12 @@ namespace WebProtectoraMilpatitas.Controllers
             UsuarioEN usuEN = usuCAD.Dame_Por_Email(email);
 
             ViewData["idUsuario"] = email;
+
+            if (usuEN != null)
+            {
+                ViewData["NombreUsuario"] = usuEN.Nombre;
+            }
+
 
             SessionClose();
 
