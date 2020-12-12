@@ -1,11 +1,11 @@
-﻿@model IEnumerable<WebProtectoraMilpatitas.Models.SolicitudAdopcionViewModel>
+﻿@model IEnumerable<WebProtectoraMilpatitas.Models.ContratoAdopcionViewModel>
 
 @{
-    ViewBag.Title = "ObtenerSolicitudUsuario";
+    ViewBag.Title = "ObtenerContratoUsuario";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Obtener Solicitud Usuario</h2>
+<h2>Obtener Contrato Usuario</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -22,26 +22,26 @@
                     @Html.DisplayNameFor(model => model.Nombre)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.AnimalesAcargo)
+                    @Html.DisplayNameFor(model => model.DNI_NIF_Pasaporte)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.AmbienteConvivencia)
+                    @Html.DisplayNameFor(model => model.EscrituraHogar)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.TiempoLibre)
+                    @Html.DisplayNameFor(model => model.JustificantePago)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.TodosAcuerdo)
+                    @Html.DisplayNameFor(model => model.LugarRecojida)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.MotivosAdopcion)
+                    @Html.DisplayNameFor(model => model.FirmaCompromiso)
                 </th>
                 <th></th>
             </tr>
         }
         else
         {
-            <tr>No tiene solicitudes de adopcion</tr>
+            <tr>No tiene contratos de adopcion</tr>
         }
     }
 
@@ -52,19 +52,19 @@
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AnimalesAcargo)
+                @Html.DisplayFor(modelItem => item.DNI_NIF_Pasaporte)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AmbienteConvivencia)
+                @Html.DisplayFor(modelItem => item.EscrituraHogar)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TiempoLibre)
+                @Html.DisplayFor(modelItem => item.JustificantePago)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TodosAcuerdo)
+                @Html.DisplayFor(modelItem => item.LugarRecojida)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MotivosAdopcion)
+                @Html.DisplayFor(modelItem => item.FirmaCompromiso)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
