@@ -169,6 +169,27 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
+        public ActionResult ObtenerSolicitudUsuario(string email)
+        {
+            SessionInitialize();
+
+            SolicitudAdopcionCAD solCAD = new SolicitudAdopcionCAD(session);
+            UsuarioCAD usuCAD = new UsuarioCAD(session);
+            SolicitudAdopcionCEN solCEN = new SolicitudAdopcionCEN(solCAD);
+
+            IList<SolicitudAdopcionEN> listaSolEN = solCEN.Obtener_Solicitud_Usuario(email);
+
+            IEnumerable<SolicitudAdopcionViewModel> listaSol = new SolicitudAdopcionAssembler().ConvertListENToModel(listaSolEN).ToList();
+
+            UsuarioEN usuEN = usuCAD.Dame_Por_Email(email);
+
+            ViewData["idUsuario"] = email;
+
+            SessionClose();
+
+            return View(listaSol);
+        }
+
         // GET: SolicitudAdopcion/Delete/5
         public ActionResult Delete(int id)
         {

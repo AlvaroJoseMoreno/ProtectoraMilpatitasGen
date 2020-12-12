@@ -1,0 +1,77 @@
+﻿@model IEnumerable<WebProtectoraMilpatitas.Models.SolicitudAdopcionViewModel>
+
+@{
+    ViewBag.Title = "ObtenerSolicitudUsuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Obtener Solicitud Usuario</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+    @Html.ActionLink("Volver a usuarios", "Index", "Usuario")
+</p>
+<table class="table">
+    @{
+        if (Model.Any())
+        {
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AnimalesAcargo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AmbienteConvivencia)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TiempoLibre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TodosAcuerdo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MotivosAdopcion)
+                </th>
+                <th></th>
+            </tr>
+        }
+        else
+        {
+            <tr>No tiene solicitudes de adopcion</tr>
+        }
+    }
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnimalesAcargo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AmbienteConvivencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TiempoLibre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TodosAcuerdo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MotivosAdopcion)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
