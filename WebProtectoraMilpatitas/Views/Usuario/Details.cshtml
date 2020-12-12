@@ -1,0 +1,31 @@
+﻿@model WebProtectoraMilpatitas.Models.UsuarioViewModel
+
+@{
+    ViewBag.Title = "Protectoramilpatitas - Página de detalle de usuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalle de usuario</h2>
+
+<div>
+    <h4>@Html.DisplayFor(model => model.Nombre)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { email = Model.Email }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

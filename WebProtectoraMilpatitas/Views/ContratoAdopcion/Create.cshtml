@@ -1,7 +1,7 @@
 ﻿@model WebProtectoraMilpatitas.Models.ContratoAdopcionViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Crear nuevo contrato de adopcion";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -20,21 +20,21 @@
     <div class="form-group">
         @Html.LabelFor(model => model.idUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.idUsuario, ViewData["idUsuario"] as SelectList, "Selecciona un usuario");
+            @Html.DropDownListFor(model => model.idUsuario, ViewData["idUsuario"] as SelectList, "Selecciona un usuario")
         </div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.idAnimal, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.idAnimal, ViewData["idAnimal"] as SelectList, "Selecciona un animal");
+            @Html.DropDownListFor(model => model.idAnimal, ViewData["idAnimal"] as SelectList, "Selecciona un animal")
         </div>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.idSolicitud, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.idSolicitud, ViewData["idSolicitud"] as SelectList, "Selecciona una solicitud");
+            @Html.DropDownListFor(model => model.idSolicitud, ViewData["idSolicitud"] as SelectList, "Selecciona una solicitud")
         </div>
     </div>
 

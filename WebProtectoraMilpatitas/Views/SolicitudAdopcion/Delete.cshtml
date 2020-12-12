@@ -1,15 +1,15 @@
-﻿@model WebProtectoraMilpatitas.Models.ContratoAdopcionViewModel
+﻿@model WebProtectoraMilpatitas.Models.SolicitudAdopcionViewModel
 
 @{
-    ViewBag.Title = "Eliminar contrato de adopcion";
+    ViewBag.Title = "Eliminar Solicitud de Adopcion";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Eliminar contrato de adopcion</h2>
+<h2>Eliminar Solicitud de Adopcion</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>ContratoAdopcionViewModel</h4>
+    <h4>SolicitudAdopcionViewModel</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -21,43 +21,43 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DNI_NIF_Pasaporte)
+            @Html.DisplayNameFor(model => model.AnimalesAcargo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DNI_NIF_Pasaporte)
+            @Html.DisplayFor(model => model.AnimalesAcargo)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.EscrituraHogar)
+            @Html.DisplayNameFor(model => model.AmbienteConvivencia)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.EscrituraHogar)
+            @Html.DisplayFor(model => model.AmbienteConvivencia)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.JustificantePago)
+            @Html.DisplayNameFor(model => model.TiempoLibre)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.JustificantePago)
+            @Html.DisplayFor(model => model.TiempoLibre)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.LugarRecojida)
+            @Html.DisplayNameFor(model => model.TodosAcuerdo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LugarRecojida)
+            @Html.DisplayFor(model => model.TodosAcuerdo)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FirmaCompromiso)
+            @Html.DisplayNameFor(model => model.MotivosAdopcion)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FirmaCompromiso)
+            @Html.DisplayFor(model => model.MotivosAdopcion)
         </dd>
 
     </dl>

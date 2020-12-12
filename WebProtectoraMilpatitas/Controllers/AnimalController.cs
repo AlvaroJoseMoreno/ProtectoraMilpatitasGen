@@ -12,9 +12,10 @@ using WebProtectoraMilpatitas.Models;
 
 namespace WebProtectoraMilpatitas.Controllers
 {
+    [Authorize]
     public class AnimalController : BasicController
     {
-        // GET: Animal
+        //GET: Animal
         public ActionResult Index()
         {
             SessionInitialize();
@@ -33,7 +34,12 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Animal/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            AnimalViewModel ani = null;
+            SessionInitialize();
+            AnimalEN artEN = new AnimalCAD(session).Ver_Detalle_Animal(id);
+            ani = new AnimalAssembler().ConvertENToModelUI(artEN);
+            SessionClose();
+            return View(ani);
         }
 
         // GET: Animal/Create
@@ -66,7 +72,7 @@ namespace WebProtectoraMilpatitas.Controllers
         {
             AnimalViewModel ani = null;
             SessionInitialize();
-            AnimalEN artEN = new AnimalCAD(session).ReadOIDDefault(id);
+            AnimalEN artEN = new AnimalCAD(session).Ver_Detalle_Animal(id);
             ani = new AnimalAssembler().ConvertENToModelUI(artEN);
             SessionClose();
             return View(ani);
@@ -81,6 +87,60 @@ namespace WebProtectoraMilpatitas.Controllers
                 // TODO: Add update logic here
                 AnimalCEN anicen = new AnimalCEN();
                 anicen.Modificar(ani.Id,ani.Nombre,ani.Edad,ani.Sexo,ani.Centro,ani.Caracter);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult ActualizarEstado(int id)
+        {
+            AnimalViewModel ani = null;
+            SessionInitialize();
+            AnimalEN artEN = new AnimalCAD(session).Ver_Detalle_Animal(id);
+            ani = new AnimalAssembler().ConvertENToModelUI(artEN);
+            SessionClose();
+            return View(ani);
+        }
+
+        // POST: Animal/Edit/5
+        [HttpPost]
+        public ActionResult ActualizarEstado(AnimalViewModel ani)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                AnimalCEN anicen = new AnimalCEN();
+                anicen.Actualizar_Estado(ani.Id, ani.EstadoAdopcion);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult ActualizarDatosMedicos(int id)
+        {
+            AnimalViewModel ani = null;
+            SessionInitialize();
+            AnimalEN artEN = new AnimalCAD(session).Ver_Detalle_Animal(id);
+            ani = new AnimalAssembler().ConvertENToModelUI(artEN);
+            SessionClose();
+            return View(ani);
+        }
+
+        // POST: Animal/Edit/5
+        [HttpPost]
+        public ActionResult ActualizarDatosMedicos(AnimalViewModel ani)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                AnimalCEN anicen = new AnimalCEN();
+                anicen.Actualizar_DatosMedicos(ani.Id, ani.DatosMedicos);
                 return RedirectToAction("Index");
             }
             catch

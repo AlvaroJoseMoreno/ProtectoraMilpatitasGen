@@ -5,12 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
+using ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 using WebProtectoraMilpatitas.Assemblers;
 using WebProtectoraMilpatitas.Models;
 
 namespace WebProtectoraMilpatitas.Controllers
 {
+    [Authorize]
     public class SolicitudAdopcionController : BasicController
     {
         public ActionResult Index()
@@ -32,12 +34,43 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: SolicitudAdopcion/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            SolicitudAdopcionViewModel sol = null;
+
+            SessionInitialize();
+
+            SolicitudAdopcionEN solEN = new SolicitudAdopcionCAD(session).Ver_Solicitud(id);
+
+            sol = new SolicitudAdopcionAssembler().ConvertENToModelUI(solEN);
+
+            SessionClose();
+
+            return View(sol);
         }
 
         // GET: SolicitudAdopcion/Create
-        public ActionResult Create(int num, string nom)
+        public ActionResult Create()
         {
+            IList<UsuarioEN> listausuarios = new UsuarioCEN().Dame_Todos(0, -1);
+            IList<SelectListItem> usuariositems = new List<SelectListItem>();
+
+            foreach (UsuarioEN usu in listausuarios)
+            {
+                usuariositems.Add(new SelectListItem { Text = usu.Nombre, Value = usu.Email });
+
+            }
+
+            ViewData["idUsuario"] = usuariositems;
+
+            IList<AnimalEN> listaAnimales = new AnimalCEN().Dame_Todos(0, -1);
+            IList<SelectListItem> animalesItems = new List<SelectListItem>();
+
+            foreach (AnimalEN ani in listaAnimales)
+            {
+                animalesItems.Add(new SelectListItem { Text = ani.Nombre, Value = ani.Id.ToString() });
+            }
+
+            ViewData["idAnimal"] = animalesItems;
+
             return View();
         }
 
@@ -50,7 +83,8 @@ namespace WebProtectoraMilpatitas.Controllers
                 // TODO: Add insert logic here
                 SolicitudAdopcionCEN soliCEN = new SolicitudAdopcionCEN();
 
-              //  soliCEN.Nuevo(sol.Nombre, sol.)
+                soliCEN.Nuevo(sol.idUsuario, sol.idAnimal);
+
                 return RedirectToAction("Index");
             }
             catch
@@ -62,16 +96,70 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: SolicitudAdopcion/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            SolicitudAdopcionViewModel sol = null;
+
+            SessionInitialize();
+
+            SolicitudAdopcionEN solEN = new SolicitudAdopcionCAD(session).Ver_Solicitud(id);
+
+            sol = new SolicitudAdopcionAssembler().ConvertENToModelUI(solEN);
+
+            SessionClose();
+
+            return View(sol);
+           
         }
 
         // POST: SolicitudAdopcion/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(SolicitudAdopcionViewModel sol)
         {
             try
             {
                 // TODO: Add update logic here
+               
+                SolicitudAdopcionCEN solCEN = new SolicitudAdopcionCEN();
+
+                solCEN.Rellenar_Solicitud(sol.Id, sol.Nombre, sol.AnimalesAcargo,
+                    sol.AmbienteConvivencia, sol.TiempoLibre, sol.TodosAcuerdo, sol.MotivosAdopcion);
+
+               
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult ActualizarEstado(int id)
+        {
+            SolicitudAdopcionViewModel sol = null;
+
+            SessionInitialize();
+
+            SolicitudAdopcionEN solEN = new SolicitudAdopcionCAD(session).Ver_Solicitud(id);
+
+            sol = new SolicitudAdopcionAssembler().ConvertENToModelUI(solEN);
+
+            SessionClose();
+
+            return View(sol);
+
+        }
+
+        // POST: SolicitudAdopcion/Edit/5
+        [HttpPost]
+        public ActionResult ActualizarEstado(SolicitudAdopcionViewModel sol)
+        {
+            try
+            {
+                // TODO: Add update logic here
+
+                SolicitudAdopcionCP solCP = new SolicitudAdopcionCP();
+
+                solCP.Actualizar_Estado(sol.Id, sol.Estado);
+
 
                 return RedirectToAction("Index");
             }
@@ -84,7 +172,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: SolicitudAdopcion/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            try
+            {
+              SolicitudAdopcionCEN solCEN = new SolicitudAdopcionCEN();
+
+                solCEN.Eliminar(id);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         // POST: SolicitudAdopcion/Delete/5

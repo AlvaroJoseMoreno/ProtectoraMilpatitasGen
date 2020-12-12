@@ -297,10 +297,16 @@
     <Content Include="Views\ContratoAdopcion\Edit.cshtml" />
     <Content Include="Views\ContratoAdopcion\Details.cshtml" />
     <Content Include="Views\ContratoAdopcion\Delete.cshtml" />
+    <Content Include="Views\SolicitudAdopcion\Edit.cshtml" />
+    <Content Include="Views\SolicitudAdopcion\Delete.cshtml" />
+    <Content Include="Views\SolicitudAdopcion\Details.cshtml" />
     <Content Include="Views\Seguimiento\Create.cshtml" />
-    <Content Include="Views\Seguimiento\Delete.cshtml" />
-    <Content Include="Views\Seguimiento\Edit.cshtml" />
-    <Content Include="Views\Seguimiento\Details.cshtml" />
+    <Content Include="Views\SolicitudAdopcion\ActualizarEstado.cshtml" />
+    <Content Include="Views\ContratoAdopcion\ActualizarEstado.cshtml" />
+    <Content Include="Views\Animal\ActualizarEstado.cshtml" />
+    <Content Include="Views\Animal\ActualizarDatosMedicos.cshtml" />
+    <Content Include="Views\Animal\Details.cshtml" />
+    <Content Include="Views\Usuario\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
