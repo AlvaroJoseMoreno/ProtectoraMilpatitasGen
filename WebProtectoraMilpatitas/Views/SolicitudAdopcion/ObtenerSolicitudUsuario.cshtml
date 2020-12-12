@@ -5,13 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ObtenerSolicitudUsuario</h2>
+<h2>Obtener Solicitud Usuario</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <p>
-    @Html.ActionLink("Usuarios", "Index", "Usuario")
+    @Html.ActionLink("Volver a usuarios", "Index", "Usuario")
 </p>
 <table class="table">
     @{
@@ -41,7 +41,7 @@
         }
         else
         {
-            <tr>No hay artículos</tr>
+            <tr>No tiene solicitudes de adopcion</tr>
         }
     }
 

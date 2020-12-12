@@ -173,6 +173,27 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
+        public ActionResult ObtenerContratoUsuario(string email)
+        {
+            SessionInitialize();
+
+            ContratoAdopcionCAD conCAD = new ContratoAdopcionCAD(session);
+            UsuarioCAD usuCAD = new UsuarioCAD(session);
+            ContratoAdopcionCEN conCEN = new ContratoAdopcionCEN(conCAD);
+
+            IList<ContratoAdopcionEN> listaConEN = conCEN.Obtener_Contrato_Usuario(email);
+
+            IEnumerable<ContratoAdopcionViewModel> listaCon = new ContratoAdopcionAssembler().ConvertListENToModel(listaConEN).ToList();
+
+            UsuarioEN usuEN = usuCAD.Dame_Por_Email(email);
+
+            ViewData["idUsuario"] = email;
+
+            SessionClose();
+
+            return View(listaCon);
+        }
+
         // GET: ContratoAdopcion/Delete/5
         public ActionResult Delete(int id)
         {
