@@ -307,6 +307,10 @@
     <Content Include="Views\Animal\ActualizarDatosMedicos.cshtml" />
     <Content Include="Views\Animal\Details.cshtml" />
     <Content Include="Views\Usuario\Details.cshtml" />
+    <Content Include="Views\Seguimiento\Edit.cshtml" />
+    <Content Include="Views\Seguimiento\Delete.cshtml" />
+    <Content Include="Views\Seguimiento\Details.cshtml" />
+    <Content Include="Views\Seguimiento\ActualizarEstado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

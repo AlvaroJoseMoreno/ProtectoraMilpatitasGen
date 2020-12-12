@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
+using ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 using WebProtectoraMilpatitas.Assemblers;
 using WebProtectoraMilpatitas.Models;
@@ -123,14 +124,45 @@ namespace WebProtectoraMilpatitas.Controllers
                 SeguimientoCEN segCEN = new SeguimientoCEN();
 
                 segCEN.Modificar(segui.id, segui.fecha);
-                SessionInitialize();
-                SeguimientoCAD segCAD = new SeguimientoCAD();
-                SeguimientoEN segEn = new SeguimientoCAD(session).ReadOIDDefault(segui.id);
-                segCAD.Actualizar_Estado(segEn);
+            
 
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
+        public ActionResult ActualizarEstado(int id)
+        {
+            SeguimientoViewModel seg = null;
+
+            SessionInitialize();
+           
+
+            SeguimientoEN solEN = new SeguimientoCAD(session).ReadOIDDefault(id);
+
+            seg = new SeguimientoAssembler().ConvertENToModelUI(solEN);
 
             SessionClose();
+
+            return View(seg);
+
+        }
+
+        // POST: SolicitudAdopcion/Edit/5
+        [HttpPost]
+        public ActionResult ActualizarEstado(SeguimientoViewModel sol)
+        {
+            try
+            {
+                // TODO: Add update logic here
+
+                SeguimientoCP segCP = new SeguimientoCP();
+
+                segCP.Actualizar_Estado(sol.id,sol.Estado);
+
 
                 return RedirectToAction("Index");
             }
