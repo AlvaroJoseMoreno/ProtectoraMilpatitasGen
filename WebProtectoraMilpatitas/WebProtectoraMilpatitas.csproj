@@ -311,6 +311,7 @@
     <Content Include="Views\Seguimiento\Delete.cshtml" />
     <Content Include="Views\Seguimiento\Details.cshtml" />
     <Content Include="Views\Seguimiento\ActualizarEstado.cshtml" />
+    <Content Include="Views\Animal\ObtenerAnimalesPorEspecie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

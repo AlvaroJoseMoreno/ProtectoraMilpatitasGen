@@ -31,6 +31,29 @@ namespace WebProtectoraMilpatitas.Controllers
             return View(listaView);
         }
 
+        // GET: /AnimalViewModels/ObtenerAnimalesPorEspecie/5
+        public ActionResult ObtenerAnimalesPorEspecie(int p_especie)
+        {
+            SessionInitialize();
+
+            AnimalCAD aniCad = new AnimalCAD(session);
+            EspecieCAD espeCad = new EspecieCAD(session);
+            AnimalCEN aniCEN = new AnimalCEN(aniCad);
+            IList<AnimalEN> listAni = aniCEN.Dame_Animales_Por_Especie(p_especie);
+            IEnumerable<AnimalViewModel> listAni2 = new AnimalAssembler().ConvertListENToModel(listAni).ToList();
+            EspecieEN espEN = espeCad.Dame_Por_Id(p_especie);
+
+            ViewData["IdEspecie"] = p_especie;
+
+            if(espEN != null)
+            {
+                ViewData["NombreEspecie"] = espEN.Nombre;
+            }
+
+            SessionClose();
+            return View(listAni2);
+        }
+
         // GET: Animal/Details/5
         public ActionResult Details(int id)
         {

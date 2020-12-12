@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -45,6 +46,7 @@ namespace WebProtectoraMilpatitas.Models
 
         [Display(Prompt = "Estado de salud del animal", Description = "Estado de salud del animal", Name = "Estado de salud")]
         [Required(ErrorMessage = "Debe indicar un estado de salud para el animal")]
+
 
         public ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum DatosMedicos { get; set; }
 
