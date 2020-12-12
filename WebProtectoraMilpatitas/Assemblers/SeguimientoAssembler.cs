@@ -12,7 +12,7 @@ namespace WebProtectoraMilpatitas.Assemblers
         public SeguimientoViewModel ConvertENToModelUI(SeguimientoEN segui)
         {
             SeguimientoViewModel seguimiento = new SeguimientoViewModel();
-            seguimiento.id = segui.Id;
+            seguimiento.Id = segui.Id;
             seguimiento.Estado = segui.Estado;
             seguimiento.fecha = segui.Fecha;
 

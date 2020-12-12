@@ -81,7 +81,7 @@ public void Eliminar (string email
 public string Iniciar_Sesion (string p_Usuario_OID, string p_pass)
 {
         string result = null;
-        UsuarioEN en = _IUsuarioCAD.ReadOIDDefault (p_Usuario_OID);
+        UsuarioEN en = Dame_Por_Email(p_Usuario_OID);
 
         if (en != null && en.Password.Equals (Utils.Util.GetEncondeMD5 (p_pass)))
                 result = this.GetToken (en.Email);

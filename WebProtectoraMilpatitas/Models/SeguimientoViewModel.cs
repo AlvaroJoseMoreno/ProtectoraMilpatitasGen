@@ -8,7 +8,7 @@ namespace WebProtectoraMilpatitas.Models
     public class SeguimientoViewModel
     {
         [ScaffoldColumn(false)]
-        public int  id { get; set; }
+        public int  Id { get; set; }
 
         [ScaffoldColumn(false)]
         [Display(Prompt = "Usuario", Description = "Usuario", Name = "Usuario")]

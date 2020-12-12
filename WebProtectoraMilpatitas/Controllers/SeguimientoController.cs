@@ -105,7 +105,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
             SessionInitialize();
 
-            SeguimientoEN segEn = new SeguimientoCAD(session).ReadOIDDefault(id);
+            SeguimientoEN segEn = new SeguimientoCAD(session).Dame_Por_Id(id);
             
             seg = new SeguimientoAssembler().ConvertENToModelUI(segEn);
 
@@ -123,7 +123,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 // TODO: Add update logic here
                 SeguimientoCEN segCEN = new SeguimientoCEN();
 
-                segCEN.Modificar(segui.id, segui.fecha);
+                segCEN.Modificar(segui.Id, segui.fecha);
             
 
                 return RedirectToAction("Index");
@@ -139,11 +139,11 @@ namespace WebProtectoraMilpatitas.Controllers
             SeguimientoViewModel seg = null;
 
             SessionInitialize();
-           
 
-            SeguimientoEN solEN = new SeguimientoCAD(session).ReadOIDDefault(id);
 
-            seg = new SeguimientoAssembler().ConvertENToModelUI(solEN);
+            SeguimientoEN segEN = new SeguimientoCAD(session).Dame_Por_Id(id);
+
+            seg = new SeguimientoAssembler().ConvertENToModelUI(segEN);
 
             SessionClose();
 
@@ -153,7 +153,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
         // POST: SolicitudAdopcion/Edit/5
         [HttpPost]
-        public ActionResult ActualizarEstado(SeguimientoViewModel sol)
+        public ActionResult ActualizarEstado(SeguimientoViewModel seg)
         {
             try
             {
@@ -161,7 +161,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
                 SeguimientoCP segCP = new SeguimientoCP();
 
-                segCP.Actualizar_Estado(sol.id,sol.Estado);
+                segCP.Actualizar_Estado(seg.Id,seg.Estado);
 
 
                 return RedirectToAction("Index");
