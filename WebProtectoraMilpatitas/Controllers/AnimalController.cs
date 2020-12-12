@@ -43,7 +43,7 @@ namespace WebProtectoraMilpatitas.Controllers
             IEnumerable<AnimalViewModel> listAni2 = new AnimalAssembler().ConvertListENToModel(listAni).ToList();
             EspecieEN espEN = espeCad.Dame_Por_Id(p_especie);
 
-            ViewData["IdEspecie"] = p_especie;
+            ViewData["idEspecie"] = p_especie;
 
             if(espEN != null)
             {
@@ -68,6 +68,16 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Animal/Create
         public ActionResult Create()
         {
+            IList<EspecieEN> listaAnimales = new EspecieCEN().Dame_Todas(0, -1);
+            IList<SelectListItem> especiesItems = new List<SelectListItem>();
+
+            foreach (EspecieEN esp in listaAnimales)
+            {
+                especiesItems.Add(new SelectListItem { Text = esp.Nombre, Value = esp.Id.ToString() });
+            }
+
+            ViewData["idEspecie"] = especiesItems;
+
             return View();
         }
 
@@ -80,7 +90,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 // TODO: Add insert logic here
 
                 AnimalCP animalCP = new AnimalCP();
-                animalCP.Nuevo(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter, 3);
+                animalCP.Nuevo(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter, ani.idEspecie);
 
                 return RedirectToAction("Index");
             }
