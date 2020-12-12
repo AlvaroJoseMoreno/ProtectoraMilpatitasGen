@@ -178,9 +178,9 @@ namespace WebProtectoraMilpatitas.Controllers
             SessionInitialize();
             SeguimientoCAD segCAD = new SeguimientoCAD();
 
-            SeguimientoEN segEN = new SeguimientoCAD(session).Dame_Por_Id(id);
+       //     SeguimientoEN segEN = new SeguimientoCAD.Dame_Por_Id(email);
 
-            seg = new SeguimientoAssembler().ConvertENToModelUI(segEN);
+        //    seg = new SeguimientoAssembler().ConvertENToModelUI(segEN);
 
             SessionClose();
 
