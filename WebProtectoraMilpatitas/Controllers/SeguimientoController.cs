@@ -151,61 +151,25 @@ namespace WebProtectoraMilpatitas.Controllers
 
         }
 
-        // POST: SolicitudAdopcion/Edit/5
-        [HttpPost]
-        public ActionResult ActualizarEstado(SeguimientoViewModel seg)
+        public ActionResult ObtenerSeguimientoUsuario(string email)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                SeguimientoCP segCP = new SeguimientoCP();
-
-                segCP.Actualizar_Estado(seg.Id,seg.Estado);
-
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-        public ActionResult ObtenerSeguimientoUsuario (string  email)
-        {
-            SeguimientoViewModel seg = null;
-
             SessionInitialize();
-            SeguimientoCAD segCAD = new SeguimientoCAD();
 
-            SeguimientoEN segEN = new SeguimientoCAD(session).Dame_Por_Id(id);
+            SeguimientoCAD segCAD = new SeguimientoCAD(session);
+            UsuarioCAD usuCAD = new UsuarioCAD(session);
+            SeguimientoCEN segCEN = new SeguimientoCEN(segCAD);
 
-            seg = new SeguimientoAssembler().ConvertENToModelUI(segEN);
+            IList<SeguimientoEN> listaSolEN = segCEN.Obtener_Seguimiento_Usuario(email);
+
+            IEnumerable<SeguimientoViewModel> listaSeg = new SeguimientoAssembler().ConvertListENToModel(listaSolEN).ToList();
+
+            UsuarioEN usuEN = usuCAD.Dame_Por_Email(email);
+
+            ViewData["idUsuario"] = email;
 
             SessionClose();
 
-            return View(seg);
-
-        }
-
-        // POST: SolicitudAdopcion/Edit/5
-        [HttpPost]
-        public ActionResult ObtenerSeguimientoUsuario (SeguimientoViewModel seg)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                SeguimientoCP segCP = new SeguimientoCP();
-
-                segCP.Actualizar_Estado(seg.Id, seg.Estado);
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View(listaSeg);
         }
 
         // GET: Seguimiento/Delete/5
