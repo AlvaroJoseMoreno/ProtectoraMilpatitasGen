@@ -313,6 +313,8 @@
     <Content Include="Views\Seguimiento\ActualizarEstado.cshtml" />
     <Content Include="Views\SolicitudAdopcion\ObtenerSolicitudUsuario.cshtml" />
     <Content Include="Views\ContratoAdopcion\ObtenerContratoUsuario.cshtml" />
+    <Content Include="Views\Animal\ObtenerAnimalesPorEspecie.cshtml" />
+    <Content Include="Views\Seguimiento\ObtenerSeguimientoUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

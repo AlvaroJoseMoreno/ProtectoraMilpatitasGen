@@ -14,7 +14,7 @@ namespace WebProtectoraMilpatitas.Assemblers
             SeguimientoViewModel seguimiento = new SeguimientoViewModel();
             seguimiento.Id = segui.Id;
             seguimiento.Estado = segui.Estado;
-            seguimiento.fecha = segui.Fecha;
+            seguimiento.Fecha = segui.Fecha;
 
             return seguimiento;
         }

@@ -33,7 +33,7 @@ namespace WebProtectoraMilpatitas.Models
         [Display(Prompt = "Fecha", Description = "Fecha del ultimo seguimiento", Name = "Fecha")]
         [Required(ErrorMessage = "Debe indicar una fecha valida")]
 
-        public Nullable<DateTime> fecha { get; set; }
+        public Nullable<DateTime> Fecha { get; set; }
 
     }
 

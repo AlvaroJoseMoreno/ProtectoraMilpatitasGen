@@ -55,5 +55,11 @@ namespace WebProtectoraMilpatitas.Models
 
         public ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum EstadoAdopcion { get; set; }
 
+        [ScaffoldColumn(false)]
+
+        [Display(Prompt = "Especie del animal", Description = "Especie del animal", Name = "Especie")]
+
+        public int idEspecie { get; set; }
+
     }
 }

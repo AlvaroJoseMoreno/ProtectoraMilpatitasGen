@@ -185,6 +185,11 @@ namespace WebProtectoraMilpatitas.Controllers
 
             ViewData["idUsuario"] = email;
 
+            if (usuEN != null)
+            {
+                ViewData["NombreUsuario"] = usuEN.Nombre;
+            }
+
             SessionClose();
 
             return View(listaSol);
