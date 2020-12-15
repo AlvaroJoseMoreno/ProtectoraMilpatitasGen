@@ -57,7 +57,7 @@
         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
         @Html.ActionLink("ActualizarEstado", "ActualizarEstado", new { id = item.Id }) |
         @Html.ActionLink("ActualizarDatosMedicos", "ActualizarDatosMedicos", new { id = item.Id }) |
-        @Html.ActionLink("Obtener animales por especie", "ObtenerAnimalesPorEspecie", new {id = item. }, htmlAttributes:null) |
+        @Html.ActionLink("Obtener animales por especie", "ObtenerAnimalesPorEspecie", new {p_especie = item.Id}, htmlAttributes:null) |
         @Html.ActionLink("Details", "Details", new { id = item.Id }) |
         @Html.ActionLink("Delete", "Delete", new { id = item.Id })
     </td>
