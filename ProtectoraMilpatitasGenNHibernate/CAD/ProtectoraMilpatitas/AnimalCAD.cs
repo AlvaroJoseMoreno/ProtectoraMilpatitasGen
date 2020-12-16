@@ -447,7 +447,7 @@ public void AsignarDuenyo (int p_Animal_OID, string p_dueño_OID)
                 animalEN = (AnimalEN)session.Load (typeof(AnimalEN), p_Animal_OID);
                 animalEN.Dueño = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN), p_dueño_OID);
 
-                animalEN.Dueño.Animal.Add (animalEN);
+                animalEN.Dueño.Mascotas.Add (animalEN);
 
 
 

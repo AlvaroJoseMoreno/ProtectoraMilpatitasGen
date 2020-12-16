@@ -36,8 +36,8 @@ public void Actualizar_Estado (int p_SolicitudAdopcion, ProtectoraMilpatitasGenN
                 solicitudAdopcionCAD = new SolicitudAdopcionCAD (session);
                 solicitudAdopcionCEN = new SolicitudAdopcionCEN (solicitudAdopcionCAD);
 
-                ContratoAdopcionCAD conCAD = new ContratoAdopcionCAD(session);
-                ContratoAdopcionCEN conCEN = new ContratoAdopcionCEN(conCAD);
+                ContratoAdopcionCAD conCAD = new ContratoAdopcionCAD (session);
+                ContratoAdopcionCEN conCEN = new ContratoAdopcionCEN (conCAD);
 
 
                 SolicitudAdopcionEN solicitudAdopcionEN = null;
@@ -50,7 +50,7 @@ public void Actualizar_Estado (int p_SolicitudAdopcion, ProtectoraMilpatitasGenN
                 if (solicitudAdopcionEN.Estado.Equals ("aceptado")) {
                         solicitudAdopcionEN.Animal.EstadoAdopcion = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum.EnContrato;
 
-                        conCEN.Nuevo(solicitudAdopcionEN.Usuario.Email, solicitudAdopcionEN.Id, solicitudAdopcionEN.Animal.Id);
+                        conCEN.Nuevo (solicitudAdopcionEN.Usuario.Email, solicitudAdopcionEN.Id, solicitudAdopcionEN.Animal.Id);
                 }
                 else{
                         if (solicitudAdopcionEN.Estado.Equals ("enEspera")) {

@@ -25,17 +25,14 @@ public string Iniciar_Sesion (string p_Usuario_OID, string p_pass)
         string result = null;
         UsuarioEN en = _IUsuarioCAD.ReadOIDDefault (p_Usuario_OID);
 
-            if (en != null && en.Password.Equals(Utils.Util.GetEncondeMD5(p_pass)))
-            {
-                if (en.GetType() == typeof(AdministradorEN))
-                {
-                    result = "Administrador";
+        if (en != null && en.Password.Equals (Utils.Util.GetEncondeMD5 (p_pass))) {
+                if (en.GetType () == typeof(AdministradorEN)) {
+                        result = "Administrador";
                 }
-                else
-                {
-                    result = "Usuario";
+                else{
+                        result = "Usuario";
                 }
-            }
+        }
         return result;
         /*PROTECTED REGION END*/
 }
