@@ -72,7 +72,7 @@ public ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN Nuevo 
 
                 animalEN.EstadoAdopcion = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum.SinTramite;
 
-                animalEN.Especie = new EspecieCEN().Dame_Por_Id(p_especie);
+                animalEN.Especie = new EspecieCEN ().Dame_Por_Id (p_especie);
 
                 notificacionEN = new NotificacionEN ();
                 notificacionEN.Mensaje = "Ha llegado " + animalEN.Nombre;
