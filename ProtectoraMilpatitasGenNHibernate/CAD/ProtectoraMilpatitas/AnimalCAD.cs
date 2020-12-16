@@ -438,5 +438,35 @@ public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.Pro
 
         return result;
 }
+public void AsignarDuenyo (int p_Animal_OID, string p_dueño_OID)
+{
+        ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN animalEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                animalEN = (AnimalEN)session.Load (typeof(AnimalEN), p_Animal_OID);
+                animalEN.Dueño = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN), p_dueño_OID);
+
+                animalEN.Dueño.Animal.Add (animalEN);
+
+
+
+                session.Update (animalEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is ProtectoraMilpatitasGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new ProtectoraMilpatitasGenNHibernate.Exceptions.DataLayerException ("Error in AnimalCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
 }
 }

@@ -45,5 +45,8 @@ System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.Protectora
 
 
 System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> Obtener_Animal_Usuario (string p_email);
+
+
+void AsignarDuenyo (int p_Animal_OID, string p_dueño_OID);
 }
 }

@@ -95,7 +95,15 @@ namespace WebProtectoraMilpatitas.Controllers
 
                     if (token!=null)
                     {
-                        return RedirectToLocal(returnUrl);
+                        if(token == "Administrador")
+                        {
+                            return RedirectToLocal(returnUrl);
+                        }
+                        else {
+                            return RedirectToLocal("https://ua.es");
+                        }
+                             
+                    
                     } else
                     {
                         ModelState.AddModelError("", "Intento de inicio de sesión no válido.");

@@ -78,17 +78,6 @@ public void Eliminar (string email
         _IUsuarioCAD.Eliminar (email);
 }
 
-public string Iniciar_Sesion (string p_Usuario_OID, string p_pass)
-{
-        string result = null;
-        UsuarioEN en = _IUsuarioCAD.ReadOIDDefault (p_Usuario_OID);
-
-        if (en != null && en.Password.Equals (Utils.Util.GetEncondeMD5 (p_pass)))
-                result = this.GetToken (en.Email);
-
-        return result;
-}
-
 public System.Collections.Generic.IList<UsuarioEN> Dame_Todos (int first, int size)
 {
         System.Collections.Generic.IList<UsuarioEN> list = null;

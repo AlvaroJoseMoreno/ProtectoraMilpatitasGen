@@ -73,5 +73,11 @@ public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.Pro
 {
         return _IAnimalCAD.Obtener_Animal_Usuario (p_email);
 }
+public void AsignarDuenyo (int p_Animal_OID, string p_dueño_OID)
+{
+        //Call to AnimalCAD
+
+        _IAnimalCAD.AsignarDuenyo (p_Animal_OID, p_dueño_OID);
+}
 }
 }

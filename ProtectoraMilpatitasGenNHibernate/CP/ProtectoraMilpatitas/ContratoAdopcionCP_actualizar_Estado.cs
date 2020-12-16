@@ -33,6 +33,8 @@ public void Actualizar_Estado (int p_ContratoAdopcion, ProtectoraMilpatitasGenNH
                 SessionInitializeTransaction ();
                 contratoAdopcionCAD = new ContratoAdopcionCAD (session);
                 contratoAdopcionCEN = new ContratoAdopcionCEN (contratoAdopcionCAD);
+                AnimalCAD anicad = new AnimalCAD (session);
+                AnimalCEN animalCEN = new AnimalCEN (anicad);
 
                 ContratoAdopcionEN contratoAdopcionEN = null;
                 //Initialized ContratoAdopcionEN
@@ -43,6 +45,7 @@ public void Actualizar_Estado (int p_ContratoAdopcion, ProtectoraMilpatitasGenNH
 
                 if (contratoAdopcionEN.Estado.Equals ("firmado")) {
                         contratoAdopcionEN.Animal.EstadoAdopcion = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum.EnSeguimiento;
+                        animalCEN.AsignarDuenyo (contratoAdopcionEN.Animal.Id, contratoAdopcionEN.Usuario.Email);
                 }
                 else{
                         contratoAdopcionEN.Animal.EstadoAdopcion = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum.EnContrato;
