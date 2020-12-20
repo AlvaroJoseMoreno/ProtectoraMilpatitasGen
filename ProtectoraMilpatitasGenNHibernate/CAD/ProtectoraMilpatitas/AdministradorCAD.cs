@@ -148,6 +148,9 @@ public void Modificar (AdministradorEN administrador)
 
                 administradorEN.Password = administrador.Password;
 
+
+                administradorEN.Foto = administrador.Foto;
+
                 session.Update (administradorEN);
                 SessionCommit ();
         }

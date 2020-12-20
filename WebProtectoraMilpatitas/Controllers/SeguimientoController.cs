@@ -32,7 +32,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
             return View(listaSeguimiento);
         }
-
+        //santi te quiero
         // GET: Seguimiento/Details/5
         public ActionResult Details(int id)
         {
