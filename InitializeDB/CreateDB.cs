@@ -138,16 +138,16 @@ public static void InitializeData ()
 
                 //Creacion de animales
                 AnimalCP chihua = new AnimalCP ();
-                AnimalEN chi = chihua.Nuevo ("tobi", 3, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "amigable", esp,"imagen.png");
+                AnimalEN chi = chihua.Nuevo ("tobi", 3, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "amigable", esp,"Imagenes/imagen.png");
 
                 AnimalCP yorkshire = new AnimalCP ();
-                AnimalEN yor = yorkshire.Nuevo ("Pelusa", 3, 'M', "Albacete", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enRecuperacion, "carinoso", esp,"imagen.png");
+                AnimalEN yor = yorkshire.Nuevo ("Pelusa", 3, 'M', "Albacete", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enRecuperacion, "carinoso", esp, "Imagenes/imagen.png");
 
                 AnimalCP siames = new AnimalCP ();
-                AnimalEN sia = siames.Nuevo ("minino", 1, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso", esp1, "imagen.png");
+                AnimalEN sia = siames.Nuevo ("minino", 1, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso", esp1, "Imagenes/imagen.png");
 
                 AnimalCP gatEuropeo = new AnimalCP ();
-                AnimalEN gatiEuropeo = gatEuropeo.Nuevo ("milky", 2, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso", esp1, "imagen.png");
+                AnimalEN gatiEuropeo = gatEuropeo.Nuevo ("milky", 2, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso", esp1, "Imagenes/imagen.png");
 
                 Console.WriteLine ();
 

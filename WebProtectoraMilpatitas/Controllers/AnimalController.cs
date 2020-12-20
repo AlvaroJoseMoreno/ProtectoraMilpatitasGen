@@ -86,13 +86,13 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         public ActionResult Create(AnimalViewModel ani, HttpPostedFileBase file)
         {
-            string fileName = "";
+            string filename = "";
             string ruta = "";
             if (file != null && file.ContentLength > 0)
             {
 
-                fileName = Path.GetFileName(file.FileName);
-                ruta = Path.Combine(Server.MapPath("~/Images/Uploads"), fileName);
+                filename = Path.GetFileName(file.FileName);
+                ruta = Path.Combine(Server.MapPath(""), filename);
                 file.SaveAs(ruta);
             }
 
@@ -100,9 +100,9 @@ namespace WebProtectoraMilpatitas.Controllers
             {
                 // TODO: Add insert logic here
                 //   filename =" + filename;
-                fileName = "/Images/Uploads/" + fileName;
+                filename = "Imagenes" + filename;
                 AnimalCP animalCP = new AnimalCP();
-                animalCP.Nuevo(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter, ani.idEspecie, fileName);
+                animalCP.Nuevo(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter, ani.idEspecie, filename);
 
                 return RedirectToAction("Index");
             }
