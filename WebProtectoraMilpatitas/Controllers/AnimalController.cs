@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -129,7 +130,7 @@ namespace WebProtectoraMilpatitas.Controllers
             {
                 // TODO: Add update logic here
                 AnimalCEN anicen = new AnimalCEN();
-                anicen.Modificar(ani.Id,ani.Nombre,ani.Edad,ani.Sexo,ani.Centro,ani.Caracter);
+                anicen.Modificar(ani.Id,ani.Nombre,ani.Edad,ani.Sexo,ani.Centro,ani.Caracter,"imagen.png");
                 return RedirectToAction("Index");
             }
             catch
