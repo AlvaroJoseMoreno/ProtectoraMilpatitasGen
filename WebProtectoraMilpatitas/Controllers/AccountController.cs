@@ -191,7 +191,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
                     UsuarioCEN usuCEN = new UsuarioCEN();
 
-                    usuCEN.Registrarse(model.Nombre, model.Email, model.Password);
+                    usuCEN.Registrarse(model.Nombre, model.Email, model.Password, "");
 
                     Session["Usuario"] = usuCEN.Dame_Por_Email(model.Email);
 

@@ -44,7 +44,7 @@ namespace WebProtectoraMilpatitas.Models
 
         public String Caracter { get; set; }
 
-        [Display(Prompt = "Foto del animal", Description = "Foto del animal", Name = "Foto")]
+        [Display(Prompt = "Foto del animal", Description = "Foto del animal", Name = "foto")]
         [Required(ErrorMessage = "Debe seleccionar una foto para el animal")]
        
 

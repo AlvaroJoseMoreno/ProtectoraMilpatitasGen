@@ -56,7 +56,7 @@ namespace WebProtectoraMilpatitas.Controllers
             {
                 // TODO: Add insert logic here
                 UsuarioCEN usarioCEN = new UsuarioCEN();
-                usarioCEN.Registrarse(usuario.Nombre, usuario.Email, usuario.Password);
+                usarioCEN.Registrarse(usuario.Nombre, usuario.Email, usuario.Password, "");
 
                 return RedirectToAction("Index");
             }
@@ -86,7 +86,7 @@ namespace WebProtectoraMilpatitas.Controllers
             {
                 // TODO: Add update logic here
                 UsuarioCEN usuarioCEN = new UsuarioCEN();
-                usuarioCEN.Modificar(usu.Email, usu.Nombre, usu.Password);
+                usuarioCEN.Modificar(usu.Email, usu.Nombre, usu.Password, "");
                 return RedirectToAction("Index");
             }
             catch
