@@ -44,6 +44,12 @@ namespace WebProtectoraMilpatitas.Models
 
         public String Caracter { get; set; }
 
+        [Display(Prompt = "Foto del animal", Description = "Foto del animal", Name = "Foto")]
+        [Required(ErrorMessage = "Debe seleccionar una foto para el animal")]
+       
+
+        public String Foto { get; set; }
+
         [Display(Prompt = "Estado de salud del animal", Description = "Estado de salud del animal", Name = "Estado de salud")]
         [Required(ErrorMessage = "Debe indicar un estado de salud para el animal")]
 
