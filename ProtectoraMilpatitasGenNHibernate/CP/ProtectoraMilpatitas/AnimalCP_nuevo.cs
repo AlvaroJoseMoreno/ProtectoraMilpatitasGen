@@ -74,7 +74,7 @@ public ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN Nuevo 
 
                 animalEN.Especie = new EspecieCEN ().Dame_Por_Id (p_especie);
 
-                animalEN.Foto = "Imagenes/"+p_foto;
+                animalEN.Foto = p_foto;
 
                 notificacionEN = new NotificacionEN ();
                 notificacionEN.Mensaje = "Ha llegado " + animalEN.Nombre;

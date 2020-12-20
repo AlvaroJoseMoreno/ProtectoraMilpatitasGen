@@ -19,11 +19,15 @@
             @Html.DisplayFor(model => model.Nombre)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Foto)
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.Foto)
+            </div>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Foto)
+            <div class="display-field">
+                <img style="width: 200px;height: 200px;" src="@Html.DisplayFor(model => model.Foto)" />
+            </div>
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Edad)
@@ -75,6 +79,7 @@
         </dt>
 
         <dd>
+
             @Html.DisplayFor(model => model.idEspecie)
         </dd>
 
