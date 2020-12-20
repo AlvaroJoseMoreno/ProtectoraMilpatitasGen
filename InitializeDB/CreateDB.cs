@@ -80,7 +80,7 @@ public static void InitializeData ()
         {
                 //Creacion de un administrador
                 AdministradorCEN adminCEN = new AdministradorCEN ();
-                adminCEN.Registrarse ("Protectora", "protectoramilpatitasalicante@gmail.com", "Patitas-20");
+                adminCEN.Registrarse ("Protectora", "protectoramilpatitasalicante@gmail.com", "Patitas-20","imagen.jpg");
 
                 UsuarioCEN aduCEN = new UsuarioCEN ();
 
@@ -90,18 +90,18 @@ public static void InitializeData ()
 
                 //Creacion de usuarios
                 UsuarioCEN usuCEN = new UsuarioCEN ();
-                string idusu = usuCEN.Registrarse ("Perico", "pericoinventado5@gmail.com", "12356794");
+                string idusu = usuCEN.Registrarse ("Perico", "pericoinventado5@gmail.com", "12356794","imagen.jpg");
 
                 if (usuCEN.Iniciar_Sesion ("pericoinventado5@gmail.com", "12356794") != null) {
                         Console.WriteLine ("El login de: " + idusu + " es correcto");
                 }
 
                 UsuarioCEN juan99 = new UsuarioCEN ();
-                string juan = juan99.Registrarse ("Juan", "juaninventado243@gmail.com", "constantino12");
+                string juan = juan99.Registrarse ("Juan", "juaninventado243@gmail.com", "constantino12","imagen.jpg");
                 UsuarioCEN manuel = new UsuarioCEN ();
-                string manu = manuel.Registrarse ("Manuel45", "manuelinventado03@gmail.com", "password=5");
+                string manu = manuel.Registrarse ("Manuel45", "manuelinventado03@gmail.com", "password=5","imagen.jpg");
                 UsuarioCEN Antonio = new UsuarioCEN ();
-                string anto = Antonio.Registrarse ("Antonio53", "antonioinventado780@gmail.com", "villena92");
+                string anto = Antonio.Registrarse ("Antonio53", "antonioinventado780@gmail.com", "villena92","imagen.jpg");
 
                 Console.WriteLine ();
 
@@ -138,16 +138,16 @@ public static void InitializeData ()
 
                 //Creacion de animales
                 AnimalCP chihua = new AnimalCP ();
-                AnimalEN chi = chihua.Nuevo ("tobi", 3, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "amigable", esp);
+                AnimalEN chi = chihua.Nuevo ("tobi", 3, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "amigable", esp,"imagen.jpg");
 
                 AnimalCP yorkshire = new AnimalCP ();
-                AnimalEN yor = yorkshire.Nuevo ("Pelusa", 3, 'M', "Albacete", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enRecuperacion, "carinoso", esp);
+                AnimalEN yor = yorkshire.Nuevo ("Pelusa", 3, 'M', "Albacete", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enRecuperacion, "carinoso", esp,"imagen.jpg");
 
                 AnimalCP siames = new AnimalCP ();
-                AnimalEN sia = siames.Nuevo ("minino", 1, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso", esp1);
+                AnimalEN sia = siames.Nuevo ("minino", 1, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso", esp1, "imagen.jpg");
 
                 AnimalCP gatEuropeo = new AnimalCP ();
-                AnimalEN gatiEuropeo = gatEuropeo.Nuevo ("milky", 2, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso", esp1);
+                AnimalEN gatiEuropeo = gatEuropeo.Nuevo ("milky", 2, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso", esp1, "imagen.jpg");
 
                 Console.WriteLine ();
 
