@@ -33,6 +33,9 @@
 					<property name="EstadoAdopcion" > 
 						<column name="estadoAdopcion"  not-null="true"/>
 					</property>
+					<property name="Foto" type="string"> 
+						<column name="foto"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -87,6 +90,8 @@
 					    </bag>
 					
 			
+			
+					
 					
 					
 					

@@ -15,6 +15,9 @@
 					<property name="Password" type="string"> 
 						<column name="password"  not-null="true"/>
 					</property>
+					<property name="Foto" type="string"> 
+						<column name="foto"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -96,6 +99,8 @@
 					    </bag>
 					
 			
+			
+					
 					
 					
 					

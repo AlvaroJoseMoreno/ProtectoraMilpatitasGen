@@ -19,7 +19,7 @@ namespace ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas
 {
 public partial class AnimalCEN
 {
-public void Modificar (int p_Animal, string p_nombre, int p_edad, char p_sexo, string p_centro, string p_caracter)
+public void Modificar (int p_Animal, string p_nombre, int p_edad, char p_sexo, string p_centro, string p_caracter, string p_foto)
 {
         /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas_Animal_modificar_customized) START*/
 
@@ -33,6 +33,7 @@ public void Modificar (int p_Animal, string p_nombre, int p_edad, char p_sexo, s
         animalEN.Sexo = p_sexo;
         animalEN.Centro = p_centro;
         animalEN.Caracter = p_caracter;
+        animalEN.Foto = p_foto;
         //Call to AnimalCAD
 
         _IAnimalCAD.Modificar (animalEN);

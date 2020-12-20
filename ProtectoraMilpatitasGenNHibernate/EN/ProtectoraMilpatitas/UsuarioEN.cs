@@ -75,6 +75,13 @@ private String password;
 
 
 
+/**
+ *	Atributo foto
+ */
+private string foto;
+
+
+
 
 
 
@@ -138,6 +145,12 @@ public virtual String Password {
 
 
 
+public virtual string Foto {
+        get { return foto; } set { foto = value;  }
+}
+
+
+
 
 
 public UsuarioEN()
@@ -153,20 +166,20 @@ public UsuarioEN()
 
 
 
-public UsuarioEN(string email, string nombre, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.TestAnimalIdealEN> testsAnimalIdeal, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.NotificacionEN> notificaciones, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN> solicitudAdopcion, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN> contratoAdopcion, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> mascotas, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.MensajeEN> mensajeChat, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SeguimientoEN> seguimiento, String password
+public UsuarioEN(string email, string nombre, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.TestAnimalIdealEN> testsAnimalIdeal, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.NotificacionEN> notificaciones, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN> solicitudAdopcion, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN> contratoAdopcion, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> mascotas, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.MensajeEN> mensajeChat, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SeguimientoEN> seguimiento, String password, string foto
                  )
 {
-        this.init (Email, nombre, testsAnimalIdeal, notificaciones, solicitudAdopcion, contratoAdopcion, mascotas, mensajeChat, seguimiento, password);
+        this.init (Email, nombre, testsAnimalIdeal, notificaciones, solicitudAdopcion, contratoAdopcion, mascotas, mensajeChat, seguimiento, password, foto);
 }
 
 
 public UsuarioEN(UsuarioEN usuario)
 {
-        this.init (Email, usuario.Nombre, usuario.TestsAnimalIdeal, usuario.Notificaciones, usuario.SolicitudAdopcion, usuario.ContratoAdopcion, usuario.Mascotas, usuario.MensajeChat, usuario.Seguimiento, usuario.Password);
+        this.init (Email, usuario.Nombre, usuario.TestsAnimalIdeal, usuario.Notificaciones, usuario.SolicitudAdopcion, usuario.ContratoAdopcion, usuario.Mascotas, usuario.MensajeChat, usuario.Seguimiento, usuario.Password, usuario.Foto);
 }
 
 private void init (string email
-                   , string nombre, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.TestAnimalIdealEN> testsAnimalIdeal, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.NotificacionEN> notificaciones, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN> solicitudAdopcion, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN> contratoAdopcion, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> mascotas, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.MensajeEN> mensajeChat, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SeguimientoEN> seguimiento, String password)
+                   , string nombre, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.TestAnimalIdealEN> testsAnimalIdeal, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.NotificacionEN> notificaciones, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN> solicitudAdopcion, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN> contratoAdopcion, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> mascotas, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.MensajeEN> mensajeChat, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SeguimientoEN> seguimiento, String password, string foto)
 {
         this.Email = email;
 
@@ -188,6 +201,8 @@ private void init (string email
         this.Seguimiento = seguimiento;
 
         this.Password = password;
+
+        this.Foto = foto;
 }
 
 public override bool Equals (object obj)

@@ -39,7 +39,7 @@ public IAdministradorCAD get_IAdministradorCAD ()
         return this._IAdministradorCAD;
 }
 
-public string Registrarse (string p_nombre, string p_email, String p_password)
+public string Registrarse (string p_nombre, string p_email, String p_password, string p_foto)
 {
         AdministradorEN administradorEN = null;
         string oid;
@@ -52,13 +52,15 @@ public string Registrarse (string p_nombre, string p_email, String p_password)
 
         administradorEN.Password = Utils.Util.GetEncondeMD5 (p_password);
 
+        administradorEN.Foto = p_foto;
+
         //Call to AdministradorCAD
 
         oid = _IAdministradorCAD.Registrarse (administradorEN);
         return oid;
 }
 
-public void Modificar (string p_Administrador_OID, string p_nombre, String p_password)
+public void Modificar (string p_Administrador_OID, string p_nombre, String p_password, string p_foto)
 {
         AdministradorEN administradorEN = null;
 
@@ -67,6 +69,7 @@ public void Modificar (string p_Administrador_OID, string p_nombre, String p_pas
         administradorEN.Email = p_Administrador_OID;
         administradorEN.Nombre = p_nombre;
         administradorEN.Password = Utils.Util.GetEncondeMD5 (p_password);
+        administradorEN.Foto = p_foto;
         //Call to AdministradorCAD
 
         _IAdministradorCAD.Modificar (administradorEN);

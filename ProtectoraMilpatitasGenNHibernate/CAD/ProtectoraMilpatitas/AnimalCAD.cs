@@ -116,6 +116,9 @@ public void ModifyDefault (AnimalEN animal)
 
                 animalEN.EstadoAdopcion = animal.EstadoAdopcion;
 
+
+                animalEN.Foto = animal.Foto;
+
                 session.Update (animalEN);
                 SessionCommit ();
         }
@@ -188,6 +191,9 @@ public void Modificar (AnimalEN animal)
 
 
                 animalEN.Caracter = animal.Caracter;
+
+
+                animalEN.Foto = animal.Foto;
 
                 session.Update (animalEN);
                 SessionCommit ();

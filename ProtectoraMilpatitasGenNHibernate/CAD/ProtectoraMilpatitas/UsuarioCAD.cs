@@ -103,6 +103,9 @@ public void ModifyDefault (UsuarioEN usuario)
 
                 usuarioEN.Password = usuario.Password;
 
+
+                usuarioEN.Foto = usuario.Foto;
+
                 session.Update (usuarioEN);
                 SessionCommit ();
         }
@@ -159,6 +162,9 @@ public void Modificar (UsuarioEN usuario)
 
 
                 usuarioEN.Password = usuario.Password;
+
+
+                usuarioEN.Foto = usuario.Foto;
 
                 session.Update (usuarioEN);
                 SessionCommit ();
