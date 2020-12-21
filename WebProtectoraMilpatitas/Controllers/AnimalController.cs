@@ -92,7 +92,7 @@ namespace WebProtectoraMilpatitas.Controllers
             {
 
                 filename = Path.GetFileName(file.FileName);
-                ruta = Path.Combine(Server.MapPath(""), filename);
+                ruta = Path.Combine(Server.MapPath("~/Imagenes"), filename);
                 file.SaveAs(ruta);
             }
 
@@ -100,7 +100,7 @@ namespace WebProtectoraMilpatitas.Controllers
             {
                 // TODO: Add insert logic here
                 //   filename =" + filename;
-                filename = "Imagenes" + filename;
+                filename = "Imagenes/" + filename;
                 AnimalCP animalCP = new AnimalCP();
                 animalCP.Nuevo(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter, ani.idEspecie, filename);
 
@@ -131,7 +131,7 @@ namespace WebProtectoraMilpatitas.Controllers
             {
                 // TODO: Add update logic here
                 AnimalCEN anicen = new AnimalCEN();
-                anicen.Modificar(ani.Id,ani.Nombre,ani.Edad,ani.Sexo,ani.Centro,ani.Caracter,"imagen.png");
+                anicen.Modificar(ani.Id,ani.Nombre,ani.Edad,ani.Sexo,ani.Centro,ani.Caracter,"Imagenes/imagen.png");
                 return RedirectToAction("Index");
             }
             catch
