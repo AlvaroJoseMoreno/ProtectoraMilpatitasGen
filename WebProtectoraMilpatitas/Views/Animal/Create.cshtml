@@ -4,9 +4,9 @@
     ViewBag.Title = "Crear nuevo animal";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script src="~/Scripts/codigo.js"></script>
 
 <h2>Crear nuevo animal</h2>
-
 
 @using (Html.BeginForm("Create", "Animal", FormMethod.Post, new { enctype = "multipart/form-data" })) 
 {
@@ -73,7 +73,9 @@
         @Html.LabelFor(model => model.Foto)
     </div>
     <div>
-        <input type="file" name="file"/>
+        <label for="foto"><img  style="width:200px;height:200px;" src="~/Imagenes/perfil_perro.jpg"/></label>
+        <input onchange="cargarFoto(this);" style="display:none;" id="foto" type="file" name="file"/>
+        <p><label for="foto">Buscar Foto</label></p>
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
