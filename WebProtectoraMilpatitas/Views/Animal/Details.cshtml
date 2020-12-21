@@ -63,10 +63,18 @@
         <dt>
             @Html.DisplayNameFor(model => model.DatosMedicos)
         </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DatosMedicos)
-        </dd>
+        @if (Model.DatosMedicos.ToString().Equals("enRecuperacion"))
+        {
+            <dd>
+                En recuperación
+            </dd>
+        }
+        else
+        {
+            <dd>
+                @Html.DisplayFor(model => model.DatosMedicos)
+            </dd>
+        }
         <dt>
             @Html.DisplayNameFor(model => model.EstadoAdopcion)
         </dt>
@@ -77,6 +85,7 @@
         <dt>
             @Html.DisplayNameFor(model => model.idEspecie)
         </dt>
+
 
         <dd>
 
