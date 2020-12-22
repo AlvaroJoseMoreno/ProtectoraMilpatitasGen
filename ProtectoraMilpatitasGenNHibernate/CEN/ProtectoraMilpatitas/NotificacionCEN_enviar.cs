@@ -38,7 +38,7 @@ public void Enviar (int p_Notificacion, string p_usuario, string p_mensaje)
                 correo.From = new MailAddress (adminEN.Email, "Protectora Milpatitas", System.Text.Encoding.UTF8); //Correo de salida
                 correo.To.Add (p_usuario); //Correo destino?
                 correo.Subject = "Correo de prueba"; //Asunto
-                correo.Body = "Este es un correo de prueba desde c#"; //Mensaje del correo
+                correo.Body = p_mensaje; //Mensaje del correo
                 correo.IsBodyHtml = true;
                 correo.Priority = MailPriority.Normal;
                 SmtpClient smtp = new SmtpClient ();
