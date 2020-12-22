@@ -26,7 +26,8 @@ namespace WebProtectoraMilpatitas.Controllers
             EspecieCAD especieCAD = new EspecieCAD(session);
             IList<AnimalEN> listaAnimal = animalCEN.Dame_Todos(0, -1);
             IEnumerable<AnimalViewModel> listaView = new AnimalAssembler().ConvertListENToModel(listaAnimal).ToList();
-         //   EspecieEN espEN = especieCAD.Dame_Por_Id(AnimalEN);
+            
+        //    EspecieEN espEN = especieCAD.Dame_Por_Id(anim);
             foreach (AnimalEN ani in listaAnimal)
             {
                 ViewData["NombreEsp"] = ani.Especie.Nombre;
