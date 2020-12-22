@@ -221,8 +221,8 @@ namespace WebProtectoraMilpatitas.Controllers
             AnimalCAD aniCad = new AnimalCAD(session);
             AnimalCEN animalCEN = new AnimalCEN(aniCad);
             ViewData["NombreAnim"] = animalCEN.Ver_Detalle_Animal(id).Nombre;
-            SessionClose();
 
+            SessionClose();
             return View();
         }
 
@@ -233,14 +233,10 @@ namespace WebProtectoraMilpatitas.Controllers
             try
             {
                 // TODO: Add delete logic here
-                SessionInitialize();
-
-                AnimalCAD aniCad = new AnimalCAD(session);
-                AnimalCEN animalCEN = new AnimalCEN(aniCad);
-             
-
+               
+                AnimalCEN animalCEN = new AnimalCEN();
                 animalCEN.Eliminar(ani.Id);
-                SessionClose();
+                
                 return RedirectToAction("Index");
             }
             catch
