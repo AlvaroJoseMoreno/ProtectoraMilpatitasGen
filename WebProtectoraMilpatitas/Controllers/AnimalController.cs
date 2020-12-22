@@ -197,8 +197,7 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Animal/Delete/5
         public ActionResult Delete(int id)
         {
-            AnimalCEN animalCEN = new AnimalCEN();
-            animalCEN.Eliminar(id);
+            
             return View();
         }
 
@@ -209,8 +208,9 @@ namespace WebProtectoraMilpatitas.Controllers
             try
             {
                 // TODO: Add delete logic here
-                
-
+                AnimalCEN animalCEN = new AnimalCEN();
+                ViewData["NombreAni"] = animalCEN.Ver_Detalle_Animal(ani.Id).Nombre;
+                animalCEN.Eliminar(ani.Id);
                 return RedirectToAction("Index");
             }
             catch
