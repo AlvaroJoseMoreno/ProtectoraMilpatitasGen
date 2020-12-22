@@ -23,13 +23,13 @@ namespace WebProtectoraMilpatitas.Controllers
 
             AnimalCAD animalCAD = new AnimalCAD(session);
             AnimalCEN animalCEN = new AnimalCEN(animalCAD);
-
+            EspecieCAD especieCAD = new EspecieCAD(session);
             IList<AnimalEN> listaAnimal = animalCEN.Dame_Todos(0, -1);
             IEnumerable<AnimalViewModel> listaView = new AnimalAssembler().ConvertListENToModel(listaAnimal).ToList();
-
+         //   EspecieEN espEN = especieCAD.Dame_Por_Id(AnimalEN);
             foreach (AnimalEN ani in listaAnimal)
             {
-                ViewData["NombreEspecie"] = ani.Especie.Nombre;
+                ViewData["NombreEsp"] = ani.Especie.Nombre;
             }
 
             SessionClose();
