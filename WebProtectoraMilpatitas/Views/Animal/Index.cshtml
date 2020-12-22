@@ -44,7 +44,7 @@
         @Html.ActionLink(item.Nombre, "Details", new { id = item.Id }) 
     </td>
     <td>
-        <img style="display:block;margin:auto; width: 200px;height: 200px;" src="@Html.DisplayFor(modelItem => item.Foto)"/>
+        <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.Foto)"/>
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Edad)
