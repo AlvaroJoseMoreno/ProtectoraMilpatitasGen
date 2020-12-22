@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.IO;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -179,7 +180,7 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(UsuarioViewModel model)
+        public async Task<ActionResult> Register(UsuarioViewModel model, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
@@ -189,9 +190,19 @@ namespace WebProtectoraMilpatitas.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
+                    string filename = "";
+                    string ruta = "";
+                    if (file != null && file.ContentLength > 0)
+                    {
+
+                        filename = Path.GetFileName(file.FileName);
+                        ruta = Path.Combine(Server.MapPath("~/Imagenes/usuarios"), filename);
+                        file.SaveAs(ruta);
+                    }
+                    filename = "Imagenes/usuarios/" + filename;
                     UsuarioCEN usuCEN = new UsuarioCEN();
 
-                    usuCEN.Registrarse(model.Nombre, model.Email, model.Password, "");
+                    usuCEN.Registrarse(model.Nombre, model.Email, model.Password, filename);
 
                     Session["Usuario"] = usuCEN.Dame_Por_Email(model.Email);
 

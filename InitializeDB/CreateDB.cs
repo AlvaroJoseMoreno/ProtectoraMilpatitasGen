@@ -80,7 +80,7 @@ public static void InitializeData ()
         {
                 //Creacion de un administrador
                 AdministradorCEN adminCEN = new AdministradorCEN ();
-                adminCEN.Registrarse ("Protectora", "protectoramilpatitasalicante@gmail.com", "Patitas-20","imagen.png");
+                adminCEN.Registrarse ("Protectora", "protectoramilpatitasalicante@gmail.com", "Patitas-20", "Imagenes/usuarios/imagen.png");
 
                 UsuarioCEN aduCEN = new UsuarioCEN ();
 
@@ -90,18 +90,18 @@ public static void InitializeData ()
 
                 //Creacion de usuarios
                 UsuarioCEN usuCEN = new UsuarioCEN ();
-                string idusu = usuCEN.Registrarse ("Perico", "pericoinventado5@gmail.com", "12356794","imagen.png");
+                string idusu = usuCEN.Registrarse ("Perico", "pericoinventado5@gmail.com", "12356794", "Imagenes/usuarios/imagen.png");
 
                 if (usuCEN.Iniciar_Sesion ("pericoinventado5@gmail.com", "12356794") != null) {
                         Console.WriteLine ("El login de: " + idusu + " es correcto");
                 }
 
                 UsuarioCEN juan99 = new UsuarioCEN ();
-                string juan = juan99.Registrarse ("Juan", "juaninventado243@gmail.com", "constantino12","imagen.png");
+                string juan = juan99.Registrarse ("Juan", "juaninventado243@gmail.com", "constantino12", "Imagenes/usuarios/imagen.png");
                 UsuarioCEN manuel = new UsuarioCEN ();
-                string manu = manuel.Registrarse ("Manuel45", "manuelinventado03@gmail.com", "password=5","imagen.png");
+                string manu = manuel.Registrarse ("Manuel45", "manuelinventado03@gmail.com", "password=5", "Imagenes/usuarios/imagen.png");
                 UsuarioCEN Antonio = new UsuarioCEN ();
-                string anto = Antonio.Registrarse ("Antonio53", "antonioinventado780@gmail.com", "villena92","imagen.png");
+                string anto = Antonio.Registrarse ("Antonio53", "antonioinventado780@gmail.com", "villena92", "Imagenes/usuarios/imagen.png");
 
                 Console.WriteLine ();
 
