@@ -58,10 +58,20 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Animal/Details/5
         public ActionResult Details(int id)
         {
-            AnimalViewModel ani = null;
             SessionInitialize();
+            EspecieCAD espeCad = new EspecieCAD(session);
+            AnimalViewModel ani = null;
             AnimalEN artEN = new AnimalCAD(session).Ver_Detalle_Animal(id);
             ani = new AnimalAssembler().ConvertENToModelUI(artEN);
+
+            EspecieEN espEN = espeCad.Dame_Por_Id(ani.idEspecie);
+
+            if (espEN != null)
+            {
+                ViewData["NombreEsp"] = espEN.Nombre;
+            }
+
+
             SessionClose();
             return View(ani);
         }
@@ -207,7 +217,12 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Animal/Delete/5
         public ActionResult Delete(int id)
         {
-            
+            SessionInitialize();
+            AnimalCAD aniCad = new AnimalCAD(session);
+            AnimalCEN animalCEN = new AnimalCEN(aniCad);
+            ViewData["NombreAnim"] = animalCEN.Ver_Detalle_Animal(id).Nombre;
+            SessionClose();
+
             return View();
         }
 
@@ -222,11 +237,10 @@ namespace WebProtectoraMilpatitas.Controllers
 
                 AnimalCAD aniCad = new AnimalCAD(session);
                 AnimalCEN animalCEN = new AnimalCEN(aniCad);
-                ViewData["NombreAni"] = animalCEN.Ver_Detalle_Animal(ani.Id);
+             
+
                 animalCEN.Eliminar(ani.Id);
-
                 SessionClose();
-
                 return RedirectToAction("Index");
             }
             catch
