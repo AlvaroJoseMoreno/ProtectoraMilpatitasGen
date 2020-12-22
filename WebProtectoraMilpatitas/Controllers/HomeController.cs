@@ -14,10 +14,31 @@ namespace WebProtectoraMilpatitas.Controllers
         {
             AnimalCEN animal = new AnimalCEN();
             IEnumerable<AnimalEN> listAni = animal.Dame_Todos(0, -1).ToList();
+
+            ViewData["NumAni"] = listAni.Count();
+
             UsuarioCEN usuario = new UsuarioCEN();
             IEnumerable<UsuarioEN> listUsuas = usuario.Dame_Todos(0, -1).ToList();
 
-            return View(listAni);
+            ViewData["NumUsu"] = listUsuas.Count();
+
+            SolicitudAdopcionCEN solicitud = new SolicitudAdopcionCEN();
+            IEnumerable<SolicitudAdopcionEN> listSol = solicitud.Dame_Todas(0, -1).ToList();
+
+            ViewData["NumSol"] = listSol.Count();
+
+            ContratoAdopcionCEN contrato = new ContratoAdopcionCEN();
+            IEnumerable<ContratoAdopcionEN> listCon = contrato.Dame_Todos(0, -1).ToList();
+
+            ViewData["NumCon"] = listCon.Count();
+
+            SeguimientoCEN seguimiento = new SeguimientoCEN();
+            IEnumerable<SeguimientoEN> listSeg = seguimiento.Dame_Todos(0, -1).ToList();
+
+            ViewData["NumSeg"] = listSeg.Count();
+
+
+            return View();
         }
 
         public ActionResult About()
