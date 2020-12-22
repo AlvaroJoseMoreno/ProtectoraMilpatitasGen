@@ -27,6 +27,11 @@ namespace WebProtectoraMilpatitas.Controllers
             IList<AnimalEN> listaAnimal = animalCEN.Dame_Todos(0, -1);
             IEnumerable<AnimalViewModel> listaView = new AnimalAssembler().ConvertListENToModel(listaAnimal).ToList();
 
+            foreach (AnimalEN ani in listaAnimal)
+            {
+                ViewData["NombreEspecie"] = ani.Especie.Nombre;
+            }
+
             SessionClose();
 
             return View(listaView);
