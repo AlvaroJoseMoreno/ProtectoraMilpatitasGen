@@ -27,20 +27,6 @@ namespace WebProtectoraMilpatitas.Controllers
             IList<AnimalEN> listaAnimal = animalCEN.Dame_Todos(0, -1);
             IEnumerable<AnimalViewModel> listaView = new AnimalAssembler().ConvertListENToModel(listaAnimal).ToList();
 
-            EspecieCAD espeCad = new EspecieCAD(session);
-
-            foreach (AnimalEN ani in listaAnimal)
-            {
-                EspecieEN espEN = espeCad.Dame_Por_Id(ani.Especie.Id);
-
-                if (espEN != null)
-                {
-                    ViewData["NombreEsp"] = espEN.Nombre;
-                }
-            }
-
-                
-
             SessionClose();
 
             return View(listaView);
@@ -235,8 +221,8 @@ namespace WebProtectoraMilpatitas.Controllers
             AnimalCAD aniCad = new AnimalCAD(session);
             AnimalCEN animalCEN = new AnimalCEN(aniCad);
             ViewData["NombreAnim"] = animalCEN.Ver_Detalle_Animal(id).Nombre;
-            SessionClose();
 
+            SessionClose();
             return View();
         }
 
@@ -247,10 +233,10 @@ namespace WebProtectoraMilpatitas.Controllers
             try
             {
                 // TODO: Add delete logic here
+               
                 AnimalCEN animalCEN = new AnimalCEN();
-
                 animalCEN.Eliminar(ani.Id);
- 
+                
                 return RedirectToAction("Index");
             }
             catch
