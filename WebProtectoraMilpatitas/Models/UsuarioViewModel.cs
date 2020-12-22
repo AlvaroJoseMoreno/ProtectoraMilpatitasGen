@@ -14,5 +14,11 @@ namespace WebProtectoraMilpatitas.Models
         //preguntar como poner un rango minimo en string
         [StringLength(maximumLength: 20, ErrorMessage = "El nombre tiene que tener entre 8 y 20 caracteres")]
         public string Nombre { get; set; }
+
+        [Display(Prompt = "Foto de perfil", Description = "Foto de perfil", Name = "foto")]
+        [Required(ErrorMessage = "Debe seleccionar una foto para el perfil del usuario")]
+
+
+        public String Foto { get; set; }
     }
 }

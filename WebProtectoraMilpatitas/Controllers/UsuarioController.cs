@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Web;
 using System.Web.Mvc;
 using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
@@ -50,13 +51,24 @@ namespace WebProtectoraMilpatitas.Controllers
 
         // POST: Usuario/Create
         [HttpPost]
-        public ActionResult Create(UsuarioViewModel usuario)
+        public ActionResult Create(UsuarioViewModel usuario, HttpPostedFileBase file)
         {
+            string filename = "";
+            string ruta = "";
+            if (file != null && file.ContentLength > 0)
+            {
+
+                filename = Path.GetFileName(file.FileName);
+                ruta = Path.Combine(Server.MapPath("~/Imagenes/usuarios"), filename);
+                file.SaveAs(ruta);
+            }
+
             try
             {
                 // TODO: Add insert logic here
+                filename = "Imagenes/usuarios" + filename;
                 UsuarioCEN usarioCEN = new UsuarioCEN();
-                usarioCEN.Registrarse(usuario.Nombre, usuario.Email, usuario.Password, "");
+                usarioCEN.Registrarse(usuario.Nombre, usuario.Email, usuario.Password, filename);
 
                 return RedirectToAction("Index");
             }

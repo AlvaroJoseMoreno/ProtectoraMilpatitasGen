@@ -16,6 +16,7 @@ namespace WebProtectoraMilpatitas.Assemblers
             usuario.Nombre = usu.Nombre;
             usuario.Email = usu.Email;
             usuario.Password = usu.Password;
+            usuario.Foto = usu.Foto;
 
             return usuario;
         }

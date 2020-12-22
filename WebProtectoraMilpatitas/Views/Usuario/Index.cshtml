@@ -20,6 +20,9 @@
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
+            <img style="width:200px;height:200px" src="@Html.DisplayFor(modelItem => item.Foto)"/>
+        </td>
+        <td>
             @Html.ActionLink("Detalles", "Details", new { email = item.Email }) |
             @Html.ActionLink("Obtener Solicitudes Adopcion", "ObtenerSolicitudUsuario", "SolicitudAdopcion", new { email = item.Email }, htmlAttributes: null) |
             @Html.ActionLink("Obtener Contratos Adopcion", "ObtenerContratoUsuario", "ContratoAdopcion", new { email = item.Email }, htmlAttributes: null)|
