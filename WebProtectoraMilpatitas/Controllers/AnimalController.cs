@@ -125,13 +125,23 @@ namespace WebProtectoraMilpatitas.Controllers
 
         // POST: Animal/Edit/5
         [HttpPost]
-        public ActionResult Edit(AnimalViewModel ani)
+        public ActionResult Edit(AnimalViewModel ani, HttpPostedFileBase file)
         {
+            string filename = "";
+            string ruta = "";
+            if (file != null && file.ContentLength > 0)
+            {
+
+                filename = Path.GetFileName(file.FileName);
+                ruta = Path.Combine(Server.MapPath("~/Imagenes"), filename);
+                file.SaveAs(ruta);
+            }
             try
             {
                 // TODO: Add update logic here
+                filename = "Imagenes/" + filename;
                 AnimalCEN anicen = new AnimalCEN();
-                anicen.Modificar(ani.Id,ani.Nombre,ani.Edad,ani.Sexo,ani.Centro,ani.Caracter,"Imagenes/imagen.png");
+                anicen.Modificar(ani.Id,ani.Nombre,ani.Edad,ani.Sexo,ani.Centro,ani.Caracter,filename);
                 return RedirectToAction("Index");
             }
             catch
@@ -208,9 +218,15 @@ namespace WebProtectoraMilpatitas.Controllers
             try
             {
                 // TODO: Add delete logic here
-                AnimalCEN animalCEN = new AnimalCEN();
-                ViewData["NombreAni"] = animalCEN.Ver_Detalle_Animal(ani.Id).Nombre;
+                SessionInitialize();
+
+                AnimalCAD aniCad = new AnimalCAD(session);
+                AnimalCEN animalCEN = new AnimalCEN(aniCad);
+                ViewData["NombreAni"] = animalCEN.Ver_Detalle_Animal(ani.Id);
                 animalCEN.Eliminar(ani.Id);
+
+                SessionClose();
+
                 return RedirectToAction("Index");
             }
             catch

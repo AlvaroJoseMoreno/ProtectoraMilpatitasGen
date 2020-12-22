@@ -5,10 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script src="~/Scripts/codigo.js"></script>
+
 <h2>Editar animal</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Animal", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -56,18 +58,20 @@
         </div>
     </div>
 
+
     <div class="editor-label">
         @Html.LabelFor(model => model.Foto)
     </div>
     <div class="editor-field">
-        @Html.EditorFor(model => model.Foto)
+        <label for="foto"><img style="width:200px;height:200px;" src="~/Imagenes/perfil_perro.jpg" /></label>
+        <input onchange="cargarFoto(this);" style="display:none;" id="foto" type="file" name="file" />
+        <p><label for="foto">Buscar Foto</label></p>
         @Html.ValidationMessageFor(model => model.Foto)
     </div>
 
-
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
+            <input type="submit" value="Guardar" class="btn btn-default" />
         </div>
     </div>
 </div>

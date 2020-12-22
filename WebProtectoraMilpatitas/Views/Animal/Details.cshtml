@@ -4,7 +4,7 @@
     ViewBag.Title = "Protectoramilpatitas-Pagina de detalle de animal";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<script src="~/Scripts/codigo.js"></script>
 <h2>Detalles del animal</h2>
 
 <div>
@@ -19,15 +19,11 @@
             @Html.DisplayFor(model => model.Nombre)
         </dd>
         <dt>
-            <div class="display-label">
                 @Html.DisplayNameFor(model => model.Foto)
-            </div>
         </dt>
 
         <dd>
-            <div class="display-field">
-                <img style="width: 200px;height: 200px;" src="@Html.DisplayFor(model => model.Foto)" />
-            </div>
+           <img style="width: 200px;height: 200px;" src="/@Html.DisplayFor(model => model.Foto)" />
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Edad)
