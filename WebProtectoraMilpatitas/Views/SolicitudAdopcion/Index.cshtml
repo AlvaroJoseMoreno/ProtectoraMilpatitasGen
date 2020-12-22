@@ -37,9 +37,16 @@
     <td>
         @Html.DisplayFor(modelItem => item.idAnimal)
     </td>
+    @if (item.Estado.ToString().Equals("enEspera"))
+    {
+        <td>En espera</td>
+    }
+    else
+    {
     <td>
         @Html.DisplayFor(modelItem => item.Estado)
     </td>
+    }
     <td>
         @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
         @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id }) |
