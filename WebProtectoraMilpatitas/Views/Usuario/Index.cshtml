@@ -20,11 +20,11 @@
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { email = item.Email }) |
+            @Html.ActionLink("Detalles", "Details", new { email = item.Email }) |
             @Html.ActionLink("Obtener Solicitudes Adopcion", "ObtenerSolicitudUsuario", "SolicitudAdopcion", new { email = item.Email }, htmlAttributes: null) |
             @Html.ActionLink("Obtener Contratos Adopcion", "ObtenerContratoUsuario", "ContratoAdopcion", new { email = item.Email }, htmlAttributes: null)|
             @Html.ActionLink("Obtener Seguimientos", "ObtenerSeguimientoUsuario", "Seguimiento", new { email = item.Email }, htmlAttributes: null) |
-            @Html.ActionLink("Delete", "Delete", new { email = item.Email })
+            @Html.ActionLink("Eliminar", "Delete", new { email = item.Email })
         </td>
     </tr>
 }
