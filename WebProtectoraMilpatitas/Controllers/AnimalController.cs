@@ -25,9 +25,6 @@ namespace WebProtectoraMilpatitas.Controllers
             AnimalCEN animalCEN = new AnimalCEN(animalCAD);
             IList<AnimalEN> listaAnimal = animalCEN.Dame_Todos(0, -1);
             IEnumerable<AnimalViewModel> listaView = new AnimalAssembler().ConvertListENToModel(listaAnimal).ToList();
-            
-        //    EspecieEN espEN = especieCAD.Dame_Por_Id(anim);
-            
 
             SessionClose();
 
