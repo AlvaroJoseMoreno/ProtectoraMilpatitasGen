@@ -67,5 +67,7 @@ namespace WebProtectoraMilpatitas.Models
 
         public int idEspecie { get; set; }
 
+        [Display(Prompt = "Nombre de la especie", Description = "Especie del animal", Name = "NomEspecie")]
+        public string NomEspecie { get; set; }
     }
 }

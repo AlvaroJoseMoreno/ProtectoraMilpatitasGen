@@ -68,9 +68,9 @@
         @Html.DisplayFor(modelItem => item.DatosMedicos)
     </td>
     }
-    <td>
-        @Html.DisplayFor(modelItem => @ViewData["NombreEsp"])
-    </td>
+<td>
+    @Html.ActionLink(item.NomEspecie, "ObtenerAnimalesPorEspecie", new { p_especie = item.idEspecie }, htmlAttributes: null)
+</td>
     <td>
         @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
         @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id }) |
