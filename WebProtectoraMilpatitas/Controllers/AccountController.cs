@@ -99,10 +99,10 @@ namespace WebProtectoraMilpatitas.Controllers
                     {
                         if(token == "Administrador")
                         {
-                            return RedirectToLocal(returnUrl);
+                            return RedirectToLocal("~/Home/Indexad");
                         }
                         else {
-                            return RedirectToLocal("https://ua.es");
+                            return RedirectToLocal("~/Home/Index");
                         }
                              
                     

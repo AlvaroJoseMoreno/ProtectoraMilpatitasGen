@@ -10,7 +10,7 @@ namespace WebProtectoraMilpatitas.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Indexad()
         {
             AnimalCEN animal = new AnimalCEN();
             IEnumerable<AnimalEN> listAni = animal.Dame_Todos(0, -1).ToList();
@@ -52,6 +52,11 @@ namespace WebProtectoraMilpatitas.Controllers
             //        ruta.Add("Home/Index");
             //    }
             //}
+            return View();
+        }
+
+        public ActionResult Index()
+        {
             return View();
         }
 

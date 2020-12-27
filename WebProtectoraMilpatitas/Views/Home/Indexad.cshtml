@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Indexad";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Protectora Milpatitas</h2>
+
+<ul>
+    <li>@Html.ActionLink("Animales", "Index", "Animal") | Hay @ViewData["NumAni"] animales</li>
+    <li>@Html.ActionLink("Usuarios", "Index", "Usuario") | Hay @ViewData["NumUsu"] usuarios</li>
+    <li>@Html.ActionLink("Solicitudes Adopcion", "Index", "SolicitudAdopcion") | Hay @ViewData["NumSol"] solicitudes</li>
+    <li>@Html.ActionLink("Contratos Adopcion", "Index", "ContratoAdopcion") | Hay @ViewData["NumCon"] contratos</li>
+    <li>@Html.ActionLink("Seguimientos", "Index", "Seguimiento") | Hay @ViewData["NumSeg"] seguimientos</li>
+</ul>
+

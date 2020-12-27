@@ -316,6 +316,8 @@
     <Content Include="Views\ContratoAdopcion\ObtenerContratoUsuario.cshtml" />
     <Content Include="Views\Animal\ObtenerAnimalesPorEspecie.cshtml" />
     <Content Include="Views\Seguimiento\ObtenerSeguimientoUsuario.cshtml" />
+    <Content Include="Views\Home\Indexad.cshtml" />
+    <Content Include="Views\Shared\_LayoutUsu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
