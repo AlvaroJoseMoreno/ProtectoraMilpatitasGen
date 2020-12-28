@@ -138,7 +138,7 @@ public static void InitializeData ()
 
                 //Creacion de animales
                 AnimalCP chihua = new AnimalCP ();
-                AnimalEN chi = chihua.Nuevo ("tobi", 3, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "amigable", esp,"Imagenes/imagen.png");
+                AnimalEN chi = chihua.Nuevo ("tobi", 3, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "amigable", esp, "Imagenes/imagen.png");
 
                 AnimalCP yorkshire = new AnimalCP ();
                 AnimalEN yor = yorkshire.Nuevo ("Pelusa", 3, 'M', "Albacete", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enRecuperacion, "carinoso", esp, "Imagenes/imagen.png");

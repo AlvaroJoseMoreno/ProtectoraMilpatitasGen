@@ -140,7 +140,7 @@ public int Nuevo (EspecieEN especie)
         return especie.Id;
 }
 
-public void Modifcar (EspecieEN especie)
+public void Modificar (EspecieEN especie)
 {
         try
         {

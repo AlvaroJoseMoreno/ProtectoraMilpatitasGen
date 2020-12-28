@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebProtectoraMilpatitas.Models.RazaViewModel>
+
+@{
+    ViewBag.Title = "ObtenerRazasPorEspecie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Obtener Razas Por Especie</h2>
+
+<p>
+    @Html.ActionLink("Crear nueva raza", "Create")
+</p>
+<table class="table">
+    @{
+        if (Model.Any())
+        {
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NomEspecie)
+                </th>
+                <th></th>
+            </tr>
+        }
+        else
+        {
+            <tr>No tiene razas de esa especie</tr>
+        }
+    }
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomEspecie)
+                </td>
+            </tr>
+        }
+
+    </table>
+
+<div>
+    @Html.ActionLink("Volver a especies", "Index")
+</div>

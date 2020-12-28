@@ -58,10 +58,16 @@ namespace WebProtectoraMilpatitas.Models
 
         public string idUsuario { get; set; }
 
+        [Display(Prompt = "Nombre del usuario", Description = "Nombre del usuario", Name = "Usuario")]
+        public string NomUsuario { get; set; }
+
         [ScaffoldColumn(false)]
         [Display(Prompt = "Animal para el contrato", Description = "Animal para el contrato", Name = "Animal")]
 
         public int idAnimal { get; set; }
+
+        [Display(Prompt = "Nombre del animal", Description = "Nombre del animal", Name = "Animal solicitado")]
+        public string NomAnimal { get; set; }
 
         [ScaffoldColumn(false)]
         [Display(Prompt = "Solicitud para el contrato", Description = "Solicitud para el contrato", Name = "Solicitud")]

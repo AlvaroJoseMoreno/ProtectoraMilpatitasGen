@@ -1,0 +1,41 @@
+﻿@model IEnumerable<WebProtectoraMilpatitas.Models.EspecieViewModel>
+
+@{
+    ViewBag.Title = "Index especies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Especies</h2>
+
+<h3>@Html.ActionLink("Razas", "Index", "Raza")</h3>
+
+<p>
+    @Html.ActionLink("Crear nueva especie", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Obtener animales por especie", "ObtenerAnimalesPorEspecie", "Animal", new { p_especie = item.Id }, htmlAttributes: null) |
+            @Html.ActionLink("Obtener razas por especie", "ObtenerRazasPorEspecie", "Raza", new { p_especie = item.Id }, htmlAttributes: null) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("Volver a animales", "Index", "Animal")
+</div>

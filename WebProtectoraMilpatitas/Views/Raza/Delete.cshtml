@@ -1,0 +1,40 @@
+﻿@model WebProtectoraMilpatitas.Models.RazaViewModel
+
+@{
+    ViewBag.Title = "Eliminar raza";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar raza</h2>
+
+<h3>¿Estás seguro de que quieres eliminar la raza @ViewData["NombreRaz"]?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomEspecie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomEspecie)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a la lista", "Index")
+        </div>
+    }
+</div>

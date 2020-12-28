@@ -199,6 +199,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Assemblers\AnimalAssembler.cs" />
     <Compile Include="Assemblers\ContratoAdopcionAssembler.cs" />
+    <Compile Include="Assemblers\EspecieAssembler.cs" />
+    <Compile Include="Assemblers\RazaAssembler.cs" />
     <Compile Include="Assemblers\SeguimientoAssembler.cs" />
     <Compile Include="Assemblers\SolicitudAdopcionAssembler.cs" />
     <Compile Include="Assemblers\UsuarioAssembler.cs" />
@@ -206,8 +208,10 @@
     <Compile Include="Controllers\AnimalController.cs" />
     <Compile Include="Controllers\BasicController.cs" />
     <Compile Include="Controllers\ContratoAdopcionController.cs" />
+    <Compile Include="Controllers\EspecieController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RazaController.cs" />
     <Compile Include="Controllers\SeguimientoController.cs" />
     <Compile Include="Controllers\SolicitudAdopcionController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -217,8 +221,10 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AnimalViewModel.cs" />
     <Compile Include="Models\ContratoAdopcionViewModel.cs" />
+    <Compile Include="Models\EspecieViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\RazaViewModel.cs" />
     <Compile Include="Models\SeguimientoViewModel.cs" />
     <Compile Include="Models\SolicitudAdopcionViewModel.cs" />
     <Compile Include="Models\UsuarioViewModel.cs" />
@@ -318,6 +324,15 @@
     <Content Include="Views\Seguimiento\ObtenerSeguimientoUsuario.cshtml" />
     <Content Include="Views\Home\Indexad.cshtml" />
     <Content Include="Views\Shared\_LayoutUsu.cshtml" />
+    <Content Include="Views\Especie\Index.cshtml" />
+    <Content Include="Views\Especie\Create.cshtml" />
+    <Content Include="Views\Especie\Delete.cshtml" />
+    <Content Include="Views\Especie\Edit.cshtml" />
+    <Content Include="Views\Raza\Index.cshtml" />
+    <Content Include="Views\Raza\Create.cshtml" />
+    <Content Include="Views\Raza\Edit.cshtml" />
+    <Content Include="Views\Raza\Delete.cshtml" />
+    <Content Include="Views\Raza\ObtenerRazasPorEspecie.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

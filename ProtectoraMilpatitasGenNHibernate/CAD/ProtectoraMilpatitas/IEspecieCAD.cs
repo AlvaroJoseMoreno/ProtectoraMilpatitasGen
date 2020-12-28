@@ -17,7 +17,7 @@ System.Collections.Generic.IList<EspecieEN> ReadAllDefault (int first, int size)
 
 int Nuevo (EspecieEN especie);
 
-void Modifcar (EspecieEN especie);
+void Modificar (EspecieEN especie);
 
 
 void Eliminar (int id

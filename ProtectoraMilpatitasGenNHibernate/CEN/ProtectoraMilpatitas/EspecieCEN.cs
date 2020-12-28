@@ -54,7 +54,7 @@ public int Nuevo (string p_nombre)
         return oid;
 }
 
-public void Modifcar (int p_Especie_OID, string p_nombre)
+public void Modificar (int p_Especie_OID, string p_nombre)
 {
         EspecieEN especieEN = null;
 
@@ -64,7 +64,7 @@ public void Modifcar (int p_Especie_OID, string p_nombre)
         especieEN.Nombre = p_nombre;
         //Call to EspecieCAD
 
-        _IEspecieCAD.Modifcar (especieEN);
+        _IEspecieCAD.Modificar (especieEN);
 }
 
 public void Eliminar (int id

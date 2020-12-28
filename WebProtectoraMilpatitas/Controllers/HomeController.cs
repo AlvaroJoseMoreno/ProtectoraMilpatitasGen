@@ -10,6 +10,7 @@ namespace WebProtectoraMilpatitas.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize]
         public ActionResult Indexad()
         {
             AnimalCEN animal = new AnimalCEN();

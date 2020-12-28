@@ -16,10 +16,10 @@
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.idUsuario)
+            @Html.DisplayNameFor(model => model.NomUsuario)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.idAnimal)
+            @Html.DisplayNameFor(model => model.NomAnimal)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.idSolicitud)
@@ -33,10 +33,10 @@
         @Html.DisplayFor(modelItem => item.Nombre)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.idUsuario)
+        @Html.ActionLink(item.NomUsuario, "Details", "Usuario", new { id = item.idUsuario }, htmlAttributes: null)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.idAnimal)
+        @Html.ActionLink(item.NomAnimal, "Details", "Animal", new { id = item.idAnimal }, htmlAttributes: null)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.idSolicitud)

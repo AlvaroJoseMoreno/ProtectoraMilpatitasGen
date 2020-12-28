@@ -21,6 +21,7 @@ namespace WebProtectoraMilpatitas.Assemblers
             animal.DatosMedicos = ani.DatosMedicos;
             animal.EstadoAdopcion = ani.EstadoAdopcion;
             animal.Foto = ani.Foto;
+
             if (ani.Especie != null)
             {
                 animal.idEspecie = ani.Especie.Id;
