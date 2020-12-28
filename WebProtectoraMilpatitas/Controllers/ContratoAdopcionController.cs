@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas;
@@ -96,12 +99,33 @@ namespace WebProtectoraMilpatitas.Controllers
                 //ver como pasar el animal y el usuario
                 contCEN.Nuevo(con.idUsuario, con.idSolicitud, con.idAnimal);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Imprimir");
             }
             catch
             {
                 return View();
             }
+        }
+
+        public FileResult Imprimir()
+        {
+            Document doc = new Document(PageSize.LETTER);
+            string ruta = Path.Combine(Server.MapPath("~/Imagenes"), "holamundo1.pdf");
+            FileStream file = new FileStream(ruta, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            PdfWriter writer = PdfWriter.GetInstance(doc, file);
+
+            doc.AddAuthor("ProtectoraMilpatitas");
+            doc.AddTitle("Contrato Adopcion");
+            doc.Open();
+            doc.Add(new Phrase("Soy una prueba de contrato"));
+
+            //writer.Close();
+            doc.Close();
+            file.Dispose();
+
+            var pdf = new FileStream(ruta, FileMode.Open, FileAccess.Read);
+
+            return File(pdf, "application/pdf");
         }
 
         // GET: ContratoAdopcion/Edit/5
