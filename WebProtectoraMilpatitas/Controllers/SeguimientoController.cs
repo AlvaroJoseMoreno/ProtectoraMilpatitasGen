@@ -181,9 +181,13 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Seguimiento/Delete/5
         public ActionResult Delete(int id)
         {
-            SeguimientoCEN segui = new SeguimientoCEN();
-            segui.Eliminar(id);
+            SessionInitialize();
+            SeguimientoCAD segCad = new SeguimientoCAD(session);
+            SeguimientoCEN seguiCEN = new SeguimientoCEN(segCad);
+            ViewData["IdSeg"] = id;
+            ViewData["NombreSeg"] = seguiCEN.Dame_Por_Id(id).Usuario.Nombre;
 
+            SessionClose();
             return View();
         }
 
@@ -194,6 +198,9 @@ namespace WebProtectoraMilpatitas.Controllers
             try
             {
                 // TODO: Add delete logic here
+
+                SeguimientoCEN segui = new SeguimientoCEN();
+                segui.Eliminar(id);
 
                 return RedirectToAction("Index");
             }

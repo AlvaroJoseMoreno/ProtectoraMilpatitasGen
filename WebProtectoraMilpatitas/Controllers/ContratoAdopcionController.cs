@@ -227,17 +227,14 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: ContratoAdopcion/Delete/5
         public ActionResult Delete(int id)
         {
-            try
-            {
-                ContratoAdopcionCEN conCEN = new ContratoAdopcionCEN();
+            SessionInitialize();
+            ContratoAdopcionCAD conCad = new ContratoAdopcionCAD(session);
+            ContratoAdopcionCEN contCEN = new ContratoAdopcionCEN(conCad);
+            ViewData["IdCon"] = id;
+            ViewData["NombreCon"] = contCEN.Ver_Contrato(id).Nombre;
 
-                conCEN.Eliminar(id);
-
-                return RedirectToAction("Index");
-            } catch
-            {
-                return View();
-            } 
+            SessionClose();
+            return View();
         }
 
         // POST: ContratoAdopcion/Delete/5
@@ -247,6 +244,10 @@ namespace WebProtectoraMilpatitas.Controllers
             try
             {
                 // TODO: Add delete logic here
+
+                ContratoAdopcionCEN conCEN = new ContratoAdopcionCEN();
+
+                conCEN.Eliminar(id);
 
                 return RedirectToAction("Index");
             }

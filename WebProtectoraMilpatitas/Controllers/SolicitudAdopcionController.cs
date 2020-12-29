@@ -198,18 +198,14 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: SolicitudAdopcion/Delete/5
         public ActionResult Delete(int id)
         {
-            try
-            {
-              SolicitudAdopcionCEN solCEN = new SolicitudAdopcionCEN();
+            SessionInitialize();
+            SolicitudAdopcionCAD solCad = new SolicitudAdopcionCAD(session);
+            SolicitudAdopcionCEN soliCEN = new SolicitudAdopcionCEN(solCad);
+            ViewData["IdSol"] = id;
+            ViewData["NombreSol"] = soliCEN.Ver_Solicitud(id).Nombre;
 
-                solCEN.Eliminar(id);
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            SessionClose();
+            return View();
         }
 
         // POST: SolicitudAdopcion/Delete/5
@@ -219,6 +215,10 @@ namespace WebProtectoraMilpatitas.Controllers
             try
             {
                 // TODO: Add delete logic here
+
+                SolicitudAdopcionCEN solCEN = new SolicitudAdopcionCEN();
+
+                solCEN.Eliminar(id);
 
                 return RedirectToAction("Index");
             }
