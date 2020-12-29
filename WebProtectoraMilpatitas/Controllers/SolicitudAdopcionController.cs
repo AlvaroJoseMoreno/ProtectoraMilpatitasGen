@@ -83,7 +83,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 // TODO: Add insert logic here
                 SolicitudAdopcionCEN soliCEN = new SolicitudAdopcionCEN();
 
-                soliCEN.Nuevo(sol.idUsuario, sol.idAnimal);
+                soliCEN.Nuevo(sol.idUsuario, sol.idAnimal, DateTime.Today);
 
                 return RedirectToAction("Index");
             }

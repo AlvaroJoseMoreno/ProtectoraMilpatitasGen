@@ -65,7 +65,7 @@ public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.Pro
 {
         return _ISolicitudAdopcionCAD.Obtener_Solicitud_Usuario (p_email);
 }
-public int Nuevo (string p_usuario, int p_animal)
+public int Nuevo (string p_usuario, int p_animal, Nullable<DateTime> p_fechaSolicitud)
 {
         SolicitudAdopcionEN solicitudAdopcionEN = null;
         int oid;
@@ -87,6 +87,8 @@ public int Nuevo (string p_usuario, int p_animal)
                 solicitudAdopcionEN.Animal = new ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN ();
                 solicitudAdopcionEN.Animal.Id = p_animal;
         }
+
+        solicitudAdopcionEN.FechaSolicitud = p_fechaSolicitud;
 
         //Call to SolicitudAdopcionCAD
 

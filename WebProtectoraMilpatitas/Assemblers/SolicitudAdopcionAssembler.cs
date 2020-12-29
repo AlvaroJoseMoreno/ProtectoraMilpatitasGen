@@ -27,6 +27,8 @@ namespace WebProtectoraMilpatitas.Assemblers
             solicitud.idAnimal = soli.Animal.Id;
             solicitud.NomAnimal = soli.Animal.Nombre;
 
+            solicitud.FechaSoli = (DateTime)soli.FechaSolicitud;
+
             return solicitud;
         }
 

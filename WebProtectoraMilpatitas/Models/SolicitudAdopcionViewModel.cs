@@ -69,5 +69,8 @@ namespace WebProtectoraMilpatitas.Models
 
         [Display(Prompt = "Nombre del animal", Description = "Nombre del animal", Name = "Animal solicitado")]
         public string NomAnimal { get; set; }
+
+        [Display(Prompt = "Fecha solicitud", Description = "Fecha solicitud", Name = "Fecha solicitud")]
+        public DateTime FechaSoli { get; set; }
     }
 }

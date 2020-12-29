@@ -186,10 +186,10 @@ public static void InitializeData ()
                 SolicitudAdopcionCEN solicitudAdopcionCEN = new SolicitudAdopcionCEN ();
                 SolicitudAdopcionCP solicitudAdopcionCP = new SolicitudAdopcionCP ();
 
-                int idsol = solicitudAdopcionCEN.Nuevo (juan, chi.Id);
+                int idsol = solicitudAdopcionCEN.Nuevo (juan, chi.Id, DateTime.Today);
                 solicitudAdopcionCP.Actualizar_Estado (idsol, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
 
-                int idsol1 = solicitudAdopcionCEN.Nuevo (manu, chi.Id);
+                int idsol1 = solicitudAdopcionCEN.Nuevo (manu, chi.Id, DateTime.Today);
                 solicitudAdopcionCP.Actualizar_Estado (idsol1, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
 
                 solicitudAdopcionCEN.Rellenar_Solicitud (idsol, "Juan", 2, "lugar tranquilo", 3, true, "nos gustan los animales");
@@ -199,7 +199,7 @@ public static void InitializeData ()
 
                 IList<SolicitudAdopcionEN> sols = solicitudAdopcionCEN.Obtener_Solicitud_Usuario (juan);
                 foreach (SolicitudAdopcionEN sol in sols) {
-                        Console.WriteLine ("Solicitud : " + sol.Id + " " + sol.Nombre);
+                        Console.WriteLine ("Solicitud : " + sol.Id + " " + sol.Nombre + " " + sol.FechaSolicitud);
                 }
 
                 Console.WriteLine ();

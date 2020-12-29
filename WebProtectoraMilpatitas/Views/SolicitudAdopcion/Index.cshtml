@@ -23,13 +23,15 @@
         <th>
             @Html.DisplayNameFor(model => model.Estado)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaSoli)
+        </th>
     </tr>
 
 @foreach (var item in Model) {
 <tr>
     <td>
-        @Html.ActionLink(item.Nombre, "Details", new { id = item.Id }) 
+        @Html.ActionLink(item.Nombre, "Details", new { id = item.Id })
     </td>
     <td>
         @Html.ActionLink(item.NomUsuario, "Details", "Usuario", new { id = item.idUsuario }, htmlAttributes: null)
@@ -43,10 +45,14 @@
     }
     else
     {
-    <td>
-        @Html.DisplayFor(modelItem => item.Estado)
-    </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
     }
+    <td>
+        @Html.DisplayFor(modelItem => item.FechaSoli)
+    </td>
+
     <td>
         @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
         @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id }) |

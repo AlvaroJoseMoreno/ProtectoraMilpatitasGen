@@ -89,6 +89,13 @@ private ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN anima
 
 
 
+/**
+ *	Atributo fechaSolicitud
+ */
+private Nullable<DateTime> fechaSolicitud;
+
+
+
 
 
 
@@ -164,6 +171,12 @@ public virtual ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalE
 
 
 
+public virtual Nullable<DateTime> FechaSolicitud {
+        get { return fechaSolicitud; } set { fechaSolicitud = value;  }
+}
+
+
+
 
 
 public SolicitudAdopcionEN()
@@ -173,20 +186,20 @@ public SolicitudAdopcionEN()
 
 
 
-public SolicitudAdopcionEN(int id, string nombre, int animalesAcargo, string ambienteConvivencia, int tiempoLibre, bool todosAcuerdo, string motivosAdopcion, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum estado, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN usuario, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.NotificacionEN> notificacion, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN contratoAdopcion, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN animal
+public SolicitudAdopcionEN(int id, string nombre, int animalesAcargo, string ambienteConvivencia, int tiempoLibre, bool todosAcuerdo, string motivosAdopcion, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum estado, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN usuario, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.NotificacionEN> notificacion, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN contratoAdopcion, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN animal, Nullable<DateTime> fechaSolicitud
                            )
 {
-        this.init (Id, nombre, animalesAcargo, ambienteConvivencia, tiempoLibre, todosAcuerdo, motivosAdopcion, estado, usuario, notificacion, contratoAdopcion, animal);
+        this.init (Id, nombre, animalesAcargo, ambienteConvivencia, tiempoLibre, todosAcuerdo, motivosAdopcion, estado, usuario, notificacion, contratoAdopcion, animal, fechaSolicitud);
 }
 
 
 public SolicitudAdopcionEN(SolicitudAdopcionEN solicitudAdopcion)
 {
-        this.init (Id, solicitudAdopcion.Nombre, solicitudAdopcion.AnimalesAcargo, solicitudAdopcion.AmbienteConvivencia, solicitudAdopcion.TiempoLibre, solicitudAdopcion.TodosAcuerdo, solicitudAdopcion.MotivosAdopcion, solicitudAdopcion.Estado, solicitudAdopcion.Usuario, solicitudAdopcion.Notificacion, solicitudAdopcion.ContratoAdopcion, solicitudAdopcion.Animal);
+        this.init (Id, solicitudAdopcion.Nombre, solicitudAdopcion.AnimalesAcargo, solicitudAdopcion.AmbienteConvivencia, solicitudAdopcion.TiempoLibre, solicitudAdopcion.TodosAcuerdo, solicitudAdopcion.MotivosAdopcion, solicitudAdopcion.Estado, solicitudAdopcion.Usuario, solicitudAdopcion.Notificacion, solicitudAdopcion.ContratoAdopcion, solicitudAdopcion.Animal, solicitudAdopcion.FechaSolicitud);
 }
 
 private void init (int id
-                   , string nombre, int animalesAcargo, string ambienteConvivencia, int tiempoLibre, bool todosAcuerdo, string motivosAdopcion, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum estado, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN usuario, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.NotificacionEN> notificacion, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN contratoAdopcion, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN animal)
+                   , string nombre, int animalesAcargo, string ambienteConvivencia, int tiempoLibre, bool todosAcuerdo, string motivosAdopcion, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum estado, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN usuario, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.NotificacionEN> notificacion, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN contratoAdopcion, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN animal, Nullable<DateTime> fechaSolicitud)
 {
         this.Id = id;
 
@@ -212,6 +225,8 @@ private void init (int id
         this.ContratoAdopcion = contratoAdopcion;
 
         this.Animal = animal;
+
+        this.FechaSolicitud = fechaSolicitud;
 }
 
 public override bool Equals (object obj)

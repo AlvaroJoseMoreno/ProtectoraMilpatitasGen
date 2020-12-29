@@ -115,6 +115,9 @@ public void ModifyDefault (SolicitudAdopcionEN solicitudAdopcion)
 
 
 
+
+                solicitudAdopcionEN.FechaSolicitud = solicitudAdopcion.FechaSolicitud;
+
                 session.Update (solicitudAdopcionEN);
                 SessionCommit ();
         }

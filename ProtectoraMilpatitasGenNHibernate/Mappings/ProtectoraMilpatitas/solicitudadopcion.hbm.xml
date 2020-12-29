@@ -33,6 +33,9 @@
 					<property name="Estado" > 
 						<column name="estado" />
 					</property>
+					<property name="FechaSolicitud" type="timestamp"> 
+						<column name="fechaSolicitud"  not-null="true"/>
+					</property>
 			
 			
 			
@@ -71,6 +74,8 @@
 								<column name="FK_id_idAnimal"/> 
 						</many-to-one>
 											 					
+			
+					
 					
 					
 					
