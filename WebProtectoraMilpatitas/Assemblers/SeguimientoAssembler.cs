@@ -16,6 +16,14 @@ namespace WebProtectoraMilpatitas.Assemblers
             seguimiento.Estado = segui.Estado;
             seguimiento.Fecha = segui.Fecha;
 
+            seguimiento.idUsuario = segui.Usuario.Email;
+            seguimiento.NomUsuario = segui.Usuario.Nombre;
+            seguimiento.FotoUsuario = segui.Usuario.Foto;
+
+            seguimiento.idAnimal = segui.Animal.Id;
+            seguimiento.NomAnimal = segui.Animal.Nombre;
+            seguimiento.FotoAnimal = segui.Animal.Foto;
+
             return seguimiento;
         }
 

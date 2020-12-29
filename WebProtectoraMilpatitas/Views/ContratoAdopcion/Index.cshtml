@@ -34,18 +34,18 @@
     </td>
     <td>
         <figure>
-            <figcaption>@Html.ActionLink(item.NomUsuario, "Details", new { id = item.idUsuario }) </figcaption>
+            <figcaption>@Html.ActionLink(item.NomUsuario, "Details", "Usuario", new { email = item.idUsuario }, htmlAttributes: null) </figcaption>
             <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.FotoUsuario)" />
         </figure>
     </td>
     <td>
         <figure>
-            <figcaption>@Html.ActionLink(item.NomAnimal, "Details", new { id = item.idAnimal }) </figcaption>
+            <figcaption>@Html.ActionLink(item.NomAnimal, "Details", "Animal", new { id = item.idAnimal }, htmlAttributes: null) </figcaption>
             <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.FotoAnimal)" />
         </figure>
     </td>
     <td>
-        @Html.DisplayFor(modelItem=>item.idSolicitud)
+        @Html.DisplayFor(modelItem => item.idSolicitud)
     </td>
     <td>
         @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |

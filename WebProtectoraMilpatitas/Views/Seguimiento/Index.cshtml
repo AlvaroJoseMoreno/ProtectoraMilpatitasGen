@@ -13,16 +13,34 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Fecha)
-          
+            @Html.DisplayNameFor(model => model.NomUsuario)
         </th>
-        <th>  
-         @Html.DisplayNameFor(model => model.Estado)
+        <th>
+            @Html.DisplayNameFor(model => model.NomAnimal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
         </th>
     </tr>
 
 @foreach (var item in Model) {
 <tr>
+    <td>
+        <figure>
+            <figcaption>@Html.ActionLink(item.NomUsuario, "Details", "Usuario", new { email = item.idUsuario }, htmlAttributes: null) </figcaption>
+            <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.FotoUsuario)" />
+        </figure>
+    </td>
+    <td>
+        <figure>
+            <figcaption>@Html.ActionLink(item.NomAnimal, "Details", "Animal", new { id = item.idAnimal }, htmlAttributes: null) </figcaption>
+            <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.FotoAnimal)" />
+        </figure>
+    </td>
     <td>
         @Html.DisplayFor(modelItem => item.Fecha)
     </td>

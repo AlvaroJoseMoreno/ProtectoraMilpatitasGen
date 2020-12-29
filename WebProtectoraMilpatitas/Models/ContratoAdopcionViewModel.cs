@@ -71,7 +71,7 @@ namespace WebProtectoraMilpatitas.Models
 
         public int idAnimal { get; set; }
 
-        [Display(Prompt = "Nombre del animal", Description = "Nombre del animal", Name = "Animal solicitado")]
+        [Display(Prompt = "Nombre del animal", Description = "Nombre del animal", Name = "Animal")]
         public string NomAnimal { get; set; }
 
         [Display(Prompt = "Foto del animal", Description = "Foto del animal", Name = "FotoAnimal")]
