@@ -61,6 +61,11 @@ namespace WebProtectoraMilpatitas.Models
         [Display(Prompt = "Nombre del usuario", Description = "Nombre del usuario", Name = "Usuario")]
         public string NomUsuario { get; set; }
 
+        [Display(Prompt = "Foto del usuario", Description = "Foto del usuario", Name = "FotoUsuario")]
+
+        public String FotoUsuario { get; set; }
+
+
         [ScaffoldColumn(false)]
 
         [Display(Prompt = "Animal Solicitado", Description = "Animal que solicitan en adopción", Name = "Animal")]
@@ -69,6 +74,11 @@ namespace WebProtectoraMilpatitas.Models
 
         [Display(Prompt = "Nombre del animal", Description = "Nombre del animal", Name = "Animal solicitado")]
         public string NomAnimal { get; set; }
+
+        [Display(Prompt = "Foto del animal", Description = "Foto del animal", Name = "FotoAnimal")]
+
+        public String FotoAnimal { get; set; }
+
 
         [Display(Prompt = "Fecha solicitud", Description = "Fecha solicitud", Name = "Fecha solicitud")]
         public DateTime FechaSoli { get; set; }

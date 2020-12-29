@@ -9,7 +9,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nombre)
+            Usuario
         </th>
         <th></th>
     </tr>
@@ -17,10 +17,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            <img style="width:200px;height:200px" src="/@Html.DisplayFor(modelItem => item.Foto)"/>
+            <figure>
+                <figcaption>@Html.ActionLink(item.Nombre, "Details", new { id = item.Email }) </figcaption>
+                <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.Foto)" />
+            </figure>
         </td>
         <td>
             @Html.ActionLink("Detalles", "Details", new { email = item.Email }) |

@@ -23,9 +23,11 @@ namespace WebProtectoraMilpatitas.Assemblers
 
             solicitud.idUsuario = soli.Usuario.Email;
             solicitud.NomUsuario = soli.Usuario.Nombre;
+            solicitud.FotoUsuario = soli.Usuario.Foto;
 
             solicitud.idAnimal = soli.Animal.Id;
             solicitud.NomAnimal = soli.Animal.Nombre;
+            solicitud.FotoAnimal = soli.Animal.Foto;
 
             solicitud.FechaSoli = (DateTime)soli.FechaSolicitud;
 
