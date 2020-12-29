@@ -110,14 +110,123 @@ namespace WebProtectoraMilpatitas.Controllers
         public FileResult Imprimir()
         {
             Document doc = new Document(PageSize.LETTER);
-            string ruta = Path.Combine(Server.MapPath("~/Imagenes"), "holamundo1.pdf");
+            string ruta = Path.Combine(Server.MapPath("~/Contratos"), "contrato.pdf");
             FileStream file = new FileStream(ruta, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             PdfWriter writer = PdfWriter.GetInstance(doc, file);
 
             doc.AddAuthor("ProtectoraMilpatitas");
             doc.AddTitle("Contrato Adopcion");
             doc.Open();
-            doc.Add(new Phrase("Soy una prueba de contrato"));
+
+            iTextSharp.text.Font _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+
+            doc.Add(new Phrase("CONTRATO DE ADOPCIÓN"));
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(Chunk.NEWLINE);
+
+            doc.Add(new Phrase("COMPARECIENDO"));
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(Chunk.NEWLINE);
+
+            doc.Add(new Phrase("De una parte, D./Dña. .............................., en su propio nombre y Derecho, con DNI ..............., con domicilio en ..............................................., con teléfono .............................. y e-mail .............................................., en adelante el Adoptante."));
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(Chunk.NEWLINE);
+
+            doc.Add(new Phrase("Y, de una parte, D./Dña. .............................., en nombre y representación de la Protectora Milpatitas, con DNI ..............., con domicilio en ..............................................., con teléfono .............................. y e-mail .............................................., en adelante la Protectora."));
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(Chunk.NEWLINE);
+
+            doc.Add(new Phrase("Ambas partes acuerdan celebrar el presente CONTRATO, de acuerdo con las siguientes estipulaciones:"));
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(Chunk.NEWLINE);
+
+            doc.Add(new Phrase("ESTIPULACIONES"));
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(Chunk.NEWLINE);
+
+            doc.Add(new Phrase("1ª El Adoptante se compromete a adoptar al animal de la Protectora con los datos que se reseñan a continuación: "));
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(Chunk.NEWLINE);
+
+            PdfPTable tblPrueba = new PdfPTable(5);
+            tblPrueba.WidthPercentage = 100;
+
+            PdfPCell clNombre = new PdfPCell(new Phrase("Nombre", _standardFont));
+            clNombre.BorderWidth = 0;
+            clNombre.BorderWidthBottom = 0.75f;
+
+            PdfPCell clEdad = new PdfPCell(new Phrase("Edad", _standardFont));
+            clEdad.BorderWidth = 0;
+            clEdad.BorderWidthBottom = 0.75f;
+
+            PdfPCell clSexo = new PdfPCell(new Phrase("Sexo", _standardFont));
+            clSexo.BorderWidth = 0;
+            clSexo.BorderWidthBottom = 0.75f;
+
+            PdfPCell clEspecie= new PdfPCell(new Phrase("Especie", _standardFont));
+            clEspecie.BorderWidth = 0;
+            clEspecie.BorderWidthBottom = 0.75f;
+
+            PdfPCell clRaza = new PdfPCell(new Phrase("Raza", _standardFont));
+            clRaza.BorderWidth = 0;
+            clRaza.BorderWidthBottom = 0.75f;
+
+            tblPrueba.AddCell(clNombre);
+            tblPrueba.AddCell(clEdad);
+            tblPrueba.AddCell(clSexo);
+            tblPrueba.AddCell(clEspecie);
+            tblPrueba.AddCell(clRaza);
+
+            clNombre = new PdfPCell(new Phrase(" ", _standardFont));
+            clNombre.BorderWidth = 0.5f;
+
+            clEdad = new PdfPCell(new Phrase(" ", _standardFont));
+            clEdad.BorderWidth = 0.5f;
+
+            clSexo = new PdfPCell(new Phrase(" ", _standardFont));
+            clSexo.BorderWidth = 0.5f;
+
+            clEspecie = new PdfPCell(new Phrase(" ", _standardFont));
+            clEspecie.BorderWidth = 0.5f;
+
+            clRaza = new PdfPCell(new Phrase(" ", _standardFont));
+            clRaza.BorderWidth = 0.5f;
+
+            tblPrueba.AddCell(clNombre);
+            tblPrueba.AddCell(clEdad);
+            tblPrueba.AddCell(clSexo);
+            tblPrueba.AddCell(clEspecie);
+            tblPrueba.AddCell(clRaza);
+
+            doc.Add(tblPrueba);
+
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(Chunk.NEWLINE);
+
+            doc.Add(new Phrase("2ª El Adoptante declara adoptar al animal única y exclusivamente como animal de compañía."));
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(Chunk.NEWLINE);
+
+            doc.Add(new Phrase("3ª El animal entregado en adopción no podrá ser utilizado para: "));
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(new Phrase("a.- Experimentación de cualquier tipo."));
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(new Phrase("b.- La participación en peleas o enfrentamientos con otros animales."));
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(new Phrase("c.- La cría."));
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(new Phrase("d.- La caza."));
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(new Phrase("e.- Participación en cualquier tipo de espectáculo."));
+            doc.Add(Chunk.NEWLINE);
+
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(new Phrase("( ) Me comprometo a cuidar, dar mimo y cariño todos los días a mi nueva mascota, cumpliendo con las responsabilidaddes que ello conlleva. Para verificar esto, acepto un seguimiento durante el tiempo que la protectora considere"));
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(new Phrase("Firma Adoptante:                                                                       Firma Protectora:"));
+            doc.Add(Chunk.NEWLINE);
 
             //writer.Close();
             doc.Close();
