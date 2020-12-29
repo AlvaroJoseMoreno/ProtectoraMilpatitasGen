@@ -96,10 +96,10 @@ namespace WebProtectoraMilpatitas.Controllers
                 // TODO: Add insert logic here
                 ContratoAdopcionCEN contCEN = new ContratoAdopcionCEN();
 
-                //ver como pasar el animal y el usuario
+                
                 contCEN.Nuevo(con.idUsuario, con.idSolicitud, con.idAnimal);
 
-                return RedirectToAction("Imprimir");
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -207,17 +207,12 @@ namespace WebProtectoraMilpatitas.Controllers
             doc.Add(Chunk.NEWLINE);
             doc.Add(Chunk.NEWLINE);
 
-            doc.Add(new Phrase("3ª El animal entregado en adopción no podrá ser utilizado para: "));
+            doc.Add(new Phrase("( ) A recoger en protectora : "));
             doc.Add(Chunk.NEWLINE);
-            doc.Add(new Phrase("a.- Experimentación de cualquier tipo."));
             doc.Add(Chunk.NEWLINE);
-            doc.Add(new Phrase("b.- La participación en peleas o enfrentamientos con otros animales."));
+
+            doc.Add(new Phrase("( ) Envio a dirección : "));
             doc.Add(Chunk.NEWLINE);
-            doc.Add(new Phrase("c.- La cría."));
-            doc.Add(Chunk.NEWLINE);
-            doc.Add(new Phrase("d.- La caza."));
-            doc.Add(Chunk.NEWLINE);
-            doc.Add(new Phrase("e.- Participación en cualquier tipo de espectáculo."));
             doc.Add(Chunk.NEWLINE);
 
             doc.Add(Chunk.NEWLINE);
