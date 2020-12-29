@@ -30,16 +30,22 @@
 @foreach (var item in Model) {
 <tr>
     <td>
-        @Html.DisplayFor(modelItem => item.Nombre)
+        @Html.ActionLink(item.Nombre, "Details", new { id = item.Id })
     </td>
     <td>
-        @Html.ActionLink(item.NomUsuario, "Details", "Usuario", new { id = item.idUsuario }, htmlAttributes: null)
+        <figure>
+            <figcaption>@Html.ActionLink(item.NomUsuario, "Details", new { id = item.idUsuario }) </figcaption>
+            <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.FotoUsuario)" />
+        </figure>
     </td>
     <td>
-        @Html.ActionLink(item.NomAnimal, "Details", "Animal", new { id = item.idAnimal }, htmlAttributes: null)
+        <figure>
+            <figcaption>@Html.ActionLink(item.NomAnimal, "Details", new { id = item.idAnimal }) </figcaption>
+            <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.FotoAnimal)" />
+        </figure>
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.idSolicitud)
+        @Html.DisplayFor(modelItem=>item.idSolicitud)
     </td>
     <td>
         @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
