@@ -33,8 +33,28 @@ public void Modificar (int p_Animal, string p_nombre, int p_edad, char p_sexo, s
         animalEN.Sexo = p_sexo;
         animalEN.Centro = p_centro;
         animalEN.Caracter = p_caracter;
-        animalEN.Foto = p_foto;
-        //Call to AnimalCAD
+
+
+            if (p_foto != null)
+            {
+                string[] palabras = p_foto.Split('/');
+                if(palabras.Length == 3)
+                {
+                    
+                    if (palabras[2].Equals(""))
+                    {
+                        AnimalCEN anicen = new AnimalCEN();
+                        AnimalEN artEN = anicen.Ver_Detalle_Animal(p_Animal);
+                        animalEN.Foto = artEN.Foto;
+                    }
+                    else
+                    {
+                        animalEN.Foto = p_foto;
+                    }
+                }
+                
+            }
+                //Call to AnimalCAD
 
         _IAnimalCAD.Modificar (animalEN);
 
