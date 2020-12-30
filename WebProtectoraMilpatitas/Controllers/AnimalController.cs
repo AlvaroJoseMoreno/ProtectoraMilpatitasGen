@@ -309,7 +309,10 @@ namespace WebProtectoraMilpatitas.Controllers
                 IEnumerable<AnimalViewModel> anifiltrados = new AnimalAssembler().ConvertListENToModel(animalesfiltrados).ToList();
                 SessionClose();
 
-                return RedirectToAction("ResultadoBuscar",  new { animales = anifiltrados});
+                TempData["Animales"] = anifiltrados;
+
+                return RedirectToAction("ResultadoBuscar");
+
             }
             catch
             {
@@ -317,9 +320,9 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
-        public ActionResult ResultadoBuscar(IEnumerable<AnimalViewModel> animales)
+        public ActionResult ResultadoBuscar()
         {
-            return View(animales);
+            return View(TempData["Animales"]);
         }
 
 
