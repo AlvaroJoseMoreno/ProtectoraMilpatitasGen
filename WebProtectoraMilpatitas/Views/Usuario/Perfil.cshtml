@@ -1,4 +1,19 @@
 ﻿@model WebProtectoraMilpatitas.Models.UsuarioViewModel
+@using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
+@{
+
+    if (Session["Usuario"] != null)
+    {
+        if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+        {
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+        else
+        {
+            Layout = "~/Views/Shared/_LayoutUsu.cshtml";
+        }
+    }
+}
 
 <div>
     <h4>Mis datos</h4>
@@ -37,7 +52,35 @@
 
     </dl>
 </div>
+
 <p>
-    @Html.ActionLink("Editar", "Edit", new { email = Model.Email }) |
-    @Html.ActionLink("Volver a inicio", "Index")
+    @Html.ActionLink("Editar", "Edit", new { email = Model.Email })
+</p>
+<p>
+    @Html.ActionLink("Ver mis mascotas", "ObtenerAnimalesPorUsuario", "Animal", new { email = Model.Email }, htmlAttributes: null) 
+</p>
+<p>
+    @Html.ActionLink("Ver mis solicitudes de adopción", "ObtenerSolicitudUsuario", "SolicitudAdopcion", new { email = Model.Email }, htmlAttributes: null) 
+</p>
+<p>
+    @Html.ActionLink("Ver mis contratos de adopción", "ObtenerContratoUsuario", "ContratoAdopcion", new { email = Model.Email }, htmlAttributes: null)
+</p>
+<p>
+    @Html.ActionLink("Ver mis seguimientos", "ObtenerSeguimientoUsuario", "Seguimiento", new { email = Model.Email }, htmlAttributes: null)
+</p>
+<p>
+    @{
+
+        if (Session["Usuario"] != null)
+        {
+            if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+            {
+                @Html.ActionLink("Volver a inicio", "Indexad", "Home")
+            }
+            else
+            {
+                @Html.ActionLink("Volver a inicio", "Index", "Home")
+            }
+        }
+    }
 </p>

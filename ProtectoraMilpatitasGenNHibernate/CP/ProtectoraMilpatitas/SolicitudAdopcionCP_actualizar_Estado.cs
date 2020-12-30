@@ -47,13 +47,13 @@ public void Actualizar_Estado (int p_SolicitudAdopcion, ProtectoraMilpatitasGenN
                 solicitudAdopcionEN.Estado = p_estado;
                 //Call to SolicitudAdopcionCAD
 
-                if (solicitudAdopcionEN.Estado.Equals ("aceptado")) {
+                if (solicitudAdopcionEN.Estado == ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.aceptado) {
                         solicitudAdopcionEN.Animal.EstadoAdopcion = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum.EnContrato;
 
                         conCEN.Nuevo (solicitudAdopcionEN.Usuario.Email, solicitudAdopcionEN.Id, solicitudAdopcionEN.Animal.Id);
                 }
                 else{
-                        if (solicitudAdopcionEN.Estado.Equals ("enEspera")) {
+                        if (solicitudAdopcionEN.Estado == ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera) {
                                 solicitudAdopcionEN.Animal.EstadoAdopcion = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum.EnSolicitud;
                         }
                 }
