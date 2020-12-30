@@ -345,6 +345,8 @@
     <Content Include="Views\Raza\Edit.cshtml" />
     <Content Include="Views\Raza\Delete.cshtml" />
     <Content Include="Views\Raza\ObtenerRazasPorEspecie.cshtml" />
+    <Content Include="Views\Animal\BuscarAnimales.cshtml" />
+    <Content Include="Views\Animal\ResultadoBuscar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -24,6 +24,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Buscar", "BuscarAnimales", "Animal")</li>
+                    <li>@Html.ActionLink("Hacer test animal", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Búsqueda rápida", "Index", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -37,6 +40,7 @@
             <ul>
                 <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                 <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+              
             </ul>
         </footer>
     </div>
