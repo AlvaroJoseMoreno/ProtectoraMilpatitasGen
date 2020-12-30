@@ -71,13 +71,22 @@
 <td>
     @Html.ActionLink(item.NomEspecie, "ObtenerAnimalesPorEspecie", new { p_especie = item.idEspecie }, htmlAttributes: null)
 </td>
-    <td>
-        @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id }) |
-        @Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = item.Id }) |
-        @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
-        @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
-    </td>
+<td>
+    @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+    @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id }) |
+    @Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = item.Id }) |
+    @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+    @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }) |
+
+    @if (item.EstadoAdopcion.ToString().Equals("SinTramite"))
+    {
+        @Html.ActionLink("Adoptar", "Create","SolicitudAdopcion", new {id = item.Id }, htmlAttributes: null)
+    }
+    else {
+        
+        <p>Animal no disponible!</p>
+    }
+</td>
 </tr>
 }
 
