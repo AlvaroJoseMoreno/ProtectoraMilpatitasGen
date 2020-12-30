@@ -297,8 +297,9 @@ namespace WebProtectoraMilpatitas.Controllers
                 AnimalCEN animalCEN= new AnimalCEN(aniCad);
                 
                 IList<AnimalEN> animalesfiltrados = animalCEN.BuscarAnimales(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter);
+           
+               
                 IEnumerable<AnimalViewModel> anifiltrados = new AnimalAssembler().ConvertListENToModel(animalesfiltrados).ToList();
-                
                 SessionClose();
 
                 return RedirectToAction("ResultadoBuscar",  new { animales = anifiltrados});
