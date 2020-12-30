@@ -1,4 +1,5 @@
 ﻿@model WebProtectoraMilpatitas.Models.UsuarioViewModel
+@using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 
 @{
     ViewBag.Title = "Protectoramilpatitas - Página de detalle de usuario";
@@ -33,5 +34,20 @@
 </div>
 <p>
     @Html.ActionLink("Editar", "Edit", new { email = Model.Email }) |
-    @Html.ActionLink("Volver a la lista", "Index")
+
+    @{
+
+        if (Session["Usuario"] != null)
+        {
+            if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+            {
+                @Html.ActionLink("Volver a la lista", "Index")
+            }
+            else
+            {
+                @Html.ActionLink("Volver a inicio", "Index", "Home")
+            }
+        }
+    }
+
 </p>

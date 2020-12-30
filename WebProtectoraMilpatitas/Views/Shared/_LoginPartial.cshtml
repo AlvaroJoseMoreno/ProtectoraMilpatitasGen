@@ -2,10 +2,12 @@
 @using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 @{ 
     string nombreUsu = "";
+    string idUsu = "";
 
     if (Session["Usuario"]!=null)
     {
         nombreUsu = ((UsuarioEN)Session["Usuario"]).Nombre;
+        idUsu = ((UsuarioEN)Session["Usuario"]).Email;
     }
 }
 @if (Request.IsAuthenticated)
@@ -16,7 +18,7 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Hola " + nombreUsu + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink("Hola " + nombreUsu + "!", "Perfil", "Usuario", new { email = idUsu }, htmlAttributes: new { title = "Manage" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
     </ul>

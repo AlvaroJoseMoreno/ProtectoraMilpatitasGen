@@ -54,6 +54,27 @@ namespace WebProtectoraMilpatitas.Controllers
             return View(listAni2);
         }
 
+        public ActionResult ObtenerAnimalesPorUsuario(string email)
+        {
+            SessionInitialize();
+
+            AnimalCAD aniCad = new AnimalCAD(session);
+            UsuarioCAD usuCad = new UsuarioCAD(session);
+
+            AnimalCEN aniCEN = new AnimalCEN(aniCad);
+            UsuarioCEN usuCEN = new UsuarioCEN(usuCad);
+
+            UsuarioEN usuEN = usuCEN.Dame_Por_Email(email);
+
+            IList<AnimalEN> listAni = usuEN.Mascotas;
+            IEnumerable<AnimalViewModel> listAni2 = new AnimalAssembler().ConvertListENToModel(listAni).ToList();
+
+            ViewData["NombreUsu"] = usuEN.Nombre;
+
+            SessionClose();
+            return View(listAni2);
+        }
+
         // GET: Animal/Details/5
         public ActionResult Details(int id)
         {

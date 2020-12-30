@@ -43,6 +43,16 @@ namespace WebProtectoraMilpatitas.Controllers
             return View(usu);
         }
 
+        public ActionResult Perfil(string email)
+        {
+            UsuarioViewModel usu = null;
+            SessionInitialize();
+            UsuarioEN usuEN = new UsuarioCAD(session).Dame_Por_Email(email);
+            usu = new UsuarioAssembler().ConvertENToModelUI(usuEN);
+            SessionClose();
+            return View(usu);
+        }
+
         // GET: Usuario/Create
         public ActionResult Create()
         {
@@ -110,18 +120,13 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Usuario/Delete/5
         public ActionResult Delete(string email)
         {
-            try
-            {
-                //El delete de usuario no funciona
-                // TODO: Add delete logic here
-                UsuarioCEN usucen = new UsuarioCEN();
-                usucen.Eliminar(email);
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            SessionInitialize();
+            UsuarioCAD usuCad = new UsuarioCAD(session);
+            UsuarioCEN usuarioCEN = new UsuarioCEN(usuCad);
+            ViewData["NombreUsu"] = usuarioCEN.Dame_Por_Email(email).Nombre;
+
+            SessionClose();
+            return View();
         }
 
         // POST: Usuario/Delete/5
@@ -131,6 +136,8 @@ namespace WebProtectoraMilpatitas.Controllers
             try
             {
                 // TODO: Add delete logic here
+                UsuarioCEN usucen = new UsuarioCEN();
+                usucen.Eliminar(usuario.Email);
                 return RedirectToAction("Index");
             }
             catch
