@@ -45,10 +45,10 @@
             <b>@Html.DisplayNameFor(model => model.idEspecie): </b>
             @Html.ActionLink(item.NomEspecie, "ObtenerAnimalesPorEspecie", new { p_especie = item.idEspecie }, htmlAttributes: null)
         </p>
-        @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id }) |
-        @Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = item.Id }) |
-        @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+        <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id }) ||
+        @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id }) </p>
+        <p>@Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = item.Id }) ||
+        @Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
         @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }) |
 
         @if (item.EstadoAdopcion.ToString().Equals("SinTramite"))
