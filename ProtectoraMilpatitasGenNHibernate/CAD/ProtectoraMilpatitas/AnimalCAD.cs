@@ -355,7 +355,7 @@ public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.Pro
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM AnimalEN self where select ani FROM AnimalEN as ani where ani.Nombre=:p_nombre OR ani.Edad=:p_edad OR ani.Sexo=:p_sexo OR ani.Centro=:p_centro OR ani.DatosMedicos=:p_datos OR ani.Caracter=:p_caracter";
+                //String sql = @"FROM AnimalEN self where select ani FROM AnimalEN as ani where ani.Nombre=:p_nombre OR ani.Edad=:p_edad OR ani.Sexo=:p_sexo OR ani.Centro=:p_centro OR ani.DatosMedicos=:p_datosMedicos OR ani.Caracter=:p_caracter";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("AnimalENbuscarAnimalesHQL");
                 query.SetParameter ("p_nombre", p_nombre);

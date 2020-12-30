@@ -1,4 +1,5 @@
 ﻿@model WebProtectoraMilpatitas.Models.UsuarioViewModel
+@using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 
 @{
     ViewBag.Title = "Editar usuario";
@@ -11,7 +12,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -48,7 +49,20 @@
 }
 
 <div>
-    @Html.ActionLink("Volver a la lista", "Index")
+    @{
+
+        if (Session["Usuario"] != null)
+        {
+            if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+            {
+                @Html.ActionLink("Volver a la lista", "Index")
+            }
+            else
+            {
+                @Html.ActionLink("Volver a inicio", "Index", "Home")
+            }
+        }
+    }
 </div>
 
 @section Scripts {

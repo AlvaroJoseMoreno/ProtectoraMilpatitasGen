@@ -269,9 +269,9 @@ namespace WebProtectoraMilpatitas.Controllers
 
         public ActionResult ActualizarEstado(int id)
         {
-            ContratoAdopcionViewModel con = null;
-
             SessionInitialize();
+
+            ContratoAdopcionViewModel con = null;
 
             ContratoAdopcionEN conEN = new ContratoAdopcionCAD(session).Ver_Contrato(id);
 

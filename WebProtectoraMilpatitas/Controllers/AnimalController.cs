@@ -13,7 +13,7 @@ using WebProtectoraMilpatitas.Models;
 
 namespace WebProtectoraMilpatitas.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class AnimalController : BasicController
     {
         //GET: Animal
@@ -49,6 +49,27 @@ namespace WebProtectoraMilpatitas.Controllers
             {
                 ViewData["NombreEspecie"] = espEN.Nombre;
             }
+
+            SessionClose();
+            return View(listAni2);
+        }
+
+        public ActionResult ObtenerAnimalesPorUsuario(string email)
+        {
+            SessionInitialize();
+
+            AnimalCAD aniCad = new AnimalCAD(session);
+            UsuarioCAD usuCad = new UsuarioCAD(session);
+
+            AnimalCEN aniCEN = new AnimalCEN(aniCad);
+            UsuarioCEN usuCEN = new UsuarioCEN(usuCad);
+
+            UsuarioEN usuEN = usuCEN.Dame_Por_Email(email);
+
+            IList<AnimalEN> listAni = usuEN.Mascotas;
+            IEnumerable<AnimalViewModel> listAni2 = new AnimalAssembler().ConvertListENToModel(listAni).ToList();
+
+            ViewData["NombreUsu"] = usuEN.Nombre;
 
             SessionClose();
             return View(listAni2);
@@ -243,5 +264,61 @@ namespace WebProtectoraMilpatitas.Controllers
                 return View();
             }
         }
+
+        // GET: Animal/buscaranimales
+        public ActionResult BuscarAnimales()
+        {
+
+
+            IList<EspecieEN> listaAnimales = new EspecieCEN().Dame_Todas(0, -1);
+            IList<SelectListItem> especiesItems = new List<SelectListItem>();
+
+            foreach (EspecieEN esp in listaAnimales)
+            {
+                especiesItems.Add(new SelectListItem { Text = esp.Nombre, Value = esp.Id.ToString() });
+            }
+
+            ViewData["idEspecie"] = especiesItems;
+
+            return View();
+        }
+
+        // POST: Animal/Create
+        [HttpPost]
+        public ActionResult BuscarAnimales(AnimalViewModel ani)
+        {
+           try
+            {
+                // TODO: Add insert logic here
+                //   filename =" + filename;
+                SessionInitialize();
+
+                AnimalCAD aniCad = new AnimalCAD(session);
+                AnimalCEN animalCEN= new AnimalCEN(aniCad);
+                
+                IList<AnimalEN> animalesfiltrados = animalCEN.BuscarAnimales(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter);
+                IEnumerable<AnimalViewModel> anifiltrados = new AnimalAssembler().ConvertListENToModel(animalesfiltrados).ToList();
+                
+                SessionClose();
+
+                return RedirectToAction("ResultadoBuscar",  new { animales = anifiltrados});
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult ResultadoBuscar(IEnumerable<AnimalViewModel> animales)
+        {
+            return View(animales);
+        }
+
+
     }
+
+
+
+
+
 }

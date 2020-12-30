@@ -47,7 +47,7 @@ public void Actualizar_Estado (int p_ContratoAdopcion, ProtectoraMilpatitasGenNH
                 contratoAdopcionEN.Estado = p_estado;
                 //Call to ContratoAdopcionCAD
 
-                if (contratoAdopcionEN.Estado.Equals ("firmado")) {
+                if (contratoAdopcionEN.Estado == ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum.firmado) {
                         contratoAdopcionEN.Animal.EstadoAdopcion = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum.EnSeguimiento;
 
                         animalCEN.AsignarDuenyo (contratoAdopcionEN.Animal.Id, contratoAdopcionEN.Usuario.Email);

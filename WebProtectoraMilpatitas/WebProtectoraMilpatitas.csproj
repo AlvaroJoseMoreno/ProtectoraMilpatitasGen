@@ -347,6 +347,7 @@
     <Content Include="Views\Raza\Delete.cshtml" />
     <Content Include="Views\Raza\ObtenerRazasPorEspecie.cshtml" />
     <Content Include="Views\Usuario\Perfil.cshtml" />
+    <Content Include="Views\Animal\ObtenerAnimalesPorUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
