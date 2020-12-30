@@ -168,6 +168,37 @@ namespace WebProtectoraMilpatitas.Controllers
                 return View();
             }
         }
+        public ActionResult Encuesta(int id)
+        {
+            
+
+            return View(new {id2= id });
+
+        }
+
+        // POST: SolicitudAdopcion/Edit/5
+        [HttpPost]
+        public ActionResult Encuesta(SolicitudAdopcionViewModel sol, int id2)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+
+                SolicitudAdopcionCEN soliCEN = new SolicitudAdopcionCEN();
+                SessionInitialize();
+                UsuarioEN usuen = ((UsuarioEN)Session["Usuario"]);
+
+               int id= soliCEN.Nuevo(usuen.Email, id2, DateTime.Today);
+
+                soliCEN.Rellenar_Solicitud(id,usuen.Nombre, sol.AnimalesAcargo, sol.AmbienteConvivencia, sol.TiempoLibre, sol.TodosAcuerdo, sol.MotivosAdopcion);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
         public ActionResult ObtenerSolicitudUsuario(string email)
         {

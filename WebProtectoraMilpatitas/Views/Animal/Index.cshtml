@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<WebProtectoraMilpatitas.Models.AnimalViewModel>
+@using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 
 @{
     ViewBag.Title = "Index animales";
@@ -38,57 +39,59 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        <figure>
-            <figcaption>@Html.ActionLink(item.Nombre, "Details", new { id = item.Id }) </figcaption>
-            <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.Foto)" />
-        </figure>        
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Edad)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Sexo)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Centro)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Caracter)
-    </td>
-    @if (item.DatosMedicos.ToString().Equals("enRecuperacion"))
+    @foreach (var item in Model)
     {
-        <td>En Recuperación</td>
-    }
-    else
-    {
-    <td>
-        @Html.DisplayFor(modelItem => item.DatosMedicos)
-    </td>
-    }
-<td>
-    @Html.ActionLink(item.NomEspecie, "ObtenerAnimalesPorEspecie", new { p_especie = item.idEspecie }, htmlAttributes: null)
-</td>
-<td>
-    @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-    @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id }) |
-    @Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = item.Id }) |
-    @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
-    @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }) |
+        <tr>
+            <td>
+                <figure>
+                    <figcaption>@Html.ActionLink(item.Nombre, "Details", new { id = item.Id }) </figcaption>
+                    <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.Foto)" />
+                </figure>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Edad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sexo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Centro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Caracter)
+            </td>
+            @if (item.DatosMedicos.ToString().Equals("enRecuperacion"))
+            {
+                <td>En Recuperación</td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatosMedicos)
+                </td>
+            }
+            <td>
+                @Html.ActionLink(item.NomEspecie, "ObtenerAnimalesPorEspecie", new { p_especie = item.idEspecie }, htmlAttributes: null)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id }) |
+                @Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = item.Id }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }) |
 
-    @if (item.EstadoAdopcion.ToString().Equals("SinTramite"))
-    {
-        @Html.ActionLink("Adoptar", "Create","SolicitudAdopcion", new {id = item.Id }, htmlAttributes: null)
+                @if (item.EstadoAdopcion.ToString().Equals("SinTramite"))
+                {
+                    @Html.ActionLink("Adoptar", "Encuesta", "SolicitudAdopcion", new { id = item.Id}, htmlAttributes: null)
+                }
+                else
+                {
+
+                    <p>Animal no disponible!</p>
+                }
+            </td>
+        </tr>
     }
-    else {
-        
-        <p>Animal no disponible!</p>
-    }
-</td>
-</tr>
-}
 
 </table>
 
