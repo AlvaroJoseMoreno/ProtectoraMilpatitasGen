@@ -39,8 +39,10 @@
         @Html.LabelFor(model => model.Foto)
     </div>
     <div class="editor-field">
-        <label for="foto"><img style="width:200px;height:200px;" src="~/Imagenes/usuarios/imagen.png" /></label>
-        <input onchange="cargarFoto(this);" style="display:none;" id="foto" type="file" name="file" />
+        <label for="foto">
+            <img style="width:200px;height:200px;" src="~/Imagenes/usuarios/imagen.png" />
+            <input onchange="cargarFoto(this);" style="display:none;" id="foto" type="file" name="file" />
+        </label>
         <p><label for="foto">Buscar Foto</label></p>
         @Html.ValidationMessageFor(model => model.Foto)
     </div>

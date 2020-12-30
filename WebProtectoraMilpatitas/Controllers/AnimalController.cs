@@ -122,7 +122,7 @@ namespace WebProtectoraMilpatitas.Controllers
             {
 
                 filename = Path.GetFileName(file.FileName);
-                ruta = Path.Combine(Server.MapPath("~/Imagenes"), filename);
+                ruta = Path.Combine(Server.MapPath("~/Imagenes/animales/"), filename);
                 file.SaveAs(ruta);
             }
 
@@ -130,7 +130,7 @@ namespace WebProtectoraMilpatitas.Controllers
             {
                 // TODO: Add insert logic here
                 //   filename =" + filename;
-                filename = "Imagenes/" + filename;
+                filename = "Imagenes/animales/" + filename;
                 AnimalCP animalCP = new AnimalCP();
                 animalCP.Nuevo(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter, ani.idEspecie, filename);
 
@@ -147,7 +147,7 @@ namespace WebProtectoraMilpatitas.Controllers
         {
             AnimalViewModel ani = null;
             SessionInitialize();
-            AnimalEN artEN = new AnimalCAD(session).Ver_Detalle_Animal(id);
+            AnimalEN artEN = new AnimalCAD(session).ReadOIDDefault(id);
             ani = new AnimalAssembler().ConvertENToModelUI(artEN);
             SessionClose();
             return View(ani);
@@ -159,17 +159,24 @@ namespace WebProtectoraMilpatitas.Controllers
         {
             string filename = "";
             string ruta = "";
-            if (file != null && file.ContentLength > 0)
+            if(file == null)
+            {
+                string es = ani.Foto;
+                string ass = ani.Nombre;
+              //  ruta = Path.Combine(Server.MapPath("~/Imagenes/animales/"), filename);
+               // file.SaveAs(ruta);
+            }
+            else if (file != null && file.ContentLength > 0)
             {
 
                 filename = Path.GetFileName(file.FileName);
-                ruta = Path.Combine(Server.MapPath("~/Imagenes"), filename);
+                ruta = Path.Combine(Server.MapPath("~/Imagenes/animales/"), filename);
                 file.SaveAs(ruta);
             }
             try
             {
                 // TODO: Add update logic here
-                filename = "Imagenes/" + filename;
+                filename = "Imagenes/animales/" + filename;
                 AnimalCEN anicen = new AnimalCEN();
                 anicen.Modificar(ani.Id,ani.Nombre,ani.Edad,ani.Sexo,ani.Centro,ani.Caracter,filename);
                 return RedirectToAction("Index");

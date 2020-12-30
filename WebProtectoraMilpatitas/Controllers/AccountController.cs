@@ -193,11 +193,17 @@ namespace WebProtectoraMilpatitas.Controllers
 
                     string filename = "";
                     string ruta = "";
+                    if(file == null)
+                    {
+                        filename = "imagen.jpg";
+                        ruta = Path.Combine(Server.MapPath("~/Imagenes/usuarios/"), filename);
+                        file.SaveAs(ruta);
+                    }
                     if (file != null && file.ContentLength > 0)
                     {
 
                         filename = Path.GetFileName(file.FileName);
-                        ruta = Path.Combine(Server.MapPath("~/Imagenes/usuarios"), filename);
+                        ruta = Path.Combine(Server.MapPath("~/Imagenes/usuarios/"), filename);
                         file.SaveAs(ruta);
                     }
                     filename = "Imagenes/usuarios/" + filename;
