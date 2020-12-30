@@ -1,70 +1,72 @@
 ﻿@model IEnumerable<WebProtectoraMilpatitas.Models.AnimalViewModel>
 
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Resultado Busqueda";
     Layout = "~/Views/Shared/_LayoutUsu.cshtml";
 }
 
-<h2>View</h2>
+<h2>Resultado Busqueda</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Edad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sexo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Centro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Caracter)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Foto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NomEspecie)
-        </th>
-        <th></th>
-    </tr>
+    @{
+        if (Model.Any())
+        {
+            <tr>
+                <th>
+                    Animal
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Edad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sexo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Centro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Caracter)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NomEspecie)
+                </th>
+                <th></th>
+            </tr>
+        }
+        else
+        {
+            <tr>No se han encontrado animales con esos criterios de búsqueda</tr>
+        }
+    }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Edad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sexo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Centro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Caracter)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Foto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NomEspecie)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <figure>
+                    <figcaption>@Html.ActionLink(item.Nombre, "Details", new { id = item.Id }) </figcaption>
+                    <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.Foto)" />
+                </figure>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Edad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sexo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Centro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Caracter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomEspecie)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>
