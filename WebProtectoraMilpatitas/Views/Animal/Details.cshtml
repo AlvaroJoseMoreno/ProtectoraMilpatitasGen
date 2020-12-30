@@ -4,91 +4,141 @@
     ViewBag.Title = "Protectoramilpatitas-Pagina de detalle de animal";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<script src="~/Scripts/codigo.js"></script>
+
 <h2>Detalles del animal</h2>
+<section id="secanim">
+    <article class="articulos">
+        <h2>@Html.ActionLink(Model.Nombre, "Details", new { id = Model.Id })</h2>
+        <img style="width: 400px;height: 360px;" src="/@Html.DisplayFor(modelItem => Model.Foto)" />
+        <p>
+            <b>@Html.DisplayNameFor(model => model.Edad): </b> @Html.DisplayFor(modelItem => Model.Edad) ||
+            <b>@Html.DisplayNameFor(model => model.Sexo): </b>
+            @if (Model.Sexo.ToString().Equals("H"))
+            {<label style="font-weight:normal;">Hembra.</label>}
+            else
+            {<label style="font-weight:normal;">Macho.</label>}
+        </p>
+        <p><b>@Html.DisplayNameFor(model => model.Centro): </b> @Html.DisplayFor(modelItem => Model.Centro)</p>
+        <p><b>@Html.DisplayNameFor(model => model.Caracter): </b> @Html.DisplayFor(modelItem => Model.Caracter)</p>
+        <p>
+            <b>@Html.DisplayNameFor(model => model.DatosMedicos): </b>
+            @if (Model.DatosMedicos.ToString().Equals("enRecuperacion"))
+            {
+                <label style="font-weight:normal;">En Recuperación</label>
+            }
+            else
+            {
+                @Html.DisplayFor(modelItem => Model.DatosMedicos)
 
-<div>
-    <h4>@Html.DisplayFor(model => model.Nombre)</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
+            }
+        </p>
+        <p>
+            <b>@Html.DisplayNameFor(model => model.idEspecie): </b>
+            @Html.ActionLink(Model.NomEspecie, "ObtenerAnimalesPorEspecie", new { p_especie = Model.idEspecie }, htmlAttributes: null)
+        </p>
+        <p>
+            @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) ||
+            @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = Model.Id })
+        </p>
+        <p>
+            @Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = Model.Id }) ||
+            @Html.ActionLink("Detalles", "Details", new { id = Model.Id })
+        </p>
+        @Html.ActionLink("Eliminar", "Delete", new { id = Model.Id }) |
 
-        <dd>
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt>
-                @Html.DisplayNameFor(model => model.Foto)
-        </dt>
-
-        <dd>
-           <img style="width: 200px;height: 200px;" src="/@Html.DisplayFor(model => model.Foto)" />
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Edad)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Edad)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Sexo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sexo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Centro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Centro)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Caracter)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Caracter)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DatosMedicos)
-        </dt>
-        @if (Model.DatosMedicos.ToString().Equals("enRecuperacion"))
+        @if (Model.EstadoAdopcion.ToString().Equals("SinTramite"))
         {
-            <dd>
-                En recuperación
-            </dd>
+            <p>@Html.ActionLink("Adoptar", "Create", "SolicitudAdopcion", new { model = Model.Id }, new { @class = "Buttons" })</p>
         }
         else
         {
-            <dd>
-                @Html.DisplayFor(model => model.DatosMedicos)
-            </dd>
+
+            <p>Animal no disponible!</p>
         }
-        <dt>
-            @Html.DisplayNameFor(model => model.EstadoAdopcion)
-        </dt>
+    </article>
+</section>
+        @*<div>
+            <h4>@Html.DisplayFor(model => model.Nombre)</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.EstadoAdopcion)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.idEspecie)
-        </dt>
-        <dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Nombre)
+                </dd>
+                <dt>
+                        @Html.DisplayNameFor(model => model.Foto)
+                </dt>
 
-            @Html.DisplayFor(model => @ViewData["NombreEsp"])
-        </dd>
+                <dd>
+                   <img style="width: 200px;height: 200px;" src="/@Html.DisplayFor(model => model.Foto)" />
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Edad)
+                </dt>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Volver a la lista", "Index")
-</p>
+                <dd>
+                    @Html.DisplayFor(model => model.Edad)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Sexo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Sexo)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Centro)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Centro)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Caracter)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Caracter)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.DatosMedicos)
+                </dt>
+                @if (Model.DatosMedicos.ToString().Equals("enRecuperacion"))
+                {
+                    <dd>
+                        En recuperación
+                    </dd>
+                }
+                else
+                {
+                    <dd>
+                        @Html.DisplayFor(model => model.DatosMedicos)
+                    </dd>
+                }
+                <dt>
+                    @Html.DisplayNameFor(model => model.EstadoAdopcion)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.EstadoAdopcion)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.idEspecie)
+                </dt>
+                <dd>
+
+                    @Html.DisplayFor(model => @ViewData["NombreEsp"])
+                </dd>
+
+            </dl>
+        </div>*@
+        <p>
+            @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Volver a la lista", "Index")
+        </p>
