@@ -474,5 +474,36 @@ public void AsignarDuenyo (int p_Animal_OID, string p_dueño_OID)
                 SessionClose ();
         }
 }
+
+public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> BusquedaRapida (string p_nombre)
+{
+        System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AnimalEN self where select ani FROM AnimalEN as ani where ani.Nombre like concat('%',:p_nombre,'%')";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AnimalENbusquedaRapidaHQL");
+                query.SetParameter ("p_nombre", p_nombre);
+
+                result = query.List<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is ProtectoraMilpatitasGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new ProtectoraMilpatitasGenNHibernate.Exceptions.DataLayerException ("Error in AnimalCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
 }
 }

@@ -26,7 +26,7 @@
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                     <li>@Html.ActionLink("Buscar", "BuscarAnimales", "Animal")</li>
                     <li>@Html.ActionLink("Hacer test animal", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Búsqueda rápida", "Index", "Home")</li>
+                    <li>@Html.Partial("~/Views/Animal/BusquedaRapida.cshtml")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

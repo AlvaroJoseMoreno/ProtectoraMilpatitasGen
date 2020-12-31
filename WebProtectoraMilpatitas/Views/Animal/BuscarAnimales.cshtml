@@ -7,7 +7,7 @@
 <h2>Buscar</h2>
 
 
-@using (Html.BeginForm("BuscarAnimales", "Animal", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("BuscarAnimales", "Animal", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
