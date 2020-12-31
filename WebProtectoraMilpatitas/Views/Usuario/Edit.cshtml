@@ -9,7 +9,7 @@
 <h2>Editar usuario</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Usuario", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 

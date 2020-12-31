@@ -69,8 +69,25 @@ public void Modificar (string p_Usuario_OID, string p_nombre, String p_password,
         usuarioEN.Email = p_Usuario_OID;
         usuarioEN.Nombre = p_nombre;
         usuarioEN.Password = Utils.Util.GetEncondeMD5 (p_password);
-        usuarioEN.Foto = p_foto;
-        //Call to UsuarioCAD
+            
+            if (p_foto != null)
+            {
+                string[] palabras = p_foto.Split('/');
+                if (palabras.Length == 3)
+                {
+                    if (palabras[2].Equals(""))
+                    {
+                        UsuarioCEN usCen = new UsuarioCEN();
+                        UsuarioEN usuEn = usCen.Dame_Por_Email(p_Usuario_OID);
+                        usuarioEN.Foto = usuEn.Foto;
+                    }
+                    else
+                    {
+                        usuarioEN.Foto = p_foto;
+                    }
+                }
+            }
+                //Call to UsuarioCAD
 
         _IUsuarioCAD.Modificar (usuarioEN);
 }
