@@ -37,7 +37,6 @@ public void Rechazar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
         MensajeCAD mensaCAD = null;
         MensajeCEN mensaCEN = null;
         MensajeEN mensaEn = null;
-        bool entra = false;
 
 
         try
@@ -65,13 +64,6 @@ public void Rechazar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
                 solicitudAdopcionEN.Estado = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.rechazado;
                 solicitudAdopcionCP.Actualizar_Estado (p_SolicitudAdopcion, solicitudAdopcionEN.Estado);
                 notiCEN.Enviar (notificacionEN.Id, p_Usuario, mensaEn.Texto);
-                entra = true;
-
-
-
-
-
-
 
 
                 SessionCommit ();

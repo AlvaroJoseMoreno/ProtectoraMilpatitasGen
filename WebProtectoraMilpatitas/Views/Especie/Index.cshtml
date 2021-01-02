@@ -1,4 +1,5 @@
-﻿@model IEnumerable<WebProtectoraMilpatitas.Models.EspecieViewModel>
+﻿@model PagedList.IPagedList<WebProtectoraMilpatitas.Models.EspecieViewModel>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index especies";
@@ -15,27 +16,32 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nombre)
+            Nombre Especie
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Obtener animales por especie", "ObtenerAnimalesPorEspecie", "Animal", new { p_especie = item.Id }, htmlAttributes: null) |
-            @Html.ActionLink("Obtener razas por especie", "ObtenerRazasPorEspecie", "Raza", new { p_especie = item.Id }, htmlAttributes: null) |
-            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Obtener animales por especie", "ObtenerAnimalesPorEspecie", "Animal", new { p_especie = item.Id }, htmlAttributes: null) |
+                @Html.ActionLink("Obtener razas por especie", "ObtenerRazasPorEspecie", "Raza", new { p_especie = item.Id }, htmlAttributes: null) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>
+<br />
+Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
 
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 <div>
     @Html.ActionLink("Volver a animales", "Index", "Animal")
 </div>

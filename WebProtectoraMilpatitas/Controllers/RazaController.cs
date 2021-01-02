@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using WebProtectoraMilpatitas.Assemblers;
 using WebProtectoraMilpatitas.Models;
 
@@ -16,7 +17,7 @@ namespace WebProtectoraMilpatitas.Controllers
         [Authorize]
 
         // GET: Raza
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             SessionInitialize();
 
@@ -29,7 +30,10 @@ namespace WebProtectoraMilpatitas.Controllers
 
             SessionClose();
 
-            return View(listaRazas);
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+
+            return View(listaRazas.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Raza/Details/5

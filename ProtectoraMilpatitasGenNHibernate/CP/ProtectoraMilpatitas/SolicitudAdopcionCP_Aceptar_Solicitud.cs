@@ -38,7 +38,6 @@ public void Aceptar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
         MensajeCAD mensaCAD = null;
         MensajeCEN mensaCEN = null;
         MensajeEN mensaEn = null;
-        bool entra = false;
 
 
         try
@@ -78,7 +77,6 @@ public void Aceptar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
                                         mensaEn.Texto = "Solicitud denegada";
 
                                         notiCEN.Enviar (notificacionEN.Id, p_Usuario, mensaEn.Texto);
-                                        entra = true;
                                 }
                         }
                 }

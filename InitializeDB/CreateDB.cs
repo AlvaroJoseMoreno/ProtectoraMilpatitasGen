@@ -213,7 +213,7 @@ public static void InitializeData ()
                 AnimalEN zelanda = animalCP.Nuevo("Zela", 1, 'M', "Elda", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "juguetón", espConejo, "Imagenes/animales/conejo-nueva-zelanda.jpg", date11);
 
                 AnimalEN robo = animalCP.Nuevo("Robador", 2, 'M', "Petrer", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "juguetón", espHamster, "Imagenes/animales/hamster-roborowski.jpg", date12);
-                AnimalEN dorado = animalCP.Nuevo("Sirio", 2, 'H', "Petrer", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "cariñoso", espHamster, "Imagenes/animales/hamster-dorado.png", date12);
+                AnimalEN dorado = animalCP.Nuevo("Sirio", 2, 'H', "Petrer", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "cariñoso", espHamster, "Imagenes/animales/hamster-dorado.jpg", date12);
 
                 Console.WriteLine ();
 
