@@ -46,7 +46,7 @@ public void Actualizar_Estado (int p_Seguimiento, ProtectoraMilpatitasGenNHibern
                 seguimientoEN.Estado = p_estado;
                 //Call to SeguimientoCAD
 
-                if (seguimientoEN.Estado.Equals ("marcarQuitarAnimal")) {
+                if (seguimientoEN.Estado == ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSeguimientoEnum.marcarQuitarAnimal) {
                         seguimientoEN.Animal.EstadoAdopcion = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum.SinTramite;
                 }
                 else{

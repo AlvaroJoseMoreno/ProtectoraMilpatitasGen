@@ -265,6 +265,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\mediaquery.css" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -345,7 +346,10 @@
     <Content Include="Views\Raza\Edit.cshtml" />
     <Content Include="Views\Raza\Delete.cshtml" />
     <Content Include="Views\Raza\ObtenerRazasPorEspecie.cshtml" />
-    <Content Include="Views\SolicitudAdopcion\Encuesta.cshtml" />
+    <Content Include="Views\Usuario\Perfil.cshtml" />
+    <Content Include="Views\Animal\ObtenerAnimalesPorUsuario.cshtml" />
+    <Content Include="Views\Animal\BuscarAnimales.cshtml" />
+    <Content Include="Views\Animal\ResultadoBuscar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
