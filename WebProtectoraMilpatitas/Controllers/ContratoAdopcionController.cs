@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using PagedList;
 using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas;
@@ -19,7 +20,7 @@ namespace WebProtectoraMilpatitas.Controllers
     public class ContratoAdopcionController : BasicController
     {
         // GET: ContratoAdopcion
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             SessionInitialize();
 
@@ -32,7 +33,10 @@ namespace WebProtectoraMilpatitas.Controllers
 
             SessionClose();
 
-            return View(listaContratos);
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+
+            return View(listaContratos.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: ContratoAdopcion/Details/5
@@ -312,7 +316,7 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
-        public ActionResult ObtenerContratoUsuario(string email)
+        public ActionResult ObtenerContratoUsuario(string email, int? page)
         {
             SessionInitialize();
 
@@ -336,7 +340,10 @@ namespace WebProtectoraMilpatitas.Controllers
 
             SessionClose();
 
-            return View(listaCon);
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+
+            return View(listaCon.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: ContratoAdopcion/Delete/5

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<WebProtectoraMilpatitas.Models.ContratoAdopcionViewModel>
+﻿@model PagedList.IPagedList<WebProtectoraMilpatitas.Models.ContratoAdopcionViewModel>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "ObtenerContratoUsuario";
@@ -19,22 +20,22 @@
         {
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Nombre)
+                    Nombre
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.DNI_NIF_Pasaporte)
+                    DNI_NIF_Pasaporte
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.EscrituraHogar)
+                    Escritura del hogar
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.JustificantePago)
+                    Justificante de pago
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.LugarRecojida)
+                    Lugar de recojida
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.FirmaCompromiso)
+                    Firma de compromiso
                 </th>
                 <th></th>
             </tr>
@@ -75,3 +76,8 @@
     }
 
 </table>
+<br />
+Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

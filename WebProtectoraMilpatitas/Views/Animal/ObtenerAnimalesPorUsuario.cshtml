@@ -1,4 +1,5 @@
-﻿@model IEnumerable<WebProtectoraMilpatitas.Models.AnimalViewModel>
+﻿@model PagedList.IPagedList<WebProtectoraMilpatitas.Models.AnimalViewModel>
+@using PagedList.Mvc;
 @using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 
 @{
@@ -17,19 +18,16 @@
                     Animal
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Edad)
+                    Edad
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Sexo)
+                    Sexo
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Centro)
+                    Centro
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Caracter)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DatosMedicos)
+                    Caracter
                 </th>
             </tr>
         }
@@ -41,39 +39,45 @@
 
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            <figure>
-                <figcaption>@Html.ActionLink(item.Nombre, "Details", new { id = item.Id }) </figcaption>
-                <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.Foto)" />
-            </figure>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Edad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sexo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Centro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Caracter)
-        </td>
-        @if (item.DatosMedicos.ToString().Equals("enRecuperacion"))
-        {
-            <td>En Recuperación</td>
-        }
-        else
-        {
+        <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.DatosMedicos)
+                <figure>
+                    <figcaption>@Html.ActionLink(item.Nombre, "Details", new { id = item.Id }) </figcaption>
+                    <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.Foto)" />
+                </figure>
             </td>
-        }
-    </tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Edad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sexo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Centro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Caracter)
+            </td>
+            @if (item.DatosMedicos.ToString().Equals("enRecuperacion"))
+            {
+                <td>En Recuperación</td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatosMedicos)
+                </td>
+            }
+        </tr>
     }
 
 </table>
+
+<br />
+Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
 <div>
     @{

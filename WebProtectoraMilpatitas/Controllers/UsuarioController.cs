@@ -4,6 +4,7 @@ using System.Linq;
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas;
@@ -17,7 +18,7 @@ namespace WebProtectoraMilpatitas.Controllers
     public class UsuarioController : BasicController
     {
         // GET: Usuario
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             SessionInitialize();
 
@@ -29,7 +30,10 @@ namespace WebProtectoraMilpatitas.Controllers
 
             SessionClose();
 
-            return View(listaView);
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+
+            return View(listaView.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Usuario/Details/5

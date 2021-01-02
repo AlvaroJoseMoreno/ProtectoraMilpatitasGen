@@ -1,4 +1,5 @@
-﻿@model IEnumerable<WebProtectoraMilpatitas.Models.RazaViewModel>
+﻿@model PagedList.IPagedList<WebProtectoraMilpatitas.Models.RazaViewModel>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "ObtenerRazasPorEspecie";
@@ -16,10 +17,10 @@
         {
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Nombre)
+                    Nombre Raza
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.NomEspecie)
+                    Nombre Especie
                 </th>
                 <th></th>
             </tr>
@@ -30,20 +31,24 @@
         }
     }
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NomEspecie)
-                </td>
-            </tr>
-        }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomEspecie)
+            </td>
+        </tr>
+    }
 
-    </table>
+</table>
+<br />
+Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
 
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 <div>
     @Html.ActionLink("Volver a especies", "Index")
 </div>

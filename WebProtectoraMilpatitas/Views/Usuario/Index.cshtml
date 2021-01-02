@@ -1,4 +1,5 @@
-﻿@model IEnumerable<WebProtectoraMilpatitas.Models.UsuarioViewModel>
+﻿@model PagedList.IPagedList<WebProtectoraMilpatitas.Models.UsuarioViewModel>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "ProtectoraMilPatitas-Administrador: Usuarios";
@@ -14,27 +15,32 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            <figure>
-                <figcaption>@Html.ActionLink(item.Nombre, "Details", new { email = item.Email }) </figcaption>
-                <img  src="/@Html.DisplayFor(modelItem => item.Foto)" />
-            </figure>
-        </td>
-        <td>
-            @Html.ActionLink("Detalles", "Details", new { email = item.Email }) |
-            @Html.ActionLink("Obtener Solicitudes Adopcion", "ObtenerSolicitudUsuario", "SolicitudAdopcion", new { email = item.Email }, htmlAttributes: null) |
-            @Html.ActionLink("Obtener Contratos Adopcion", "ObtenerContratoUsuario", "ContratoAdopcion", new { email = item.Email }, htmlAttributes: null)|
-            @Html.ActionLink("Obtener Seguimientos", "ObtenerSeguimientoUsuario", "Seguimiento", new { email = item.Email }, htmlAttributes: null) |
-            @Html.ActionLink("Obtener Mascotas", "ObtenerAnimalesPorUsuario", "Animal", new { email = item.Email }, htmlAttributes: null) |
-            @Html.ActionLink("Eliminar", "Delete", new { email = item.Email })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <figure>
+                    <figcaption>@Html.ActionLink(item.Nombre, "Details", new { email = item.Email }) </figcaption>
+                    <img src="/@Html.DisplayFor(modelItem => item.Foto)" />
+                </figure>
+            </td>
+            <td>
+                @Html.ActionLink("Detalles", "Details", new { email = item.Email }) |
+                @Html.ActionLink("Obtener Solicitudes Adopcion", "ObtenerSolicitudUsuario", "SolicitudAdopcion", new { email = item.Email }, htmlAttributes: null) |
+                @Html.ActionLink("Obtener Contratos Adopcion", "ObtenerContratoUsuario", "ContratoAdopcion", new { email = item.Email }, htmlAttributes: null)|
+                @Html.ActionLink("Obtener Seguimientos", "ObtenerSeguimientoUsuario", "Seguimiento", new { email = item.Email }, htmlAttributes: null) |
+                @Html.ActionLink("Obtener Mascotas", "ObtenerAnimalesPorUsuario", "Animal", new { email = item.Email }, htmlAttributes: null) |
+                @Html.ActionLink("Eliminar", "Delete", new { email = item.Email })
+            </td>
+        </tr>
+    }
 
 </table>
+<br />
+Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
 
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 <div>
     @Html.ActionLink("Volver a inicio", "Indexad", "Home")
 </div>
