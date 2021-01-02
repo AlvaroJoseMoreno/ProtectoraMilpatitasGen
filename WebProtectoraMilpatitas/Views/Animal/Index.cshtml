@@ -1,7 +1,5 @@
 ﻿@model IEnumerable<WebProtectoraMilpatitas.Models.AnimalViewModel>
-@using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
-@using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
-@using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
+
 @{
     ViewBag.Title = "Index animales";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -20,15 +18,16 @@
     {
     <article class="articulos">
         <h2>@Html.ActionLink(item.Nombre, "Details", new { id = item.Id })</h2>
-        <img style="width: 230px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.Foto)" />
+        <img  src="/@Html.DisplayFor(modelItem => item.Foto)" />
         <div>
             <p>
-                <b>@Html.DisplayNameFor(model => model.Edad): </b> @Html.DisplayFor(modelItem => item.Edad) ||
+                <b>@Html.DisplayNameFor(model => model.Edad): </b> 
+                <b>@Html.DisplayFor(modelItem => item.Edad)</b>
                 <b>@Html.DisplayNameFor(model => model.Sexo): </b>
                 @if (item.Sexo.ToString().Equals("H"))
-                {<label style="font-weight:normal;">Hembra.</label>}
+                {<label>Hembra.</label>}
                 else
-                {<label style="font-weight:normal;">Macho.</label>}
+                {<label>Macho.</label>}
             </p>
             <p><b>@Html.DisplayNameFor(model => model.Centro): </b> @Html.DisplayFor(modelItem => item.Centro)</p>
             <p><b>@Html.DisplayNameFor(model => model.Caracter): </b> @Html.DisplayFor(modelItem => item.Caracter)</p>
@@ -36,7 +35,7 @@
                 <b>@Html.DisplayNameFor(model => model.DatosMedicos): </b>
                 @if (item.DatosMedicos.ToString().Equals("enRecuperacion"))
                 {
-                    <label style="font-weight:normal;">En Recuperación</label>
+                    <label>En Recuperación</label>
                 }
                 else
                 {
@@ -48,57 +47,28 @@
                 <b>@Html.DisplayNameFor(model => model.idEspecie): </b>
                 @Html.ActionLink(item.NomEspecie, "ObtenerAnimalesPorEspecie", new { p_especie = item.idEspecie }, htmlAttributes: null)
             </p>
+            <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
+            <p>@Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id }) </p>
+            <p>@Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = item.Id })</p>
+            <p>@Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
+            <p>@Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
+
+
         </div>
-        <p>
-            @Html.ActionLink("Editar", "Edit", new { id = item.Id }) ||
-            @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })
-        </p>
-        <p>
-            @Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = item.Id }) ||
-            @Html.ActionLink("Detalles", "Details", new { id = item.Id })
-        </p>
-        @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }) |
+        
 
-        @{
-            bool comprobar = false;
-            string nombreUsu = "";
-            string idUsu = "";
-            if (Session["Usuario"] != null)
-            {
-                nombreUsu = ((UsuarioEN)Session["Usuario"]).Nombre;
-                idUsu = ((UsuarioEN)Session["Usuario"]).Email;
-            }
-
-            IList<SolicitudAdopcionEN> soliEN = new SolicitudAdopcionCEN().Obtener_Solicitud_Usuario(idUsu);
-
-            foreach (SolicitudAdopcionEN sol in soliEN)
-            {
-                if (sol.Animal.Id == item.Id && sol.Usuario.Email.Equals(idUsu))
-                {
-                    comprobar = true;
-                    break;
-                }
-            }
-
-            if (comprobar)
-            {
-                <p>Ya has realizado una solicitud a este animal</p>
-            }
-            else
-            {
-                if (item.EstadoAdopcion.ToString().Equals("SinTramite") || item.EstadoAdopcion.ToString().Equals("EnSolicitud"))
-                {
-                    <p>@Html.ActionLink("Adoptar", "Encuesta", "SolicitudAdopcion", new { id = item.Id }, new { @class = "Buttons" })</p>
-                }
-                else
-                {
-
-                    <p>Animal no disponible!</p>
-                }
-            }
+        @if (item.EstadoAdopcion.ToString().Equals("SinTramite") || item.EstadoAdopcion.ToString().Equals("EnSolicitud"))
+        {
+            <p>@Html.ActionLink("Adoptar", "Encuesta", "SolicitudAdopcion", new { id = item.Id }, new { @class = "Buttons" })</p>
         }
+        else
+        {
+
+            <p>Animal no disponible!</p>
+        }
+
     </article>
-}
+    }
 
 </main>
 
@@ -134,7 +104,7 @@
         <figure>
             <figcaption>@Html.ActionLink(item.Nombre, "Details", new { id = item.Id }) </figcaption>
             <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.Foto)" />
-        </figure>
+        </figure>        
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Edad)
@@ -173,7 +143,7 @@
         @Html.ActionLink("Adoptar", "Create","SolicitudAdopcion", new {id = item.Id }, htmlAttributes: null)
     }
     else {
-
+        
         <p>Animal no disponible!</p>
     }
 </td>
