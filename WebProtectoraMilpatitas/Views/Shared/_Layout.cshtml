@@ -11,31 +11,41 @@
     <script src="~/Scripts/codigo.js"></script>
 
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Protectora Milpatitas", "Indexad", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Indexad", "Home")</li>
-                    <li>@Html.ActionLink("Animales", "Index", "Animal")</li>
-                    <li>@Html.ActionLink("Usuarios", "Index", "Usuario")</li>
-                    <li>@Html.ActionLink("Solicitudes Adopcion", "Index", "SolicitudAdopcion")</li>
-                    <li>@Html.ActionLink("Contratos Adopcion", "Index", "ContratoAdopcion")</li>
-                    <li>@Html.ActionLink("Seguimientos", "Index", "Seguimiento")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+
+
+<body class="arriba">
+    <header>
+        <div id="icono">
+            <img src="~/Imagenes/patas.png" />
+        </div>
+        <div class="arri">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Protectora Milpatitas", "Indexad", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+
+
             </div>
         </div>
-    </div>
-    @*@{ 
+        <div class="listaarriba">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Inicio", "Indexad", "Home")</li>
+                <li>@Html.ActionLink("Animales", "Index", "Animal")</li>
+                <li>@Html.ActionLink("Usuarios", "Index", "Usuario")</li>
+                <li>@Html.ActionLink("Solicitudes Adopcion", "Index", "SolicitudAdopcion")</li>
+                <li>@Html.ActionLink("Contratos Adopcion", "Index", "ContratoAdopcion")</li>
+                <li>@Html.ActionLink("Seguimientos", "Index", "Seguimiento")</li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </header>
+  
+    @*@{
 
         List<string> ruta =  ((List<string>)Session["RUTA"]);
         foreach (string s in ruta)

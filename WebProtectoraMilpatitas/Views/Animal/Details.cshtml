@@ -7,16 +7,16 @@
 
 <h2>Detalles del animal</h2>
 <section id="secanim">
-    <article class="articulos">
+    <article class="detalle">
         <h2>@Html.ActionLink(Model.Nombre, "Details", new { id = Model.Id })</h2>
-        <img style="width: 400px;height: 360px;" src="/@Html.DisplayFor(modelItem => Model.Foto)" />
+        <img  src="/@Html.DisplayFor(modelItem => Model.Foto)" />
         <p>
-            <b>@Html.DisplayNameFor(model => model.Edad): </b> @Html.DisplayFor(modelItem => Model.Edad) ||
+            <b>@Html.DisplayNameFor(model => model.Edad): </b> <b>@Html.DisplayFor(modelItem => Model.Edad)</b>
             <b>@Html.DisplayNameFor(model => model.Sexo): </b>
             @if (Model.Sexo.ToString().Equals("H"))
-            {<label style="font-weight:normal;">Hembra.</label>}
+            {<label >Hembra.</label>}
             else
-            {<label style="font-weight:normal;">Macho.</label>}
+            {<label >Macho.</label>}
         </p>
         <p><b>@Html.DisplayNameFor(model => model.Centro): </b> @Html.DisplayFor(modelItem => Model.Centro)</p>
         <p><b>@Html.DisplayNameFor(model => model.Caracter): </b> @Html.DisplayFor(modelItem => Model.Caracter)</p>
@@ -24,7 +24,7 @@
             <b>@Html.DisplayNameFor(model => model.DatosMedicos): </b>
             @if (Model.DatosMedicos.ToString().Equals("enRecuperacion"))
             {
-                <label style="font-weight:normal;">En Recuperación</label>
+                <label >En Recuperación</label>
             }
             else
             {
@@ -37,13 +37,13 @@
             @Html.ActionLink(Model.NomEspecie, "ObtenerAnimalesPorEspecie", new { p_especie = Model.idEspecie }, htmlAttributes: null)
         </p>
         <p>
-            @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) ||
-            @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = Model.Id })
-        </p>
-        <p>
-            @Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = Model.Id }) ||
-            @Html.ActionLink("Detalles", "Details", new { id = Model.Id })
-        </p>
+            @Html.ActionLink("Editar", "Edit", new { id = Model.Id })</p>
+          <p> @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = Model.Id })</p>
+        
+       
+           <p> @Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = Model.Id })</p>
+          <p>@Html.ActionLink("Detalles", "Details", new { id = Model.Id })</p>
+        
         @Html.ActionLink("Eliminar", "Delete", new { id = Model.Id }) |
 
         @if (Model.EstadoAdopcion.ToString().Equals("SinTramite"))
