@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas;
@@ -15,7 +16,7 @@ namespace WebProtectoraMilpatitas.Controllers
     [Authorize]
     public class SolicitudAdopcionController : BasicController
     {
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             SessionInitialize();
 
@@ -28,7 +29,10 @@ namespace WebProtectoraMilpatitas.Controllers
 
             SessionClose();
 
-            return View(listaSolicitudes);
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+
+            return View(listaSolicitudes.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: SolicitudAdopcion/Details/5
@@ -203,7 +207,7 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
-        public ActionResult ObtenerSolicitudUsuario(string email)
+        public ActionResult ObtenerSolicitudUsuario(string email, int? page)
         {
             SessionInitialize();
 
@@ -226,7 +230,10 @@ namespace WebProtectoraMilpatitas.Controllers
 
             SessionClose();
 
-            return View(listaSol);
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+
+            return View(listaSol.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: SolicitudAdopcion/Delete/5

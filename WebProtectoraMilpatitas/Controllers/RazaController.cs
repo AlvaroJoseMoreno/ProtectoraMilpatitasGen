@@ -87,7 +87,7 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
-        public ActionResult ObtenerRazasPorEspecie(int p_especie)
+        public ActionResult ObtenerRazasPorEspecie(int p_especie, int? page)
         {
             SessionInitialize();
 
@@ -106,7 +106,11 @@ namespace WebProtectoraMilpatitas.Controllers
             }
 
             SessionClose();
-            return View(listRaz2);
+
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+
+            return View(listRaz2.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Raza/Edit/5

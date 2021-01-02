@@ -1,4 +1,5 @@
-﻿@model IEnumerable<WebProtectoraMilpatitas.Models.SolicitudAdopcionViewModel>
+﻿@model PagedList.IPagedList<WebProtectoraMilpatitas.Models.SolicitudAdopcionViewModel>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Solicitudes de adopcion";
@@ -12,71 +13,76 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nombre)
+            Nombre usuario
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NomUsuario)
+            Usuario
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NomAnimal)
+            Animal
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Estado)
+            Estado solicitud
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FechaSoli)
+            Fecha solicitud
         </th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @if (item.Nombre != null && !item.Nombre.Equals(""))
-        {
-           @Html.ActionLink(item.Nombre, "Details", new { id = item.Id })
-        }
-        else
-        {
-            @Html.DisplayFor(modelItem => item.Nombre);
-        }
-    </td>
-    <td>
-        <figure>
-            <figcaption>@Html.ActionLink(item.NomUsuario, "Details", "Usuario", new { email = item.idUsuario }, htmlAttributes: null) </figcaption>
-            <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.FotoUsuario)" />
-        </figure>
-    </td>
-    <td>
-        <figure>
-            <figcaption>@Html.ActionLink(item.NomAnimal, "Details", "Animal", new { id = item.idAnimal }, htmlAttributes: null) </figcaption>
-            <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.FotoAnimal)" />
-        </figure>
-    </td>
-    @if (item.Estado.ToString().Equals("enEspera"))
+    @foreach (var item in Model)
     {
-        <td>En espera</td>
-    }
-    else
-    {
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-    }
-    <td>
-        @Html.DisplayFor(modelItem => item.FechaSoli)
-    </td>
+        <tr>
+            <td>
+                @if (item.Nombre != null && !item.Nombre.Equals(""))
+                {
+                    @Html.ActionLink(item.Nombre, "Details", new { id = item.Id })
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.Nombre);
+                }
+            </td>
+            <td>
+                <figure>
+                    <figcaption>@Html.ActionLink(item.NomUsuario, "Details", "Usuario", new { email = item.idUsuario }, htmlAttributes: null) </figcaption>
+                    <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.FotoUsuario)" />
+                </figure>
+            </td>
+            <td>
+                <figure>
+                    <figcaption>@Html.ActionLink(item.NomAnimal, "Details", "Animal", new { id = item.idAnimal }, htmlAttributes: null) </figcaption>
+                    <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.FotoAnimal)" />
+                </figure>
+            </td>
+            @if (item.Estado.ToString().Equals("enEspera"))
+            {
+                <td>En espera</td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaSoli)
+            </td>
 
-    <td>
-        @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id }) |
-        @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
-        @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
-    </td>
-</tr>
-}
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>
+<br />
+Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
 
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 <div>
     @Html.ActionLink("Volver a inicio", "Indexad", "Home")
 </div>

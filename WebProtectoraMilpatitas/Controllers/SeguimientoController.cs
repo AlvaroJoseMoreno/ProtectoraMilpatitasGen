@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas;
@@ -16,7 +17,7 @@ namespace WebProtectoraMilpatitas.Controllers
     public class SeguimientoController : BasicController
     {
         // GET: Seguimiento
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             SessionInitialize();
 
@@ -30,7 +31,10 @@ namespace WebProtectoraMilpatitas.Controllers
 
             SessionClose();
 
-            return View(listaSeguimiento);
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+
+            return View(listaSeguimiento.ToPagedList(pageNumber, pageSize));
         }
         //santi te quiero
         // GET: Seguimiento/Details/5
@@ -151,7 +155,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
         }
 
-        public ActionResult ObtenerSeguimientoUsuario(string email)
+        public ActionResult ObtenerSeguimientoUsuario(string email, int? page)
         {
             SessionInitialize();
 
@@ -175,7 +179,10 @@ namespace WebProtectoraMilpatitas.Controllers
 
             SessionClose();
 
-            return View(listaSeg);
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+
+            return View(listaSeg.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Seguimiento/Delete/5

@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+  
+  <mvcSiteMapNode title="Inicio" controller="Home" action="Index">
+
+    <mvcSiteMapNode title="Cuenta" controller="Account" action="Index">
+      <mvcSiteMapNode title="Iniciar Sesión" controller="Account" action="login"/>
+      <mvcSiteMapNode title="Registrarse" controller="Account" action="Register"/>
+    </mvcSiteMapNode>
+    
+    <mvcSiteMapNode title="Animal" controller="Animal" action="Index">
+      <mvcSiteMapNode title="Actualizar Datos Medicos" controller="Animal" action="ActualizarDatosMedicos" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Actualizar Estado" controller="Animal" action="ActualizarEstado" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Buscar Animales" controller="Animal" action="BuscarAnimales"/>
+      <mvcSiteMapNode title="Crear Animal" controller="Animal" action="Create"/>
+      <mvcSiteMapNode title="Eliminar Animal" controller="Animal" action="Delete" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Detalles Animal" controller="Animal" action="Details" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Editar Animal" controller="Animal" action="Edit" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Index Animal" controller="Animal" action="Index"/>
+      <mvcSiteMapNode title="Obtener Animales por Especie" controller="Animal" action="ObtenerAnimalesPorEspecie" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Obtener Animales por Usuario" controller="Animal" action="ObtenerAnimalesPorUsuario" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Resultado Busqueda" controller="Animal" action="ResultadoBuscar"/>
+    </mvcSiteMapNode>
+
+    <mvcSiteMapNode title="Contrato de Adopción" controller="ContratoAdopcion" action="Index">
+      <mvcSiteMapNode title="Actualizar Estado" controller="ContratoAdopcion" action="ActualizarEstado" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Crear Contrato Adopción" controller="ContratoAdopcion" action="Create"/>
+      <mvcSiteMapNode title="Eliminar Contrato Adopción" controller="ContratoAdopcion" action="Delete" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Detalles Contrato Adopción" controller="ContratoAdopcion" action="Details" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Editar Contrato Adopción" controller="ContratoAdopcion" action="Edit" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Index Contrato Adopción" controller="ContratoAdopcion" action="Index"/>
+      <mvcSiteMapNode title="Obtener Contratos Usuario" controller="ContratoAdopcion" action="ObtenerContratoUsuario" preservedRouteParameters="id"/>
+    </mvcSiteMapNode>
+
+    <mvcSiteMapNode title="Especie" controller="Especie" action="Index">
+      <mvcSiteMapNode title="Crear Especie" controller="Especie" action="Create"/>
+      <mvcSiteMapNode title="Eliminar Especie" controller="Especie" action="Delete" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Editar Especie" controller="Especie" action="Edit" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Index Especie" controller="Especie" action="Index"/>
+    </mvcSiteMapNode>
+    
+    <mvcSiteMapNode title="About" controller="Home" action="About"/>
+    <mvcSiteMapNode title="Contact" controller="Home" action="Contact"/>
+    <mvcSiteMapNode title="Index" controller="Home" action="Index"/>
+    <mvcSiteMapNode title="Indexad" controller="Home" action="Indexad"/>
+
+    <mvcSiteMapNode title="Raza" controller="Raza" action="Index">
+      <mvcSiteMapNode title="Crear Raza" controller="Raza" action="Create"/>
+      <mvcSiteMapNode title="Eliminar Raza" controller="Raza" action="Delete" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Editar Raza" controller="Raza" action="Edit" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Index Raza" controller="Raza" action="Index"/>
+      <mvcSiteMapNode title="Obtener Razas por Especie" controller="Raza" action="ObtenerRazasPorEspecie" preservedRouteParameters="id"/>
+    </mvcSiteMapNode>
+
+    <mvcSiteMapNode title="Seguimiento" controller="Seguimiento" action="Index">
+      <mvcSiteMapNode title="Actualizar Estado" controller="Seguimiento" action="ActualizarEstado" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Crear Seguimiento" controller="Seguimiento" action="Create"/>
+      <mvcSiteMapNode title="Eliminar Seguimiento" controller="Seguimiento" action="Delete" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Detalles Seguimiento" controller="Seguimiento" action="Details" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Editar Seguimiento" controller="Seguimiento" action="Edit" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Index Seguimiento" controller="Seguimiento" action="Index"/>
+      <mvcSiteMapNode title="Obtener Seguimientos Usuario" controller="Seguimiento" action="ObtenerSeguimientoUsuario" preservedRouteParameters="id"/>
+    </mvcSiteMapNode>
+
+    <mvcSiteMapNode title="Solicitud Adopcion" controller="SolicitudAdopcion" action="Index">
+      <mvcSiteMapNode title="Actualizar Estado" controller="SolicitudAdopcion" action="ActualizarEstado" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Crear Solicitud Adopcion" controller="SolicitudAdopcion" action="Create"/>
+      <mvcSiteMapNode title="Eliminar Solicitud Adopcion" controller="SolicitudAdopcion" action="Delete" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Detalles Solicitud Adopcion" controller="SolicitudAdopcion" action="Details" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Editar Solicitud Adopcion" controller="SolicitudAdopcion" action="Edit" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Encuesta Solicitud Adopcion" controller="SolicitudAdopcion" action="Encuesta" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Index Solicitud Adopcion" controller="SolicitudAdopcion" action="Index"/>
+      <mvcSiteMapNode title="Obtener Solicitud Adopcion" controller="SolicitudAdopcion" action="ObtenerSolicitudUsuario" preservedRouteParameters="id"/>
+    </mvcSiteMapNode>
+
+    <mvcSiteMapNode title="Usuario" controller="Usuario" action="Index">
+      <mvcSiteMapNode title="Crear Usuario" controller="Usuario" action="Create"/>
+      <mvcSiteMapNode title="Eliminar Usuario" controller="Usuario" action="Delete" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Detalles Usuario" controller="Usuario" action="Details" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Editar Usuario" controller="Usuario" action="Edit" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Index Usuario" controller="Usuario" action="Index"/>
+      <mvcSiteMapNode title="Perfil Usuario" controller="Usuario" action="Perfil" preservedRouteParameters="id"/>
+    </mvcSiteMapNode>
+    
+  </mvcSiteMapNode>
+
+</mvcSiteMap>

@@ -37,7 +37,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
         [Authorize]
         // GET: /AnimalViewModels/ObtenerAnimalesPorEspecie/5
-        public ActionResult ObtenerAnimalesPorEspecie(int p_especie)
+        public ActionResult ObtenerAnimalesPorEspecie(int p_especie, int? page)
         {
             SessionInitialize();
 
@@ -56,11 +56,15 @@ namespace WebProtectoraMilpatitas.Controllers
             }
 
             SessionClose();
-            return View(listAni2);
+
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+
+            return View(listAni2.ToPagedList(pageNumber, pageSize));
         }
 
         [Authorize]
-        public ActionResult ObtenerAnimalesPorUsuario(string email)
+        public ActionResult ObtenerAnimalesPorUsuario(string email, int? page)
         {
             SessionInitialize();
 
@@ -78,7 +82,11 @@ namespace WebProtectoraMilpatitas.Controllers
             ViewData["NombreUsu"] = usuEN.Nombre;
 
             SessionClose();
-            return View(listAni2);
+
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+
+            return View(listAni2.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Animal/Details/5
@@ -346,8 +354,8 @@ namespace WebProtectoraMilpatitas.Controllers
 
                 IList<AnimalEN> animalesfiltrados = animalCEN.BusquedaRapida(ani.Nombre);
 
-
                 IEnumerable<AnimalViewModel> anifiltrados = new AnimalAssembler().ConvertListENToModel(animalesfiltrados).ToList();
+                
                 SessionClose();
 
                 TempData["Animales"] = anifiltrados;
@@ -363,14 +371,8 @@ namespace WebProtectoraMilpatitas.Controllers
 
         public ActionResult ResultadoBuscar()
         {
+
             return View(TempData["Animales"]);
         }
-
-
     }
-
-
-
-
-
 }
