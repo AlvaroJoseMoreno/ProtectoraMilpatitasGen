@@ -57,9 +57,9 @@
         </div>
         
 
-        @if (item.EstadoAdopcion.ToString().Equals("SinTramite"))
+        @if (item.EstadoAdopcion.ToString().Equals("SinTramite") || item.EstadoAdopcion.ToString().Equals("EnSolicitud"))
         {
-            <p>@Html.ActionLink("Adoptar", "Create", "SolicitudAdopcion", new { id = item.Id }, new { @class = "Buttons" })</p>
+            <p>@Html.ActionLink("Adoptar", "Encuesta", "SolicitudAdopcion", new { id = item.Id }, new { @class = "Buttons" })</p>
         }
         else
         {

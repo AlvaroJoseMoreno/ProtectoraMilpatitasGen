@@ -119,6 +119,9 @@ public void ModifyDefault (AnimalEN animal)
 
                 animalEN.Foto = animal.Foto;
 
+
+                animalEN.FechaLlegada = animal.FechaLlegada;
+
                 session.Update (animalEN);
                 SessionCommit ();
         }
@@ -349,13 +352,13 @@ public void Actualizar_Estado (AnimalEN animal)
                 SessionClose ();
         }
 }
-public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> BuscarAnimales (string p_nombre, int? p_edad, char p_sexo, string p_centro, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum? p_datosMedicos, string p_caracter)
+public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> BuscarAnimales (string p_nombre, int? p_edad, char p_sexo, string p_centro, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum? p_datosMedicos, string p_caracter, Nullable<DateTime> p_fechaLlegada, int p_especie)
 {
         System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM AnimalEN self where select ani FROM AnimalEN as ani where ani.Nombre=:p_nombre OR ani.Edad=:p_edad OR ani.Sexo=:p_sexo OR ani.Centro=:p_centro OR ani.DatosMedicos=:p_datosMedicos OR ani.Caracter=:p_caracter";
+                //String sql = @"FROM AnimalEN self where select ani FROM AnimalEN as ani where ani.Nombre=:p_nombre OR ani.Edad=:p_edad OR ani.Sexo=:p_sexo OR ani.Centro=:p_centro OR ani.DatosMedicos=:p_datosMedicos OR ani.Caracter=:p_caracter OR ani.FechaLlegada=:p_fechaLlegada OR ani.Especie.Id=:p_especie";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("AnimalENbuscarAnimalesHQL");
                 query.SetParameter ("p_nombre", p_nombre);
@@ -364,6 +367,8 @@ public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.Pro
                 query.SetParameter ("p_centro", p_centro);
                 query.SetParameter ("p_datosMedicos", p_datosMedicos);
                 query.SetParameter ("p_caracter", p_caracter);
+                query.SetParameter ("p_fechaLlegada", p_fechaLlegada);
+                query.SetParameter ("p_especie", p_especie);
 
                 result = query.List<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN>();
                 SessionCommit ();

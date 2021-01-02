@@ -23,7 +23,7 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
 {
 public partial class AnimalCP : BasicCP
 {
-public ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN Nuevo (string p_nombre, int p_edad, char p_sexo, string p_centro, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum p_datosMedicos, string p_caracter, int p_especie, string p_foto)
+public ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN Nuevo (string p_nombre, int p_edad, char p_sexo, string p_centro, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum p_datosMedicos, string p_caracter, int p_especie, string p_foto, Nullable<DateTime> p_fechaLlegada)
 {
         /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_Animal_nuevo) ENABLED START*/
 
@@ -75,6 +75,8 @@ public ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN Nuevo 
                 animalEN.Especie = new EspecieCEN ().Dame_Por_Id (p_especie);
 
                 animalEN.Foto = p_foto;
+
+                animalEN.FechaLlegada = p_fechaLlegada;
 
                 notificacionEN = new NotificacionEN ();
                 notificacionEN.Mensaje = "Ha llegado " + animalEN.Nombre;
