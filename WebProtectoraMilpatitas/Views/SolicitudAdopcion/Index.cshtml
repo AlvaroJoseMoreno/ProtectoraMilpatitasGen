@@ -31,7 +31,14 @@
 @foreach (var item in Model) {
 <tr>
     <td>
-        @Html.ActionLink(item.Nombre, "Details", new { id = item.Id })
+        @if (item.Nombre != null && !item.Nombre.Equals(""))
+        {
+           @Html.ActionLink(item.Nombre, "Details", new { id = item.Id })
+        }
+        else
+        {
+            @Html.DisplayFor(modelItem => item.Nombre);
+        }
     </td>
     <td>
         <figure>
