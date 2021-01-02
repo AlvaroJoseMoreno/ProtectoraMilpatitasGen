@@ -250,15 +250,26 @@ namespace WebProtectoraMilpatitas.Controllers
 
         // POST: ContratoAdopcion/Edit/5
         [HttpPost]
-        public ActionResult Edit(ContratoAdopcionViewModel con)
+        public ActionResult Edit(ContratoAdopcionViewModel con, HttpPostedFileBase fileEscritura)
         {
+            string filenameEscritura = "";
+            string rutaEscritura = "";
+            if(fileEscritura != null && fileEscritura.ContentLength > 0)
+            {
+                filenameEscritura = Path.GetFileName(fileEscritura.FileName);
+                rutaEscritura = Path.Combine(Server.MapPath("~/Contratos/escrituras/"), filenameEscritura);
+                fileEscritura.SaveAs(rutaEscritura);
+            }
             try
             {
                 // TODO: Add update logic here
+
+                filenameEscritura = "Contratos/escrituras/" + filenameEscritura;
+
                 ContratoAdopcionCEN conCEN = new ContratoAdopcionCEN();
 
-                conCEN.Rellenar_Contrato(con.Id, con.Nombre, con.DNI_NIF_Pasaporte, con.EscrituraHogar, con.JustificantePago, con.LugarRecojida, con.FirmaCompromiso);
-
+                conCEN.Rellenar_Contrato(con.Id, con.Nombre, con.DNI_NIF_Pasaporte, filenameEscritura, con.JustificantePago, con.LugarRecojida, con.FirmaCompromiso);
+                //con.EscrituraHogar;
                 return RedirectToAction("Index");
             }
             catch

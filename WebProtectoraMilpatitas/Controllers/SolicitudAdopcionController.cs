@@ -168,6 +168,40 @@ namespace WebProtectoraMilpatitas.Controllers
                 return View();
             }
         }
+        public ActionResult Encuesta(int id)
+        {
+
+            TempData["idAni"] = id;
+            return View();
+
+        }
+
+        // POST: SolicitudAdopcion/Edit/5
+        [HttpPost]
+        public ActionResult Encuesta(SolicitudAdopcionViewModel sol)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+
+                SolicitudAdopcionCEN soliCEN = new SolicitudAdopcionCEN();
+                SessionInitialize();
+                UsuarioEN usuen = ((UsuarioEN)Session["Usuario"]);
+                int idAni = (int)TempData["idAni"];
+               int id= soliCEN.Nuevo(usuen.Email,idAni , DateTime.Today);
+
+                soliCEN.Rellenar_Solicitud(id,usuen.Nombre, sol.AnimalesAcargo, sol.AmbienteConvivencia, sol.TiempoLibre, sol.TodosAcuerdo, sol.MotivosAdopcion);
+                SolicitudAdopcionCP soliCP = new SolicitudAdopcionCP();
+                soliCP.Actualizar_Estado(id,ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
+                SessionClose();
+                return RedirectToAction("Index");
+                
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
         public ActionResult ObtenerSolicitudUsuario(string email)
         {
@@ -217,7 +251,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 // TODO: Add delete logic here
 
                 SolicitudAdopcionCEN solCEN = new SolicitudAdopcionCEN();
-
+               
                 solCEN.Eliminar(id);
 
                 return RedirectToAction("Index");
