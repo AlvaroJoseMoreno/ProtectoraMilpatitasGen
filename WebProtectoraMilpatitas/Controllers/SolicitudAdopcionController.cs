@@ -170,15 +170,15 @@ namespace WebProtectoraMilpatitas.Controllers
         }
         public ActionResult Encuesta(int id)
         {
-            
 
-            return View(new {id2= id });
+            TempData["idAni"] = id;
+            return View();
 
         }
 
         // POST: SolicitudAdopcion/Edit/5
         [HttpPost]
-        public ActionResult Encuesta(SolicitudAdopcionViewModel sol, int id2)
+        public ActionResult Encuesta(SolicitudAdopcionViewModel sol)
         {
             try
             {
@@ -187,12 +187,15 @@ namespace WebProtectoraMilpatitas.Controllers
                 SolicitudAdopcionCEN soliCEN = new SolicitudAdopcionCEN();
                 SessionInitialize();
                 UsuarioEN usuen = ((UsuarioEN)Session["Usuario"]);
-
-               int id= soliCEN.Nuevo(usuen.Email, id2, DateTime.Today);
+                int idAni = (int)TempData["idAni"];
+               int id= soliCEN.Nuevo(usuen.Email,idAni , DateTime.Today);
 
                 soliCEN.Rellenar_Solicitud(id,usuen.Nombre, sol.AnimalesAcargo, sol.AmbienteConvivencia, sol.TiempoLibre, sol.TodosAcuerdo, sol.MotivosAdopcion);
-
+                SolicitudAdopcionCP soliCP = new SolicitudAdopcionCP();
+                soliCP.Actualizar_Estado(id,ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
+                SessionClose();
                 return RedirectToAction("Index");
+                
             }
             catch
             {
@@ -248,7 +251,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 // TODO: Add delete logic here
 
                 SolicitudAdopcionCEN solCEN = new SolicitudAdopcionCEN();
-
+               
                 solCEN.Eliminar(id);
 
                 return RedirectToAction("Index");

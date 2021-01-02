@@ -53,7 +53,7 @@
         @Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
         @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }) |
 
-        @if (item.EstadoAdopcion.ToString().Equals("SinTramite"))
+        @if (item.EstadoAdopcion.ToString().Equals("SinTramite") || item.EstadoAdopcion.ToString().Equals("EnSolicitud"))
         {
             <p>@Html.ActionLink("Adoptar", "Encuesta", "SolicitudAdopcion", new { id = item.Id }, new { @class = "Buttons" })</p>
         }
