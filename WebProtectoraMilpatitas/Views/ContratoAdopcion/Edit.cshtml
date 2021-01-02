@@ -42,10 +42,11 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.JustificantePago, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <input type="file" id="escritura" name="justipago" />
+            @*<div class="col-md-10">
                 @Html.EditorFor(model => model.JustificantePago, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.JustificantePago, "", new { @class = "text-danger" })
-            </div>
+            </div>*@
         </div>
 
         <div class="form-group">
