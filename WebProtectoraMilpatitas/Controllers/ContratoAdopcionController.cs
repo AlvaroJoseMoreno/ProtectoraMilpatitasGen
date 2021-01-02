@@ -254,7 +254,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
         // POST: ContratoAdopcion/Edit/5
         [HttpPost]
-        public ActionResult Edit(ContratoAdopcionViewModel con, HttpPostedFileBase fileEscritura)
+        public ActionResult Edit(ContratoAdopcionViewModel con, HttpPostedFileBase fileEscritura, HttpPostedFileBase justipago)
         {
             string filenameEscritura = "";
             string rutaEscritura = "";
@@ -264,15 +264,24 @@ namespace WebProtectoraMilpatitas.Controllers
                 rutaEscritura = Path.Combine(Server.MapPath("~/Contratos/escrituras/"), filenameEscritura);
                 fileEscritura.SaveAs(rutaEscritura);
             }
+            string filenamePago = "";
+            string rutaPago = "";
+            if(justipago != null && justipago.ContentLength > 0)
+            {
+                filenamePago = Path.GetFileName(justipago.FileName);
+                rutaPago = Path.Combine(Server.MapPath("~/Contratos/jusPagos/"), filenamePago);
+                justipago.SaveAs(rutaPago);
+            }
             try
             {
                 // TODO: Add update logic here
 
                 filenameEscritura = "Contratos/escrituras/" + filenameEscritura;
+                filenamePago = "Contratos/jusPagos/" + filenamePago;
 
                 ContratoAdopcionCEN conCEN = new ContratoAdopcionCEN();
 
-                conCEN.Rellenar_Contrato(con.Id, con.Nombre, con.DNI_NIF_Pasaporte, filenameEscritura, con.JustificantePago, con.LugarRecojida, con.FirmaCompromiso);
+                conCEN.Rellenar_Contrato(con.Id, con.Nombre, con.DNI_NIF_Pasaporte, filenameEscritura, filenamePago, con.LugarRecojida, con.FirmaCompromiso);
                 //con.EscrituraHogar;
                 return RedirectToAction("Index");
             }
