@@ -22,6 +22,8 @@ img{
     text-align: center;
     justify-content: center;
     font-size: 1em;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .detalle > img{
@@ -59,7 +61,7 @@ b{
     padding: 0.1em;
 }
     a:hover {
-        text-decoration: none;
+        text-decoration: underline;
         color: #fc810e;
     }
 
@@ -239,6 +241,26 @@ ul {
     display: flex;
     padding: 1em;
 }
+.listaarriba input[type = "checkbox"]{
+    display: none;
+}
+
+.listaarriba > ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        left: -110%;
+        transition: left .5s;
+}
+
+#chkmenu {
+    display: none;
+}
+
+#chkmenu:checked + ul {
+     left: 0;
+}
 
 .listaarriba li{
     font-size: 1em;
@@ -258,6 +280,18 @@ form {
     border: 2px solid #fc810e;
 }
 
+@media all and (min-width: 550px){
+    .listaarriba>label{
+        display: none;
+    }
+    .listaarriba ul {
+        display: flex;
+        flex-direction: column;
+        left: 0;
+        justify-content: center;
+    }
+}
+
 @media all and (min-width: 680px) {
     #mainart {
         display: flex;
@@ -273,6 +307,11 @@ form {
         width: 600px;
     }
 }
+
+@media all and (min-width: 900px){
+    .listaarriba ul {
+        flex-direction: row;
+    }
 
 @media all and (min-width: 1020px) {
     #mainart > .articulos {
