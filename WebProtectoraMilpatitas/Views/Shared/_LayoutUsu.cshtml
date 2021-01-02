@@ -33,6 +33,7 @@
         </div>
     </div>
     <div class="container body-content">
+        <p>Estás aquí: @Html.MvcSiteMap().SiteMapPath()</p>
         @RenderBody()
         <hr />
         <footer>
@@ -40,7 +41,7 @@
             <ul>
                 <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                 <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-              
+
             </ul>
         </footer>
     </div>
