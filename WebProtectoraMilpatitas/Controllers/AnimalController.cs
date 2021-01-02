@@ -136,7 +136,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 //   filename =" + filename;
                 filename = "Imagenes/animales/" + filename;
                 AnimalCP animalCP = new AnimalCP();
-                animalCP.Nuevo(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter, ani.idEspecie, filename);
+                animalCP.Nuevo(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter, ani.idEspecie, filename, ani.FechaLlegada);
 
                 return RedirectToAction("Index");
             }
@@ -280,24 +280,22 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Animal/buscaranimales
         public ActionResult BuscarAnimales()
         {
-
-
-            IList<EspecieEN> listaAnimales = new EspecieCEN().Dame_Todas(0, -1);
+            IList<EspecieEN> listaEspecies = new EspecieCEN().Dame_Todas(0, -1);
             IList<SelectListItem> especiesItems = new List<SelectListItem>();
 
-            foreach (EspecieEN esp in listaAnimales)
+            foreach (EspecieEN esp in listaEspecies)
             {
                 especiesItems.Add(new SelectListItem { Text = esp.Nombre, Value = esp.Id.ToString() });
             }
 
-            ViewData["idEspecie"] = especiesItems;
+            ViewData["idBusEspecie"] = especiesItems;
 
             return View();
         }
 
         // POST: Animal/Create
         [HttpPost]
-        public ActionResult BuscarAnimales(AnimalBusquedaViewModel ani)
+        public ActionResult BuscarAnimales(AnimalViewModel ani)
         {
            try
             {
@@ -308,7 +306,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 AnimalCAD aniCad = new AnimalCAD(session);
                 AnimalCEN animalCEN= new AnimalCEN(aniCad);
                 
-                IList<AnimalEN> animalesfiltrados = animalCEN.BuscarAnimales(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter);
+                IList<AnimalEN> animalesfiltrados = animalCEN.BuscarAnimales(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter, ani.FechaLlegada, ani.idEspecie);
            
                
                 IEnumerable<AnimalViewModel> anifiltrados = new AnimalAssembler().ConvertListENToModel(animalesfiltrados).ToList();
