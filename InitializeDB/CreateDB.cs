@@ -107,29 +107,78 @@ public static void InitializeData ()
 
                 //Creacion de especies
                 EspecieCEN espCEN = new EspecieCEN ();
-                int esp = espCEN.Nuevo ("perro");
-                Console.WriteLine ("Id de la especie perro: " + esp);
+                int espPerro = espCEN.Nuevo ("perro");
+                Console.WriteLine ("Id de la especie perro: " + espPerro);
 
-                int esp1 = espCEN.Nuevo ("gato");
-                Console.WriteLine ("Id de la especie gato: " + esp1);
+                int espGato = espCEN.Nuevo ("gato");
+                Console.WriteLine ("Id de la especie gato: " + espGato);
+
+                int espTortuga = espCEN.Nuevo("tortuga");
+                Console.WriteLine("Id de la especie tortuga: " + espTortuga);
+
+                int espPajaro = espCEN.Nuevo("pajaro");
+                Console.WriteLine("Id de la especie pajaro: " + espPajaro);
+
+                int espPez = espCEN.Nuevo("pez");
+                Console.WriteLine("Id de la especie pez: " + espPez);
+
+                int espGeco = espCEN.Nuevo("geco");
+                Console.WriteLine("Id de la especie geco: " + espGeco);
+
+                int espConejo = espCEN.Nuevo("conejo");
+                Console.WriteLine("Id de la especie conejo: " + espConejo);
+
+                int espHamster = espCEN.Nuevo("hamster");
+                Console.WriteLine("Id de la especie hamster: " + espHamster);
 
                 Console.WriteLine ();
 
                 //Creacion de razas
                 RazaCEN razCEN = new RazaCEN ();
-                int per = razCEN.Nuevo ("carlino", esp);
+                int per = razCEN.Nuevo ("carlino", espPerro);
                 Console.WriteLine ("Id de la raza carlino: " + per);
-                int per1 = razCEN.Nuevo ("yorkshire", esp);
+                int per1 = razCEN.Nuevo ("yorkshire", espPerro);
                 Console.WriteLine ("Id de la raza yorkshine: " + per1);
-                int gat = razCEN.Nuevo ("siames", esp1);
+
+                int gat = razCEN.Nuevo ("siames", espGato);
                 Console.WriteLine ("Id de la raza siames: " + gat);
-                int gat1 = razCEN.Nuevo ("europeo", esp1);
+                int gat1 = razCEN.Nuevo ("europeo", espGato);
                 Console.WriteLine ("Id de la raza europeo: " + gat1);
+
+                int tor = razCEN.Nuevo("rusa", espTortuga);
+                Console.WriteLine("Id de la raza rusa: " + tor);
+                int tor1 = razCEN.Nuevo("del bosque", espTortuga);
+                Console.WriteLine("Id de la raza del bosque: " + tor1);
+
+                int paj = razCEN.Nuevo("periquito", espPajaro);
+                Console.WriteLine("Id de la raza periquito: " + paj);
+                int paj1 = razCEN.Nuevo("canario", espPajaro);
+                Console.WriteLine("Id de la raza canario: " + paj1);
+
+                int pez = razCEN.Nuevo("guppy", espPez);
+                Console.WriteLine("Id de la raza guppy: " + pez);
+                int pez1 = razCEN.Nuevo("payaso", espPez);
+                Console.WriteLine("Id de la raza payaso: " + pez1);
+
+                int geco = razCEN.Nuevo("leopardo", espGeco);
+                Console.WriteLine("Id de la raza leopardo: " + geco);
+                int geco1 = razCEN.Nuevo("crestado", espGeco);
+                Console.WriteLine("Id de la raza crestado: " + geco1);
+
+                int cone = razCEN.Nuevo("gran chinchilla", espConejo);
+                Console.WriteLine("Id de la raza gran chinchilla: " + cone);
+                int cone1 = razCEN.Nuevo("de Nueva Zelanda", espConejo);
+                Console.WriteLine("Id de la raza de Nueva Zelanda: " + cone1);
+
+                int ham = razCEN.Nuevo("Roborowski", espHamster);
+                Console.WriteLine("Id de la raza Roborowski: " + ham);
+                int ham1 = razCEN.Nuevo("dorado", espHamster);
+                Console.WriteLine("Id de la raza dorado: " + ham1);
 
                 Console.WriteLine ();
 
-                IList<RazaEN> razas = razCEN.Dame_Raza_Por_Especie (esp);
-                Console.WriteLine ("razas de la especie: " + (espCEN.Dame_Por_Id (esp)).Nombre);
+                IList<RazaEN> razas = razCEN.Dame_Raza_Por_Especie (espPerro);
+                Console.WriteLine ("razas de la especie: " + (espCEN.Dame_Por_Id (espPerro)).Nombre);
                 foreach (RazaEN razi in razas) {
                         Console.WriteLine ("-" + razi.Nombre);
                 }
@@ -140,38 +189,52 @@ public static void InitializeData ()
                 DateTime date12 = new DateTime(2020, 12, 1, 8, 30, 52);
 
                 //Creacion de animales
-                AnimalCP chihua = new AnimalCP ();
-                AnimalEN chi = chihua.Nuevo ("tobi", 3, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "amigable", esp, "Imagenes/animales/Galgo-espanol-1.jpg", date11);
+                AnimalCP animalCP = new AnimalCP ();
 
-                AnimalCP yorkshire = new AnimalCP ();
-                AnimalEN yor = yorkshire.Nuevo ("Pelusa", 3, 'M', "Albacete", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enRecuperacion, "carinoso", esp, "Imagenes/animales/manchitas.jpg", date11);
+                AnimalEN chihuahua = animalCP.Nuevo ("Tobi", 3, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "amigable", espPerro, "Imagenes/animales/Galgo-espanol-1.jpg", date11);
+                AnimalEN yorkshire = animalCP.Nuevo ("Pelusa", 3, 'M', "Albacete", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enRecuperacion, "cariñoso", espPerro, "Imagenes/animales/manchitas.jpg", date11);
 
-                AnimalCP siames = new AnimalCP ();
-                AnimalEN sia = siames.Nuevo ("minino", 1, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso", esp1, "Imagenes/animales/gato1.jpg", date12);
+                AnimalEN siames = animalCP.Nuevo ("Minino", 1, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso", espGato, "Imagenes/animales/gato1.jpg", date12);
+                AnimalEN europeo = animalCP.Nuevo ("Milky", 2, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso", espGato, "Imagenes/animales/gato2.jpg", date12);
 
-                AnimalCP gatEuropeo = new AnimalCP ();
-                AnimalEN gatiEuropeo = gatEuropeo.Nuevo ("milky", 2, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso", esp1, "Imagenes/animales/gato2.jpg", date12);
+                AnimalEN rusa = animalCP.Nuevo("Donatello", 4, 'M', "Villena", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "un poco agresivo", espTortuga, "Imagenes/animales/tortuga-rusa.jpg", date11);
+                AnimalEN bosque = animalCP.Nuevo("Leonardo", 5, 'M', "Villena", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "un poco agresivo", espTortuga, "Imagenes/animales/tortuga-bosque.jpg", date11);
+
+                AnimalEN periquito = animalCP.Nuevo("Cantarin", 1, 'H', "Alcoy", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "fiestera", espPajaro, "Imagenes/animales/periquito.jpg", date12);
+                AnimalEN canario = animalCP.Nuevo("Bailarin", 1, 'H', "Alcoy", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "fiestera", espPajaro, "Imagenes/animales/canario.jpg", date12);
+
+                AnimalEN guppy = animalCP.Nuevo("Gup", 1, 'H', "Elche", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "amigable", espPez, "Imagenes/animales/Pez-guppy.jpg", date11);
+                AnimalEN payaso = animalCP.Nuevo("Payasi", 1, 'M', "Elche", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "juguetón", espPez, "Imagenes/animales/pez-payaso.jpg", date11);
+
+                AnimalEN leopardo = animalCP.Nuevo("Leo", 2, 'M', "Murcia", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "solitario", espGeco, "Imagenes/animales/gecko_crestado.jpg", date12);
+                AnimalEN crestado = animalCP.Nuevo("Cresti", 2, 'H', "Murcia", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "solitaria", espGeco, "Imagenes/animales/Gecko_leopardo.png", date12);
+
+                AnimalEN chinchilla = animalCP.Nuevo("Chincha", 1, 'H', "Elda", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "amigable", espConejo, "Imagenes/animales/conejo-chinchilla.jpg", date11);
+                AnimalEN zelanda = animalCP.Nuevo("Zela", 1, 'M', "Elda", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "juguetón", espConejo, "Imagenes/animales/conejo-nueva-zelanda.jpg", date11);
+
+                AnimalEN robo = animalCP.Nuevo("Robador", 2, 'M', "Petrer", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "juguetón", espHamster, "Imagenes/animales/hamster-roborowski.jpg", date12);
+                AnimalEN dorado = animalCP.Nuevo("Sirio", 2, 'H', "Petrer", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "cariñoso", espHamster, "Imagenes/animales/hamster-dorado.png", date12);
 
                 Console.WriteLine ();
 
                 AnimalCEN aniCEN = new AnimalCEN ();
 
-                Console.WriteLine ("Datos medicos de " + gatiEuropeo.Nombre + " antes de cambiarlo -> " + gatiEuropeo.DatosMedicos);
-                aniCEN.Actualizar_DatosMedicos (gatiEuropeo.Id, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano);
-                Console.WriteLine ("Datos medicos de " + gatiEuropeo.Nombre + " despues de cambiarlo -> " + (aniCEN.Ver_Detalle_Animal (gatiEuropeo.Id)).DatosMedicos);
+                Console.WriteLine ("Datos medicos de " + europeo.Nombre + " antes de cambiarlo -> " + europeo.DatosMedicos);
+                aniCEN.Actualizar_DatosMedicos (europeo.Id, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano);
+                Console.WriteLine ("Datos medicos de " + europeo.Nombre + " despues de cambiarlo -> " + (aniCEN.Ver_Detalle_Animal (europeo.Id)).DatosMedicos);
 
                 Console.WriteLine ();
 
-                IList<AnimalEN> animales = aniCEN.Dame_Animales_Por_Especie (esp1);
-                Console.WriteLine ("animales de la especie: " + (espCEN.Dame_Por_Id (esp)).Nombre);
+                IList<AnimalEN> animales = aniCEN.Dame_Animales_Por_Especie (espGato);
+                Console.WriteLine ("animales de la especie: " + (espCEN.Dame_Por_Id (espGato)).Nombre);
                 foreach (AnimalEN ani in animales) {
                         Console.WriteLine ("-" + ani.Nombre);
                 }
 
                 Console.WriteLine ();
 
-                ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum estadoSia = aniCEN.Ver_Proceso_Adopcion (sia.Id);
-                Console.WriteLine ("Estado de adopcion de " + sia.Nombre + " -> " + estadoSia);
+                ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum estadoSia = aniCEN.Ver_Proceso_Adopcion (siames.Id);
+                Console.WriteLine ("Estado de adopcion de " + siames.Nombre + " -> " + estadoSia);
 
                 Console.WriteLine ();
 
@@ -189,10 +252,10 @@ public static void InitializeData ()
                 SolicitudAdopcionCEN solicitudAdopcionCEN = new SolicitudAdopcionCEN ();
                 SolicitudAdopcionCP solicitudAdopcionCP = new SolicitudAdopcionCP ();
 
-                int idsol = solicitudAdopcionCEN.Nuevo (juan, chi.Id, DateTime.Today);
+                int idsol = solicitudAdopcionCEN.Nuevo (juan, chihuahua.Id, DateTime.Today);
                 solicitudAdopcionCP.Actualizar_Estado (idsol, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
 
-                int idsol1 = solicitudAdopcionCEN.Nuevo (manu, chi.Id, DateTime.Today);
+                int idsol1 = solicitudAdopcionCEN.Nuevo (manu, chihuahua.Id, DateTime.Today);
                 solicitudAdopcionCP.Actualizar_Estado (idsol1, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
 
                 solicitudAdopcionCEN.Rellenar_Solicitud (idsol, "Juan", 2, "lugar tranquilo", 3, true, "nos gustan los animales");
@@ -212,10 +275,10 @@ public static void InitializeData ()
                 ContratoAdopcionCEN contratoAdopcionCEN = new ContratoAdopcionCEN ();
                 ContratoAdopcionCP contratoAdopcionCP = new ContratoAdopcionCP ();
 
-                int idcon = contratoAdopcionCEN.Nuevo (juan, idsol, chi.Id);
+                int idcon = contratoAdopcionCEN.Nuevo (juan, idsol, chihuahua.Id);
                 contratoAdopcionCP.Actualizar_Estado (idcon, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum.entregado);
 
-                int idcon1 = contratoAdopcionCEN.Nuevo (manu, idsol1, chi.Id);
+                int idcon1 = contratoAdopcionCEN.Nuevo (manu, idsol1, chihuahua.Id);
                 contratoAdopcionCP.Actualizar_Estado (idcon1, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum.entregado);
 
                 contratoAdopcionCEN.Rellenar_Contrato (idcon, "Juan", "1111111F", "micasa.pdf", "pago.jpg", "alicante", true);
@@ -236,7 +299,7 @@ public static void InitializeData ()
 
                 DateTime date1 = new DateTime (2008, 5, 1, 8, 30, 52);
 
-                int idseg = seguimientoCEN.Nuevo (manu, chi.Id, idcon1);
+                int idseg = seguimientoCEN.Nuevo (manu, chihuahua.Id, idcon1);
                 seguimientoCEN.Modificar (idseg, date1);
                 seguimientoCP.Actualizar_Estado (idseg, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSeguimientoEnum.pendienteRevision);
 
