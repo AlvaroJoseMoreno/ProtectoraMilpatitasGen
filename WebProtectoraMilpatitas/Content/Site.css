@@ -19,7 +19,7 @@ img{
     width: 90%;
     background-color: #c4f2c6;
     margin: 1em;
-    text-align: left;
+    text-align: center;
     justify-content: center;
     font-size: 1em;
 }
@@ -30,8 +30,23 @@ img{
     padding: 1em;
 }
 
+#datis {
+    text-align: left;
+    margin-left: 8em;
+    margin-right: 8em;
+    background-color: #fff99f;
+    padding: 1em;
+}
+
+#enlacis{
+    text-align: left;
+    margin-left: 8em;
+    padding: 1em;
+    margin-right: 8em;
+}
+
 a {
-    color: black;
+    color: dimgrey;
     text-decoration: none;
 }
 
@@ -50,7 +65,7 @@ b{
 
 body {
     margin-top: 10px;
-    padding-top: 120px;
+    padding-top: 10px;
     padding-bottom: 20px;
     background-color: #c4f2c6;
     min-width: 340px;
@@ -85,6 +100,7 @@ textarea {
 h2 {
     text-transform: uppercase;
     font-weight: 500;
+    font-size: 2em;
     margin: 0.2em;
     text-align: center;
 }
@@ -94,8 +110,12 @@ h1 {
     font-weight: 800;
     margin: 0.2em;
     text-align: center;
+    font-size: 4em;
 }
 
+h3{
+
+}
 #mainart, #secanim {
     border: 4px solid #fc810e;
     background-color: #fff99f;
@@ -105,18 +125,19 @@ h1 {
 
 .table {
     padding: 1em;
-    width: 95%;
+    width: 85%;
     background-color: #c4f2c6;
     margin: 2em;
     text-align: center;
+    border: 2px solid #fc810e;
 }
 
 
     .table tr {
         background-color: #fff99f;
-        border: 2px solid #fc810e;
-        
-        margin: 2em;
+       
+        padding: 1em;
+        margin: 5em;
         
 
     }
@@ -124,10 +145,10 @@ h1 {
 
 
     .table figure img {
-        display: block;
+       
         width: 150px;
         height: 150px;
-        background-color: #c4f2c6;
+        border-radius: 70%;
         padding: 1em;
         
     }
@@ -189,45 +210,55 @@ ul {
     justify-content: center;
     text-align: center;
     list-style-type: none;
+
 }
 
+.form-horizontal {
+    background-color: #fff99f;
+    text-align: center;
+    padding: 2em;
+    border: 2px solid #fc810e;
+}
 
-
-.arriba header {
-    display: grid;
-    grid-template-areas: "logo" "arri"
-                         "listaarriba";
-    grid-template-columns: 100%;
-    justify-content: center;
+.navbar-header {
+    width: 70%;
+    margin: 1em;
+    font-size: 1em;
     
 }
-.arri {
-    grid-area: arri;
-    text-transform: uppercase;
-    font-size: 10em;
-}
 
-#icono{
-    width: 5em;
-    justify-content: center;
-    grid-area: logo;
+.navbar-header img{
+    width: 10%;
+    height: 10%;
 }
 
 
-.listaarriba{
-    grid-area: listaarriba;
+
+.listaarriba {
+    background-color: #fc810e;
+    display: flex;
+    padding: 1em;
 }
-form{
+
+.listaarriba li{
+    font-size: 1em;
    
+}
+
+form {
     padding: 1em;
     margin: 1em;
     justify-content: center;
     text-align: center;
-    
-
+   
 }
-@media all and (min-width: 680px) {
 
+.dl-horizontal {
+    background-color: #fff99f;
+    border: 2px solid #fc810e;
+}
+
+@media all and (min-width: 680px) {
     #mainart {
         display: flex;
         flex-wrap: wrap;
