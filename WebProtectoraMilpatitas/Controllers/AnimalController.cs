@@ -297,7 +297,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
         // POST: Animal/Create
         [HttpPost]
-        public ActionResult BuscarAnimales(AnimalViewModel ani)
+        public ActionResult BuscarAnimales(AnimalBusquedaViewModel ani)
         {
            try
             {

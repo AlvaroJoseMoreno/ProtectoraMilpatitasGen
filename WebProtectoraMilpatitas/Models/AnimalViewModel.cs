@@ -68,4 +68,25 @@ namespace WebProtectoraMilpatitas.Models
         [Display(Prompt = "Nombre de la especie", Description = "Especie del animal", Name = "NomEspecie")]
         public string NomEspecie { get; set; }
     }
+
+    public class AnimalBusquedaViewModel
+    {
+        public int Id { get; set; }
+
+        public String Nombre { get; set; }
+
+        public int Edad { get; set; }
+
+        public char Sexo { get; set; }
+
+        public String Centro { get; set; }
+
+        public String Caracter { get; set; }
+
+        public ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum DatosMedicos { get; set; }
+
+        public int idEspecie { get; set; }
+
+        public string NomEspecie { get; set; }
+    }
 }
