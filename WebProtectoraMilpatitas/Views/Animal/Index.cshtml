@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<WebProtectoraMilpatitas.Models.AnimalViewModel>
-
+@using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas
 @{
     ViewBag.Title = "Index animales";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -53,16 +53,22 @@
         @Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
         @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }) |
 
-        @if (item.EstadoAdopcion.ToString().Equals("SinTramite"))
-        {
+        @{ 
+            bool comprobar = false;
+
+            
+
+            if (item.EstadoAdopcion.ToString().Equals("SinTramite"))
+            {
             <p>@Html.ActionLink("Adoptar", "Encuesta", "SolicitudAdopcion", new { id = item.Id }, new { @class = "Buttons" })</p>
-        }
-        else
-        {
+            }
+            else
+            {
 
             <p>Animal no disponible!</p>
-        }
-
+            }
+            
+            }
     </article>
     }
 
