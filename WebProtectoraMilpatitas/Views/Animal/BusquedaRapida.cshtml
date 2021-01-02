@@ -1,9 +1,5 @@
 ﻿@model WebProtectoraMilpatitas.Models.AnimalViewModel
 
-@{
-    ViewBag.Title = "Protectora Milpatitas";
-    Layout = "~/Views/Shared/_LayoutUsu.cshtml";
-}
 
 @using (Html.BeginForm("BusquedaRapida", "Animal", FormMethod.Post))
 {
@@ -21,8 +17,6 @@
         </div>
     </div>
 }
-
-<h2>Soy una prueba</h2>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

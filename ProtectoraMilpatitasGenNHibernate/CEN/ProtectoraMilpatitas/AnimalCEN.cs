@@ -79,5 +79,9 @@ public void AsignarDuenyo (int p_Animal_OID, string p_dueño_OID)
 
         _IAnimalCAD.AsignarDuenyo (p_Animal_OID, p_dueño_OID);
 }
+public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> BusquedaRapida (string p_nombre)
+{
+        return _IAnimalCAD.BusquedaRapida (p_nombre);
+}
 }
 }

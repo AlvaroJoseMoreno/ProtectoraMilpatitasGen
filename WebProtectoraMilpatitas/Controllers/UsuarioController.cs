@@ -102,13 +102,23 @@ namespace WebProtectoraMilpatitas.Controllers
 
         // POST: Usuario/Edit/5
         [HttpPost]
-        public ActionResult Edit(UsuarioViewModel usu)
+        public ActionResult Edit(UsuarioViewModel usu, HttpPostedFileBase file)
         {
+            string filename = "";
+            string ruta = "";
+            if (file != null && file.ContentLength > 0)
+            {
+
+                filename = Path.GetFileName(file.FileName);
+                ruta = Path.Combine(Server.MapPath("~/Imagenes/usuarios/"), filename);
+                file.SaveAs(ruta);
+            }
             try
             {
+                filename = "Imagenes/usuarios/" + filename;
                 // TODO: Add update logic here
                 UsuarioCEN usuarioCEN = new UsuarioCEN();
-                usuarioCEN.Modificar(usu.Email, usu.Nombre, usu.Password, "");
+                usuarioCEN.Modificar(usu.Email, usu.Nombre, usu.Password, filename);
                 return RedirectToAction("Index");
             }
             catch

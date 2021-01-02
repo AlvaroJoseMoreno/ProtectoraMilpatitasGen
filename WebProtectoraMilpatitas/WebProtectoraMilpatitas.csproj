@@ -348,8 +348,9 @@
     <Content Include="Views\Raza\ObtenerRazasPorEspecie.cshtml" />
     <Content Include="Views\Usuario\Perfil.cshtml" />
     <Content Include="Views\Animal\ObtenerAnimalesPorUsuario.cshtml" />
-    <Content Include="Views\Animal\BuscarAnimales.cshtml" />
     <Content Include="Views\Animal\ResultadoBuscar.cshtml" />
+    <Content Include="Views\Animal\BusquedaRapida.cshtml" />
+    <Content Include="Views\Animal\BuscarAnimales.cshtml" />
     <Content Include="Views\SolicitudAdopcion\Encuesta.cshtml" />
   </ItemGroup>
   <ItemGroup>

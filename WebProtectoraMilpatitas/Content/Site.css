@@ -1,6 +1,11 @@
-﻿body {
+﻿*{
+    box-sizing: border-box;
+}
+body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #c4f2c6;
+    min-width: 340px;
 }
 
 /* Set padding to keep content from hitting the edges */

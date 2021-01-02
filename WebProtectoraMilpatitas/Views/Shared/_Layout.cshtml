@@ -5,9 +5,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <link rel="stylesheet" href="~/Scripts/mediaquery.css" type="text/css" media="screen" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-   
+    <script src="~/Scripts/codigo.js"></script>
 
 </head>
 <body>
@@ -51,7 +52,6 @@
             <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
             <ul>
                 <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
             </ul>
         </footer>
     </div>

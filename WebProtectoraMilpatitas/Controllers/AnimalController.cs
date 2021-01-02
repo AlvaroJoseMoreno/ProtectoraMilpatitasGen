@@ -13,9 +13,9 @@ using WebProtectoraMilpatitas.Models;
 
 namespace WebProtectoraMilpatitas.Controllers
 {
-    //[Authorize]
     public class AnimalController : BasicController
     {
+        [Authorize]
         //GET: Animal
         public ActionResult Index()
         {
@@ -31,6 +31,7 @@ namespace WebProtectoraMilpatitas.Controllers
             return View(listaView);
         }
 
+        [Authorize]
         // GET: /AnimalViewModels/ObtenerAnimalesPorEspecie/5
         public ActionResult ObtenerAnimalesPorEspecie(int p_especie)
         {
@@ -54,6 +55,7 @@ namespace WebProtectoraMilpatitas.Controllers
             return View(listAni2);
         }
 
+        [Authorize]
         public ActionResult ObtenerAnimalesPorUsuario(string email)
         {
             SessionInitialize();
@@ -96,6 +98,7 @@ namespace WebProtectoraMilpatitas.Controllers
             return View(ani);
         }
 
+        [Authorize]
         // GET: Animal/Create
         public ActionResult Create()
         {
@@ -112,6 +115,7 @@ namespace WebProtectoraMilpatitas.Controllers
             return View();
         }
 
+        [Authorize]
         // POST: Animal/Create
         [HttpPost]
         public ActionResult Create(AnimalViewModel ani, HttpPostedFileBase file)
@@ -122,7 +126,7 @@ namespace WebProtectoraMilpatitas.Controllers
             {
 
                 filename = Path.GetFileName(file.FileName);
-                ruta = Path.Combine(Server.MapPath("~/Imagenes"), filename);
+                ruta = Path.Combine(Server.MapPath("~/Imagenes/animales/"), filename);
                 file.SaveAs(ruta);
             }
 
@@ -130,7 +134,7 @@ namespace WebProtectoraMilpatitas.Controllers
             {
                 // TODO: Add insert logic here
                 //   filename =" + filename;
-                filename = "Imagenes/" + filename;
+                filename = "Imagenes/animales/" + filename;
                 AnimalCP animalCP = new AnimalCP();
                 animalCP.Nuevo(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter, ani.idEspecie, filename);
 
@@ -142,17 +146,19 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
+        [Authorize]
         // GET: Animal/Edit/5
         public ActionResult Edit(int id)
         {
             AnimalViewModel ani = null;
             SessionInitialize();
-            AnimalEN artEN = new AnimalCAD(session).Ver_Detalle_Animal(id);
+            AnimalEN artEN = new AnimalCAD(session).ReadOIDDefault(id);
             ani = new AnimalAssembler().ConvertENToModelUI(artEN);
             SessionClose();
             return View(ani);
         }
 
+        [Authorize]
         // POST: Animal/Edit/5
         [HttpPost]
         public ActionResult Edit(AnimalViewModel ani, HttpPostedFileBase file)
@@ -163,13 +169,13 @@ namespace WebProtectoraMilpatitas.Controllers
             {
 
                 filename = Path.GetFileName(file.FileName);
-                ruta = Path.Combine(Server.MapPath("~/Imagenes"), filename);
+                ruta = Path.Combine(Server.MapPath("~/Imagenes/animales/"), filename);
                 file.SaveAs(ruta);
             }
             try
             {
                 // TODO: Add update logic here
-                filename = "Imagenes/" + filename;
+                filename = "Imagenes/animales/" + filename;
                 AnimalCEN anicen = new AnimalCEN();
                 anicen.Modificar(ani.Id,ani.Nombre,ani.Edad,ani.Sexo,ani.Centro,ani.Caracter,filename);
                 return RedirectToAction("Index");
@@ -180,6 +186,7 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
+        [Authorize]
         public ActionResult ActualizarEstado(int id)
         {
             AnimalViewModel ani = null;
@@ -190,6 +197,7 @@ namespace WebProtectoraMilpatitas.Controllers
             return View(ani);
         }
 
+        [Authorize]
         // POST: Animal/Edit/5
         [HttpPost]
         public ActionResult ActualizarEstado(AnimalViewModel ani)
@@ -207,6 +215,7 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
+        [Authorize]
         public ActionResult ActualizarDatosMedicos(int id)
         {
             AnimalViewModel ani = null;
@@ -217,6 +226,7 @@ namespace WebProtectoraMilpatitas.Controllers
             return View(ani);
         }
 
+        [Authorize]
         // POST: Animal/Edit/5
         [HttpPost]
         public ActionResult ActualizarDatosMedicos(AnimalViewModel ani)
@@ -234,6 +244,7 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
+        [Authorize]
         // GET: Animal/Delete/5
         public ActionResult Delete(int id)
         {
@@ -246,6 +257,7 @@ namespace WebProtectoraMilpatitas.Controllers
             return View();
         }
 
+        [Authorize]
         // POST: Animal/Delete/5
         [HttpPost]
         public ActionResult Delete(AnimalViewModel ani)
@@ -285,7 +297,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
         // POST: Animal/Create
         [HttpPost]
-        public ActionResult BuscarAnimales(AnimalViewModel ani)
+        public ActionResult BuscarAnimales(AnimalBusquedaViewModel ani)
         {
            try
             {
@@ -302,7 +314,10 @@ namespace WebProtectoraMilpatitas.Controllers
                 IEnumerable<AnimalViewModel> anifiltrados = new AnimalAssembler().ConvertListENToModel(animalesfiltrados).ToList();
                 SessionClose();
 
-                return RedirectToAction("ResultadoBuscar",  new { animales = anifiltrados});
+                TempData["Animales"] = anifiltrados;
+
+                return RedirectToAction("ResultadoBuscar");
+
             }
             catch
             {
@@ -310,9 +325,43 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
-        public ActionResult ResultadoBuscar(IEnumerable<AnimalViewModel> animales)
+        //public ActionResult BusquedaRapida()
+        //{
+        //    return View();
+        //}
+
+        [HttpPost]
+        public ActionResult BusquedaRapida(AnimalViewModel ani)
         {
-            return View(animales);
+            try
+            {
+                // TODO: Add insert logic here
+                //   filename =" + filename;
+                SessionInitialize();
+
+                AnimalCAD aniCad = new AnimalCAD(session);
+                AnimalCEN animalCEN = new AnimalCEN(aniCad);
+
+                IList<AnimalEN> animalesfiltrados = animalCEN.BusquedaRapida(ani.Nombre);
+
+
+                IEnumerable<AnimalViewModel> anifiltrados = new AnimalAssembler().ConvertListENToModel(animalesfiltrados).ToList();
+                SessionClose();
+
+                TempData["Animales"] = anifiltrados;
+
+                return RedirectToAction("ResultadoBuscar");
+
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult ResultadoBuscar()
+        {
+            return View(TempData["Animales"]);
         }
 
 

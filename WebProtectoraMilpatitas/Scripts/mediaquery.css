@@ -1,18 +1,34 @@
-body {
-    background-color: #c4f2c6;
-    min-width: 340px;
-}
 
 .articulos:hover {
     border: 4px solid #fc810e;
 }
 
-#mainart {
+#mainart, #secanim {
     background-color: #fff99f;
     border: 4px solid #fc810e;
+    padding: 2em;
 }
 
-#mainart > .articulos {
+    #mainart > .articulos > div {
+        margin-top: 20px;
+        width: 230px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+        font-size: 18px;
+    }
+
+    #mainart > .articulos {
+        padding: 1em;
+        width: 95%;
+        border-radius: 10px;
+        background-color: #c4f2c6;
+        margin: 3em;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #secanim > .articulos {
         padding: 1em;
         width: 95%;
         border-radius: 10px;
@@ -21,9 +37,8 @@ body {
         text-align: center;
         margin-left: auto;
         margin-right: auto;
-}
-
-@media all and (min-width: 650px) {
+    }
+@media all and (min-width: 680px) {
 
     #mainart {
         display: flex;
@@ -32,11 +47,15 @@ body {
 
     #mainart>.articulos{
         width: 45%;
+        margin-top: 1em;
+    }
+    #secanim>.articulos{
+        width: 600px;
     }
     
 }
 
-@media all and (min-width: 900px) {
+@media all and (min-width: 1020px) {
     #mainart > .articulos {
         margin-left: 2.4%;
         margin-right: 0%;
@@ -48,3 +67,9 @@ body {
         margin: auto;
     }
 }
+
+@media all and (min-width: 1100px) {
+    #mainart{
+    padding: 3em;
+    }
+ }
