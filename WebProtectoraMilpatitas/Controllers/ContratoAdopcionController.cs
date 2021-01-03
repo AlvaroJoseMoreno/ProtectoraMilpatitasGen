@@ -356,7 +356,7 @@ namespace WebProtectoraMilpatitas.Controllers
         }
         
         //GET
-        public ActionResult contratoRellenar(int idAn, int idSolicitud)
+        public ActionResult contratoRellenar(int idSolicitud, int idAn)
         {
 
              TempData["idAni"] = idAn;
