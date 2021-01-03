@@ -1,0 +1,22 @@
+﻿@model WebProtectoraMilpatitas.Models.TestAnimalIdealViewModel
+
+@{
+    ViewBag.Title = "Eliminar Test Animal Ideal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar Test Animal Ideal</h2>
+
+<h3>¿Estás seguro de que quieres eliminar el test @ViewData["IdTest"] de @ViewData["NombreTest"]?</h3>
+<div>
+    <hr />
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a la lista", "Index")
+        </div>
+    }
+</div>

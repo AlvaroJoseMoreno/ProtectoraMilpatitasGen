@@ -1,0 +1,27 @@
+﻿@model WebProtectoraMilpatitas.Models.TestAnimalIdealViewModel
+
+@{
+    ViewBag.Title = "Ver Resultado";
+    Layout = "~/Views/Shared/_LayoutUsu.cshtml";
+}
+
+<h2>Resultado del test @ViewData["IdTest"] del usuario @ViewData["NombreTest"]</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Resultado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Resultado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Volver a inicio", "Index", "Home")
+</p>

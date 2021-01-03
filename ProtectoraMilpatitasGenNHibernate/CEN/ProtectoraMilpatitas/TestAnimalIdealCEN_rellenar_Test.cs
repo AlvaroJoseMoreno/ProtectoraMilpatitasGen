@@ -31,6 +31,8 @@ public void Rellenar_Test (int p_TestAnimalIdeal, string p_aficionFavorita, stri
         testAnimalIdealEN.AficionFavorita = p_aficionFavorita;
         testAnimalIdealEN.Personalidad = p_personalidad;
         testAnimalIdealEN.ColorFavorito = p_colorFavorito;
+
+            testAnimalIdealEN.Resultado = "Perro";
         //Call to TestAnimalIdealCAD
 
         _ITestAnimalIdealCAD.Rellenar_Test (testAnimalIdealEN);

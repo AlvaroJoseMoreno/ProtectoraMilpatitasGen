@@ -40,6 +40,13 @@ private ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN usua
 
 
 
+/**
+ *	Atributo resultado
+ */
+private string resultado;
+
+
+
 
 
 
@@ -73,6 +80,12 @@ public virtual ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.Usuario
 
 
 
+public virtual string Resultado {
+        get { return resultado; } set { resultado = value;  }
+}
+
+
+
 
 
 public TestAnimalIdealEN()
@@ -81,20 +94,20 @@ public TestAnimalIdealEN()
 
 
 
-public TestAnimalIdealEN(int id, string aficionFavorita, string personalidad, string colorFavorito, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN usuario
+public TestAnimalIdealEN(int id, string aficionFavorita, string personalidad, string colorFavorito, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN usuario, string resultado
                          )
 {
-        this.init (Id, aficionFavorita, personalidad, colorFavorito, usuario);
+        this.init (Id, aficionFavorita, personalidad, colorFavorito, usuario, resultado);
 }
 
 
 public TestAnimalIdealEN(TestAnimalIdealEN testAnimalIdeal)
 {
-        this.init (Id, testAnimalIdeal.AficionFavorita, testAnimalIdeal.Personalidad, testAnimalIdeal.ColorFavorito, testAnimalIdeal.Usuario);
+        this.init (Id, testAnimalIdeal.AficionFavorita, testAnimalIdeal.Personalidad, testAnimalIdeal.ColorFavorito, testAnimalIdeal.Usuario, testAnimalIdeal.Resultado);
 }
 
 private void init (int id
-                   , string aficionFavorita, string personalidad, string colorFavorito, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN usuario)
+                   , string aficionFavorita, string personalidad, string colorFavorito, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN usuario, string resultado)
 {
         this.Id = id;
 
@@ -106,6 +119,8 @@ private void init (int id
         this.ColorFavorito = colorFavorito;
 
         this.Usuario = usuario;
+
+        this.Resultado = resultado;
 }
 
 public override bool Equals (object obj)

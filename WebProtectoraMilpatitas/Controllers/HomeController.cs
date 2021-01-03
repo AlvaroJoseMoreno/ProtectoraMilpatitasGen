@@ -18,6 +18,11 @@ namespace WebProtectoraMilpatitas.Controllers
 
             ViewData["NumAni"] = listAni.Count();
 
+            TestAnimalIdealCEN test = new TestAnimalIdealCEN();
+            IEnumerable<TestAnimalIdealEN> listTest = test.Dame_Todos(0, -1).ToList();
+
+            ViewData["NumTest"] = listTest.Count();
+
             UsuarioCEN usuario = new UsuarioCEN();
             IEnumerable<UsuarioEN> listUsuas = usuario.Dame_Todos(0, -1).ToList();
 
