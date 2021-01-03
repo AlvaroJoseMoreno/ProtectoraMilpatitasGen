@@ -26,25 +26,32 @@ img{
     margin-right: auto;
 }
 
-.detalle > img{
-    width: 500px;
-    height: 500px;
-    padding: 1em;
-}
+    .detalle > img {
+        width: 95%;
+        height: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 1em;
+        margin-bottom: 10px;
+    }
 
 #datis {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
     text-align: left;
-    margin-left: 8em;
-    margin-right: 8em;
     background-color: #fff99f;
     padding: 1em;
+    margin-bottom: 10px;
 }
 
-#enlacis{
-    text-align: left;
-    margin-left: 8em;
+#enlacis {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
     padding: 1em;
-    margin-right: 8em;
+    text-align: left;
+    background-color: #fff99f;
 }
 
 a {
@@ -179,6 +186,8 @@ h3{
         background-color: #c4f2c6;
         margin: 2em;
         text-align: center;
+        margin-right:auto;
+        margin-left: auto;
     }
 
 
@@ -236,7 +245,7 @@ ul {
 
 
 
-.listaarriba {
+.listaarriba{
     background-color: #fc810e;
     display: flex;
     padding: 1em;
@@ -245,26 +254,33 @@ ul {
     display: none;
 }
 
-.listaarriba > ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        position: relative;
-        left: -110%;
-        transition: left .5s;
+.listaarriba > ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: -110%;
+    transition: left .5s;
 }
-
 #chkmenu {
     display: none;
 }
 
-#chkmenu:checked + ul {
-     left: 0;
+#chkmenu:checked + .nav{
+    left: 0;
 }
+    #chkmenu:not(:checked) ~ .navbar-right {
+       
+       visibility: hidden; 
+    }
 
-.listaarriba li{
+    #chkmenu:checked ~ .navbar-right {
+       
+        visibility: visible;
+        transition: 4s;
+    }
+.listaarriba li {
     font-size: 1em;
-   
 }
 
 form {
@@ -272,7 +288,7 @@ form {
     margin: 1em;
     justify-content: center;
     text-align: center;
-   
+    
 }
 
 .dl-horizontal {
@@ -290,6 +306,9 @@ form {
         left: 0;
         justify-content: center;
     }
+    .navbar-right{
+        visibility: visible;
+    }
 }
 
 @media all and (min-width: 680px) {
@@ -297,22 +316,40 @@ form {
         display: flex;
         flex-wrap: wrap;
     }
-
-        #mainart > .articulos {
-            width: 45%;
-            margin-top: 1em;
-        }
+    .detalle > img {
+        width: 500px;
+        height: 450px;
+    }
+    #mainart > .articulos {
+        width: 40%;
+        margin-top: 1em;
+    }
 
     #secanim > .articulos {
         width: 600px;
     }
 }
 
-@media all and (min-width: 900px){
+@media all and (min-width: 900px) {
     .listaarriba ul {
         flex-direction: row;
     }
-
+    #details>div{
+        width: 45%;
+        margin-bottom: 10px;
+    }
+    .detalle>img{
+        width: 600px;
+        height: 450px;
+    }
+    #details{
+        margin-left: auto;
+        margin-right: auto;
+        width: 600px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
 @media all and (min-width: 1020px) {
     #mainart > .articulos {
         margin-left: 2.4%;

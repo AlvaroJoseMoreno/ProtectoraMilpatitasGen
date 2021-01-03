@@ -10,46 +10,48 @@
     <article class="detalle">
         <h2>@Html.ActionLink(Model.Nombre, "Details", new { id = Model.Id })</h2>
         <img  src="/@Html.DisplayFor(modelItem => Model.Foto)" />
-        <div id="datis">
-            <p>
-                <b>@Html.DisplayNameFor(model => model.Edad): </b> <b>@Html.DisplayFor(modelItem => Model.Edad)</b>
-                <b>@Html.DisplayNameFor(model => model.Sexo): </b>
-                @if (Model.Sexo.ToString().Equals("H"))
-                {<label>Hembra.</label>}
-                else
-                {<label>Macho.</label>}
-            </p>
-            <p><b>@Html.DisplayNameFor(model => model.Centro): </b> @Html.DisplayFor(modelItem => Model.Centro)</p>
-            <p><b>@Html.DisplayNameFor(model => model.Caracter): </b> @Html.DisplayFor(modelItem => Model.Caracter)</p>
-            <p>
-                <b>@Html.DisplayNameFor(model => model.DatosMedicos): </b>
-                @if (Model.DatosMedicos.ToString().Equals("enRecuperacion"))
-                {
-                    <label>En Recuperación</label>
-                }
-                else
-                {
-                    @Html.DisplayFor(modelItem => Model.DatosMedicos)
+        <main id="details">
+            <div id="datis">
+                <p>
+                    <b>@Html.DisplayNameFor(model => model.Edad): </b> @Html.DisplayFor(modelItem => Model.Edad)
+                    <b>@Html.DisplayNameFor(model => model.Sexo): </b>
+                    @if (Model.Sexo.ToString().Equals("H"))
+                    {<label style="font-weight:normal;">Hembra.</label>}
+                    else
+                    {<label style="font-weight:normal;">Macho.</label>}
+                </p>
+                <p><b>@Html.DisplayNameFor(model => model.Centro): </b> @Html.DisplayFor(modelItem => Model.Centro)</p>
+                <p><b>@Html.DisplayNameFor(model => model.Caracter): </b> @Html.DisplayFor(modelItem => Model.Caracter)</p>
+                <p>
+                    <b>@Html.DisplayNameFor(model => model.DatosMedicos): </b>
+                    @if (Model.DatosMedicos.ToString().Equals("enRecuperacion"))
+                    {
+                        <label style="font-weight:normal;">En Recuperación</label>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => Model.DatosMedicos)
 
-                }
-            </p>
-        </div>
-        <div id="enlacis">
-            <p>
-                <b>@Html.DisplayNameFor(model => model.idEspecie): </b>
-                @Html.ActionLink(Model.NomEspecie, "ObtenerAnimalesPorEspecie", new { p_especie = Model.idEspecie }, htmlAttributes: null)
-            </p>
-            <p>
-                @Html.ActionLink("Editar", "Edit", new { id = Model.Id })
-            </p>
-            <p> @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = Model.Id })</p>
+                    }
+                </p>
+                <p>
+                    <b>@Html.DisplayNameFor(model => model.idEspecie): </b>
+                    @Html.ActionLink(Model.NomEspecie, "ObtenerAnimalesPorEspecie", new { p_especie = Model.idEspecie }, htmlAttributes: null)
+                </p>
+            </div>
+            <div id="enlacis">
+                <p>
+                    @Html.ActionLink("Editar", "Edit", new { id = Model.Id })
+                </p>
+                <p> @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = Model.Id })</p>
 
 
-            <p> @Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = Model.Id })</p>
-            <p>@Html.ActionLink("Detalles", "Details", new { id = Model.Id })</p>
+                <p> @Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = Model.Id })</p>
+                <p>@Html.ActionLink("Detalles", "Details", new { id = Model.Id })</p>
 
-            @Html.ActionLink("Eliminar", "Delete", new { id = Model.Id }) |
-        </div>
+                @Html.ActionLink("Eliminar", "Delete", new { id = Model.Id })
+            </div>
+        </main>
         @if (Model.EstadoAdopcion.ToString().Equals("SinTramite"))
         {
             <p>@Html.ActionLink("Adoptar", "Create", "SolicitudAdopcion", new { model = Model.Id }, new { @class = "Buttons" })</p>

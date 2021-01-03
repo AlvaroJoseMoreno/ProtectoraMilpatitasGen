@@ -27,18 +27,18 @@
             <div>
                 <p>
                     <b>Edad: </b>
-                    <b>@Html.DisplayFor(modelItem => item.Edad)</b>
+                    @Html.DisplayFor(modelItem => item.Edad)
                 </p>
                 <p>
                     <b>Sexo: </b>
 
                     @if (item.Sexo.ToString().Equals("H"))
                     {
-                        <label>Hembra.</label>
+                        <label style="font-weight:normal;">Hembra.</label>
                     }
                     else
                     {
-                        <label>Macho.</label>
+                        <label style="font-weight:normal;">Macho.</label>
                     }
                 </p>
                 <p>
