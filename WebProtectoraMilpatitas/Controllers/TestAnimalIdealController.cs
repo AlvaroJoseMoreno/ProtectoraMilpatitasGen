@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using PagedList;
 using WebProtectoraMilpatitas.Assemblers;
 using WebProtectoraMilpatitas.Models;
+using System.Web.UI.WebControls;
 
 namespace WebProtectoraMilpatitas.Controllers
 {
@@ -138,25 +139,17 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: TestAnimalIdeal/Edit/5
         public ActionResult RellenarTest()
         {
-            IList<string> listaAficiones = null;
-            listaAficiones.Add("Animación");
-            listaAficiones.Add("Astrología");
-            listaAficiones.Add("Bailar");
-            listaAficiones.Add("Cantar");
-            listaAficiones.Add("Leer");
-            listaAficiones.Add("Hacer deporte");
-            listaAficiones.Add("Manualidades");
-            listaAficiones.Add("Dibujar");
+            //IList<string> listaAficiones = new List<string> { "Animación", "Astrología", "Bailar", "Cantar", "Leer", "Hacer deporte", "Manualidades", "Dibujar" };
 
-            IList<SelectListItem> aficionesitems = new List<SelectListItem>();
+            //IList<SelectListItem> aficionesitems = new List<SelectListItem>();
+            
+            //foreach (string afi in listaAficiones)
+            //{
+            //    aficionesitems.Add(new SelectListItem { Text = afi, Value = afi });
 
-            foreach (string afi in listaAficiones)
-            {
-                aficionesitems.Add(new SelectListItem { Text = afi, Value = afi });
+            //}
 
-            }
-
-            ViewData["aficiones"] = aficionesitems;
+            //ViewData["Listaficiones"] = aficionesitems;
 
             return View();
         }

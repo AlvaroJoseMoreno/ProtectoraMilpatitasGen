@@ -18,23 +18,202 @@
         <div class="form-group">
             @Html.LabelFor(model => model.AficionFavorita, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.AficionFavorita, ViewData["aficiones"] as SelectList, "Selecciona una afición")
+                <table>
+                    <tr>
+                        <td>
+                            <figure>
+                                <figcaption>Animación</figcaption>
+                                <img style="display:block;margin:auto; width: 200px;height: 200px;" src="~/Imagenes/Test/Aficiones/animacion.png" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.AficionFavorita, "Animación")
+                        </td>
+                        <td>
+                            <figure>
+                                <figcaption>Astrología</figcaption>
+                                <img style="display:block;margin:auto; width: 200px;height: 200px;" src="~/Imagenes/Test/Aficiones/astrologia.jpg" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.AficionFavorita, "Astrología")
+                        </td>
+                        <td>
+                            <figure>
+                                <figcaption>Bailar</figcaption>
+                                <img style="display:block;margin:auto; width: 200px;height: 200px;" src="~/Imagenes/Test/Aficiones/bailar.jpg" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.AficionFavorita, "Bailar")
+                        </td>
+                        <td>
+                            <figure>
+                                <figcaption>Cantar</figcaption>
+                                <img style="display:block;margin:auto; width: 200px;height: 200px;" src="~/Imagenes/Test/Aficiones/cantar.jpg" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.AficionFavorita, "Cantar")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <figure>
+                                <figcaption>Hacer deporte</figcaption>
+                                <img style="display:block;margin:auto; width: 200px;height: 200px;" src="~/Imagenes/Test/Aficiones/deporte.jpg" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.AficionFavorita, "Hacer deporte")
+                        </td>
+                        <td>
+                            <figure>
+                                <figcaption>Dibujar</figcaption>
+                                <img style="display:block;margin:auto; width: 200px;height: 200px;" src="~/Imagenes/Test/Aficiones/dibujar.jpg" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.AficionFavorita, "Dibujar")
+                        </td>
+                        <td>
+                            <figure>
+                                <figcaption>Leer</figcaption>
+                                <img style="display:block;margin:auto; width: 200px;height: 200px;" src="~/Imagenes/Test/Aficiones/leer.jpg" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.AficionFavorita, "Leer")
+                        </td>
+                        <td>
+                            <figure>
+                                <figcaption>Manualidades</figcaption>
+                                <img style="display:block;margin:auto; width: 200px;height: 200px;" src="~/Imagenes/Test/Aficiones/manualidades.jpg" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.AficionFavorita, "Manualidades")
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Personalidad, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Personalidad, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Personalidad, "", new { @class = "text-danger" })
+                <table>
+                    <tr>
+                        <td>
+                            <figure>
+                                <figcaption>Agresiva</figcaption>
+                                <img style="display:block;margin:auto; width: 200px;height: 200px;" src="~/Imagenes/Test/Personalidades/agresiva.jpg" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.Personalidad, "Agresiva")
+                        </td>
+                        <td>
+                            <figure>
+                                <figcaption>Alegre</figcaption>
+                                <img style="display:block;margin:auto; width: 200px;height: 200px;" src="~/Imagenes/Test/Personalidades/alegre.jpg" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.Personalidad, "Alegre")
+                        </td>
+                        <td>
+                            <figure>
+                                <figcaption>Depresiva</figcaption>
+                                <img style="display:block;margin:auto; width: 200px;height: 200px;" src="~/Imagenes/Test/Personalidades/depresiva.jpg" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.Personalidad, "Depresiva")
+                        </td>
+                        <td>
+                            <figure>
+                                <figcaption>Egocentrica</figcaption>
+                                <img style="display:block;margin:auto; width: 200px;height: 200px;" src="~/Imagenes/Test/Personalidades/egocentrica.jpg" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.Personalidad, "Egocentrica")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <figure>
+                                <figcaption>Inteligente</figcaption>
+                                <img style="display:block;margin:auto; width: 200px;height: 200px;" src="~/Imagenes/Test/Personalidades/inteligente.jpg" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.Personalidad, "Inteligente")
+                        </td>
+                        <td>
+                            <figure>
+                                <figcaption>Miedosa</figcaption>
+                                <img style="display:block;margin:auto; width: 200px;height: 200px;" src="~/Imagenes/Test/Personalidades/miedosa.jpg" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.Personalidad, "Miedosa")
+                        </td>
+                        <td>
+                            <figure>
+                                <figcaption>Preocupada</figcaption>
+                                <img style="display:block;margin:auto; width: 200px;height: 200px;" src="~/Imagenes/Test/Personalidades/preocupada.jpg" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.Personalidad, "Preocupada")
+                        </td>
+                        <td>
+                            <figure>
+                                <figcaption>Valiente</figcaption>
+                                <img style="display:block;margin:auto; width: 200px;height: 200px;" src="~/Imagenes/Test/Personalidades/valiente.jpg" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.Personalidad, "Valiente")
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.ColorFavorito, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ColorFavorito, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ColorFavorito, "", new { @class = "text-danger" })
+                <table>
+                    <tr>
+                        <td>
+                            <figure>
+                                <figcaption>Amarillo</figcaption>
+                                <img style="display:block;margin:auto; width: 20px;height: 20px;" src="~/Imagenes/Test/Colores/amarillo.png" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.ColorFavorito, "Amarillo")
+                        </td>
+                        <td>
+                            <figure>
+                                <figcaption>Azul celeste</figcaption>
+                                <img style="display:block;margin:auto; width: 20px;height: 20px;" src="~/Imagenes/Test/Colores/azul-celeste.jpg" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.ColorFavorito, "Azul celeste")
+                        </td>
+                        <td>
+                            <figure>
+                                <figcaption>Marrón</figcaption>
+                                <img style="display:block;margin:auto; width: 20px;height: 20px;" src="~/Imagenes/Test/Colores/marron.jpg" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.ColorFavorito, "Marrón")
+                        </td>
+                        <td>
+                            <figure>
+                                <figcaption>Naranja</figcaption>
+                                <img style="display:block;margin:auto; width: 20px;height: 20px;" src="~/Imagenes/Test/Colores/naranja.png" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.ColorFavorito, "Naranja")
+                        </td>
+                        <td>
+                            <figure>
+                                <figcaption>Negro</figcaption>
+                                <img style="display:block;margin:auto; width: 20px;height: 20px;" src="~/Imagenes/Test/Colores/negro.jpg" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.ColorFavorito, "Negro")
+                        </td>
+                        <td>
+                            <figure>
+                                <figcaption>Púrpura</figcaption>
+                                <img style="display:block;margin:auto; width: 20px;height: 20px;" src="~/Imagenes/Test/Colores/purpura.png" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.ColorFavorito, "Púrpura")
+                        </td>
+                        <td>
+                            <figure>
+                                <figcaption>Rojo</figcaption>
+                                <img style="display:block;margin:auto; width: 20px;height: 20px;" src="~/Imagenes/Test/Colores/rojo.jpg" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.ColorFavorito, "Rojo")
+                        </td>
+                        <td>
+                            <figure>
+                                <figcaption>Verde</figcaption>
+                                <img style="display:block;margin:auto; width: 20px;height: 20px;" src="~/Imagenes/Test/Colores/verde.png" />
+                            </figure>
+                            @Html.RadioButtonFor(model => model.ColorFavorito, "Verde")
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
 
