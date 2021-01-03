@@ -81,7 +81,7 @@
                     @if (item.Estado.ToString().Equals("aceptado"))
                     {
 
-                        <p>@Html.ActionLink("Contrato", "contratoRellenar", new { id = item.Id, ani = item.idAnimal })</p>
+                        <p>@Html.ActionLink("Contrato", "contratoRellenar", "ContratoAdopcion", new { id = item.Id, ani = item.idAnimal })</p>
                     }
 
             </td>
