@@ -391,6 +391,7 @@
     <Content Include="Views\TestAnimalIdeal\Edit.cshtml" />
     <Content Include="Views\TestAnimalIdeal\VerResultado.cshtml" />
     <Content Include="Views\TestAnimalIdeal\RellenarTest.cshtml" />
+    <Content Include="Views\ContratoAdopcion\contratoRellenar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
