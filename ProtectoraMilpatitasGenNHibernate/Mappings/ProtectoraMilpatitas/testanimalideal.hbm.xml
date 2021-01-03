@@ -21,6 +21,9 @@
 					<property name="ColorFavorito" type="string"> 
 						<column name="colorFavorito" />
 					</property>
+					<property name="Resultado" type="string"> 
+						<column name="resultado" />
+					</property>
 			
 			
 			
@@ -32,6 +35,8 @@
 								<column name="FK_email_idUsuario"/> 
 						</many-to-one>
 											 					
+			
+					
 					
 					
 					

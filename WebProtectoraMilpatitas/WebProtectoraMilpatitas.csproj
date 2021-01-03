@@ -230,6 +230,7 @@
     <Compile Include="Assemblers\RazaAssembler.cs" />
     <Compile Include="Assemblers\SeguimientoAssembler.cs" />
     <Compile Include="Assemblers\SolicitudAdopcionAssembler.cs" />
+    <Compile Include="Assemblers\TestAnimalIdealAssembler.cs" />
     <Compile Include="Assemblers\UsuarioAssembler.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnimalController.cs" />
@@ -241,6 +242,7 @@
     <Compile Include="Controllers\RazaController.cs" />
     <Compile Include="Controllers\SeguimientoController.cs" />
     <Compile Include="Controllers\SolicitudAdopcionController.cs" />
+    <Compile Include="Controllers\TestAnimalIdealController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -254,6 +256,7 @@
     <Compile Include="Models\RazaViewModel.cs" />
     <Compile Include="Models\SeguimientoViewModel.cs" />
     <Compile Include="Models\SolicitudAdopcionViewModel.cs" />
+    <Compile Include="Models\TestAnimalIdealViewModel.cs" />
     <Compile Include="Models\UsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -381,6 +384,13 @@
     <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
+    <Content Include="Views\TestAnimalIdeal\Index.cshtml" />
+    <Content Include="Views\TestAnimalIdeal\Create.cshtml" />
+    <Content Include="Views\TestAnimalIdeal\Delete.cshtml" />
+    <Content Include="Views\TestAnimalIdeal\Details.cshtml" />
+    <Content Include="Views\TestAnimalIdeal\Edit.cshtml" />
+    <Content Include="Views\TestAnimalIdeal\VerResultado.cshtml" />
+    <Content Include="Views\TestAnimalIdeal\RellenarTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
