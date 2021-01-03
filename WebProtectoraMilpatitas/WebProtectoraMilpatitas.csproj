@@ -262,13 +262,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Imagenes\animales\canario.jpg" />
@@ -291,39 +285,6 @@
     <Content Include="Imagenes\animales\tortuga-bosque.jpg" />
     <Content Include="Imagenes\animales\tortuga-rusa.jpg" />
     <Content Include="Imagenes\patas.png" />
-    <Content Include="Imagenes\Test\Aficiones\animacion.png" />
-    <Content Include="Imagenes\Test\Aficiones\astrologia.jpg" />
-    <Content Include="Imagenes\Test\Aficiones\bailar.jpg" />
-    <Content Include="Imagenes\Test\Aficiones\cantar.jpg" />
-    <Content Include="Imagenes\Test\Aficiones\deporte.jpg" />
-    <Content Include="Imagenes\Test\Aficiones\dibujar.jpg" />
-    <Content Include="Imagenes\Test\Aficiones\leer.jpg" />
-    <Content Include="Imagenes\Test\Aficiones\manualidades.jpg" />
-    <Content Include="Imagenes\Test\Colores\amarillo.png" />
-    <Content Include="Imagenes\Test\Colores\azul-celeste.jpg" />
-    <Content Include="Imagenes\Test\Colores\marron.jpg" />
-    <Content Include="Imagenes\Test\Colores\naranja.png" />
-    <Content Include="Imagenes\Test\Colores\negro.jpg" />
-    <Content Include="Imagenes\Test\Colores\purpura.png" />
-    <Content Include="Imagenes\Test\Colores\rojo.jpg" />
-    <Content Include="Imagenes\Test\Colores\verde.png" />
-    <Content Include="Imagenes\Test\Personalidades\agresiva.jpg" />
-    <Content Include="Imagenes\Test\Personalidades\alegre.jpg" />
-    <Content Include="Imagenes\Test\Personalidades\depresiva.jpg" />
-    <Content Include="Imagenes\Test\Personalidades\egocentrica.jpg" />
-    <Content Include="Imagenes\Test\Personalidades\inteligente.jpg" />
-    <Content Include="Imagenes\Test\Personalidades\miedosa.jpg" />
-    <Content Include="Imagenes\Test\Personalidades\preocupada.jpg" />
-    <Content Include="Imagenes\Test\Personalidades\valiente.jpg" />
-    <Content Include="Imagenes\usuarios\Bombshell-_wholesprite.png" />
-    <Content Include="Imagenes\usuarios\B_Spiny_Husk.png" />
-    <Content Include="Imagenes\usuarios\grootfondo.jpg" />
-    <Content Include="Imagenes\usuarios\iconogroot.png" />
-    <Content Include="Imagenes\usuarios\imagen.png" />
-    <Content Include="Imagenes\usuarios\imagen1.png" />
-    <Content Include="Imagenes\usuarios\imagen2.png" />
-    <Content Include="Imagenes\usuarios\imagen3.png" />
-    <Content Include="Imagenes\usuarios\imagen5.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Mvc.sitemap" />
@@ -443,20 +404,13 @@
     <Content Include="Views\TestAnimalIdeal\Edit.cshtml" />
     <Content Include="Views\TestAnimalIdeal\VerResultado.cshtml" />
     <Content Include="Views\TestAnimalIdeal\RellenarTest.cshtml" />
+    <Content Include="Views\ContratoAdopcion\contratoRellenar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Contratos\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />

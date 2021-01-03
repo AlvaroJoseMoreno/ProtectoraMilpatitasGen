@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
+using ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
+using WebProtectoraMilpatitas.Assemblers;
+using WebProtectoraMilpatitas.Models;
 
 namespace WebProtectoraMilpatitas.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BasicController
     {
         [Authorize]
         public ActionResult Indexad()
@@ -61,9 +67,22 @@ namespace WebProtectoraMilpatitas.Controllers
             return View();
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View();
+            SessionInitialize();
+
+            AnimalCAD animalCAD = new AnimalCAD(session);
+            AnimalCEN animalCEN = new AnimalCEN(animalCAD);
+            IList<AnimalEN> listaAnimal = animalCEN.Dame_Todos(0, -1);
+            IEnumerable<AnimalViewModel> listaView = new AnimalAssembler().ConvertListENToModel(listaAnimal).ToList();
+
+            SessionClose();
+
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+
+            return View(listaView.ToPagedList(pageNumber, pageSize));
+          
         }
 
         public ActionResult About()

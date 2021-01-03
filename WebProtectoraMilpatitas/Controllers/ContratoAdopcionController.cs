@@ -355,8 +355,65 @@ namespace WebProtectoraMilpatitas.Controllers
             return View(listaCon.ToPagedList(pageNumber, pageSize));
         }
 
-        // GET: ContratoAdopcion/Delete/5
-        public ActionResult Delete(int id)
+        //GET
+        public ActionResult contratoRellenar(int idCon)
+        {
+
+            
+            TempData["idCon"] = idCon;
+
+            return View();
+        }
+
+        //POST
+        [HttpPost]
+        public ActionResult contratoRellenar(ContratoAdopcionViewModel con, HttpPostedFileBase fileEscritura, HttpPostedFileBase justipago)
+        {
+            string filenameEscritura = "";
+            string rutaEscritura = "";
+            if (fileEscritura != null && fileEscritura.ContentLength > 0)
+            {
+                filenameEscritura = Path.GetFileName(fileEscritura.FileName);
+                rutaEscritura = Path.Combine(Server.MapPath("~/Contratos/escrituras/"), filenameEscritura);
+                fileEscritura.SaveAs(rutaEscritura);
+            }
+            string filenamePago = "";
+            string rutaPago = "";
+            if (justipago != null && justipago.ContentLength > 0)
+            {
+                filenamePago = Path.GetFileName(justipago.FileName);
+                rutaPago = Path.Combine(Server.MapPath("~/Contratos/jusPagos/"), filenamePago);
+                justipago.SaveAs(rutaPago);
+            }
+            try
+            {
+                // TODO: Add update logic here
+
+                filenameEscritura = "Contratos/escrituras/" + filenameEscritura;
+                filenamePago = "Contratos/jusPagos/" + filenamePago;
+                ContratoAdopcionCEN conCEN = new ContratoAdopcionCEN();
+                SessionInitialize();
+                UsuarioEN usuen = ((UsuarioEN)Session["Usuario"]);
+                SolicitudAdopcionCAD soliCAD = new SolicitudAdopcionCAD(session);
+                SolicitudAdopcionCEN soliCEN = new SolicitudAdopcionCEN(soliCAD);
+               
+
+                
+
+                conCEN.Rellenar_Contrato((int)TempData["idCon"], con.Nombre, con.DNI_NIF_Pasaporte, filenameEscritura, filenamePago, con.LugarRecojida, con.FirmaCompromiso);
+                //con.EscrituraHogar;
+                SessionClose();
+                return RedirectToAction("Index");
+
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+            // GET: ContratoAdopcion/Delete/5
+            public ActionResult Delete(int id)
         {
             SessionInitialize();
             ContratoAdopcionCAD conCad = new ContratoAdopcionCAD(session);
