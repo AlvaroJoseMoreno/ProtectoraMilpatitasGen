@@ -82,5 +82,10 @@ namespace WebProtectoraMilpatitas.Models
 
         [Display(Prompt = "Fecha solicitud", Description = "Fecha solicitud", Name = "Fecha solicitud")]
         public DateTime FechaSoli { get; set; }
+
+        [ScaffoldColumn(false)]
+        public int idContrato { get; set; }
+
+
     }
 }

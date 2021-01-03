@@ -29,6 +29,10 @@ namespace WebProtectoraMilpatitas.Assemblers
             solicitud.NomAnimal = soli.Animal.Nombre;
             solicitud.FotoAnimal = soli.Animal.Foto;
 
+        if (soli.ContratoAdopcion != null) { 
+            solicitud.idContrato = soli.ContratoAdopcion.Id; 
+        }
+
             solicitud.FechaSoli = (DateTime)soli.FechaSolicitud;
 
             return solicitud;

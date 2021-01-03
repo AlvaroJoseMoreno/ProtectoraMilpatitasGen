@@ -354,19 +354,19 @@ namespace WebProtectoraMilpatitas.Controllers
 
             return View(listaCon.ToPagedList(pageNumber, pageSize));
         }
-        
+
         //GET
-        public ActionResult contratoRellenar(int idSolicitud, int idAn)
+        public ActionResult contratoRellenar(int idCon)
         {
 
-             TempData["idAni"] = idAn;
-             TempData["idSolicitud"] = idSolicitud;
+            
+            TempData["idCon"] = idCon;
 
             return View();
         }
 
         //POST
-
+        [HttpPost]
         public ActionResult contratoRellenar(ContratoAdopcionViewModel con, HttpPostedFileBase fileEscritura, HttpPostedFileBase justipago)
         {
             string filenameEscritura = "";
@@ -394,23 +394,26 @@ namespace WebProtectoraMilpatitas.Controllers
                 ContratoAdopcionCEN conCEN = new ContratoAdopcionCEN();
                 SessionInitialize();
                 UsuarioEN usuen = ((UsuarioEN)Session["Usuario"]);
-                
-                conCEN.Nuevo(usuen.Email, (int) TempData["idSolicitud"], (int) TempData["idAni"]);
+                SolicitudAdopcionCAD soliCAD = new SolicitudAdopcionCAD(session);
+                SolicitudAdopcionCEN soliCEN = new SolicitudAdopcionCEN(soliCAD);
+               
 
-                conCEN.Rellenar_Contrato(con.Id, con.Nombre, con.DNI_NIF_Pasaporte, filenameEscritura, filenamePago, con.LugarRecojida, con.FirmaCompromiso);
+                
+
+                conCEN.Rellenar_Contrato((int)TempData["idCon"], con.Nombre, con.DNI_NIF_Pasaporte, filenameEscritura, filenamePago, con.LugarRecojida, con.FirmaCompromiso);
                 //con.EscrituraHogar;
                 SessionClose();
                 return RedirectToAction("Index");
-                
+
             }
             catch
             {
                 return View();
-            }        
+            }
         }
 
-        // GET: ContratoAdopcion/Delete/5
-        public ActionResult Delete(int id)
+            // GET: ContratoAdopcion/Delete/5
+            public ActionResult Delete(int id)
         {
             SessionInitialize();
             ContratoAdopcionCAD conCad = new ContratoAdopcionCAD(session);

@@ -76,15 +76,16 @@
                 @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
                 @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }) |
-
-                 
-                    @if (item.Estado.ToString().Equals("aceptado"))
-                    {
-
-                        <p>@Html.ActionLink("Contrato", "contratoRellenar", new { id = item.Id, ani = item.idAnimal })</p>
-                    }
-
             </td>
+            <td>
+
+                @if (item.Estado.ToString().Equals("aceptado"))
+                {
+
+                    <p>@Html.ActionLink("Contrato", "contratoRellenar", "ContratoAdopcion", new { idCon = item.idContrato }, new { @class = "Buttons" })</p>
+                }
+            </td>
+            
         </tr>
     }
 
