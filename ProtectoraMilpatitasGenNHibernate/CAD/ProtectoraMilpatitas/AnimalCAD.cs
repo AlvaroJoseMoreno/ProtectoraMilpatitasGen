@@ -122,6 +122,7 @@ public void ModifyDefault (AnimalEN animal)
 
                 animalEN.FechaLlegada = animal.FechaLlegada;
 
+
                 session.Update (animalEN);
                 SessionCommit ();
         }
@@ -151,6 +152,13 @@ public int Nuevo (AnimalEN animal)
                         animal.Especie = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.EspecieEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.EspecieEN), animal.Especie.Id);
 
                         animal.Especie.Animal
+                        .Add (animal);
+                }
+                if (animal.Raza != null) {
+                        // Argumento OID y no colección.
+                        animal.Raza = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.RazaEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.RazaEN), animal.Raza.Id);
+
+                        animal.Raza.Animal
                         .Add (animal);
                 }
 

@@ -65,6 +65,10 @@
                     <b>Especie: </b>
                     @Html.ActionLink(item.NomEspecie, "ObtenerAnimalesPorEspecie", new { p_especie = item.idEspecie }, htmlAttributes: null)
                 </p>
+                <p>
+                    <b>Raza: </b>
+                    @Html.DisplayFor(modelItem=>item.NomRaza)
+                </p>
                 <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
                 <p>@Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id }) </p>
                 <p>@Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = item.Id })</p>

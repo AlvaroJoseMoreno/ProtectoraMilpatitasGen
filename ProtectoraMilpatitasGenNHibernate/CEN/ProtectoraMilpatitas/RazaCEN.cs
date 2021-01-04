@@ -62,13 +62,13 @@ public int Nuevo (string p_nombre, int p_especie)
         return oid;
 }
 
-public void Modificar (int p_Raza, string p_nombre)
+public void Modificar (int p_Raza_OID, string p_nombre)
 {
         RazaEN razaEN = null;
 
         //Initialized RazaEN
         razaEN = new RazaEN ();
-        razaEN.Id = p_Raza;
+        razaEN.Id = p_Raza_OID;
         razaEN.Nombre = p_nombre;
         //Call to RazaCAD
 

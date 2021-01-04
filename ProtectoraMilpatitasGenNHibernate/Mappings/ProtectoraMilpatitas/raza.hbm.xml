@@ -24,6 +24,18 @@
 								<column name="FK_id_idEspecie"/> 
 						</many-to-one>
 											 					
+			
+		  			
+						<bag name="Animal" >
+							<key>
+							
+								
+								<column name="FK_id_idRaza"/>
+					      	</key>
+							<one-to-many class="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN"/>
+					    </bag>
+					
+					
 					
 					
 					

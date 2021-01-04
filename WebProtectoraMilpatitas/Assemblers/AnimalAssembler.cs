@@ -29,6 +29,12 @@ namespace WebProtectoraMilpatitas.Assemblers
                 animal.idBusEspecie = ani.Especie.Id;
                 animal.NomEspecie = ani.Especie.Nombre;
             }
+
+            if (ani.Raza!=null)
+            {
+                animal.idRaza = ani.Raza.Id;
+                animal.NomRaza = ani.Raza.Nombre;
+            }
             
 
             return animal;

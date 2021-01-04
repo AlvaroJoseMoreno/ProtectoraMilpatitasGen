@@ -95,6 +95,13 @@
 			
 			
 			
+			
+		  			
+						<many-to-one name="Raza" class="ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.RazaEN" >	
+								<column name="FK_id_idRaza"/> 
+						</many-to-one>
+											 					
+					
 					
 					
 					

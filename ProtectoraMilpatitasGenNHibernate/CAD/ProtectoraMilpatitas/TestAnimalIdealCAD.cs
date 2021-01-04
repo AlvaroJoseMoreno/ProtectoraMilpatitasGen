@@ -162,8 +162,6 @@ public void Rellenar_Test (TestAnimalIdealEN testAnimalIdeal)
 
                 testAnimalIdealEN.ColorFavorito = testAnimalIdeal.ColorFavorito;
 
-                testAnimalIdealEN.Resultado = testAnimalIdeal.Resultado;
-
                 session.Update (testAnimalIdealEN);
                 SessionCommit ();
         }

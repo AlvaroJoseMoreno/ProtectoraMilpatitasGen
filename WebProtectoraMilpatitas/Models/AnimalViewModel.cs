@@ -74,5 +74,16 @@ namespace WebProtectoraMilpatitas.Models
         [Display(Prompt = "Fecha llegada", Description = "Fecha llegada", Name = "Fecha llegada")]
         [DataType(DataType.Date)]
         public DateTime FechaLlegada { get; set; }
+
+        [Display(Prompt = "Raza del animal", Description = "Raza del animal", Name = "Raza")]
+
+        public int idRaza { get; set; }
+
+        [Display(Prompt = "Raza del animal", Description = "Raza del animal", Name = "Raza")]
+
+        public int idBusRaza { get; set; }
+
+        [Display(Prompt = "Nombre de la raza", Description = "Raza del animal", Name = "NomRaza")]
+        public string NomRaza { get; set; }
     }
 }

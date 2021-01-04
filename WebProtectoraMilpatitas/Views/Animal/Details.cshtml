@@ -38,6 +38,10 @@
                     <b>@Html.DisplayNameFor(model => model.idEspecie): </b>
                     @Html.ActionLink(Model.NomEspecie, "ObtenerAnimalesPorEspecie", new { p_especie = Model.idEspecie }, htmlAttributes: null)
                 </p>
+                <p>
+                    <b>@Html.DisplayNameFor(model => model.idRaza): </b>
+                    @Html.DisplayFor(modelItem => Model.NomRaza)
+                </p>
             </div>
             <div id="enlacis">
                 <p>

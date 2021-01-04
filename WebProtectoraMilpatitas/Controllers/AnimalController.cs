@@ -124,6 +124,16 @@ namespace WebProtectoraMilpatitas.Controllers
 
             ViewData["idEspecie"] = especiesItems;
 
+            IList<RazaEN> listaRazas = new RazaCEN().Dame_Todas(0, -1);
+            IList<SelectListItem> razasItems = new List<SelectListItem>();
+
+            foreach(RazaEN raz in listaRazas)
+            {
+                razasItems.Add(new SelectListItem { Text = raz.Nombre, Value = raz.Id.ToString() });
+            }
+
+            ViewData["idRaza"] = razasItems;
+
             return View();
         }
 
@@ -148,7 +158,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 //   filename =" + filename;
                 filename = "Imagenes/animales/" + filename;
                 AnimalCP animalCP = new AnimalCP();
-                animalCP.Nuevo(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter, ani.idEspecie, filename, ani.FechaLlegada);
+                animalCP.Nuevo(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter, ani.idEspecie, filename, ani.FechaLlegada, ani.idRaza);
 
                 return RedirectToAction("Index");
             }
@@ -302,6 +312,16 @@ namespace WebProtectoraMilpatitas.Controllers
 
             ViewData["idBusEspecie"] = especiesItems;
 
+            IList<RazaEN> listaRazas = new RazaCEN().Dame_Todas(0, -1);
+            IList<SelectListItem> razasItems = new List<SelectListItem>();
+
+            foreach (RazaEN raz in listaRazas)
+            {
+                razasItems.Add(new SelectListItem { Text = raz.Nombre, Value = raz.Id.ToString() });
+            }
+
+            ViewData["idBusRaza"] = razasItems;
+
             return View();
         }
 
@@ -341,7 +361,7 @@ namespace WebProtectoraMilpatitas.Controllers
         //}
 
         [HttpPost]
-        public ActionResult BusquedaRapida(AnimalViewModel ani)
+        public ActionResult BusquedaRapida(string nom)
         {
             try
             {
@@ -352,7 +372,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 AnimalCAD aniCad = new AnimalCAD(session);
                 AnimalCEN animalCEN = new AnimalCEN(aniCad);
 
-                IList<AnimalEN> animalesfiltrados = animalCEN.BusquedaRapida(ani.Nombre);
+                IList<AnimalEN> animalesfiltrados = animalCEN.BusquedaRapida(nom);
 
                 IEnumerable<AnimalViewModel> anifiltrados = new AnimalAssembler().ConvertListENToModel(animalesfiltrados).ToList();
                 

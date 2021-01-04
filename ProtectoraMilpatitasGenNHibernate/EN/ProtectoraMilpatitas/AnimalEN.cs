@@ -110,6 +110,13 @@ private Nullable<DateTime> fechaLlegada;
 
 
 
+/**
+ *	Atributo raza
+ */
+private ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.RazaEN raza;
+
+
+
 
 
 
@@ -203,6 +210,12 @@ public virtual Nullable<DateTime> FechaLlegada {
 
 
 
+public virtual ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.RazaEN Raza {
+        get { return raza; } set { raza = value;  }
+}
+
+
+
 
 
 public AnimalEN()
@@ -214,20 +227,20 @@ public AnimalEN()
 
 
 
-public AnimalEN(int id, string nombre, int edad, char sexo, string centro, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum datosMedicos, string caracter, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN> solicitudAdopcion, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN> contratoAdopcion, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN dueño, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.EspecieEN especie, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SeguimientoEN> seguimiento, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum estadoAdopcion, string foto, Nullable<DateTime> fechaLlegada
+public AnimalEN(int id, string nombre, int edad, char sexo, string centro, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum datosMedicos, string caracter, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN> solicitudAdopcion, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN> contratoAdopcion, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN dueño, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.EspecieEN especie, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SeguimientoEN> seguimiento, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum estadoAdopcion, string foto, Nullable<DateTime> fechaLlegada, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.RazaEN raza
                 )
 {
-        this.init (Id, nombre, edad, sexo, centro, datosMedicos, caracter, solicitudAdopcion, contratoAdopcion, dueño, especie, seguimiento, estadoAdopcion, foto, fechaLlegada);
+        this.init (Id, nombre, edad, sexo, centro, datosMedicos, caracter, solicitudAdopcion, contratoAdopcion, dueño, especie, seguimiento, estadoAdopcion, foto, fechaLlegada, raza);
 }
 
 
 public AnimalEN(AnimalEN animal)
 {
-        this.init (Id, animal.Nombre, animal.Edad, animal.Sexo, animal.Centro, animal.DatosMedicos, animal.Caracter, animal.SolicitudAdopcion, animal.ContratoAdopcion, animal.Dueño, animal.Especie, animal.Seguimiento, animal.EstadoAdopcion, animal.Foto, animal.FechaLlegada);
+        this.init (Id, animal.Nombre, animal.Edad, animal.Sexo, animal.Centro, animal.DatosMedicos, animal.Caracter, animal.SolicitudAdopcion, animal.ContratoAdopcion, animal.Dueño, animal.Especie, animal.Seguimiento, animal.EstadoAdopcion, animal.Foto, animal.FechaLlegada, animal.Raza);
 }
 
 private void init (int id
-                   , string nombre, int edad, char sexo, string centro, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum datosMedicos, string caracter, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN> solicitudAdopcion, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN> contratoAdopcion, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN dueño, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.EspecieEN especie, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SeguimientoEN> seguimiento, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum estadoAdopcion, string foto, Nullable<DateTime> fechaLlegada)
+                   , string nombre, int edad, char sexo, string centro, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum datosMedicos, string caracter, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SolicitudAdopcionEN> solicitudAdopcion, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN> contratoAdopcion, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN dueño, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.EspecieEN especie, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.SeguimientoEN> seguimiento, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum estadoAdopcion, string foto, Nullable<DateTime> fechaLlegada, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.RazaEN raza)
 {
         this.Id = id;
 
@@ -259,6 +272,8 @@ private void init (int id
         this.Foto = foto;
 
         this.FechaLlegada = fechaLlegada;
+
+        this.Raza = raza;
 }
 
 public override bool Equals (object obj)

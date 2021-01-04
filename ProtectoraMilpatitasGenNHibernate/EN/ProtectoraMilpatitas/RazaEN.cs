@@ -26,6 +26,13 @@ private ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.EspecieEN espe
 
 
 
+/**
+ *	Atributo animal
+ */
+private System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> animal;
+
+
+
 
 
 
@@ -47,28 +54,35 @@ public virtual ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.Especie
 
 
 
-
-
-public RazaEN()
-{
+public virtual System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> Animal {
+        get { return animal; } set { animal = value;  }
 }
 
 
 
-public RazaEN(int id, string nombre, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.EspecieEN especie
+
+
+public RazaEN()
+{
+        animal = new System.Collections.Generic.List<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN>();
+}
+
+
+
+public RazaEN(int id, string nombre, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.EspecieEN especie, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> animal
               )
 {
-        this.init (Id, nombre, especie);
+        this.init (Id, nombre, especie, animal);
 }
 
 
 public RazaEN(RazaEN raza)
 {
-        this.init (Id, raza.Nombre, raza.Especie);
+        this.init (Id, raza.Nombre, raza.Especie, raza.Animal);
 }
 
 private void init (int id
-                   , string nombre, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.EspecieEN especie)
+                   , string nombre, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.EspecieEN especie, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> animal)
 {
         this.Id = id;
 
@@ -76,6 +90,8 @@ private void init (int id
         this.Nombre = nombre;
 
         this.Especie = especie;
+
+        this.Animal = animal;
 }
 
 public override bool Equals (object obj)
