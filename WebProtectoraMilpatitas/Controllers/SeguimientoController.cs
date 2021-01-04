@@ -19,6 +19,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Seguimiento
         public ActionResult Index(int? page)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             SessionInitialize();
 
             SeguimientoCAD segCAD = new SeguimientoCAD(session);
@@ -56,6 +68,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Seguimiento/Create
         public ActionResult Create()
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             IList<UsuarioEN> listaUsu = new UsuarioCEN().Dame_Todos(0, -1);
             IList<SelectListItem> UsuarioSel = new List<SelectListItem>();
 
@@ -89,6 +113,18 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         public ActionResult Create(SeguimientoViewModel segui)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             try
             {
                 // TODO: Add insert logic here
@@ -105,6 +141,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Seguimiento/Edit/5
         public ActionResult Edit(int id)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             SeguimientoViewModel seg = null;
 
             SessionInitialize();
@@ -122,6 +170,18 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         public ActionResult Edit(SeguimientoViewModel segui)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             try
             {
                 // TODO: Add update logic here
@@ -140,6 +200,18 @@ namespace WebProtectoraMilpatitas.Controllers
 
         public ActionResult ActualizarEstado(int id)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             SeguimientoViewModel seg = null;
 
             SessionInitialize();
@@ -188,6 +260,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Seguimiento/Delete/5
         public ActionResult Delete(int id)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             SessionInitialize();
             SeguimientoCAD segCad = new SeguimientoCAD(session);
             SeguimientoCEN seguiCEN = new SeguimientoCEN(segCad);
@@ -202,6 +286,18 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             try
             {
                 // TODO: Add delete logic here

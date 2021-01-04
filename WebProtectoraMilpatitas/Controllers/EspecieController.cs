@@ -19,6 +19,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Especie
         public ActionResult Index(int? page)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             SessionInitialize();
 
             EspecieCAD especieCAD = new EspecieCAD(session);
@@ -37,6 +49,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Especie/Details/5
         public ActionResult Details(int id)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             SessionInitialize();
             
             EspecieViewModel esp = null;
@@ -50,6 +74,17 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Especie/Create
         public ActionResult Create()
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
 
             return View();
         }
@@ -58,6 +93,18 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         public ActionResult Create(EspecieViewModel esp)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             try
             {
                 // TODO: Add insert logic here
@@ -76,6 +123,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Especie/Edit/5
         public ActionResult Edit(int id)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             EspecieViewModel esp = null;
 
             SessionInitialize();
@@ -90,6 +149,18 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         public ActionResult Edit(EspecieViewModel esp)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             try
             {
                 // TODO: Add update logic here
@@ -108,6 +179,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Especie/Delete/5
         public ActionResult Delete(int id)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             SessionInitialize();
             EspecieCAD espCad = new EspecieCAD(session);
             EspecieCEN especieCEN = new EspecieCEN(espCad);
@@ -121,6 +204,18 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         public ActionResult Delete(EspecieViewModel esp)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             try
             {
                 // TODO: Add delete logic here

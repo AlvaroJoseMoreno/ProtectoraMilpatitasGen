@@ -18,6 +18,18 @@ namespace WebProtectoraMilpatitas.Controllers
     {
         public ActionResult Index(int? page)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             SessionInitialize();
 
             SolicitudAdopcionCAD solCAD = new SolicitudAdopcionCAD(session);
@@ -54,6 +66,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: SolicitudAdopcion/Create
         public ActionResult Create()
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             IList<UsuarioEN> listausuarios = new UsuarioCEN().Dame_Todos(0, -1);
             IList<SelectListItem> usuariositems = new List<SelectListItem>();
 
@@ -82,6 +106,18 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         public ActionResult Create(SolicitudAdopcionViewModel sol)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             try
             {
                 // TODO: Add insert logic here
@@ -100,6 +136,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: SolicitudAdopcion/Edit/5
         public ActionResult Edit(int id)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             SolicitudAdopcionViewModel sol = null;
 
             SessionInitialize();
@@ -118,6 +166,18 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         public ActionResult Edit(SolicitudAdopcionViewModel sol)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             try
             {
                 // TODO: Add update logic here
@@ -138,6 +198,18 @@ namespace WebProtectoraMilpatitas.Controllers
 
         public ActionResult ActualizarEstado(int id)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             SolicitudAdopcionViewModel sol = null;
 
             SessionInitialize();
@@ -156,6 +228,18 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         public ActionResult ActualizarEstado(SolicitudAdopcionViewModel sol)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             try
             {
                 // TODO: Add update logic here
@@ -239,6 +323,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: SolicitudAdopcion/Delete/5
         public ActionResult Delete(int id)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             SessionInitialize();
             SolicitudAdopcionCAD solCad = new SolicitudAdopcionCAD(session);
             SolicitudAdopcionCEN soliCEN = new SolicitudAdopcionCEN(solCad);
@@ -253,6 +349,18 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             try
             {
                 // TODO: Add delete logic here

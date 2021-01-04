@@ -20,6 +20,18 @@ namespace WebProtectoraMilpatitas.Controllers
         //GET: Animal
         public ActionResult Index(int? page)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             SessionInitialize();
 
             AnimalCAD animalCAD = new AnimalCAD(session);
@@ -39,6 +51,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: /AnimalViewModels/ObtenerAnimalesPorEspecie/5
         public ActionResult ObtenerAnimalesPorEspecie(int p_especie, int? page)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             SessionInitialize();
 
             AnimalCAD aniCad = new AnimalCAD(session);
@@ -114,6 +138,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Animal/Create
         public ActionResult Create()
         {
+
+           if (Session["Usuario"] != null) {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+           }
+
             IList<EspecieEN> listaAnimales = new EspecieCEN().Dame_Todas(0, -1);
             IList<SelectListItem> especiesItems = new List<SelectListItem>();
 
@@ -142,6 +178,18 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         public ActionResult Create(AnimalViewModel ani, HttpPostedFileBase file)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             string filename = "";
             string ruta = "";
             if (file != null && file.ContentLength > 0)
@@ -172,6 +220,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Animal/Edit/5
         public ActionResult Edit(int id)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             AnimalViewModel ani = null;
             SessionInitialize();
             AnimalEN artEN = new AnimalCAD(session).ReadOIDDefault(id);
@@ -185,6 +245,18 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         public ActionResult Edit(AnimalViewModel ani, HttpPostedFileBase file)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             string filename = "";
             string ruta = "";
             if (file != null && file.ContentLength > 0)
@@ -211,6 +283,18 @@ namespace WebProtectoraMilpatitas.Controllers
         [Authorize]
         public ActionResult ActualizarEstado(int id)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             AnimalViewModel ani = null;
             SessionInitialize();
             AnimalEN artEN = new AnimalCAD(session).Ver_Detalle_Animal(id);
@@ -224,8 +308,21 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         public ActionResult ActualizarEstado(AnimalViewModel ani)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             try
             {
+
                 // TODO: Add update logic here
                 AnimalCEN anicen = new AnimalCEN();
                 anicen.Actualizar_Estado(ani.Id, ani.EstadoAdopcion);
@@ -240,6 +337,18 @@ namespace WebProtectoraMilpatitas.Controllers
         [Authorize]
         public ActionResult ActualizarDatosMedicos(int id)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             AnimalViewModel ani = null;
             SessionInitialize();
             AnimalEN artEN = new AnimalCAD(session).Ver_Detalle_Animal(id);
@@ -253,6 +362,18 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         public ActionResult ActualizarDatosMedicos(AnimalViewModel ani)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             try
             {
                 // TODO: Add update logic here
@@ -270,6 +391,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Animal/Delete/5
         public ActionResult Delete(int id)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             SessionInitialize();
             AnimalCAD aniCad = new AnimalCAD(session);
             AnimalCEN animalCEN = new AnimalCEN(aniCad);
@@ -284,6 +417,18 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         public ActionResult Delete(AnimalViewModel ani)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             try
             {
                 // TODO: Add delete logic here

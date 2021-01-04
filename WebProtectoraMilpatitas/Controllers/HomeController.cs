@@ -19,6 +19,18 @@ namespace WebProtectoraMilpatitas.Controllers
         [Authorize]
         public ActionResult Indexad()
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             AnimalCEN animal = new AnimalCEN();
             IEnumerable<AnimalEN> listAni = animal.Dame_Todos(0, -1).ToList();
 

@@ -19,6 +19,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Raza
         public ActionResult Index(int? page)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             SessionInitialize();
 
             RazaCAD razCAD = new RazaCAD(session);
@@ -39,6 +51,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Raza/Details/5
         public ActionResult Details(int id)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             RazaViewModel raz = null;
 
             SessionInitialize();
@@ -55,6 +79,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Raza/Create
         public ActionResult Create()
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             IList<EspecieEN> listaEspecies = new EspecieCEN().Dame_Todas(0, -1);
             IList<SelectListItem> especiesItems = new List<SelectListItem>();
 
@@ -72,6 +108,18 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         public ActionResult Create(RazaViewModel raz)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             try
             {
                 // TODO: Add insert logic here
@@ -89,6 +137,18 @@ namespace WebProtectoraMilpatitas.Controllers
 
         public ActionResult ObtenerRazasPorEspecie(int p_especie, int? page)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             SessionInitialize();
 
             RazaCAD razCad = new RazaCAD(session);
@@ -116,6 +176,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Raza/Edit/5
         public ActionResult Edit(int id)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             RazaViewModel raz = null;
 
             SessionInitialize();
@@ -133,6 +205,18 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         public ActionResult Edit(RazaViewModel raz)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             try
             {
                 // TODO: Add update logic here
@@ -151,6 +235,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Raza/Delete/5
         public ActionResult Delete(int id)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             SessionInitialize();
             RazaCAD razCad = new RazaCAD(session);
             RazaCEN razaCEN = new RazaCEN(razCad);
@@ -164,6 +260,18 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         public ActionResult Delete(RazaViewModel raz)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             try
             {
                 // TODO: Add delete logic here

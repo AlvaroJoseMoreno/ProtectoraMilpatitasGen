@@ -20,6 +20,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Usuario
         public ActionResult Index(int? page)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             SessionInitialize();
 
             UsuarioCAD usuarioCAD = new UsuarioCAD(session);
@@ -39,6 +51,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Usuario/Details/5
         public ActionResult Details(string email)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             UsuarioViewModel usu = null;
             SessionInitialize();
             UsuarioEN usuEN = new UsuarioCAD(session).Dame_Por_Email(email);
@@ -134,6 +158,18 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: Usuario/Delete/5
         public ActionResult Delete(string email)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             SessionInitialize();
             UsuarioCAD usuCad = new UsuarioCAD(session);
             UsuarioCEN usuarioCEN = new UsuarioCEN(usuCad);
@@ -147,6 +183,18 @@ namespace WebProtectoraMilpatitas.Controllers
         [HttpPost]
         public ActionResult Delete(UsuarioViewModel usuario)
         {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
             try
             {
                 // TODO: Add delete logic here
