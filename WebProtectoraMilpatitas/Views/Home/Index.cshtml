@@ -73,7 +73,7 @@
                 </p>
                 <p>
                     <b>Especie: </b>
-                    @Html.ActionLink(item.NomEspecie, "ObtenerAnimalesPorEspecie", new { p_especie = item.idEspecie }, htmlAttributes: null)
+                    @Html.DisplayFor(modelItem => item.NomEspecie)
                 </p>
                 <p>
                     <b>Raza: </b>
