@@ -360,13 +360,13 @@ public void Actualizar_Estado (AnimalEN animal)
                 SessionClose ();
         }
 }
-public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> BuscarAnimales (string p_nombre, int? p_edad, char p_sexo, string p_centro, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum? p_datosMedicos, string p_caracter, Nullable<DateTime> p_fechaLlegada, int p_especie, int p_raza)
+public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> BuscarAnimales (string p_nombre, int? p_edad, char p_sexo, string p_centro, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum? p_datosMedicos, string p_caracter, Nullable<DateTime> p_fechaLlegada)
 {
         System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM AnimalEN self where select ani FROM AnimalEN as ani where (ani.Nombre like CONCAT('%', :p_nombre, '%') OR :p_nombre is NULL) AND (ani.Edad=:p_edad OR :p_edad is NULL) AND (ani.Sexo=:p_sexo OR :p_sexo is NULL) AND (ani.Centro like CONCAT('%', :p_centro, '%') OR :p_centro is NULL) AND (ani.DatosMedicos=:p_datosMedicos OR :p_datosMedicos is NULL) AND (ani.Caracter like CONCAT('%', :p_caracter, '%') OR :p_caracter is NULL) AND (ani.FechaLlegada>=:p_fechaLlegada OR :p_fechaLlegada is NULL) AND (ani.Especie.Id=:p_especie OR :p_especie is NULL) AND (ani.Raza.Id=:p_raza OR :p_raza is NULL) ";
+                //String sql = @"FROM AnimalEN self where select ani FROM AnimalEN as ani where ((ani.Nombre like CONCAT('%', :p_nombre, '%')) OR :p_nombre is NULL) AND (ani.Edad=:p_edad OR :p_edad=0) AND (ani.Sexo=:p_sexo OR :p_sexo=CHAR(0)) AND ((ani.Centro like CONCAT('%', :p_centro, '%')) OR :p_centro is NULL) AND (ani.DatosMedicos=:p_datosMedicos OR :p_datosMedicos=0) AND ((ani.Caracter like CONCAT('%', :p_caracter, '%')) OR :p_caracter is NULL) AND (ani.FechaLlegada>=:p_fechaLlegada OR :p_fechaLlegada=DateTime.MinValue)";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("AnimalENbuscarAnimalesHQL");
                 query.SetParameter ("p_nombre", p_nombre);
@@ -376,8 +376,6 @@ public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.Pro
                 query.SetParameter ("p_datosMedicos", p_datosMedicos);
                 query.SetParameter ("p_caracter", p_caracter);
                 query.SetParameter ("p_fechaLlegada", p_fechaLlegada);
-                query.SetParameter ("p_especie", p_especie);
-                query.SetParameter ("p_raza", p_raza);
 
                 result = query.List<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN>();
                 SessionCommit ();
