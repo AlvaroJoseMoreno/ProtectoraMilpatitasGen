@@ -78,7 +78,7 @@ public ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN Nuevo 
 
                 animalEN.FechaLlegada = p_fechaLlegada;
 
-                animalEN.Raza = new RazaCEN().Dame_Por_Id(p_raza);
+                animalEN.Raza = new RazaCEN ().Dame_Por_Id (p_raza);
 
                 notificacionEN = new NotificacionEN ();
                 notificacionEN.Mensaje = "Ha llegado " + animalEN.Nombre;

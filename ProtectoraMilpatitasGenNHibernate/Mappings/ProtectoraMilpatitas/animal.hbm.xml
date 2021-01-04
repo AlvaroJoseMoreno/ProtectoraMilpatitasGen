@@ -121,7 +121,7 @@
 		 </class>	
 		  
 		  <query name="AnimalENReadAllHQL">from AnimalEN</query>
-		  <query name="AnimalENbuscarAnimalesHQL"><![CDATA[select ani FROM AnimalEN as ani where ani.Nombre=:p_nombre OR ani.Edad=:p_edad OR ani.Sexo=:p_sexo OR ani.Centro=:p_centro OR ani.DatosMedicos=:p_datosMedicos OR ani.Caracter=:p_caracter OR ani.FechaLlegada=:p_fechaLlegada OR ani.Especie.Id=:p_especie]]></query>
+		  <query name="AnimalENbuscarAnimalesHQL"><![CDATA[select ani FROM AnimalEN as ani where (ani.Nombre=:p_nombre OR :p_nombre is NULL) AND (ani.Edad=:p_edad OR :p_edad is NULL) AND (ani.Sexo=:p_sexo OR :p_sexo is NULL) AND (ani.Centro=:p_centro OR :p_centro is NULL) AND (ani.DatosMedicos=:p_datosMedicos OR :p_datosMedicos is NULL) AND (ani.Caracter=:p_caracter OR :p_caracter is NULL) AND (ani.FechaLlegada=:p_fechaLlegada OR :p_fechaLlegada is NULL) AND (ani.Especie.Id=:p_especie OR :p_especie is NULL) AND (ani.Raza.Id=:p_raza OR :p_raza is NULL) ]]></query>
 		  <query name="AnimalENdame_Animales_Por_EspecieHQL"><![CDATA[select ani FROM AnimalEN as ani WHERE ani.Especie=:p_especie]]></query>
 		  <query name="AnimalENObtener_Animal_UsuarioHQL"><![CDATA[select ani FROM AnimalEN as ani WHERE ani.Dueño is not empty and ani.Dueño.Email=:p_email]]></query>
 		  <query name="AnimalENbusquedaRapidaHQL"><![CDATA[select ani FROM AnimalEN as ani where ani.Nombre like concat('%',:p_nombre,'%')]]></query>

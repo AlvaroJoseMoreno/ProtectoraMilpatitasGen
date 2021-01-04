@@ -249,6 +249,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AnimalViewModel.cs" />
+    <Compile Include="Models\BuscarAnimalViewModel.cs" />
     <Compile Include="Models\ContratoAdopcionViewModel.cs" />
     <Compile Include="Models\EspecieViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -430,7 +431,6 @@
     <Content Include="Views\Animal\ObtenerAnimalesPorUsuario.cshtml" />
     <Content Include="Views\Animal\ResultadoBuscar.cshtml" />
     <Content Include="Views\Animal\BusquedaRapida.cshtml" />
-    <Content Include="Views\Animal\BuscarAnimales.cshtml" />
     <Content Include="Views\SolicitudAdopcion\Encuesta.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
@@ -448,6 +448,7 @@
     <Content Include="Views\TestAnimalIdeal\VerResultado.cshtml" />
     <Content Include="Views\TestAnimalIdeal\RellenarTest.cshtml" />
     <Content Include="Views\ContratoAdopcion\contratoRellenar.cshtml" />
+    <Content Include="Views\Animal\BuscarAnimales.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
