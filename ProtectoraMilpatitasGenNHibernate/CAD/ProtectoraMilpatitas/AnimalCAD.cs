@@ -366,7 +366,7 @@ public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.Pro
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM AnimalEN self where select ani FROM AnimalEN as ani where ((ani.Nombre like CONCAT('%', :p_nombre, '%')) OR :p_nombre is NULL) AND (ani.Edad=:p_edad OR :p_edad=0) AND (ani.Sexo=:p_sexo OR :p_sexo=CHAR(0)) AND ((ani.Centro like CONCAT('%', :p_centro, '%')) OR :p_centro is NULL) AND (ani.DatosMedicos=:p_datosMedicos OR :p_datosMedicos=0) AND ((ani.Caracter like CONCAT('%', :p_caracter, '%')) OR :p_caracter is NULL) AND (ani.FechaLlegada>=:p_fechaLlegada OR :p_fechaLlegada=DateTime.MinValue)";
+                //String sql = @"FROM AnimalEN self where select ani FROM AnimalEN as ani where ((ani.Nombre like CONCAT('%', :p_nombre, '%')) OR :p_nombre is NULL) AND (ani.Edad=:p_edad OR :p_edad=0) AND (ani.Sexo=:p_sexo OR :p_sexo=CHAR(0)) AND ((ani.Centro like CONCAT('%', :p_centro, '%')) OR :p_centro is NULL) AND (ani.DatosMedicos=:p_datosMedicos OR :p_datosMedicos=0) AND ((ani.Caracter like CONCAT('%', :p_caracter, '%')) OR :p_caracter is NULL) AND (DateTime.Compare(ani.FechaLlegada, :p_fechaLlegada)>=0 OR DateTime.Compare(:p_fechaLlegada, '0001-01-01 0:00:00')=0)";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("AnimalENbuscarAnimalesHQL");
                 query.SetParameter ("p_nombre", p_nombre);
