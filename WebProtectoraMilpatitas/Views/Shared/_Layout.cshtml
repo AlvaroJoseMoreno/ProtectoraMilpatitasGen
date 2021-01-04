@@ -46,18 +46,7 @@
             </div>
            
         </div>
-   
-  
-    @*@{
 
-        List<string> ruta =  ((List<string>)Session["RUTA"]);
-        foreach (string s in ruta)
-        {
-            <a href=@s>@s  </a>
-        }
-
-
-        }*@
     <div class="container body-content">
         <p>Estás aquí: @Html.MvcSiteMap().SiteMapPath()</p>
         @RenderBody()

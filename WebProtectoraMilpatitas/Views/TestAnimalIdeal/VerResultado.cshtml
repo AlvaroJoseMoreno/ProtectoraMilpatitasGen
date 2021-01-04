@@ -13,11 +13,75 @@
     <dl class="dl-horizontal">
 
         <dt>
-            @Html.DisplayNameFor(model => model.Resultado)
+            
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Resultado)
+        </dd>
+        <dd>
+            @{
+                string foto = "";
+
+                if (Model.Resultado.Contains("perro"))
+                {
+                    foto = "perro";
+                }
+                else
+                {
+                    if (Model.Resultado.Contains("gato"))
+                    {
+                        foto = "gato";
+                    }
+                    else
+                    {
+                        if (Model.Resultado.Contains("pez"))
+                        {
+                            foto = "pez";
+                        }
+                        else
+                        {
+                            if (Model.Resultado.Contains("pajaro"))
+                            {
+                                foto = "pajaro";
+                            }
+                            else
+                            {
+                                if (Model.Resultado.Contains("tortuga"))
+                                {
+                                    foto = "tortuga";
+                                }
+                                else
+                                {
+                                    if (Model.Resultado.Contains("geco"))
+                                    {
+                                        foto = "geco";
+                                    }
+                                    else
+                                    {
+                                        if (Model.Resultado.Contains("conejo"))
+                                        {
+                                            foto = "conejo";
+                                        }
+                                        else
+                                        {
+                                            if (Model.Resultado.Contains("hamster"))
+                                            {
+                                                foto = "hamster";
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                string ruta = "";
+                ruta = @"Imagenes/Test/Resultado/" + foto + ".jpg";
+                <img src=~/@ruta />
+            }
+
         </dd>
 
     </dl>

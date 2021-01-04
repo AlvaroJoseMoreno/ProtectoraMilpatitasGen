@@ -49,21 +49,6 @@ namespace WebProtectoraMilpatitas.Controllers
 
             ViewData["NumSeg"] = listSeg.Count();
 
-            //if (Session["RUTA"] == null)
-            //{
-            //    List<string> ruta = new List<string>();
-            //    ruta.Add("Home/Index");
-            //    Session["RUTA"] = ruta;
-            //}
-            //else
-            //{
-            //    List<string> ruta = ((List<string>)Session["RUTA"]);
-            //    if (ruta.Count > 0)
-            //    {
-            //        //ruta.RemoveAt(ruta.Count() - 1);
-            //        ruta.Add("Home/Index");
-            //    }
-            //}
             return View();
         }
 

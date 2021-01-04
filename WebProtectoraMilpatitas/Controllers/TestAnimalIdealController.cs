@@ -139,17 +139,6 @@ namespace WebProtectoraMilpatitas.Controllers
         // GET: TestAnimalIdeal/Edit/5
         public ActionResult RellenarTest()
         {
-            //IList<string> listaAficiones = new List<string> { "Animación", "Astrología", "Bailar", "Cantar", "Leer", "Hacer deporte", "Manualidades", "Dibujar" };
-
-            //IList<SelectListItem> aficionesitems = new List<SelectListItem>();
-            
-            //foreach (string afi in listaAficiones)
-            //{
-            //    aficionesitems.Add(new SelectListItem { Text = afi, Value = afi });
-
-            //}
-
-            //ViewData["Listaficiones"] = aficionesitems;
 
             return View();
         }
@@ -168,9 +157,6 @@ namespace WebProtectoraMilpatitas.Controllers
                 int idTest=testCEN.Nuevo(usuen.Email);
 
                 testCEN.Rellenar_Test(idTest, test.AficionFavorita, test.Personalidad, test.ColorFavorito);
-
-                TestAnimalIdealEN testEN = testCEN.Ver_Resultado(idTest);
-                testEN.Resultado = "Perro";
 
                 return RedirectToAction("VerResultado", new { id = idTest });
             }
