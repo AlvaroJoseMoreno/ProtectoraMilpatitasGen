@@ -83,5 +83,21 @@ public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.Pro
 {
         return _IAnimalCAD.BusquedaRapida (p_nombre);
 }
+public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> ObtenerBabies ()
+{
+        return _IAnimalCAD.ObtenerBabies ();
+}
+public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> ObtenerRecienLlegados ()
+{
+        return _IAnimalCAD.ObtenerRecienLlegados ();
+}
+public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> ObtenerCasosEspeciales (ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum ? p_enfermo)
+{
+        return _IAnimalCAD.ObtenerCasosEspeciales (p_enfermo);
+}
+public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> ObtenerUrgentes ()
+{
+        return _IAnimalCAD.ObtenerUrgentes ();
+}
 }
 }

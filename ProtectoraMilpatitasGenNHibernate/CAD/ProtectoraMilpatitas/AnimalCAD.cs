@@ -366,7 +366,7 @@ public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.Pro
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM AnimalEN self where select ani FROM AnimalEN as ani where (ani.Nombre=:p_nombre OR :p_nombre is NULL) AND (ani.Edad=:p_edad OR :p_edad is NULL) AND (ani.Sexo=:p_sexo OR :p_sexo is NULL) AND (ani.Centro=:p_centro OR :p_centro is NULL) AND (ani.DatosMedicos=:p_datosMedicos OR :p_datosMedicos is NULL) AND (ani.Caracter=:p_caracter OR :p_caracter is NULL) AND (ani.FechaLlegada=:p_fechaLlegada OR :p_fechaLlegada is NULL) AND (ani.Especie.Id=:p_especie OR :p_especie is NULL) AND (ani.Raza.Id=:p_raza OR :p_raza is NULL) ";
+                //String sql = @"FROM AnimalEN self where select ani FROM AnimalEN as ani where (ani.Nombre like CONCAT('%', :p_nombre, '%') OR :p_nombre is NULL) AND (ani.Edad=:p_edad OR :p_edad is NULL) AND (ani.Sexo=:p_sexo OR :p_sexo is NULL) AND (ani.Centro like CONCAT('%', :p_centro, '%') OR :p_centro is NULL) AND (ani.DatosMedicos=:p_datosMedicos OR :p_datosMedicos is NULL) AND (ani.Caracter like CONCAT('%', :p_caracter, '%') OR :p_caracter is NULL) AND (ani.FechaLlegada>=:p_fechaLlegada OR :p_fechaLlegada is NULL) AND (ani.Especie.Id=:p_especie OR :p_especie is NULL) AND (ani.Raza.Id=:p_raza OR :p_raza is NULL) ";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("AnimalENbuscarAnimalesHQL");
                 query.SetParameter ("p_nombre", p_nombre);
@@ -499,6 +499,123 @@ public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.Pro
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("AnimalENbusquedaRapidaHQL");
                 query.SetParameter ("p_nombre", p_nombre);
+
+                result = query.List<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is ProtectoraMilpatitasGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new ProtectoraMilpatitasGenNHibernate.Exceptions.DataLayerException ("Error in AnimalCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> ObtenerBabies ()
+{
+        System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AnimalEN self where select ani FROM AnimalEN as ani where ani.Edad=1";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AnimalENobtenerBabiesHQL");
+
+                result = query.List<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is ProtectoraMilpatitasGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new ProtectoraMilpatitasGenNHibernate.Exceptions.DataLayerException ("Error in AnimalCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> ObtenerRecienLlegados ()
+{
+        System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AnimalEN self where select ani FROM AnimalEN as ani where ani.FechaLlegada>DATEADD(MONTH, -1, GETDATE())";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AnimalENobtenerRecienLlegadosHQL");
+
+                result = query.List<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is ProtectoraMilpatitasGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new ProtectoraMilpatitasGenNHibernate.Exceptions.DataLayerException ("Error in AnimalCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> ObtenerCasosEspeciales (ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum ? p_enfermo)
+{
+        System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AnimalEN self where select ani FROM AnimalEN as ani where ani.DatosMedicos=:p_enfermo";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AnimalENobtenerCasosEspecialesHQL");
+                query.SetParameter ("p_enfermo", p_enfermo);
+
+                result = query.List<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is ProtectoraMilpatitasGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new ProtectoraMilpatitasGenNHibernate.Exceptions.DataLayerException ("Error in AnimalCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> ObtenerUrgentes ()
+{
+        System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AnimalEN self where select ani FROM AnimalEN as ani where ani.FechaLlegada>DATEADD(YEAR, -1, GETDATE())";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AnimalENobtenerUrgentesHQL");
 
                 result = query.List<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN>();
                 SessionCommit ();

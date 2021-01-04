@@ -79,7 +79,7 @@ namespace WebProtectoraMilpatitas.Controllers
             int pageNumber = (page ?? 1);
 
             return View(listaView.ToPagedList(pageNumber, pageSize));
-          
+
         }
 
         public ActionResult About()

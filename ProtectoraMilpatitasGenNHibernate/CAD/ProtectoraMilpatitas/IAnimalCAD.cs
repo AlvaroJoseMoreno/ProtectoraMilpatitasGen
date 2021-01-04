@@ -50,5 +50,17 @@ System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.Protectora
 void AsignarDuenyo (int p_Animal_OID, string p_dueño_OID);
 
 System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> BusquedaRapida (string p_nombre);
+
+
+System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> ObtenerBabies ();
+
+
+System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> ObtenerRecienLlegados ();
+
+
+System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> ObtenerCasosEspeciales (ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum ? p_enfermo);
+
+
+System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> ObtenerUrgentes ();
 }
 }

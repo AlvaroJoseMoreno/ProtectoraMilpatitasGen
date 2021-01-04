@@ -214,6 +214,10 @@
 			
 			
 			
+			
+			
+			
+			
 	<Compile Include="EN\ProtectoraMilpatitas\EspecieEN.cs" />
 	<Compile Include="CEN\ProtectoraMilpatitas\EspecieCEN.cs" />
 	<Compile Include="CAD\ProtectoraMilpatitas\IEspecieCAD.cs" />

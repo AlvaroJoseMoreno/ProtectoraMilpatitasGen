@@ -10,6 +10,7 @@ using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas;
+using System.Linq;
 /*PROTECTED REGION END*/
 namespace InitializeDB
 {
@@ -185,35 +186,35 @@ public static void InitializeData ()
 
                 Console.WriteLine ();
 
-                DateTime date11 = new DateTime (2021, 1, 2, 8, 30, 52);
-                DateTime date12 = new DateTime (2020, 12, 1, 8, 30, 52);
+                DateTime date11 = new DateTime (2020, 1, 2, 8, 30, 52);
+                DateTime date12 = new DateTime (2020, 11, 1, 8, 30, 52);
 
                 //Creacion de animales
                 AnimalCP animalCP = new AnimalCP ();
 
                 AnimalEN chihuahua = animalCP.Nuevo ("Tobi", 3, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "amigable", espPerro, "Imagenes/animales/Galgo-espanol-1.jpg", date11, per);
-                AnimalEN yorkshire = animalCP.Nuevo ("Pelusa", 3, 'M', "Albacete", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enRecuperacion, "cariñoso", espPerro, "Imagenes/animales/manchitas.jpg", date11, per1);
+                AnimalEN yorkshire = animalCP.Nuevo ("Pelusa", 1, 'M', "Albacete", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enRecuperacion, "cariñoso", espPerro, "Imagenes/animales/manchitas.jpg", new DateTime (2021, 1, 1, 8, 30, 52), per1);
 
-                AnimalEN siames = animalCP.Nuevo ("Minino", 1, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso", espGato, "Imagenes/animales/gato1.jpg", date12, gat);
-                AnimalEN europeo = animalCP.Nuevo ("Milky", 2, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "mimoso", espGato, "Imagenes/animales/gato2.jpg", date12, gat1);
+                AnimalEN siames = animalCP.Nuevo ("Minino", 1, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "mimoso", espGato, "Imagenes/animales/gato1.jpg", new DateTime (2021, 1, 1, 8, 30, 52), gat);
+                AnimalEN europeo = animalCP.Nuevo ("Milky", 2, 'H', "Alicante", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "mimoso", espGato, "Imagenes/animales/gato2.jpg", date12, gat1);
 
-                AnimalEN rusa = animalCP.Nuevo ("Donatello", 4, 'M', "Villena", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "un poco agresivo", espTortuga, "Imagenes/animales/tortuga-rusa.jpg", date11, tor);
-                AnimalEN bosque = animalCP.Nuevo ("Leonardo", 5, 'M', "Villena", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "un poco agresivo", espTortuga, "Imagenes/animales/tortuga-bosque.jpg", date11, tor1);
+                AnimalEN rusa = animalCP.Nuevo ("Donatello", 1, 'M', "Villena", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "un poco agresivo", espTortuga, "Imagenes/animales/tortuga-rusa.jpg", date11, tor);
+                AnimalEN bosque = animalCP.Nuevo ("Leonardo", 5, 'M', "Villena", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "un poco agresivo", espTortuga, "Imagenes/animales/tortuga-bosque.jpg", date11, tor1);
 
-                AnimalEN periquito = animalCP.Nuevo ("Cantarin", 1, 'H', "Alcoy", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "fiestera", espPajaro, "Imagenes/animales/periquito.jpg", date12, paj);
-                AnimalEN canario = animalCP.Nuevo ("Bailarin", 1, 'H', "Alcoy", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "fiestera", espPajaro, "Imagenes/animales/canario.jpg", date12, paj1);
+                AnimalEN periquito = animalCP.Nuevo ("Cantarin", 10, 'H', "Alcoy", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "fiestera", espPajaro, "Imagenes/animales/periquito.jpg", date12, paj);
+                AnimalEN canario = animalCP.Nuevo ("Bailarin", 10, 'H', "Alcoy", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "fiestera", espPajaro, "Imagenes/animales/canario.jpg", date12, paj1);
 
-                AnimalEN guppy = animalCP.Nuevo ("Gup", 1, 'H', "Elche", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "amigable", espPez, "Imagenes/animales/Pez-guppy.jpg", date11, pez);
-                AnimalEN payaso = animalCP.Nuevo ("Payasi", 1, 'M', "Elche", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "juguetón", espPez, "Imagenes/animales/pez-payaso.jpg", date11, pez1);
+                AnimalEN guppy = animalCP.Nuevo ("Gup", 2, 'H', "Elche", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "amigable", espPez, "Imagenes/animales/Pez-guppy.jpg", date11, pez);
+                AnimalEN payaso = animalCP.Nuevo ("Payasi", 2, 'M', "Elche", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "juguetón", espPez, "Imagenes/animales/pez-payaso.jpg", new DateTime (2021, 1, 1, 8, 30, 52), pez1);
 
-                AnimalEN leopardo = animalCP.Nuevo ("Leo", 2, 'M', "Murcia", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "solitario", espGeco, "Imagenes/animales/gecko_crestado.jpg", date12, geco);
-                AnimalEN crestado = animalCP.Nuevo ("Cresti", 2, 'H', "Murcia", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "solitaria", espGeco, "Imagenes/animales/Gecko_leopardo.png", date12, geco1);
+                AnimalEN leopardo = animalCP.Nuevo ("Leo", 2, 'M', "Murcia", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "solitario", espGeco, "Imagenes/animales/gecko_crestado.jpg", date12, geco);
+                AnimalEN crestado = animalCP.Nuevo ("Cresti", 12, 'H', "Murcia", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "solitaria", espGeco, "Imagenes/animales/Gecko_leopardo.png", date12, geco1);
 
                 AnimalEN chinchilla = animalCP.Nuevo ("Chincha", 1, 'H', "Elda", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "amigable", espConejo, "Imagenes/animales/conejo-chinchilla.jpg", date11, cone);
-                AnimalEN zelanda = animalCP.Nuevo ("Zela", 1, 'M', "Elda", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "juguetón", espConejo, "Imagenes/animales/conejo-nueva-zelanda.jpg", date11, cone1);
+                AnimalEN zelanda = animalCP.Nuevo ("Zela", 11, 'M', "Elda", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "juguetón", espConejo, "Imagenes/animales/conejo-nueva-zelanda.jpg", date11, cone1);
 
-                AnimalEN robo = animalCP.Nuevo ("Robador", 2, 'M', "Petrer", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "juguetón", espHamster, "Imagenes/animales/hamster-roborowski.jpg", date12, ham);
-                AnimalEN dorado = animalCP.Nuevo ("Sirio", 2, 'H', "Petrer", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "cariñoso", espHamster, "Imagenes/animales/hamster-dorado.jpg", date12, ham1);
+                AnimalEN robo = animalCP.Nuevo ("Robador", 2, 'M', "Petrer", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.sano, "juguetón", espHamster, "Imagenes/animales/hamster-roborowski.jpg", new DateTime (2021, 1, 1, 8, 30, 52), ham);
+                AnimalEN dorado = animalCP.Nuevo ("Sirio", 2, 'H', "Petrer", ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo, "cariñoso", espHamster, "Imagenes/animales/hamster-dorado.jpg", date12, ham1);
 
                 Console.WriteLine ();
 

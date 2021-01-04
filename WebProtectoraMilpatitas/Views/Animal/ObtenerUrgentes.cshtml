@@ -1,0 +1,74 @@
+﻿@model PagedList.IPagedList<WebProtectoraMilpatitas.Models.AnimalViewModel>
+@using PagedList.Mvc
+
+<table class="table">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Edad
+        </th>
+        <th>
+            Sexo
+        </th>
+        <th>
+            Centro
+        </th>
+        <th>
+            Caracter
+        </th>
+        <th>
+            Foto
+        </th>
+        <th>
+            Especie
+        </th>
+        <th>
+            Fecha de llegada
+        </th>
+        <th>
+            Raza
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Edad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sexo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Centro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Caracter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Foto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomEspecie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaLlegada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomRaza)
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

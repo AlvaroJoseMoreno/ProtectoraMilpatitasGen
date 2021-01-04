@@ -449,6 +449,10 @@
     <Content Include="Views\TestAnimalIdeal\RellenarTest.cshtml" />
     <Content Include="Views\ContratoAdopcion\contratoRellenar.cshtml" />
     <Content Include="Views\Animal\BuscarAnimales.cshtml" />
+    <Content Include="Views\Animal\ObtenerBabies.cshtml" />
+    <Content Include="Views\Animal\ObtenerRecienLlegados.cshtml" />
+    <Content Include="Views\Animal\ObtenerCasosEspeciales.cshtml" />
+    <Content Include="Views\Animal\ObtenerUrgentes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

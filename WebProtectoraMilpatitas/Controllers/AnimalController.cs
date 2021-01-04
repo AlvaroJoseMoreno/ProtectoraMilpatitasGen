@@ -539,5 +539,85 @@ namespace WebProtectoraMilpatitas.Controllers
 
             return View(TempData["Animales"]);
         }
+
+        public ActionResult ObtenerBabies(int? page)
+        {
+            SessionInitialize();
+
+            AnimalCAD aniCad = new AnimalCAD(session);
+
+            AnimalCEN aniCEN = new AnimalCEN(aniCad);
+
+            IList<AnimalEN> listBabies = aniCEN.ObtenerBabies();
+
+            IEnumerable<AnimalViewModel> babiesView = new AnimalAssembler().ConvertListENToModel(listBabies).ToList();
+
+            SessionClose();
+
+            int pageSize = 2;
+            int pageNumber = (page ?? 1);
+
+            return View(babiesView.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult ObtenerRecienLlegados(int? page)
+        {
+            SessionInitialize();
+
+            AnimalCAD aniCad = new AnimalCAD(session);
+
+            AnimalCEN aniCEN = new AnimalCEN(aniCad);
+
+            IList<AnimalEN> listRecientes = aniCEN.ObtenerRecienLlegados();
+
+            IEnumerable<AnimalViewModel> recientesView = new AnimalAssembler().ConvertListENToModel(listRecientes).ToList();
+
+            SessionClose();
+
+            int pageSize = 2;
+            int pageNumber = (page ?? 1);
+
+            return View(recientesView.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult ObtenerCasosEspeciales(int? page)
+        {
+            SessionInitialize();
+
+            AnimalCAD aniCad = new AnimalCAD(session);
+
+            AnimalCEN aniCEN = new AnimalCEN(aniCad);
+
+            IList<AnimalEN> listEspeciales = aniCEN.ObtenerCasosEspeciales(ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum.enfermo);
+
+            IEnumerable<AnimalViewModel> especialesView = new AnimalAssembler().ConvertListENToModel(listEspeciales).ToList();
+
+            SessionClose();
+
+            int pageSize = 2;
+            int pageNumber = (page ?? 1);
+
+            return View(especialesView.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult ObtenerUrgentes(int? page)
+        {
+            SessionInitialize();
+
+            AnimalCAD aniCad = new AnimalCAD(session);
+
+            AnimalCEN aniCEN = new AnimalCEN(aniCad);
+
+            IList<AnimalEN> listUrgentes = aniCEN.ObtenerUrgentes();
+
+            IEnumerable<AnimalViewModel> urgentesView = new AnimalAssembler().ConvertListENToModel(listUrgentes).ToList();
+
+            SessionClose();
+
+            int pageSize = 2;
+            int pageNumber = (page ?? 1);
+
+            return View(urgentesView.ToPagedList(pageNumber, pageSize));
+        }
     }
 }
