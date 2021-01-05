@@ -24,10 +24,18 @@
 }
 @if (((string)TempData["mensajeModal"]) != null && ((string)TempData["mensajeModal"]).Equals("Modal"))
 {
+<div id="capafondo">
 
     <h2>Contrato Creado con Exito</h2>
-    <h4>Para descargar el contrato haga click aquí</h4>
-    <p>@Html.ActionLink("Contrato", "Imprimir", "ContratoAdopcion")</p>
+    <script>"mensajeModal();"</script>
+    <article id=ar>
+        <h2>Contrato</h2>
+    <p>Has creado el contrato, haz click aqui para descargar</p>
+    <p>@Html.ActionLink("Contrato", "Imprimir", "ContratoAdopcion")</p> 
+    <footer><button class=button onclick=cerrarMensajeModal();>cerrar</button></footer>
+        </article> 
+
+</div>
 
 
 }
