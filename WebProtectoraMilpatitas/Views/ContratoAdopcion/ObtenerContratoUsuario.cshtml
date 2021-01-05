@@ -1,4 +1,5 @@
 ﻿@model PagedList.IPagedList<WebProtectoraMilpatitas.Models.ContratoAdopcionViewModel>
+@using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas
 @using PagedList.Mvc;
 
 @{
@@ -8,76 +9,88 @@
 
 <h2>Listado de contratos de adopcion del usuario: @ViewData["NombreUsuario"]</h2>
 
-<p>
-    @Html.ActionLink("Crear nuevo contrato", "Create")
-</p>
-<p>
-    @Html.ActionLink("Volver a usuarios", "Index", "Usuario")
-</p>
-<table class="table">
-    @{
-        if (Model.Any())
-        {
-            <tr>
-                <th>
-                    Nombre
-                </th>
-                <th>
-                    DNI_NIF_Pasaporte
-                </th>
-                <th>
-                    Escritura del hogar
-                </th>
-                <th>
-                    Justificante de pago
-                </th>
-                <th>
-                    Lugar de recojida
-                </th>
-                <th>
-                    Firma de compromiso
-                </th>
-                <th></th>
-            </tr>
-        }
-        else
-        {
-            <tr>No tiene contratos de adopcion</tr>
-        }
-    }
 
-    @foreach (var item in Model)
+@{
+
+    if (Session["Usuario"] != null)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DNI_NIF_Pasaporte)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EscrituraHogar)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.JustificantePago)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LugarRecojida)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirmaCompromiso)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
-            </td>
-        </tr>
+        if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+        {
+            <p>
+                @Html.ActionLink("Crear nuevo contrato", "Create")
+            </p>
+            } 
+        }
     }
+            <table class="table">
+                @{
+                    if (Model.Any())
+                    {
+                        <tr>
+                            <th>
+                                Nombre
+                            </th>
+                            <th>
+                                DNI_NIF_Pasaporte
+                            </th>
+                            <th>
+                                Escritura del hogar
+                            </th>
+                            <th>
+                                Justificante de pago
+                            </th>
+                            <th>
+                                Lugar de recojida
+                            </th>
+                            <th>
+                                Firma de compromiso
+                            </th>
+                            <th></th>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>No tiene contratos de adopcion</tr>
+                    }
+                }
 
-</table>
-<br />
-Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DNI_NIF_Pasaporte)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EscrituraHogar)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JustificantePago)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LugarRecojida)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirmaCompromiso)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
 
-@Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+            </table>
+            <br />
+
+            <p>
+                @Html.ActionLink("Volver a usuarios", "Index", "Usuario")
+            </p>
+
+            Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+
+            @Html.PagedListPager(Model, page => Url.Action("Index",
+                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
