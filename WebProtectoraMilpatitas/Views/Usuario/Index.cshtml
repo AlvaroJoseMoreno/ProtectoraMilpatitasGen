@@ -7,40 +7,48 @@
 }
 
 <h2>Usuarios</h2>
-<table class="table">
-    <tr>
-        <th>
-            Usuario
-        </th>
-        <th></th>
-    </tr>
 
+
+<main id="mainart">
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                <figure>
-                    <figcaption>@Html.ActionLink(item.Nombre, "Details", new { email = item.Email }) </figcaption>
-                    <img src="/@Html.DisplayFor(modelItem => item.Foto)" />
-                </figure>
-            </td>
-            <td>
-                @Html.ActionLink("Detalles", "Details", new { email = item.Email }) |
-                @Html.ActionLink("Obtener Solicitudes Adopcion", "ObtenerSolicitudUsuario", "SolicitudAdopcion", new { email = item.Email }, htmlAttributes: null) |
-                @Html.ActionLink("Obtener Contratos Adopcion", "ObtenerContratoUsuario", "ContratoAdopcion", new { email = item.Email }, htmlAttributes: null)|
-                @Html.ActionLink("Obtener Seguimientos", "ObtenerSeguimientoUsuario", "Seguimiento", new { email = item.Email }, htmlAttributes: null) |
-                @Html.ActionLink("Obtener Mascotas", "ObtenerAnimalesPorUsuario", "Animal", new { email = item.Email }, htmlAttributes: null) |
-                @Html.ActionLink("Eliminar", "Delete", new { email = item.Email })
-            </td>
-        </tr>
+
+    <article class="articulos">
+        <div>
+            @if (item.Nombre != null && !item.Nombre.Equals(""))
+            {
+
+
+                <h2>@Html.DisplayFor(modelItem => item.Nombre)</h2>
+
+
+            }
+            else
+            {
+                <h2> @Html.DisplayFor(modelItem => item.Nombre);</h2>
+            }
+
+
+
+            <img src="/@Html.DisplayFor(modelItem => item.Foto)" />
+        </div>
+        <div>
+            <p>@Html.ActionLink("Detalles", "Details", new { email = item.Email })</p>
+            <p>@Html.ActionLink("Obtener Solicitudes Adopcion", "ObtenerSolicitudUsuario", "SolicitudAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
+            <p>@Html.ActionLink("Obtener Contratos Adopcion", "ObtenerContratoUsuario", "ContratoAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
+            <p>@Html.ActionLink("Obtener Seguimientos", "ObtenerSeguimientoUsuario", "Seguimiento", new { email = item.Email }, htmlAttributes: null)</p>
+            <p>@Html.ActionLink("Obtener Mascotas", "ObtenerAnimalesPorUsuario", "Animal", new { email = item.Email }, htmlAttributes: null)</p>
+            <p>@Html.ActionLink("Eliminar", "Delete", new { email = item.Email })</p>
+        </div>
+    </article>
     }
+    </main>
 
-</table>
-<br />
-Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+    <br />
+    Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
 
-@Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-<div>
-    @Html.ActionLink("Volver a inicio", "Indexad", "Home")
-</div>
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    <div>
+        @Html.ActionLink("Volver a inicio", "Indexad", "Home")
+    </div>

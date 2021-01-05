@@ -8,15 +8,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Animales</h2>
+
 <h3>@Html.ActionLink("Especies", "Index", "Especie")</h3>
 
 <p>
     @Html.ActionLink("Subir nuevo animal", "Create")
 </p>
 
-<h2 style="text-align: center;">Últimos animales</h2>
-
+<h2>Animales</h2>
 <main id="mainart">
     @foreach (var item in Model)
     {
