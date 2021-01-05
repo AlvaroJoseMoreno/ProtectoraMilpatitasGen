@@ -99,6 +99,9 @@ public void ModifyDefault (SeguimientoEN seguimiento)
 
 
 
+
+                seguimientoEN.Descripcion = seguimiento.Descripcion;
+
                 session.Update (seguimientoEN);
                 SessionCommit ();
         }
@@ -126,6 +129,9 @@ public void Modificar (SeguimientoEN seguimiento)
                 SeguimientoEN seguimientoEN = (SeguimientoEN)session.Load (typeof(SeguimientoEN), seguimiento.Id);
 
                 seguimientoEN.Fecha = seguimiento.Fecha;
+
+
+                seguimientoEN.Descripcion = seguimiento.Descripcion;
 
                 session.Update (seguimientoEN);
                 SessionCommit ();

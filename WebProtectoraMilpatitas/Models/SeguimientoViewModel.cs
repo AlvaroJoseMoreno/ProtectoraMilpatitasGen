@@ -58,6 +58,9 @@ namespace WebProtectoraMilpatitas.Models
 
         public Nullable<DateTime> Fecha { get; set; }
 
+        [Display(Prompt = "Descripcion del seguimiento", Description = "Descripcion del seguimiento", Name = "Descripción")]
+        public string Descripcion { get; set; }
+
     }
 
    

@@ -24,6 +24,8 @@ namespace WebProtectoraMilpatitas.Assemblers
             seguimiento.NomAnimal = segui.Animal.Nombre;
             seguimiento.FotoAnimal = segui.Animal.Foto;
 
+            seguimiento.Descripcion = segui.Descripcion;
+
             return seguimiento;
         }
 

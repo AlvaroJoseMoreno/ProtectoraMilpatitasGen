@@ -19,7 +19,7 @@ namespace ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas
 {
 public partial class SeguimientoCEN
 {
-public void Modificar (int p_Seguimiento, Nullable<DateTime> p_fecha)
+public void Modificar (int p_Seguimiento, Nullable<DateTime> p_fecha, string p_descripcion)
 {
         /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas_Seguimiento_modificar_customized) START*/
 
@@ -29,6 +29,7 @@ public void Modificar (int p_Seguimiento, Nullable<DateTime> p_fecha)
         seguimientoEN = new SeguimientoEN ();
         seguimientoEN.Id = p_Seguimiento;
         seguimientoEN.Fecha = p_fecha;
+        seguimientoEN.Descripcion = p_descripcion;
         //Call to SeguimientoCAD
 
         _ISeguimientoCAD.Modificar (seguimientoEN);

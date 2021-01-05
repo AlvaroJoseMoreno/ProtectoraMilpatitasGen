@@ -187,7 +187,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 // TODO: Add update logic here
                 SeguimientoCEN segCEN = new SeguimientoCEN();
 
-                segCEN.Modificar(segui.Id, segui.Fecha);
+                segCEN.Modificar(segui.Id, segui.Fecha, segui.Descripcion);
             
 
                 return RedirectToAction("Index");
