@@ -7,10 +7,11 @@
 
 <h2>Detalles del animal</h2>
 <section id="secanim">
-    <article class="detalle">
-        <h2>@Html.ActionLink(Model.Nombre, "Details", new { id = Model.Id })</h2>
-        <img  src="/@Html.DisplayFor(modelItem => Model.Foto)" />
-        <main id="details">
+    <main id="details">
+        <article class="detalle">
+            <h2>@Html.ActionLink(Model.Nombre, "Details", new { id = Model.Id })</h2>
+            <img src="/@Html.DisplayFor(modelItem => Model.Foto)" />
+
             <div id="datis">
                 <p>
                     <b>@Html.DisplayNameFor(model => model.Edad): </b> @Html.DisplayFor(modelItem => Model.Edad)
@@ -55,17 +56,18 @@
 
                 @Html.ActionLink("Eliminar", "Delete", new { id = Model.Id })
             </div>
-        </main>
-        @if (Model.EstadoAdopcion.ToString().Equals("SinTramite"))
-        {
-            <p>@Html.ActionLink("Adoptar", "Create", "SolicitudAdopcion", new { model = Model.Id }, new { @class = "Buttons" })</p>
-        }
-        else
-        {
 
-            <p>Animal no disponible!</p>
-        }
-    </article>
+            @if (Model.EstadoAdopcion.ToString().Equals("SinTramite"))
+            {
+                <p>@Html.ActionLink("Adoptar", "Create", "SolicitudAdopcion", new { model = Model.Id }, new { @class = "Buttons" })</p>
+            }
+            else
+            {
+
+                <p>Animal no disponible!</p>
+            }
+        </article>
+    </main>
 </section>
         @*<div>
             <h4>@Html.DisplayFor(model => model.Nombre)</h4>
