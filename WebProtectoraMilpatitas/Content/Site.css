@@ -69,7 +69,42 @@ h1 {
 h3{
 
 }
+/******************** CSS para el mensaje modal **************************/
+#capafondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,.8);
+}
+#capafondo > article {
+    background-color: #fff99f;
+    border: 2px solid #fc810e;
+    text-align: center;
+    width: 20em;
+    position: absolute;
+    top: 2em;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
+    #capafondo > article > h2 {
+        background: linear-gradient(to bottom, #CEF0D0 5%, #c4f2c6 100%);
+        background-color: #fff99f;
+        color: #fff;
+        margin: 0;
+        padding: .5em;
+    }
+    #capafondo > article > footer {
+        background: linear-gradient(to bottom, #c4f2c6 5%, #CEF0D0 100%);
+        background-color: #fff99f;
+        color: #fff;
+        margin: 0;
+        padding: .5em;
+    }
+
+    
 
 /********************PAGINA CON TABLAS (USUARIO, CONTRATO, SOLICITUD, SEGUIMIENTO)**********************/
 
