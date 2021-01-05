@@ -376,6 +376,11 @@ form {
         margin-left: 10px;
         width: 140px;
     }
+        .formNoTanGuapo > .checkbox {
+            margin-top: -40px;
+            width: 10%;
+            margin-left: 161px;
+        }
     .parFoto2{
         text-align: left;
         margin-left: 10px;
