@@ -22,10 +22,29 @@
         </div>
     </div>
 }
+@if (((string)TempData["mensajeModal"]) != null && ((string)TempData["mensajeModal"]).Equals("Modal"))
+{
+<div id="capafondo">
 
+    <h2>Contrato Creado con Exito</h2>
+    <script>"mensajeModal();"</script>
+    <article id=ar>
+        <h2>Contrato</h2>
+    <p>Has creado el contrato, haz click aqui para descargar</p>
+    <p>@Html.ActionLink("Contrato", "Imprimir", "ContratoAdopcion")</p> 
+    <footer><button class=button onclick=cerrarMensajeModal();>cerrar</button></footer>
+        </article> 
+
+</div>
+
+
+}
 <h2 style="text-align: center;">Últimos animales</h2>
 
 <main id="mainart">
+
+
+
     @foreach (var item in Model)
     {
         <article class="articulos">
@@ -133,17 +152,17 @@
         @{Html.RenderAction("ObtenerBabies", "Animal");}
     </div>
     <div>
-            <h2>Recién llegados</h2>
-            @{Html.RenderAction("ObtenerRecienLlegados", "Animal");}
-        </div>
-        <div>
-            <h2>Casos especiales</h2>
-            @{Html.RenderAction("ObtenerCasosEspeciales", "Animal");}
-        </div>
-        <div>
-            <h2>Más urgentes</h2>
-            @{Html.RenderAction("ObtenerUrgentes", "Animal");}
-        </div>*@
+        <h2>Recién llegados</h2>
+        @{Html.RenderAction("ObtenerRecienLlegados", "Animal");}
+    </div>
+    <div>
+        <h2>Casos especiales</h2>
+        @{Html.RenderAction("ObtenerCasosEspeciales", "Animal");}
+    </div>
+    <div>
+        <h2>Más urgentes</h2>
+        @{Html.RenderAction("ObtenerUrgentes", "Animal");}
+    </div>*@
 
 
 <br />
