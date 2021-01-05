@@ -28,7 +28,6 @@ namespace WebProtectoraMilpatitas.Models
         public ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum DatosMedicos { get; set; }
 
         [Display(Prompt = "Fecha llegada", Description = "Fecha llegada", Name = "Fecha llegada")]
-        [DataType(DataType.Date)]
         public DateTime FechaLlegada { get; set; }
 
         [Display(Prompt = "Especie del animal", Description = "Especie del animal", Name = "Especie")]
