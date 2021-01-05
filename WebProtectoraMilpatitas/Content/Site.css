@@ -2,33 +2,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
 
 
-*{
+* {
     box-sizing: border-box;
     font-family: 'Titillium Web', sans-serif;
     color: black;
 }
 
 /*****************ELEMENTOS COMUNES A TODAS LAS PAGINAS****************/
-img{
+img {
     width: 200px;
     height: 200px;
-    
 }
 
 a {
     color: darkslateblue;
     text-decoration: none;
 }
-a:hover {
+
+    a:hover {
         color: #fc810e;
-}
+    }
 
-p{
+p {
     padding: 0.1em;
-
 }
 
-b{
+b {
     padding: 0.1em;
 }
 
@@ -64,8 +63,7 @@ h1 {
     font-size: 4em;
 }
 
-h3{
-
+h3 {
 }
 
 
@@ -75,22 +73,20 @@ h3{
     padding: 1em;
     width: 85%;
     background-color: #c4f2c6;
-   
     text-align: center;
     border: 2px solid #fc810e;
 }
 
-.table tr {
+    .table tr {
         background-color: #fff99f;
-}
+    }
 
-.table figure img {
-       
+    .table figure img {
         width: 150px;
         height: 150px;
         border-radius: 70%;
         padding: 1em;
-}
+    }
 
 
 /****************************PAGINA DE ANIMALES***************************************/
@@ -100,15 +96,15 @@ h3{
     background-color: #fff99f;
     padding: 2em;
 }
-#mainart > .articulos > div {
-    margin-top: 20px;
-    width: 230px;
-    text-align: left;
-    font-size: 1em;
-    padding: 1em;
-    margin: 1em;
-  
-}
+
+    #mainart > .articulos > div {
+        margin-top: 20px;
+        width: 230px;
+        text-align: left;
+        font-size: 1em;
+        padding: 1em;
+        margin: 1em;
+    }
 
 .articulos:hover {
     box-shadow: 5px 10px 18px black;
@@ -116,21 +112,21 @@ h3{
 
 
 
-  #mainart > .articulos > div > a{
-      margin: 0.5em;
-      padding: 0.5em;
-  }
+#mainart > .articulos > div > a {
+    margin: 0.5em;
+    padding: 0.5em;
+}
 
 
 
 #mainart > .articulos {
-        padding: 1em;
-        width: 95%;
-        background-color: #c4f2c6;
-        margin: 2em;
-        text-align: center;
-        margin-right:auto;
-        margin-left: auto;
+    padding: 1em;
+    width: 95%;
+    background-color: #c4f2c6;
+    margin: 2em;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 
@@ -156,7 +152,7 @@ h3{
     list-style-type: none;
 }
 
-.inicio{
+.inicio {
     margin: 1em;
     justify-content: center;
     font-size: 1.2em;
@@ -165,47 +161,46 @@ h3{
 /********************FORMULARIOS Y PAGINAS CREATE EDIT MODIFICAR*****************/
 
 ul {
-
     justify-content: center;
     text-align: center;
     list-style-type: none;
-   
-  
 }
 
 .formGuapo {
-    border-radius: 10px;
+    border: 1px solid #fc810e;
     padding: .5em;
     margin-left: auto;
     margin-right: auto;
     width: 95%;
-    background-color: #fc810e;
+    background-color: #fff99f;
 }
-.formGuapo > .text{
-    display: flex;
-    flex-direction: column;
-}
- .formGuapo > .text> input{
-     width: 80%;
-     margin-left: auto;
-     margin-right: auto;
-     margin-top: 10px;
- }
-    .form-horizontal {
-        background-color: #fff99f;
-        text-align: center;
-        justify-content: center;
-        margin-right: 18em;
-        margin-left: 18em;
-        border: 2px solid #fc810e;
+
+    .formGuapo > .text {
+        display: flex;
+        flex-direction: column;
     }
 
+        .formGuapo > .text > input, .formGuapo > .text > select {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+        }
 
-.form-horizontal div{
-    padding: 0.5em;
-    
+.form-horizontal {
+    background-color: #fff99f;
     text-align: center;
+    justify-content: center;
+    margin-right: 18em;
+    margin-left: 18em;
+    border: 2px solid #fc810e;
 }
+
+
+    .form-horizontal div {
+        padding: 0.5em;
+        text-align: center;
+    }
 
 
 
@@ -216,7 +211,6 @@ hr {
 form {
     justify-content: center;
     text-align: center;
-  
 }
 
 .dl-horizontal {
@@ -270,19 +264,13 @@ form {
 
 .navbar-header {
     display: grid;
-    grid-template-areas: "nombre"
-                          "menu";
-    
+    grid-template-areas: "nombre" "menu";
     grid-template-columns: 70%;
-    
     justify-content: center;
-    
     align-items: center;
     width: 60%;
     margin: 0;
     padding: 0;
-    
-   
 }
 
 
@@ -295,12 +283,11 @@ form {
 .listaarriba {
     display: flex;
     grid-area: menu;
-   
 }
 
-.listaarriba input[type = "checkbox"]{
-    display: none;
-}
+    .listaarriba input[type = "checkbox"] {
+        display: none;
+    }
 
     .listaarriba > ul {
         background-color: #fc810e;
@@ -312,85 +299,94 @@ form {
         transition: left .5s;
     }
 
+}
 
-}#chkmenu {
+#chkmenu {
     display: none;
 }
 
-#chkmenu:checked + .nav{
-    left: 0;
-}
+    #chkmenu:checked + .nav {
+        left: 0;
+    }
+
     #chkmenu:not(:checked) ~ .navbar-right {
-       
-       visibility: hidden; 
+        visibility: hidden;
     }
 
     #chkmenu:checked ~ .navbar-right {
-       
         visibility: visible;
         transition: 4s;
     }
+
 .listaarriba li {
     font-size: 1em;
     padding: 1em;
     margin: 1em;
-    
 }
 
 
 
-@media all and (min-width: 550px){
-    .listaarriba>label{
+@media all and (min-width: 550px) {
+    .listaarriba > label {
         display: none;
     }
+
     .listaarriba ul {
         display: flex;
         flex-direction: column;
         left: 0;
         justify-content: center;
     }
+
     #partemenu {
         display: flex;
         flex-direction: column;
         left: 0;
         justify-content: center;
     }
-    .navbar-right{
+
+    .navbar-right {
         visibility: visible;
     }
 }
 
-@media all and (min-width: 620px){
+@media all and (min-width: 620px) {
     /*Aqui escribimos el codigo de los formularios*/
-    .formGuapo{
+    .formGuapo {
         width: 580px;
     }
-    .formGuapo > .text {
+
+        .formGuapo > .text {
             display: flex;
             flex-direction: row;
         }
-    .formGuapo>.text>label, .parFoto{
-        text-align: left;
-        margin-left: 10px;
-        width: 140px;
-    }
-    .formGuapo > .text > input{
-            margin-left: initial;
-            width: 60%;
-            margin-top: 0px;
-        }
+
+            .formGuapo > .text > label, .parFoto {
+                text-align: left;
+                margin-left: 10px;
+                width: 140px;
+            }
+
+            .formGuapo > .text > input, .formGuapo > .text > select {
+                margin-left: initial;
+                width: 60%;
+                margin-top: 0px;
+            }
+
     .parFoto > label > img {
         margin-left: 140px;
         margin-top: -20px;
     }
+
     .busFot {
         text-align: left;
         margin-top: -20px;
         margin-left: 150px
     }
+
     .formGuapo > .text-danger {
         text-align: left;
-       width: 640px;
+        width: 640px;
     }
 }
 
@@ -399,10 +395,12 @@ form {
         display: flex;
         flex-wrap: wrap;
     }
+
     .detalle > img {
         width: 500px;
         height: 450px;
     }
+
     #mainart > .articulos {
         width: 40%;
         margin-top: 1em;
@@ -417,15 +415,18 @@ form {
     .listaarriba ul {
         flex-direction: row;
     }
-    #details>div{
+
+    #details > div {
         width: 45%;
         margin-bottom: 10px;
     }
-    .detalle>img{
+
+    .detalle > img {
         width: 600px;
         height: 450px;
     }
-    #details{
+
+    #details {
         margin-left: auto;
         margin-right: auto;
         width: 600px;
@@ -433,6 +434,7 @@ form {
         flex-wrap: wrap;
     }
 }
+
 @media all and (min-width: 1020px) {
     #mainart > .articulos {
         margin-left: 2.4%;

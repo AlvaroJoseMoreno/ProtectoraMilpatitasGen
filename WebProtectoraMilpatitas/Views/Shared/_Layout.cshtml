@@ -14,38 +14,38 @@
 
 
 <body class="arriba">
-   
-       
-        <div class="arri">
-            <div class="container">
-                <div class="navbar-header">
-                   
-                   
-                    <div id="title">
-                        @Html.ActionLink("Protectora Milpatitas", "Indexad", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                    </div>
-                 </div>
 
 
+    <div class="arri">
+        <div class="container">
+            <div class="navbar-header">
+
+
+                <div id="title">
+                    @Html.ActionLink("Protectora Milpatitas", "Indexad", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
             </div>
+
+
         </div>
-        <div class="listaarriba">
-            <label for="chkmenu"><span></span></label>
-            <input type="checkbox" id="chkmenu">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Inicio", "Indexad", "Home")</li>
-                <li>@Html.ActionLink("Animales", "Index", "Animal")</li>
-                <li>@Html.ActionLink("Tests", "Index", "TestAnimalIdeal")</li>
-                <li>@Html.ActionLink("Usuarios", "Index", "Usuario")</li>
-                <li>@Html.ActionLink("Solicitudes Adopcion", "Index", "SolicitudAdopcion")</li>
-                <li>@Html.ActionLink("Contratos Adopcion", "Index", "ContratoAdopcion")</li>
-                <li>@Html.ActionLink("Seguimientos", "Index", "Seguimiento")</li>
-            </ul>
-            <div>
-                @Html.Partial("_LoginPartial")
-            </div>
-           
+    </div>
+    <div class="listaarriba">
+        <label for="chkmenu"><span>X</span></label>
+        <input type="checkbox" id="chkmenu">
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Inicio", "Indexad", "Home")</li>
+            <li>@Html.ActionLink("Animales", "Index", "Animal")</li>
+            <li>@Html.ActionLink("Tests", "Index", "TestAnimalIdeal")</li>
+            <li>@Html.ActionLink("Usuarios", "Index", "Usuario")</li>
+            <li>@Html.ActionLink("Solicitudes Adopcion", "Index", "SolicitudAdopcion")</li>
+            <li>@Html.ActionLink("Contratos Adopcion", "Index", "ContratoAdopcion")</li>
+            <li>@Html.ActionLink("Seguimientos", "Index", "Seguimiento")</li>
+        </ul>
+        <div>
+            @Html.Partial("_LoginPartial")
         </div>
+
+    </div>
 
     <div class="container body-content">
         <p>Estás aquí: @Html.MvcSiteMap().SiteMapPath()</p>
