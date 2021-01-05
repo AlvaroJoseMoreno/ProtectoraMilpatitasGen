@@ -482,7 +482,9 @@ namespace WebProtectoraMilpatitas.Controllers
 
                 AnimalCAD aniCad = new AnimalCAD(session);
                 AnimalCEN animalCEN= new AnimalCEN(aniCad);
-                
+
+                TempData["fecha"] = ani.FechaLlegada;
+
                 IList<AnimalEN> animalesfiltrados = animalCEN.BuscarAnimales(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter, ani.idBusEspecie, ani.idBusRaza/*, ani.FechaLlegada*/);
            
                
