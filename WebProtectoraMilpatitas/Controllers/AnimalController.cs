@@ -534,8 +534,10 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
-        public ActionResult ResultadoBuscar()
+        public ActionResult ResultadoBuscar(/*int? page*/)
         {
+            //int pageSize = 6;
+            //int pageNumber = (page ?? 1);
 
             return View(TempData["Animales"]);
         }
