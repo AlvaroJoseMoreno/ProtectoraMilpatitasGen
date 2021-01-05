@@ -11,54 +11,51 @@
 <p>
     @Html.ActionLink("Crear nuevo seguimiento", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            Usuario
-        </th>
-        <th>
-            Animal
-        </th>
-        <th>
-            Fecha seguimiento
-        </th>
-        <th>
-            Estado seguimiento
-        </th>
-    </tr>
+<main id="mainart">
+    
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                <figure>
-                    <figcaption>@Html.ActionLink(item.NomUsuario, "Details", "Usuario", new { email = item.idUsuario }, htmlAttributes: null) </figcaption>
+    <article class="articulos">
+
+        <div>
+            <p>
+                <b>Usuario:</b>
+                @Html.ActionLink(item.NomUsuario, "Details", "Usuario", new { email = item.idUsuario }, htmlAttributes: null) 
+            </p>
+                <p>
                     <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.FotoUsuario)" />
-                </figure>
-            </td>
-            <td>
-                <figure>
-                    <figcaption>@Html.ActionLink(item.NomAnimal, "Details", "Animal", new { id = item.idAnimal }, htmlAttributes: null) </figcaption>
-                    <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.FotoAnimal)" />
-                </figure>
-            </td>
-            <td>
+
+                </p>
+
+
+            <p>
+                <b>Animal:</b>
+                @Html.ActionLink(item.NomAnimal, "Details", "Animal", new { id = item.idAnimal }, htmlAttributes: null)
+             </p>
+                <p> 
+                <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.FotoAnimal)" />
+            </p>
+
+            <p>
+                <b>Fecha:</b>
                 @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
+            </p>
+            <p>
+                <b>Estado:</b>
                 @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
+            </p>
+        </div>
+        <div>
+            <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
+            <p>@Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
+            <p>@Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
+        </div>
 
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id }) |
-                @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-    }
+    </article>
+     }
 
-</table>
+</main>
 <br />
 Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
 
