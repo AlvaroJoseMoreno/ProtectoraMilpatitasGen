@@ -7,47 +7,49 @@
 }
 
 <h2>Detalle de usuario</h2>
+<section id="secanim">
+    <main id="details">
+        <article class="detalle">
 
-<div>
-    <h4>@Html.DisplayFor(model => model.Nombre)</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Foto)
-        </dt>
-        <dd>
-            <img style="width:200px;height:200px" src="/@Html.DisplayFor(model => model.Foto)" />
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Editar", "Edit", new { email = Model.Email }) |
 
-    @{
+            <h2>@Html.DisplayFor(model => model.Nombre)</h2>
+            <img style="width:400px;height:400px; border-radius: 80%;" src="/@Html.DisplayFor(model => model.Foto)" />
+            
+            
+            <div id="datis">
+                <p>
+                    <b>Nombre:</b>
+                    @Html.DisplayFor(modelItem => Model.Nombre)
+                </p>
+                <p>
+                    <b>Email:</b>
+                    @Html.DisplayFor(modelItem => Model.Email)
+                </p>
+              
 
-        if (Session["Usuario"] != null)
-        {
-            if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
-            {
-                @Html.ActionLink("Volver a la lista", "Index")
-            }
-            else
-            {
-                @Html.ActionLink("Volver a inicio", "Index", "Home")
-            }
-        }
-    }
+            </div>
+          
+                <p>
+                @Html.ActionLink("Editar", "Edit", new { email = Model.Email })
+                </p>
+                <p>
+                    @{
 
-</p>
+                        if (Session["Usuario"] != null)
+                        {
+                            if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                            {
+                                @Html.ActionLink("Volver a la lista", "Index")
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Volver a inicio", "Index", "Home")
+                            }
+                        }
+                    }
+
+                </p>
+
+        </article>
+    </main>
+</section>

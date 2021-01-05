@@ -5,47 +5,48 @@
 }
 <h2>@ViewBag.Title.</h2>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "formNoTanGuapo", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <h4>Cree una cuenta nueva.</h4>
     <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @*@Html.ValidationSummary("", new { @class = "text-danger" })*@
+    <p class="text">
         @Html.LabelFor(m => m.Nombre, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
+
+        @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
+    </p>
+    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+    <p class="text">
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
+
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+    </p>
+    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+    <p class="text">
         @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
+
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+    </p>
+    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+    <p class="text">
         @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="editor-label">
+
+        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+    </p>
+    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+    <p class="parFoto2">
         @Html.LabelFor(model => model.Foto)
-    </div>
-    <div class="editor-field">
+        <br />
         <label for="foto">
             <img style="width:200px;height:200px;" src="~/Imagenes/usuarios/imagen.png" />
             <input onchange="cargarFoto(this);" style="display:none;" id="foto" type="file" name="file" />
         </label>
-        <p><label for="foto">Buscar Foto</label></p>
-        @Html.ValidationMessageFor(model => model.Foto)
-    </div>
+    </p>
+    <p class="busFot2"><label for="foto">Buscar Foto</label></p>
+    @Html.ValidationMessageFor(model => model.Foto)
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Registrarse" />

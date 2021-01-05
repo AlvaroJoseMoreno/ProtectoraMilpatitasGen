@@ -7,35 +7,35 @@
 
 <h2>Editar raza</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "raza", FormMethod.Post, new { @class = "formGuapo" }))
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
+    
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
+        <p class="text">
             @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            
                 @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+        </p>
                 @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            
 
-        <div class="form-group">
+       <p class="text">
             @Html.LabelFor(model => model.NomEspecie, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            
                 @Html.EditorFor(model => model.NomEspecie, new { htmlAttributes = new { @class = "form-control" } })
+       </p>
                 @Html.ValidationMessageFor(model => model.NomEspecie, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Editar" class="btn btn-default" />
             </div>
         </div>
-    </div>
+    
 }
 
 <div>

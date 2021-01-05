@@ -42,13 +42,10 @@
 <h2 style="text-align: center;">Últimos animales</h2>
 
 <main id="mainart">
-
-
-
-    @foreach (var item in Model)
-    {
-        <article class="articulos">
-            <h2>@Html.ActionLink(item.Nombre, "Details", "Animal", new { id = item.Id }, htmlAttributes: null)</h2>
+        @foreach (var item in Model)
+        {
+            <article class="articulos">
+                <h2>@Html.ActionLink(item.Nombre, "Details", "Animal", new { id = item.Id }, htmlAttributes: null)</h2>
 
             <img src="/@Html.DisplayFor(modelItem => item.Foto)" />
             <div>
@@ -148,21 +145,21 @@
 
 </main>
 @*<div>
-        <h2>Babies</h2>
-        @{Html.RenderAction("ObtenerBabies", "Animal");}
-    </div>
-    <div>
-        <h2>Recién llegados</h2>
-        @{Html.RenderAction("ObtenerRecienLlegados", "Animal");}
-    </div>
-    <div>
-        <h2>Casos especiales</h2>
-        @{Html.RenderAction("ObtenerCasosEspeciales", "Animal");}
-    </div>
-    <div>
-        <h2>Más urgentes</h2>
-        @{Html.RenderAction("ObtenerUrgentes", "Animal");}
-    </div>*@
+    <h2>Babies</h2>
+    @{Html.RenderAction("ObtenerBabies", "Animal");}
+</div>
+<div>
+    <h2>Recién llegados</h2>
+    @{Html.RenderAction("ObtenerRecienLlegados", "Animal");}
+</div>
+<div>
+    <h2>Casos especiales</h2>
+    @{Html.RenderAction("ObtenerCasosEspeciales", "Animal");}
+</div>
+<div>
+    <h2>Más urgentes</h2>
+    @{Html.RenderAction("ObtenerUrgentes", "Animal");}
+</div>*@
 
 
 <br />

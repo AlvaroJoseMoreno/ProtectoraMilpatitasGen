@@ -16,21 +16,26 @@
                     Animal
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Edad)
+                    Edad
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Sexo)
+                    Sexo
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Centro)
+                    Centro
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Caracter)
+                    Caracter
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.NomEspecie)
+                    Estado de Salud
                 </th>
-                <th></th>
+                <th>
+                    Especie
+                </th>
+                <th>
+                    Raza
+                </th>
             </tr>
         }
         else
@@ -61,7 +66,13 @@
                 @Html.DisplayFor(modelItem => item.Caracter)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.DatosMedicos)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.NomEspecie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomRaza)
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", new { id = item.Id })
