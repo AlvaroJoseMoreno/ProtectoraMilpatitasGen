@@ -487,6 +487,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 conCEN.Rellenar_Contrato((int)TempData["idCon"], con.Nombre, con.DNI_NIF_Pasaporte, filenameEscritura, filenamePago, con.LugarRecojida, con.FirmaCompromiso);
                 //con.EscrituraHogar;
                 SessionClose();
+                TempData["mensajeModal"] = "Modal";
                 return RedirectToAction("Index");
 
             }
