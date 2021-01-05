@@ -120,6 +120,7 @@
 			<Compile Include="CEN\ProtectoraMilpatitas\UsuarioCEN_Cerrar_Sesion.cs" />
 			
 			
+			<Compile Include="CEN\ProtectoraMilpatitas\UsuarioCEN_Modificar.cs" />
 			
 			
 			<Compile Include="CEN\ProtectoraMilpatitas\UsuarioCEN_Iniciar_Sesion.cs" />

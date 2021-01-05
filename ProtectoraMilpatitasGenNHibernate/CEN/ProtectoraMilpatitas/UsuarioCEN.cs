@@ -60,39 +60,6 @@ public string Registrarse (string p_nombre, string p_email, String p_password, s
         return oid;
 }
 
-public void Modificar (string p_Usuario_OID, string p_nombre, String p_password, string p_foto)
-{
-        UsuarioEN usuarioEN = null;
-
-        //Initialized UsuarioEN
-        usuarioEN = new UsuarioEN ();
-        usuarioEN.Email = p_Usuario_OID;
-        usuarioEN.Nombre = p_nombre;
-        usuarioEN.Password = Utils.Util.GetEncondeMD5 (p_password);
-            if (p_foto != null)
-            {
-                string[] fotoAnim = p_foto.Split('/');
-                if (fotoAnim.Length == 3)
-                {
-                    if (fotoAnim[2].Equals(""))
-                    {
-                        UsuarioCEN anicen = new UsuarioCEN();
-                        UsuarioEN anien = anicen.Dame_Por_Email(p_Usuario_OID);
-                        usuarioEN.Foto = anien.Foto;
-                    }
-                    else
-                    {
-                        usuarioEN.Foto = p_foto;
-                    }
-                }
-
-            }
-
-            //Call to UsuarioCAD
-
-            _IUsuarioCAD.Modificar (usuarioEN);
-}
-
 public void Eliminar (string email
                       )
 {
