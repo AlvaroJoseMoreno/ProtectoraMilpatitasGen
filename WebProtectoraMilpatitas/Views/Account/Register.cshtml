@@ -36,14 +36,15 @@
         @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
     </p>
     @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
-    <p class="parFoto">
+    <p class="parFoto2">
         @Html.LabelFor(model => model.Foto)
+        <br />
         <label for="foto">
             <img style="width:200px;height:200px;" src="~/Imagenes/usuarios/imagen.png" />
             <input onchange="cargarFoto(this);" style="display:none;" id="foto" type="file" name="file" />
         </label>
     </p>
-    <p class="busFot"><label for="foto">Buscar Foto</label></p>
+    <p class="busFot2"><label for="foto">Buscar Foto</label></p>
     @Html.ValidationMessageFor(model => model.Foto)
 
     <div class="form-group">
