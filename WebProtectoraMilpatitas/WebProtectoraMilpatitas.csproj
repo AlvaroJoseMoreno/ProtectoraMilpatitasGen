@@ -463,6 +463,8 @@
     <Content Include="Views\Animal\ObtenerRecienLlegados.cshtml" />
     <Content Include="Views\Animal\ObtenerCasosEspeciales.cshtml" />
     <Content Include="Views\Animal\ObtenerUrgentes.cshtml" />
+    <Content Include="Views\SolicitudAdopcion\ResultadoAceptar.cshtml" />
+    <Content Include="Views\SolicitudAdopcion\AceptarSolicitud.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

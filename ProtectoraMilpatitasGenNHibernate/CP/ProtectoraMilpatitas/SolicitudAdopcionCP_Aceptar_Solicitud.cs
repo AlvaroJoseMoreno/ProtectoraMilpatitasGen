@@ -22,7 +22,7 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
 {
 public partial class SolicitudAdopcionCP : BasicCP
 {
-public void Aceptar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
+public string Aceptar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
 {
         /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_SolicitudAdopcion_Aceptar_Solicitud) ENABLED START*/
 
@@ -39,6 +39,7 @@ public void Aceptar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
         MensajeCEN mensaCEN = null;
         MensajeEN mensaEn = null;
 
+            string result = "";
 
         try
         {
@@ -68,9 +69,15 @@ public void Aceptar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
                                 if (usu.Email.Equals (p_Usuario)) {
                                         notificacionEN.Mensaje = "Solicitud Aceptada";
                                         mensaEn.Texto = "Solicitud aceptada";
+                                        solicitudAdopcionEN.Id = p_SolicitudAdopcion;
                                         solicitudAdopcionEN.Estado = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.aceptado;
                                         solicitudAdopcionCP.Actualizar_Estado (solicitudAdopcionEN.Id, solicitudAdopcionEN.Estado); //tiene que ser solicitudAdopcionCP
+
+                                        solicitudAdopcionCAD.Actualizar_Estado(solicitudAdopcionEN);
+
                                         notiCEN.Enviar (notificacionEN.Id, p_Usuario, mensaEn.Texto);
+
+                                        result = "La solicitud ha sido aceptada";
                                 }
                                 else{
                                         notificacionEN.Mensaje = "Solicitud Denegada";
@@ -95,7 +102,7 @@ public void Aceptar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
                 SessionClose ();
         }
 
-
+            return result;
         /*PROTECTED REGION END*/
 }
 }
