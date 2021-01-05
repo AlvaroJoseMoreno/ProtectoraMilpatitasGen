@@ -21,11 +21,16 @@
       <mvcSiteMapNode title="Index Animal" controller="Animal" action="Index"/>
       <mvcSiteMapNode title="Obtener Animales por Especie" controller="Animal" action="ObtenerAnimalesPorEspecie" preservedRouteParameters="id"/>
       <mvcSiteMapNode title="Obtener Animales por Usuario" controller="Animal" action="ObtenerAnimalesPorUsuario" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Obtener Babies" controller="Animal" action="ObtenerBabies"/>
+      <mvcSiteMapNode title="Obtener Casos Especiales" controller="Animal" action="ObtenerCasosEspeciales"/>
+      <mvcSiteMapNode title="Obtener Recien Llegados" controller="Animal" action="ObtenerRecienLlegados"/>
+      <mvcSiteMapNode title="Obtener Urgentes" controller="Animal" action="ObtenerUrgentes"/>
       <mvcSiteMapNode title="Resultado Busqueda" controller="Animal" action="ResultadoBuscar"/>
     </mvcSiteMapNode>
 
     <mvcSiteMapNode title="Contrato de Adopción" controller="ContratoAdopcion" action="Index">
-      <mvcSiteMapNode title="Actualizar Estado" controller="ContratoAdopcion" action="ActualizarEstado" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Actualizar Estado Contrato Adopción" controller="ContratoAdopcion" action="ActualizarEstado" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Rellenar Contrato Adopción" controller="ContratoAdopcion" action="contratoRellenar" preservedRouteParameters="id"/>
       <mvcSiteMapNode title="Crear Contrato Adopción" controller="ContratoAdopcion" action="Create"/>
       <mvcSiteMapNode title="Eliminar Contrato Adopción" controller="ContratoAdopcion" action="Delete" preservedRouteParameters="id"/>
       <mvcSiteMapNode title="Detalles Contrato Adopción" controller="ContratoAdopcion" action="Details" preservedRouteParameters="id"/>
@@ -65,7 +70,7 @@
     </mvcSiteMapNode>
 
     <mvcSiteMapNode title="Solicitud Adopcion" controller="SolicitudAdopcion" action="Index">
-      <mvcSiteMapNode title="Actualizar Estado" controller="SolicitudAdopcion" action="ActualizarEstado" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Actualizar Estado Solicitud Adopcion" controller="SolicitudAdopcion" action="ActualizarEstado" preservedRouteParameters="id"/>
       <mvcSiteMapNode title="Crear Solicitud Adopcion" controller="SolicitudAdopcion" action="Create"/>
       <mvcSiteMapNode title="Eliminar Solicitud Adopcion" controller="SolicitudAdopcion" action="Delete" preservedRouteParameters="id"/>
       <mvcSiteMapNode title="Detalles Solicitud Adopcion" controller="SolicitudAdopcion" action="Details" preservedRouteParameters="id"/>
@@ -73,6 +78,16 @@
       <mvcSiteMapNode title="Encuesta Solicitud Adopcion" controller="SolicitudAdopcion" action="Encuesta" preservedRouteParameters="id"/>
       <mvcSiteMapNode title="Index Solicitud Adopcion" controller="SolicitudAdopcion" action="Index"/>
       <mvcSiteMapNode title="Obtener Solicitud Adopcion" controller="SolicitudAdopcion" action="ObtenerSolicitudUsuario" preservedRouteParameters="id"/>
+    </mvcSiteMapNode>
+    
+    <mvcSiteMapNode title="TestAnimalIdeal" controller="TestAnimalIdeal" action="Index">
+      <mvcSiteMapNode title="Crear Test Animal Ideal" controller="TestAnimalIdeal" action="Create"/>
+      <mvcSiteMapNode title="Eliminar Test Animal Ideal" controller="TestAnimalIdeal" action="Delete" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Detalles Test Animal Ideal" controller="TestAnimalIdeal" action="Details" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Editar Test Animal Ideal" controller="TestAnimalIdeal" action="Edit" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Index Test Animal Ideal" controller="TestAnimalIdeal" action="Index"/>
+      <mvcSiteMapNode title="Hacer Test Animal Ideal" controller="TestAnimalIdeal" action="RellenarTest"/>
+      <mvcSiteMapNode title="Ver resultado Test Animal Ideal" controller="TestAnimalIdeal" action="VerResultado" preservedRouteParameters="id"/>
     </mvcSiteMapNode>
 
     <mvcSiteMapNode title="Usuario" controller="Usuario" action="Index">
