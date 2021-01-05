@@ -22,7 +22,23 @@
         </div>
     </div>
 }
+@if (((string)TempData["mensajeModal"]) != null && ((string)TempData["mensajeModal"]).Equals("Modal"))
+{
+<div id="capafondo">
 
+    <h2>Contrato Creado con Exito</h2>
+    <script>"mensajeModal();"</script>
+    <article id=ar>
+        <h2>Contrato</h2>
+    <p>Has creado el contrato, haz click aqui para descargar</p>
+    <p>@Html.ActionLink("Contrato", "Imprimir", "ContratoAdopcion")</p> 
+    <footer><button class=button onclick=cerrarMensajeModal();>cerrar</button></footer>
+        </article> 
+
+</div>
+
+
+}
 <h2 style="text-align: center;">Últimos animales</h2>
 
 <main id="mainart">
@@ -31,103 +47,103 @@
             <article class="articulos">
                 <h2>@Html.ActionLink(item.Nombre, "Details", "Animal", new { id = item.Id }, htmlAttributes: null)</h2>
 
-                <img src="/@Html.DisplayFor(modelItem => item.Foto)" />
-                <div>
-                    <p>
-                        <b>Edad: </b>
-                        @Html.DisplayFor(modelItem => item.Edad)
-                    </p>
-                    <p>
-                        <b>Sexo: </b>
+            <img src="/@Html.DisplayFor(modelItem => item.Foto)" />
+            <div>
+                <p>
+                    <b>Edad: </b>
+                    @Html.DisplayFor(modelItem => item.Edad)
+                </p>
+                <p>
+                    <b>Sexo: </b>
 
-                        @if (item.Sexo.ToString().Equals("H"))
-                        {
-                            <label style="font-weight:normal;">Hembra.</label>
-                        }
-                        else
-                        {
-                            <label style="font-weight:normal;">Macho.</label>
-                        }
-                    </p>
-                    <p>
-                        <b>
-                            Centro:
-                        </b> @Html.DisplayFor(modelItem => item.Centro)
-                    </p>
-                    <p>
-                        <b>
-                            Caracter:
-                        </b> @Html.DisplayFor(modelItem => item.Caracter)
-                    </p>
-                    <p>
-                        <b>Datos Medicos: </b>
-                        @if (item.DatosMedicos.ToString().Equals("enRecuperacion"))
-                        {
-                            <label style="font-weight:normal;">En Recuperación</label>
-                        }
-                        else
-                        {
-                            @Html.DisplayFor(modelItem => item.DatosMedicos)
-
-                        }
-                    </p>
-                    <p>
-                        <b>Especie: </b>
-                        @Html.DisplayFor(modelItem => item.NomEspecie)
-                    </p>
-                    <p>
-                        <b>Raza: </b>
-                        @Html.DisplayFor(modelItem => item.NomRaza)
-                    </p>
-
-
-                </div>
-
-
-                @{
-                    bool comprobar = false;
-                    string nombreUsu = "";
-                    string idUsu = "";
-
-                    if (Session["Usuario"] != null)
+                    @if (item.Sexo.ToString().Equals("H"))
                     {
-                        nombreUsu = ((UsuarioEN)Session["Usuario"]).Nombre;
-                        idUsu = ((UsuarioEN)Session["Usuario"]).Email;
-                    }
-
-                    IList<SolicitudAdopcionEN>
-                        soliEN = new SolicitudAdopcionCEN().Obtener_Solicitud_Usuario(idUsu);
-
-                    foreach (SolicitudAdopcionEN sol in soliEN)
-                    {
-                        if (sol.Animal.Id == item.Id && sol.Usuario.Email.Equals(idUsu))
-                        {
-                            comprobar = true;
-                            break;
-                        }
-                    }
-
-                    if (comprobar)
-                    {
-                        <p>Ya has realizado una solicitud a este animal</p>
+                        <label style="font-weight:normal;">Hembra.</label>
                     }
                     else
                     {
-                        if (item.EstadoAdopcion.ToString().Equals("SinTramite") || item.EstadoAdopcion.ToString().Equals("EnSolicitud"))
-                        {
-                            <p>@Html.ActionLink("Adoptar", "Encuesta", "SolicitudAdopcion", new { id = item.Id }, new { @class = "Buttons" })</p>
-                        }
-                        else
-                        {
+                        <label style="font-weight:normal;">Macho.</label>
+                    }
+                </p>
+                <p>
+                    <b>
+                        Centro:
+                    </b> @Html.DisplayFor(modelItem => item.Centro)
+                </p>
+                <p>
+                    <b>
+                        Caracter:
+                    </b> @Html.DisplayFor(modelItem => item.Caracter)
+                </p>
+                <p>
+                    <b>Datos Medicos: </b>
+                    @if (item.DatosMedicos.ToString().Equals("enRecuperacion"))
+                    {
+                        <label style="font-weight:normal;">En Recuperación</label>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.DatosMedicos)
 
-                            <p>Animal no disponible!</p>
-                        }
+                    }
+                </p>
+                <p>
+                    <b>Especie: </b>
+                    @Html.DisplayFor(modelItem => item.NomEspecie)
+                </p>
+                <p>
+                    <b>Raza: </b>
+                    @Html.DisplayFor(modelItem => item.NomRaza)
+                </p>
+
+
+            </div>
+
+
+            @{
+                bool comprobar = false;
+                string nombreUsu = "";
+                string idUsu = "";
+
+                if (Session["Usuario"] != null)
+                {
+                    nombreUsu = ((UsuarioEN)Session["Usuario"]).Nombre;
+                    idUsu = ((UsuarioEN)Session["Usuario"]).Email;
+                }
+
+                IList<SolicitudAdopcionEN>
+                    soliEN = new SolicitudAdopcionCEN().Obtener_Solicitud_Usuario(idUsu);
+
+                foreach (SolicitudAdopcionEN sol in soliEN)
+                {
+                    if (sol.Animal.Id == item.Id && sol.Usuario.Email.Equals(idUsu))
+                    {
+                        comprobar = true;
+                        break;
                     }
                 }
-            </article>
-                    }
 
-    </main>
+                if (comprobar)
+                {
+                    <p>Ya has realizado una solicitud a este animal</p>
+                }
+                else
+                {
+                    if (item.EstadoAdopcion.ToString().Equals("SinTramite") || item.EstadoAdopcion.ToString().Equals("EnSolicitud"))
+                    {
+                        <p>@Html.ActionLink("Adoptar", "Encuesta", "SolicitudAdopcion", new { id = item.Id }, new { @class = "Buttons" })</p>
+                    }
+                    else
+                    {
+
+                        <p>Animal no disponible!</p>
+                    }
+                }
+            }
+        </article>
+    }
+
+</main>
 @*<div>
     <h2>Babies</h2>
     @{Html.RenderAction("ObtenerBabies", "Animal");}
@@ -153,6 +169,6 @@
         new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

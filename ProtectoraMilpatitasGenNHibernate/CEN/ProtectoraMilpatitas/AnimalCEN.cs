@@ -61,9 +61,9 @@ public System.Collections.Generic.IList<AnimalEN> Dame_Todos (int first, int siz
         list = _IAnimalCAD.Dame_Todos (first, size);
         return list;
 }
-public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> BuscarAnimales (string p_nombre, int? p_edad, char p_sexo, string p_centro, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum? p_datosMedicos, string p_caracter, Nullable<DateTime> p_fechaLlegada)
+public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> BuscarAnimales (string p_nombre, int? p_edad, char p_sexo, string p_centro, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSaludEnum? p_datosMedicos, string p_caracter, int p_especie, int p_raza)
 {
-        return _IAnimalCAD.BuscarAnimales (p_nombre, p_edad, p_sexo, p_centro, p_datosMedicos, p_caracter, p_fechaLlegada);
+        return _IAnimalCAD.BuscarAnimales (p_nombre, p_edad, p_sexo, p_centro, p_datosMedicos, p_caracter, p_especie, p_raza);
 }
 public System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN> Dame_Animales_Por_Especie (int p_especie)
 {

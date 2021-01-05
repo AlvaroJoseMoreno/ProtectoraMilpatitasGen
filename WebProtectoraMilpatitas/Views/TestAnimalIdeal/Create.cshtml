@@ -7,7 +7,7 @@
 
 <h2>Crear nuevo Test Animal Ideal</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "TestAnimalIdeal", FormMethod.Post, new { @class = "formGuapo" })) 
 {
     @Html.AntiForgeryToken()
     
