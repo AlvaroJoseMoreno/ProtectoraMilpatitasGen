@@ -22,7 +22,9 @@ a {
 a:hover {
         color: #fc810e;
 }
-
+.pagination {
+    display: flex;
+}
 p{
     padding: 0.1em;
 
