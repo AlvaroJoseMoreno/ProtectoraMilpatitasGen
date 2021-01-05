@@ -26,8 +26,11 @@ namespace WebProtectoraMilpatitas.Assemblers
             contrato.FotoUsuario = con.Usuario.Foto;
 
             contrato.idAnimal = con.Animal.Id;
-            contrato.NomAnimal = con.Animal.Nombre;
-            contrato.FotoAnimal = con.Animal.Foto;
+            if (con.Animal.Nombre != null)
+            {
+                contrato.NomAnimal = con.Animal.Nombre;
+            }
+                contrato.FotoAnimal = con.Animal.Foto;
 
             contrato.idSolicitud = con.SolicitudAdopcion.Id;
 

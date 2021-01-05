@@ -9,51 +9,51 @@
 <h2>Editar usuario</h2>
 
 
-@using (Html.BeginForm("Edit", "Usuario", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "Usuario", FormMethod.Post, new {@class="formGuapo",enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
+
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-        </div>
-    </div>
+<p class="text">
+    @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+    </p>
+    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="editor-label">
-        @Html.LabelFor(model => model.Foto)
-    </div>
-    <div class="editor-field">
-        <label for="foto"><img style="width:200px;height:200px;" src="/@Html.DisplayFor(model => model.Foto)" /></label>
-        <input onchange="cargarFoto(this);" style="display:none;" id="foto" type="file" name="file" />
-        <p><label for="foto">Buscar Foto</label></p>
+
+<p class="text">
+    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+
+    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+</p>
+    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+
+<p class="text">
+    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+
+    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+</p>
+    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+<p class="parFoto">
+    @Html.LabelFor(model => model.Foto)
+    <br />
+    <label for="foto"><img style="width:200px;height:200px;" src="/@Html.DisplayFor(model => model.Foto)" /></label>
+    <input onchange="cargarFoto(this);" style="display:none;" id="foto" type="file" name="file" />
+</p>
+<p class="busFot"><label for="foto">Buscar Foto</label></p>
         @Html.ValidationMessageFor(model => model.Foto)
-    </div>
+   
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Editar" class="btn btn-default" />
         </div>
     </div>
-</div>
+
 }
 
 <div>
