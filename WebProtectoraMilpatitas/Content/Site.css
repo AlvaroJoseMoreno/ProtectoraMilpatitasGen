@@ -173,24 +173,24 @@ ul {
   
 }
 
-.formGuapo {
-    border-radius: 10px;
-    padding: .5em;
+.formGuapo, .formNoTanGuapo {
+    border: 2px solid #fc810e;
+    padding: 1em;
     margin-left: auto;
     margin-right: auto;
     width: 95%;
-    background-color: #fc810e;
+    background-color: #fff99f;
 }
-.formGuapo > .text{
+.formGuapo > .text, .formNoTanGuapo> .text{
     display: flex;
     flex-direction: column;
 }
- .formGuapo > .text> input{
-     width: 80%;
-     margin-left: auto;
-     margin-right: auto;
-     margin-top: 10px;
- }
+    .formGuapo > .text > input, .formGuapo > .text > select, .formNoTanGuapo>.text>input, .formNoTanGuapo>.text>select {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+    }
     .form-horizontal {
         background-color: #fff99f;
         text-align: center;
@@ -362,10 +362,10 @@ form {
 
 @media all and (min-width: 620px){
     /*Aqui escribimos el codigo de los formularios*/
-    .formGuapo{
+    .formGuapo, .formNoTanGuapo{
         width: 580px;
     }
-    .formGuapo > .text {
+    .formGuapo > .text, .formNoTanGuapo>.text {
             display: flex;
             flex-direction: row;
         }
@@ -374,7 +374,12 @@ form {
         margin-left: 10px;
         width: 140px;
     }
-    .formGuapo > .text > input{
+    .formNoTanGuapo>.text>label{
+        text-align: left;
+        margin-left: 10px;
+        width: 170px;
+    }
+        .formGuapo > .text > input, .formGuapo > .text > select, .formNoTanGuapo > .text > input, .formNoTanGuapo > .text > select {
             margin-left: initial;
             width: 60%;
             margin-top: 0px;
