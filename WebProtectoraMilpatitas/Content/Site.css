@@ -368,27 +368,41 @@ form {
         width: 580px;
     }
     .formGuapo > .text, .formNoTanGuapo>.text {
-            display: flex;
-            flex-direction: row;
-        }
+        display: flex;
+        flex-direction: row;
+    }
     .formGuapo>.text>label, .parFoto{
         text-align: left;
         margin-left: 10px;
         width: 140px;
+    }
+    .parFoto2{
+        text-align: left;
+        margin-left: 10px;
+        width: 170px;
     }
     .formNoTanGuapo>.text>label{
         text-align: left;
         margin-left: 10px;
         width: 170px;
     }
-        .formGuapo > .text > input, .formGuapo > .text > select, .formNoTanGuapo > .text > input, .formNoTanGuapo > .text > select {
-            margin-left: initial;
-            width: 60%;
-            margin-top: 0px;
-        }
+    .formGuapo > .text > input, .formGuapo > .text > select, .formNoTanGuapo > .text > input, .formNoTanGuapo > .text > select {
+        margin-left: initial;
+        width: 60%;
+        margin-top: 0px;
+    }
     .parFoto > label > img {
         margin-left: 140px;
         margin-top: -20px;
+    }
+    .parFoto2 > label > img {
+        margin-left: 170px;
+        margin-top: -20px;
+    }
+    .busFot2{
+        text-align:left;
+        margin-top: -20px;
+        margin-left: 180px;
     }
     .busFot {
         text-align: left;

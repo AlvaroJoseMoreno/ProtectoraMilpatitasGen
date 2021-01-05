@@ -1,40 +1,77 @@
-@Html.AntiForgeryToken()
-    <h4>Cree una cuenta nueva.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <p class="text">
-        @Html.LabelFor(m => m.Nombre, new { @class = "col-md-2 control-label" })
-        
-            @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
-    </p>
-    <p class="text">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-    </p>   
-    <p class="text">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-    </p>    
-    <p class="text">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-    </p>    
+@model WebProtectoraMilpatitas.Models.SolicitudAdopcionViewModel
 
-    <p class="parFoto">
-        @Html.LabelFor(model => model.Foto)
-        <label for="foto">
-            <img style="width:200px;height:200px;" src="~/Imagenes/usuarios/imagen.png" />
-            <input onchange="cargarFoto(this);" style="display:none;" id="foto" type="file" name="file" />
-        </label>
-    </p>
-        <p class="busFot"><label for="foto">Buscar Foto</label></p>
-        @Html.ValidationMessageFor(model => model.Foto)
-    
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Registrarse" />
+@{
+    ViewBag.Title = "Encuesta";
+}
+
+<h2>Encuesta de Adopción</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AnimalesAcargo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AnimalesAcargo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AnimalesAcargo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AmbienteConvivencia, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AmbienteConvivencia, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AmbienteConvivencia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TiempoLibre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TiempoLibre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TiempoLibre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TodosAcuerdo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.TodosAcuerdo)
+                    @Html.ValidationMessageFor(model => model.TodosAcuerdo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MotivosAdopcion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MotivosAdopcion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MotivosAdopcion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
         </div>
     </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
