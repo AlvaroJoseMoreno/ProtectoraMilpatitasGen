@@ -5,71 +5,61 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Detalles</h2>
+<h2>Detalles Seguimiento</h2>
+<section id="secanim">
+    <main id="details">
+        <article class="detalle">
+            <h2>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NomUsuario)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NomUsuario)
-        </dd>
+                @Html.DisplayFor(model => model.NomUsuario)
+            </h2>
+            <div>
+                
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FotoUsuario)
-        </dt>
+                <p>
+                   
+                
+                    <img style="display:block;margin:auto; width: 200px;height: 200px; border-radius: 80%;" src="/@Html.DisplayFor(model => model.FotoUsuario)" />
+                </p>
 
-        <dd>
-            <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(model => model.FotoUsuario)" />
-        </dd>
+                
+                    <h2>@Html.DisplayFor(model => model.NomAnimal)</h2>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NomAnimal)
-        </dt>
+                   
+               
 
-        <dd>
-            @Html.DisplayFor(model => model.NomAnimal)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FotoAnimal)
-        </dt>
 
-        <dd>
-            <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(model => model.FotoAnimal)" />
-        </dd>
+                <p>
+                    <img style="display:block;margin:auto; width: 200px;height: 200px; border-radius: 80%;" src="/@Html.DisplayFor(model => model.FotoAnimal)" />
+                </p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Fecha)
-        </dt>
+                <p>
+                    <b>@Html.DisplayNameFor(model => model.Fecha)</b>
 
-        <dd>
-            @Html.DisplayFor(model => model.Fecha)
-        </dd>
+                    @Html.DisplayFor(model => model.Fecha)
+                </p>
 
-    </dl>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
+                <p>
+                    <b>@Html.DisplayNameFor(model => model.Estado)</b>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
+                    @Html.DisplayFor(model => model.Estado)
+                </p>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Volver a la lista", "Index")
-</p>
+                <p>
+                    <b>@Html.DisplayNameFor(model => model.Descripcion)</b>
+
+                    @Html.DisplayFor(model => model.Descripcion)
+                </p>
+            </div>
+            <div>
+                <p>
+                    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+                    @Html.ActionLink("Volver a la lista", "Index")
+                </p>
+            </div>
+            </article>
+            </main>
+           </section>
