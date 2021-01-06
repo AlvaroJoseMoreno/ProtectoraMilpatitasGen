@@ -17,11 +17,14 @@
     <div id="capafondo">
      
         <article id="ar">
-            <h2>Contrato de Adopción</h2>
+            <h2>Contrato de adopción</h2>
             <p>
                 @((string)TempData["mensajeModal"])
             </p>
-
+            @if(((string)TempData["mensajeModal"]).Equals("¡Enhorabuena!, Has creado el contrato con éxito, haga click en el enlace de abajo para descargarlo"))
+            {
+                <p>@Html.ActionLink("Contrato", "Imprimir", "ContratoAdopcion", new { target = "_blank" })</p>
+            }
             <footer><button class="button" onclick="cerrarMensajeModal();">cerrar</button></footer>
         </article>
     </div>

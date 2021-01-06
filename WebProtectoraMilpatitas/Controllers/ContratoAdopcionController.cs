@@ -138,7 +138,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
                 
                 contCEN.Nuevo(con.idUsuario, con.idSolicitud, con.idAnimal);
-
+                TempData["mensajeModal"] = "Has creado un nuevo Contrato";
                 return RedirectToAction("Index");
             }
             catch
@@ -343,6 +343,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
                 conCEN.Rellenar_Contrato(con.Id, con.Nombre, con.DNI_NIF_Pasaporte, filenameEscritura, filenamePago, con.LugarRecojida, con.FirmaCompromiso);
                 //con.EscrituraHogar;
+                TempData["mensajeModal"] = "Los datos se han actualizado";
                 return RedirectToAction("Index");
             }
             catch
@@ -401,6 +402,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
                 conCP.Actualizar_Estado(con.Id, con.Estado);
 
+                TempData["mensajeModal"] = "El estado del contrato ha sido actualizado";
                 return RedirectToAction("Index");
             }
             catch
@@ -487,7 +489,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 conCEN.Rellenar_Contrato((int)TempData["idCon"], con.Nombre, con.DNI_NIF_Pasaporte, filenameEscritura, filenamePago, con.LugarRecojida, con.FirmaCompromiso);
                 //con.EscrituraHogar;
                 SessionClose();
-                TempData["mensajeModal"] = "Modal";
+                TempData["mensajeModal"] = "¡Enhorabuena!, Has creado el contrato con éxito, haga click en el enlace de abajo para descargarlo";
                 return RedirectToAction("Index");
 
             }
@@ -545,7 +547,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 ContratoAdopcionCEN conCEN = new ContratoAdopcionCEN();
 
                 conCEN.Eliminar(id);
-
+                TempData["mensajeModal"] = "El contrato ha sido eliminado";
                 return RedirectToAction("Index");
             }
             catch
