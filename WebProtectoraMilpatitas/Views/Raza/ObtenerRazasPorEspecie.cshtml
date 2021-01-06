@@ -12,28 +12,30 @@
     @Html.ActionLink("Crear nueva raza", "Create")
 </p>
 
-@using (Html.BeginForm())
-{
-    <p>
-        Buscar por nombre raza: @Html.TextBox("nameRazaSearch")
-        <input type="submit" value="Buscar" />
-    </p>
-}
-
-@using (Html.BeginForm())
-{
-    <p>
-        Buscar por nombre especie: @Html.TextBox("nameEspecieSearch")
-        <input type="submit" value="Buscar" />
-    </p>
-}
 <table class="table">
     @{
         if (Model.Any())
         {
             <tr>
+                @using (Html.BeginForm())
+                {
+                    <th>
+                        Nombre Raza: @Html.TextBox("nameRazaSearch") <input style="display:none;" type="submit" value="Buscar" />
+                    </th>
+                }
+
+                @using (Html.BeginForm())
+                {
+                    <th>
+                        Nombre Especie: @Html.TextBox("nameEspecieSearch") <input style="display:none;" type="submit" value="Buscar" />
+                    </th>
+                }
+                <th></th>
+            </tr>
+
+            <tr>
                 <th>
-                    @Html.ActionLink("Nombre Raza", "ObtenerRazasPorEspecie", new { p_especie= ViewData["idEspecie"], sortOrder = ViewBag.NameRazaSort })
+                    @Html.ActionLink("Nombre Raza", "ObtenerRazasPorEspecie", new { p_especie = ViewData["idEspecie"], sortOrder = ViewBag.NameRazaSort })
                 </th>
                 <th>
                     @Html.ActionLink("Nombre Especie", "ObtenerRazasPorEspecie", new { p_especie = ViewData["idEspecie"], sortOrder = ViewBag.NameEspecieSort })

@@ -18,7 +18,7 @@ namespace WebProtectoraMilpatitas.Controllers
     public class UsuarioController : BasicController
     {
         // GET: Usuario
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string sortOrder, string nameSearch)
         {
             if (Session["Usuario"] != null)
             {
@@ -38,6 +38,24 @@ namespace WebProtectoraMilpatitas.Controllers
             UsuarioCEN usuarioCEN = new UsuarioCEN(usuarioCAD);
 
             IList<UsuarioEN> listaUsuarios = usuarioCEN.Dame_Todos(0, -1);
+
+            ViewBag.NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+            if (!String.IsNullOrEmpty(nameSearch))
+            {
+                listaUsuarios = listaUsuarios.Where(s => s.Nombre.Contains(nameSearch)).ToList();
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    listaUsuarios = listaUsuarios.OrderByDescending(s => s.Nombre).ToList();
+                    break;
+                default:
+                    listaUsuarios = listaUsuarios.OrderBy(s => s.Nombre).ToList();
+                    break;
+            }
+
             IEnumerable<UsuarioViewModel> listaView = new UsuarioAssembler().ConvertListENToModel(listaUsuarios).ToList();
 
             SessionClose();
