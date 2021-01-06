@@ -413,7 +413,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
                 SessionClose();
 
-                return RedirectToAction("ResultadoAceptar");
+                return RedirectToAction("Index"); //mostrar mensaje modal
 
             }
             catch
@@ -421,11 +421,5 @@ namespace WebProtectoraMilpatitas.Controllers
                 return View();
             }
         }
-
-        public ActionResult ResultadoAceptar()
-        {
-            return View();
-        }
-
     }
 }
