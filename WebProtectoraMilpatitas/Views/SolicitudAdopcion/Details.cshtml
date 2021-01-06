@@ -1,4 +1,5 @@
 ﻿@model WebProtectoraMilpatitas.Models.SolicitudAdopcionViewModel
+@using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 
 @{
     ViewBag.Title = "Detalles de la Solicitud de Adopcion";
@@ -9,93 +10,114 @@
 <section id="secanim">
     <main id="details">
         <article class="detalle">
-           
-               <div>
-                    <h2>
-                      
-                   
-                        @Html.DisplayFor(model => model.Nombre)
-                    </h2>
 
-                    <p>
-                        <b>@Html.DisplayNameFor(model => model.NomUsuario)</b>
-                   
-                        @Html.DisplayFor(model => model.NomUsuario)
-                    </p>
+            <div>
+                <h2>
 
-                    <p>
-                      
-                    
-                        <img style="display:block;margin:auto; width: 200px;height: 200px;" border-radius: 80%; src="/@Html.DisplayFor(model => model.FotoUsuario)" />
-                    </p>
 
-                    <h2>
-                       
-                   
+                    @Html.DisplayFor(model => model.Nombre)
+                </h2>
 
-                    
-                        @Html.DisplayFor(model => model.NomAnimal)
-                    </h2>
-                      
-                   
+                <p>
+                    <b>@Html.DisplayNameFor(model => model.NomUsuario)</b>
 
-                    <p>
-                        <img style="display:block;margin:auto; width: 200px;height: 200px;" border-radius: 80%; src="/@Html.DisplayFor(model => model.FotoAnimal)" />
-                    </p>
+                    @Html.DisplayFor(model => model.NomUsuario)
+                </p>
 
-                    <p>
-                        <b>@Html.DisplayNameFor(model => model.AnimalesAcargo)</b>
-                    
-                        @Html.DisplayFor(model => model.AnimalesAcargo)
-                    </p>
+                <p>
 
-                    <p>
-                        <b>@Html.DisplayNameFor(model => model.AmbienteConvivencia)</b>
-                    
-                        @Html.DisplayFor(model => model.AmbienteConvivencia)
-                    </p>
 
-                    <p>
-                        <b>@Html.DisplayNameFor(model => model.TiempoLibre)</b>
-                    
-                        @Html.DisplayFor(model => model.TiempoLibre)
-                    </p>
+                    <img style="display:block;margin:auto; width: 200px;height: 200px;" border-radius: 80%; src="/@Html.DisplayFor(model => model.FotoUsuario)" />
+                </p>
 
-                    <p>
-                        <b>@Html.DisplayNameFor(model => model.TodosAcuerdo)</b>
-                   
-                        @Html.DisplayFor(model => model.TodosAcuerdo)
-                    </p>
-
-                    <p>
-                        <b>@Html.DisplayNameFor(model => model.MotivosAdopcion)</b>
-                   
-                        @Html.DisplayFor(model => model.MotivosAdopcion)
-                    </p>
-
-                    <p>
-                        <b>@Html.DisplayNameFor(model => model.Estado)</b>
-
-                        @Html.DisplayFor(model => model.Estado)
-                    </p>
-
-                    <p>
-                        <b>@Html.DisplayNameFor(model => model.FechaSoli)</b>
-                   
-                        @Html.DisplayFor(model => model.FechaSoli)
-                    </p>
-
-                </div>
-               <div>
-                   <p>@Html.ActionLink("Aceptar solicitud", "AceptarSolicitud", new { idSol = Model.Id, idUsu = Model.idUsuario, idAni = Model.NomAnimal })</p>
-                   <p>@Html.ActionLink("Rechazar solicitud", "RechazarSolicitud", new { idSol = Model.Id, idUsu = Model.idUsuario, idAni = Model.NomAnimal })</p>
+                <h2>
 
 
 
 
-                   <p> @Html.ActionLink("Editar", "Edit", new { id = Model.Id })</p>
-                   <p>@Html.ActionLink("Volver a la lista", "Index")</p>
-               </div>
-           </article>
-        </main>
-    </section>
+                    @Html.DisplayFor(model => model.NomAnimal)
+                </h2>
+
+
+
+                <p>
+                    <img style="display:block;margin:auto; width: 200px;height: 200px;" border-radius: 80%; src="/@Html.DisplayFor(model => model.FotoAnimal)" />
+                </p>
+
+                <p>
+                    <b>@Html.DisplayNameFor(model => model.AnimalesAcargo)</b>
+
+                    @Html.DisplayFor(model => model.AnimalesAcargo)
+                </p>
+
+                <p>
+                    <b>@Html.DisplayNameFor(model => model.AmbienteConvivencia)</b>
+
+                    @Html.DisplayFor(model => model.AmbienteConvivencia)
+                </p>
+
+                <p>
+                    <b>@Html.DisplayNameFor(model => model.TiempoLibre)</b>
+
+                    @Html.DisplayFor(model => model.TiempoLibre)
+                </p>
+
+                <p>
+                    <b>@Html.DisplayNameFor(model => model.TodosAcuerdo)</b>
+
+                    @Html.DisplayFor(model => model.TodosAcuerdo)
+                </p>
+
+                <p>
+                    <b>@Html.DisplayNameFor(model => model.MotivosAdopcion)</b>
+
+                    @Html.DisplayFor(model => model.MotivosAdopcion)
+                </p>
+
+                <p>
+                    <b>@Html.DisplayNameFor(model => model.Estado)</b>
+
+                    @Html.DisplayFor(model => model.Estado)
+                </p>
+
+                <p>
+                    <b>@Html.DisplayNameFor(model => model.FechaSoli)</b>
+
+                    @Html.DisplayFor(model => model.FechaSoli)
+                </p>
+
+            </div>
+            <div>
+                @if (Session["Usuario"] != null)
+                {
+                    if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                    {
+                        <p>@Html.ActionLink("Aceptar solicitud", "AceptarSolicitud", new { idSol = Model.Id, idUsu = Model.idUsuario, idAni = Model.NomAnimal })</p>
+                        <p>@Html.ActionLink("Rechazar solicitud", "RechazarSolicitud", new { idSol = Model.Id, idUsu = Model.idUsuario, idAni = Model.NomAnimal })</p>
+
+
+
+
+                        <p>@Html.ActionLink("Editar", "Edit", new { id = Model.Id })</p>
+                    }
+                }
+                <p>
+                    @{
+
+                        if (Session["Usuario"] != null)
+                        {
+                            if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                            {
+                                @Html.ActionLink("Volver a la lista", "Index")
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Volver a perfil", "Perfil", "Usuario", new { email = ((UsuarioEN)Session["Usuario"]).Email }, htmlAttributes: null)
+                            }
+                        }
+                    }
+                </p>
+            </div>
+        </article>
+    </main>
+</section>

@@ -1,4 +1,5 @@
 ﻿@model WebProtectoraMilpatitas.Models.AnimalViewModel
+@using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 
 @{
     ViewBag.Title = "Protectoramilpatitas-Pagina de detalle de animal";
@@ -15,11 +16,13 @@
                 <div id="datis">
                     <p>
                         <b>@Html.DisplayNameFor(model => model.Edad): </b> @Html.DisplayFor(modelItem => Model.Edad)
+                    </p>
+                    <p>
                         <b>@Html.DisplayNameFor(model => model.Sexo): </b>
                         @if (Model.Sexo.ToString().Equals("H"))
-                        {<label style="font-weight:normal;">Hembra.</label>}
+                        {<label style="font-weight:normal;">Hembra</label>}
                         else
-                        {<label style="font-weight:normal;">Macho.</label>}
+                        {<label style="font-weight:normal;">Macho</label>}
                     </p>
                     <p><b>@Html.DisplayNameFor(model => model.Centro): </b> @Html.DisplayFor(modelItem => Model.Centro)</p>
                     <p><b>@Html.DisplayNameFor(model => model.Caracter): </b> @Html.DisplayFor(modelItem => Model.Caracter)</p>
@@ -37,29 +40,36 @@
                     </p>
                     <p>
                         <b>@Html.DisplayNameFor(model => model.idEspecie): </b>
-                        @Html.ActionLink(Model.NomEspecie, "ObtenerAnimalesPorEspecie", new { p_especie = Model.idEspecie }, htmlAttributes: null)
+                        @Html.DisplayFor(modelItem=>Model.NomEspecie)
                     </p>
                     <p>
                         <b>@Html.DisplayNameFor(model => model.idRaza): </b>
                         @Html.DisplayFor(modelItem => Model.NomRaza)
                     </p>
                 </div>
-                <div id="enlacis">
-                    <p>
-                        @Html.ActionLink("Editar", "Edit", new { id = Model.Id })
-                    </p>
-                    <p> @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = Model.Id })</p>
+
+                @if (Session["Usuario"] != null)
+                {
+                    if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                    {
+                        <div id="enlacis">
+                            <p>
+                                @Html.ActionLink("Editar", "Edit", new { id = Model.Id })
+                            </p>
+                            <p> @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = Model.Id })</p>
 
 
-                    <p> @Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = Model.Id })</p>
-                    <p>@Html.ActionLink("Detalles", "Details", new { id = Model.Id })</p>
+                            <p> @Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = Model.Id })</p>
 
-                    @Html.ActionLink("Eliminar", "Delete", new { id = Model.Id })
-                </div>
+                            @Html.ActionLink("Eliminar", "Delete", new { id = Model.Id })
+                        </div>
+                    }
+                }
+
             </div>
             @if (Model.EstadoAdopcion.ToString().Equals("SinTramite"))
             {
-                <p>@Html.ActionLink("Adoptar", "Create", "SolicitudAdopcion", new { model = Model.Id }, new { @class = "Buttons" })</p>
+                <p><i class="fas fa-hand-holding-heart"></i> @Html.ActionLink("Adoptar", "Create", "SolicitudAdopcion", new { model = Model.Id }, new { @class = "Buttons" })</p>
             }
             else
             {
@@ -69,88 +79,88 @@
         </article>
     </main>
 </section>
-        @*<div>
-            <h4>@Html.DisplayFor(model => model.Nombre)</h4>
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Nombre)
-                </dt>
+@*<div>
+        <h4>@Html.DisplayFor(model => model.Nombre)</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
 
+            <dd>
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
+            <dt>
+                    @Html.DisplayNameFor(model => model.Foto)
+            </dt>
+
+            <dd>
+               <img style="width: 200px;height: 200px;" src="/@Html.DisplayFor(model => model.Foto)" />
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Edad)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Edad)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Sexo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Sexo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Centro)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Centro)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Caracter)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Caracter)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.DatosMedicos)
+            </dt>
+            @if (Model.DatosMedicos.ToString().Equals("enRecuperacion"))
+            {
                 <dd>
-                    @Html.DisplayFor(model => model.Nombre)
+                    En recuperación
                 </dd>
-                <dt>
-                        @Html.DisplayNameFor(model => model.Foto)
-                </dt>
-
+            }
+            else
+            {
                 <dd>
-                   <img style="width: 200px;height: 200px;" src="/@Html.DisplayFor(model => model.Foto)" />
+                    @Html.DisplayFor(model => model.DatosMedicos)
                 </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.Edad)
-                </dt>
+            }
+            <dt>
+                @Html.DisplayNameFor(model => model.EstadoAdopcion)
+            </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Edad)
-                </dd>
+            <dd>
+                @Html.DisplayFor(model => model.EstadoAdopcion)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.idEspecie)
+            </dt>
+            <dd>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Sexo)
-                </dt>
+                @Html.DisplayFor(model => @ViewData["NombreEsp"])
+            </dd>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Sexo)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Centro)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Centro)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Caracter)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Caracter)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.DatosMedicos)
-                </dt>
-                @if (Model.DatosMedicos.ToString().Equals("enRecuperacion"))
-                {
-                    <dd>
-                        En recuperación
-                    </dd>
-                }
-                else
-                {
-                    <dd>
-                        @Html.DisplayFor(model => model.DatosMedicos)
-                    </dd>
-                }
-                <dt>
-                    @Html.DisplayNameFor(model => model.EstadoAdopcion)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.EstadoAdopcion)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.idEspecie)
-                </dt>
-                <dd>
-
-                    @Html.DisplayFor(model => @ViewData["NombreEsp"])
-                </dd>
-
-            </dl>
-        </div>*@
-        <p>
-            @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-            @Html.ActionLink("Volver a la lista", "Index")
-        </p>
+        </dl>
+    </div>*@
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Volver a la lista", "Index")
+</p>

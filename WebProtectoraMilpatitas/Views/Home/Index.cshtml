@@ -56,11 +56,11 @@
 
                     @if (item.Sexo.ToString().Equals("H"))
                     {
-                        <label style="font-weight:normal;">Hembra.</label>
+                        <label style="font-weight:normal;">Hembra</label>
                     }
                     else
                     {
-                        <label style="font-weight:normal;">Macho.</label>
+                        <label style="font-weight:normal;">Macho</label>
                     }
                 </p>
                 <p>
@@ -129,7 +129,7 @@
                 {
                     if (item.EstadoAdopcion.ToString().Equals("SinTramite") || item.EstadoAdopcion.ToString().Equals("EnSolicitud"))
                     {
-                        <p>@Html.ActionLink("Adoptar", "Encuesta", "SolicitudAdopcion", new { id = item.Id }, new { @class = "Buttons" })</p>
+                        <p><i class="fas fa-hand-holding-heart"></i> @Html.ActionLink("Adoptar", "Encuesta", "SolicitudAdopcion", new { id = item.Id }, new { @class = "Buttons" })</p>
                     }
                     else
                     {

@@ -71,7 +71,10 @@ namespace WebProtectoraMilpatitas.Controllers
             AnimalCAD animalCAD = new AnimalCAD(session);
             AnimalCEN animalCEN = new AnimalCEN(animalCAD);
             IList<AnimalEN> listaAnimal = animalCEN.Dame_Todos(0, -1);
-            IEnumerable<AnimalViewModel> listaView = new AnimalAssembler().ConvertListENToModel(listaAnimal).ToList();
+
+            IList<AnimalEN> ordenada = listaAnimal.OrderByDescending(o => o.FechaLlegada).ToList();
+
+            IEnumerable<AnimalViewModel> listaView = new AnimalAssembler().ConvertListENToModel(ordenada).ToList();
 
             SessionClose();
 

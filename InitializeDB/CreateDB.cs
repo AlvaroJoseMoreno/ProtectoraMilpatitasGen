@@ -98,7 +98,7 @@ public static void InitializeData ()
                 }
 
                 UsuarioCEN juan99 = new UsuarioCEN ();
-                string juan = juan99.Registrarse ("Juan", "juaninventado243@gmail.com", "constantino12", "Imagenes/usuarios/imagen1.png");
+                string juan = juan99.Registrarse ("Juan", "juaninventado243@gmail.com", "Constantino-12", "Imagenes/usuarios/imagen1.png");
                 UsuarioCEN manuel = new UsuarioCEN ();
                 string manu = manuel.Registrarse ("Manuel45", "manuelinventado03@gmail.com", "password=5", "Imagenes/usuarios/imagen3.png");
                 UsuarioCEN Antonio = new UsuarioCEN ();
