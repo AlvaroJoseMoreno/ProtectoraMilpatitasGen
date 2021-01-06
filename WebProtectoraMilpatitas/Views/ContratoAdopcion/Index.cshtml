@@ -12,60 +12,78 @@
     @Html.ActionLink("Crear nuevo contrato", "Create")
 </p>
 
- 
-    
+@if (((string)TempData["mensajeModal"]) != null)
+{
+    <div id="capafondo">
+     
+        <article id="ar">
+            <h2>Contrato de adopción</h2>
+            <p>
+                @((string)TempData["mensajeModal"])
+            </p>
+            @if(((string)TempData["mensajeModal"]).Equals("¡Enhorabuena!, Has creado el contrato con éxito, haga click en el enlace de abajo para descargarlo"))
+            {
+                <p>@Html.ActionLink("Contrato", "Imprimir", "ContratoAdopcion", new { target = "_blank" })</p>
+            }
+            <footer><button class="button" onclick="cerrarMensajeModal();">cerrar</button></footer>
+        </article>
+    </div>
+
+
+}
+
 <main id="mainart">
     @foreach (var item in Model)
     {
-    <article class="articulos">
-        <div>
+        <article class="articulos">
+            <div>
 
-            @if (item.Nombre != null)
-            {
+                @if (item.Nombre != null)
+                {
 
-                <h2>@Html.ActionLink(item.Nombre, "Details", new { id = item.Id })</h2>
-            }
-            else
-            {
-                <h2>@Html.DisplayFor(modelItem => item.Nombre)</h2>
-            }
-
-
+                    <h2>@Html.ActionLink(item.Nombre, "Details", new { id = item.Id })</h2>
+                }
+                else
+                {
+                    <h2>@Html.DisplayFor(modelItem => item.Nombre)</h2>
+                }
 
 
-            <p>
-                <b>Usuario:</b>
-                @Html.ActionLink(item.NomUsuario, "Details", "Usuario", new { email = item.idUsuario }, htmlAttributes: null)
-            </p>
-            <p>
-                <img style="margin:auto; border-radius: 90%; width: 100px;height: 100px;" src="/@Html.DisplayFor(modelItem => item.FotoUsuario)" />
-            </p>
 
 
-            <p>
-                <b>Animal:</b>
-                @Html.ActionLink(item.NomAnimal, "Details", "Animal", new { id = item.idAnimal }, htmlAttributes: null)
-            </p>
-            <p>
-                <img style="margin:auto; width: 100px;height: 100px;" border-radius: 90%; src="/@Html.DisplayFor(modelItem => item.FotoAnimal)" />
-            </p>
-        </div>
-         <div>
-            <p>
-                @Html.DisplayFor(modelItem => item.idSolicitud)
-            </p>
-            
-            <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</p> 
-            <p>@Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
-            <p>@Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
-            <p>@Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
-                       
-        </div>
-    </article>
+                <p>
+                    <b>Usuario:</b>
+                    @Html.ActionLink(item.NomUsuario, "Details", "Usuario", new { email = item.idUsuario }, htmlAttributes: null)
+                </p>
+                <p>
+                    <img style="margin:auto; border-radius: 90%; width: 100px;height: 100px;" src="/@Html.DisplayFor(modelItem => item.FotoUsuario)" />
+                </p>
+
+
+                <p>
+                    <b>Animal:</b>
+                    @Html.ActionLink(item.NomAnimal, "Details", "Animal", new { id = item.idAnimal }, htmlAttributes: null)
+                </p>
+                <p>
+                    <img style="margin:auto; width: 100px;height: 100px;" border-radius: 90%; src="/@Html.DisplayFor(modelItem => item.FotoAnimal)" />
+                </p>
+            </div>
+            <div>
+                <p>
+                    @Html.DisplayFor(modelItem => item.idSolicitud)
+                </p>
+
+                <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
+                <p>@Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
+                <p>@Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
+                <p>@Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
+
+            </div>
+        </article>
     }
 
 </main>
-<br/>
+<br />
 Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
 
 @Html.PagedListPager(Model, page => Url.Action("Index",

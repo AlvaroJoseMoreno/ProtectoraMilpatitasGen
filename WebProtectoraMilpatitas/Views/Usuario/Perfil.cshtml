@@ -15,63 +15,68 @@
     }
 }
 
-<div>
-    <h4>Mis datos</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+    <h2>Mis datos</h2>
+    <section id="secanim">
+        <main id="details">
+            <article class="detalle">
+                <h2>@Html.DisplayFor(model => model.Nombre)</h2>
+                <div>
+                    <p>
+                        <b>@Html.DisplayNameFor(model => model.Nombre)</b>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
+                        @Html.DisplayFor(model => model.Nombre)
+                    </p>
+                    <p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Foto)
-        </dt>
+                        <b>@Html.DisplayNameFor(model => model.Email)</b>
 
-        <dd>
-            <img style="width:200px;height:200px" src="/@Html.DisplayFor(model => model.Foto)" />
-        </dd>
 
-    </dl>
-</div>
 
-<p>
-    @Html.ActionLink("Editar", "Edit", new { email = Model.Email })
-</p>
-<p>
-    @Html.ActionLink("Ver mis mascotas", "ObtenerAnimalesPorUsuario", "Animal", new { email = Model.Email }, htmlAttributes: null) 
-</p>
-<p>
-    @Html.ActionLink("Ver mis solicitudes de adopción", "ObtenerSolicitudUsuario", "SolicitudAdopcion", new { email = Model.Email }, htmlAttributes: null) 
-</p>
-<p>
-    @Html.ActionLink("Ver mis contratos de adopción", "ObtenerContratoUsuario", "ContratoAdopcion", new { email = Model.Email }, htmlAttributes: null)
-</p>
-<p>
-    @Html.ActionLink("Ver mis seguimientos", "ObtenerSeguimientoUsuario", "Seguimiento", new { email = Model.Email }, htmlAttributes: null)
-</p>
-<p>
-    <a href="chat.html">Chatear con administrador</a>.
-</p>
-<p>
+                        @Html.DisplayFor(model => model.Email)
+                    </p>
+
+                    <p>
+                        <b>@Html.DisplayNameFor(model => model.Password)</b>
+
+
+
+                        @Html.DisplayFor(model => model.Password)
+                    </p>
+
+
+
+                    <p>
+                        <img style="width:200px;height:200px" src="/@Html.DisplayFor(model => model.Foto)" />
+                    </p>
+                </div>
+
+                <div>
+                    <p>
+                        @Html.ActionLink("Editar", "Edit", new { email = Model.Email })
+                    </p>
+                    <p>
+                        @Html.ActionLink("Ver mis mascotas", "ObtenerAnimalesPorUsuario", "Animal", new { email = Model.Email }, htmlAttributes: null)
+                    </p>
+                    <p>
+                        @Html.ActionLink("Ver mis solicitudes de adopción", "ObtenerSolicitudUsuario", "SolicitudAdopcion", new { email = Model.Email }, htmlAttributes: null)
+                    </p>
+                    <p>
+                        @Html.ActionLink("Ver mis contratos de adopción", "ObtenerContratoUsuario", "ContratoAdopcion", new { email = Model.Email }, htmlAttributes: null)
+                    </p>
+                    <p>
+                        @Html.ActionLink("Ver mis seguimientos", "ObtenerSeguimientoUsuario", "Seguimiento", new { email = Model.Email }, htmlAttributes: null)
+                    </p>
+                    <p>
+                        <a href="chat.html">Chatear con administrador</a>.
+                    </p>
+                    <p>
+                </div>
+            </article>
+        </main>
+    </section>
     @{
 
         if (Session["Usuario"] != null)
@@ -86,4 +91,4 @@
             }
         }
     }
-</p>
+  
