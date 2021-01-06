@@ -7,44 +7,59 @@
 }
 
 <h2>Usuarios</h2>
+@if (((string)TempData["mensajeModal"]) != null)
+{
+    <div id="capafondo">
+        <!--  <script>"mensajeModal();"</script> -->
+        <article id="ar">
+            <h2>Usuario</h2>
+            <p>
+                @((string)TempData["mensajeModal"])
+            </p>
+            
+            <footer><button class="button" onclick="cerrarMensajeModal();">cerrar</button></footer>
+        </article>
+    </div>
 
+
+}
 
 <main id="mainart">
     @foreach (var item in Model)
     {
 
-    <article class="articulos">
-        <div>
-            @if (item.Nombre != null && !item.Nombre.Equals(""))
-            {
+        <article class="articulos">
+            <div>
+                @if (item.Nombre != null && !item.Nombre.Equals(""))
+                {
 
 
-                <h2>@Html.DisplayFor(modelItem => item.Nombre)</h2>
+                    <h2>@Html.DisplayFor(modelItem => item.Nombre)</h2>
 
 
-            }
-            else
-            {
-                <h2> @Html.DisplayFor(modelItem => item.Nombre);</h2>
-            }
+                }
+                else
+                {
+                    <h2> @Html.DisplayFor(modelItem => item.Nombre);</h2>
+                }
 
 
 
-            <img src="/@Html.DisplayFor(modelItem => item.Foto)" />
-        </div>
-        <div>
-            <p>@Html.ActionLink("Detalles", "Details", new { email = item.Email })</p>
-            <p>@Html.ActionLink("Obtener Solicitudes Adopcion", "ObtenerSolicitudUsuario", "SolicitudAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
-            <p>@Html.ActionLink("Obtener Contratos Adopcion", "ObtenerContratoUsuario", "ContratoAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
-            <p>@Html.ActionLink("Obtener Seguimientos", "ObtenerSeguimientoUsuario", "Seguimiento", new { email = item.Email }, htmlAttributes: null)</p>
-            <p>@Html.ActionLink("Obtener Mascotas", "ObtenerAnimalesPorUsuario", "Animal", new { email = item.Email }, htmlAttributes: null)</p>
-            <p>@Html.ActionLink("Eliminar", "Delete", new { email = item.Email })</p>
-        </div>
-    </article>
+                <img src="/@Html.DisplayFor(modelItem => item.Foto)" />
+            </div>
+            <div>
+                <p>@Html.ActionLink("Detalles", "Details", new { email = item.Email })</p>
+                <p>@Html.ActionLink("Obtener Solicitudes Adopcion", "ObtenerSolicitudUsuario", "SolicitudAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
+                <p>@Html.ActionLink("Obtener Contratos Adopcion", "ObtenerContratoUsuario", "ContratoAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
+                <p>@Html.ActionLink("Obtener Seguimientos", "ObtenerSeguimientoUsuario", "Seguimiento", new { email = item.Email }, htmlAttributes: null)</p>
+                <p>@Html.ActionLink("Obtener Mascotas", "ObtenerAnimalesPorUsuario", "Animal", new { email = item.Email }, htmlAttributes: null)</p>
+                <p>@Html.ActionLink("Eliminar", "Delete", new { email = item.Email })</p>
+            </div>
+        </article>
     }
-    </main>
+</main>
 
-    <br />
+<br />
     Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
 
     @Html.PagedListPager(Model, page => Url.Action("Index",

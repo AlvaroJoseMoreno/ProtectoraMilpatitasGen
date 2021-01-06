@@ -125,6 +125,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
                 soliCEN.Nuevo(sol.idUsuario, sol.idAnimal, DateTime.Today);
 
+                TempData["mensajeModal"] = "¡Enhorabuena! Has creado una solicitud";
                 return RedirectToAction("Index");
             }
             catch
@@ -187,7 +188,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 solCEN.Rellenar_Solicitud(sol.Id, sol.Nombre, sol.AnimalesAcargo,
                     sol.AmbienteConvivencia, sol.TiempoLibre, sol.TodosAcuerdo, sol.MotivosAdopcion);
 
-               
+                TempData["mensajeModal"] = "¡Enhorabuena! Has modificado la información de la solicitud";
                 return RedirectToAction("Index");
             }
             catch
@@ -248,7 +249,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
                 solCP.Actualizar_Estado(sol.Id, sol.Estado);
 
-
+                TempData["mensajeModal"] = "Se ha actualizado el estado de la solicitud con exito";
                 return RedirectToAction("Index");
             }
             catch
@@ -282,6 +283,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 SolicitudAdopcionCP soliCP = new SolicitudAdopcionCP();
                 soliCP.Actualizar_Estado(id,ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
                 SessionClose();
+                TempData["mensajeModal"] = "¡Enhorabuena! Tu solicitud de adopción esta en tramite";
                 return RedirectToAction("Index");
                 
             }
@@ -369,6 +371,7 @@ namespace WebProtectoraMilpatitas.Controllers
                
                 solCEN.Eliminar(id);
 
+                TempData["mensajeModal"] = "Has eliminado la solicitud";
                 return RedirectToAction("Index");
             }
             catch
@@ -413,6 +416,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
                 SessionClose();
 
+                TempData["mensajeModal"] = "¡Solicitud Aceptada!";
                 return RedirectToAction("Index"); //mostrar mensaje modal
 
             }
@@ -457,7 +461,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 string resultado = solCP.Rechazar_Solicitud(idSol, idUsu);
 
                 SessionClose();
-
+                TempData["mensajeModal"] = "Solicitud de adopción rechazada";
                 return RedirectToAction("Index"); //mostrar mensaje modal
 
             }
@@ -498,7 +502,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 }
 
                 SessionClose();
-
+                TempData["mensajeModal"] = "Todas las solicitudes han sido rechazadas";
                 return RedirectToAction("Index"); //mostrar mensaje modal
 
             }
