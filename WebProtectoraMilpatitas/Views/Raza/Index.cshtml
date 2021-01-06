@@ -11,6 +11,23 @@
 <p>
     @Html.ActionLink("Crear nueva raza", "Create")
 </p>
+
+@if (((string)TempData["mensajeModalRaza"]) != null)
+{
+    <div id="capafondo">
+
+        <article id="ar">
+            <h2>Raza</h2>
+            <p>
+                @((string)TempData["mensajeModalRaza"])
+            </p>
+            <footer><button class="button" onclick="cerrarMensajeModal();">cerrar</button></footer>
+        </article>
+    </div>
+
+
+}
+
 <table class="table">
     <tr>
         <th>

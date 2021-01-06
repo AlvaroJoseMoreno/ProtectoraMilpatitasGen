@@ -112,11 +112,13 @@ namespace WebProtectoraMilpatitas.Controllers
                 EspecieCEN espCEN = new EspecieCEN();
                 espCEN.Nuevo(esp.Nombre);
 
+                TempData["mensajeModalEspecie"] = "Especie creada correctamente";
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                TempData["mensajeModalEspecie"] = "Ha habido un error al crear la especie";
+                return RedirectToAction("Index");
             }
         }
 
@@ -168,11 +170,13 @@ namespace WebProtectoraMilpatitas.Controllers
                 EspecieCEN espcen = new EspecieCEN();
                 espcen.Modificar(esp.Id, esp.Nombre);
 
+                TempData["mensajeModalEspecie"] = "Especie editada correctamente";
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                TempData["mensajeModalEspecie"] = "Ha habido un error al editar la especie";
+                return RedirectToAction("Index");
             }
         }
 
@@ -222,11 +226,13 @@ namespace WebProtectoraMilpatitas.Controllers
                 EspecieCEN especieCEN = new EspecieCEN();
                 especieCEN.Eliminar(esp.Id);
 
+                TempData["mensajeModalEspecie"] = "Especie eliminada correctamente";
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                TempData["mensajeModalEspecie"] = "Ha habido un error al eliminar la especie";
+                return RedirectToAction("Index");
             }
         }
     }

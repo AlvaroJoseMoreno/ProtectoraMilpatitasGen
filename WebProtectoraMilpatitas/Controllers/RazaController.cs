@@ -127,11 +127,13 @@ namespace WebProtectoraMilpatitas.Controllers
                 RazaCEN razCEN = new RazaCEN();
                 razCEN.Nuevo(raz.Nombre, raz.idEspecie);
 
+                TempData["mensajeModalRaza"] = "Raza creada correctamente";
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                TempData["mensajeModalRaza"] = "Ha habido un error al crear la raza";
+                return RedirectToAction("Index");
             }
         }
 
@@ -224,11 +226,13 @@ namespace WebProtectoraMilpatitas.Controllers
                 RazaCEN razCEN = new RazaCEN();
                 razCEN.Modificar(raz.Id, raz.Nombre);
 
+                TempData["mensajeModalRaza"] = "Raza editada correctamente";
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                TempData["mensajeModalRaza"] = "Ha habido un error al editar la raza";
+                return RedirectToAction("Index");
             }
         }
 
@@ -279,11 +283,13 @@ namespace WebProtectoraMilpatitas.Controllers
                 RazaCEN razCEN = new RazaCEN();
                 razCEN.Eliminar(raz.Id);
 
+                TempData["mensajeModalRaza"] = "Raza eliminada correctamente";
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                TempData["mensajeModalRaza"] = "Ha habido un error al eliminar la raza";
+                return RedirectToAction("Index");
             }
         }
     }
