@@ -208,10 +208,14 @@ namespace WebProtectoraMilpatitas.Controllers
                 AnimalCP animalCP = new AnimalCP();
                 animalCP.Nuevo(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter, ani.idEspecie, filename, ani.FechaLlegada, ani.idRaza);
 
+                TempData["mensajeModalAnimal"] = "Se ha creado correctamente el animal";
+
                 return RedirectToAction("Index");
             }
             catch
             {
+                TempData["mensajeModalAnimal"] = "Ha habido un error al crear el animal";
+
                 return View();
             }
         }

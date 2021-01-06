@@ -8,6 +8,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@if (((string)TempData["mensajeModalAnimal"]) != null)
+{
+    if (((string)TempData["mensajeModalAnimal"]).Equals("") == false)
+    {
+        <div id="capafondo">
+            <!--  <script>"mensajeModal();"</script> -->
+            <article id="ar">
+                <h2>Animal</h2>
+                <p>@TempData["mensajeModalAnimal"].ToString()</p>
+                <footer><button class="button" onclick="cerrarMensajeModal();">Cerrar</button></footer>
+            </article>
+        </div>
+    }
+}
 
 <h3>@Html.ActionLink("Especies", "Index", "Especie")</h3>
 
@@ -41,11 +55,13 @@
                     }
                 </p>
                 <p>
-                    <b>Centro:
+                    <b>
+                        Centro:
                     </b> @Html.DisplayFor(modelItem => item.Centro)
                 </p>
                 <p>
-                    <b>Caracter:
+                    <b>
+                        Caracter:
                     </b> @Html.DisplayFor(modelItem => item.Caracter)
                 </p>
                 <p>
@@ -66,7 +82,7 @@
                 </p>
                 <p>
                     <b>Raza: </b>
-                    @Html.DisplayFor(modelItem=>item.NomRaza)
+                    @Html.DisplayFor(modelItem => item.NomRaza)
                 </p>
                 <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
                 <p>@Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id }) </p>
@@ -119,7 +135,7 @@
                 }
             }
         </article>
-     }
+    }
 
 </main>
 <br />
