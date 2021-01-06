@@ -150,12 +150,12 @@ namespace WebProtectoraMilpatitas.Controllers
                 }
            }
 
-            IList<EspecieEN> listaAnimales = new EspecieCEN().Dame_Todas(0, -1);
+            IList<EspecieEN> listaEspecies = new EspecieCEN().Dame_Todas(0, -1);
             IList<SelectListItem> especiesItems = new List<SelectListItem>();
 
-            foreach (EspecieEN esp in listaAnimales)
+            foreach (EspecieEN esp in listaEspecies)
             {
-                especiesItems.Add(new SelectListItem { Text = esp.Nombre, Value = esp.Id.ToString() });
+                especiesItems.Add(new SelectListItem { Text=esp.Nombre, Value=esp.Id.ToString()});
             }
 
             ViewData["idEspecie"] = especiesItems;
@@ -206,6 +206,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 //   filename =" + filename;
                 filename = "Imagenes/animales/" + filename;
                 AnimalCP animalCP = new AnimalCP();
+                
                 animalCP.Nuevo(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter, ani.idEspecie, filename, ani.FechaLlegada, ani.idRaza);
 
                 TempData["mensajeModalAnimal"] = "Se ha creado correctamente el animal";
@@ -216,7 +217,7 @@ namespace WebProtectoraMilpatitas.Controllers
             {
                 TempData["mensajeModalAnimal"] = "Ha habido un error al crear el animal";
 
-                return View();
+                return RedirectToAction("Index");
             }
         }
 

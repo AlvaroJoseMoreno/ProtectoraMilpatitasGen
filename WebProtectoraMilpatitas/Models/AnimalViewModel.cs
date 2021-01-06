@@ -59,6 +59,7 @@ namespace WebProtectoraMilpatitas.Models
 
         public ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAnimalAdopcionEnum EstadoAdopcion { get; set; }
 
+        [ScaffoldColumn(false)]
         [Display(Prompt = "Especie del animal", Description = "Especie del animal", Name = "Especie")]
 
         public int idEspecie { get; set; }
@@ -75,10 +76,12 @@ namespace WebProtectoraMilpatitas.Models
         [DataType(DataType.Date)]
         public DateTime FechaLlegada { get; set; }
 
+        [ScaffoldColumn(false)]
         [Display(Prompt = "Raza del animal", Description = "Raza del animal", Name = "Raza")]
 
         public int idRaza { get; set; }
 
+        [ScaffoldColumn(false)]
         [Display(Prompt = "Raza del animal", Description = "Raza del animal", Name = "Raza")]
 
         public int idBusRaza { get; set; }
