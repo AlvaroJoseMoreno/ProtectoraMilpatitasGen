@@ -16,7 +16,7 @@
             <p>
                 @((string)TempData["mensajeModal"])
             </p>
-            
+
             <footer><button class="button" onclick="cerrarMensajeModal();">cerrar</button></footer>
         </article>
     </div>
@@ -24,7 +24,25 @@
 
 }
 
+<table style="width:50%; margin-left:auto; margin-right:auto; margin-bottom:1em;" class="table">
+    @using (Html.BeginForm())
+    {
+        <tr>
+            <th>
+                Nombre: @Html.TextBox("nameSearch") <input style="display:none;" type="submit" value="Buscar" />
+            </th>
+        </tr>
+    }
+
+    <tr>
+        <th>
+            @Html.ActionLink("Nombre", "Index", new { sortOrder = ViewBag.NameSort })
+        </th>
+    </tr>
+</table>
+
 <main id="mainart">
+
     @foreach (var item in Model)
     {
 
@@ -60,10 +78,10 @@
 </main>
 
 <br />
-    Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
 
-    @Html.PagedListPager(Model, page => Url.Action("Index",
-        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-    <div>
-        @Html.ActionLink("Volver a inicio", "Indexad", "Home")
-    </div>
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+<p>
+    @Html.ActionLink("Volver a inicio", "Indexad", "Home")
+</p>

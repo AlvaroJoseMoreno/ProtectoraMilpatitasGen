@@ -12,38 +12,6 @@
     @Html.ActionLink("Crear nuevo test animal ideal", "Create")
 </p>
 
-@using (Html.BeginForm())
-{
-    <p>
-        Buscar por afición: @Html.TextBox("aficionSearch")
-        <input type="submit" value="Buscar" />
-    </p>
-}
-
-@using (Html.BeginForm())
-{
-    <p>
-        Buscar por color: @Html.TextBox("colorSearch")
-        <input type="submit" value="Buscar" />
-    </p>
-}
-
-@using (Html.BeginForm())
-{
-    <p>
-        Buscar por perfonalidad: @Html.TextBox("personSearch")
-        <input type="submit" value="Buscar" />
-    </p>
-}
-
-@using (Html.BeginForm())
-{
-    <p>
-        Buscar por usuario: @Html.TextBox("usuSearch")
-        <input type="submit" value="Buscar" />
-    </p>
-}
-
 @if (((string)TempData["mensajeModalTest"]) != null)
 {
     <div id="capafondo">
@@ -62,6 +30,36 @@
 
 <table class="table">
     <tr>
+        @using (Html.BeginForm())
+        {
+            <th>
+                Afición: @Html.TextBox("aficionSearch") <input style="display:none;" type="submit" value="Buscar" />
+            </th>
+        }
+
+        @using (Html.BeginForm())
+        {
+            <th>
+                Personalidad: @Html.TextBox("personSearch") <input style="display:none;" type="submit" value="Buscar" />
+            </th>
+        }
+
+        @using (Html.BeginForm())
+        {
+            <th>
+                Color: @Html.TextBox("colorSearch") <input style="display:none;" type="submit" value="Buscar" />
+            </th>
+        }
+
+        @using (Html.BeginForm())
+        {
+            <th>
+                Usuario: @Html.TextBox("usuSearch") <input style="display:none;" type="submit" value="Buscar" />
+            </th>
+        }
+        <th></th>
+    </tr>
+    <tr>
         <th>
             @Html.ActionLink("Afición Favorita", "Index", new { sortOrder = ViewBag.AficionSort })
         </th>
@@ -74,6 +72,7 @@
         <th>
             @Html.ActionLink("Usuario", "Index", new { sortOrder = ViewBag.UsuarioSort })
         </th>
+        <th></th>
     </tr>
 
     @foreach (var item in Model)

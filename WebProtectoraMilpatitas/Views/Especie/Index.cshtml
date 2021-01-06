@@ -30,18 +30,17 @@
 
 }
 
-@using(Html.BeginForm())
-{
-    <p>
-        Buscar por nombre: @Html.TextBox("nameSearch")
-        <input type="submit" value="Buscar"/>
-    </p>
-}
-
 <table class="table">
+    @using (Html.BeginForm())
+    {
+        <tr>
+            <th>Nombre Especie: @Html.TextBox("nameSearch") <input style="display:none;" type="submit" value="Buscar" /></th>
+            <th></th>
+        </tr>
+    }
     <tr>
         <th>
-            @Html.ActionLink("Nombre Especie", "Index", new { sortOrder=ViewBag.NameSort})
+            @Html.ActionLink("Nombre Especie", "Index", new { sortOrder = ViewBag.NameSort })
         </th>
         <th></th>
     </tr>
@@ -67,6 +66,6 @@ Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.P
 
 @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-<div>
+<p>
     @Html.ActionLink("Volver a animales", "Index", "Animal")
-</div>
+</p>
