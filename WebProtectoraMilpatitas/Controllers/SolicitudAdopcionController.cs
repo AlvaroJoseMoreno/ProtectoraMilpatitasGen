@@ -421,5 +421,91 @@ namespace WebProtectoraMilpatitas.Controllers
                 return View();
             }
         }
+
+        public ActionResult RechazarSolicitud(int idSol, string idUsu, string idAni)
+        {
+
+
+            SessionInitialize();
+
+            UsuarioCAD usuCAD = new UsuarioCAD(session);
+            UsuarioCEN usuCEN = new UsuarioCEN(usuCAD);
+            UsuarioEN usuEN = usuCEN.Dame_Por_Email(idUsu);
+
+            ViewData["idSol"] = idSol;
+            ViewData["idUsu"] = usuEN.Nombre;
+            ViewData["idAni"] = idAni;
+
+            SessionClose();
+
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult RechazarSolicitud(int idSol, string idUsu, SolicitudAdopcionViewModel sol)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                //   filename =" + filename;
+                SessionInitialize();
+
+                SolicitudAdopcionCAD solCAD = new SolicitudAdopcionCAD(session);
+                SolicitudAdopcionCP solCP = new SolicitudAdopcionCP();
+
+                string resultado = solCP.Rechazar_Solicitud(idSol, idUsu);
+
+                SessionClose();
+
+                return RedirectToAction("Index"); //mostrar mensaje modal
+
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult RechazarTodasSolicitud()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult RechazarTodasSolicitud(SolicitudAdopcionViewModel sol)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                //   filename =" + filename;
+                SessionInitialize();
+
+                SolicitudAdopcionCAD solCAD = new SolicitudAdopcionCAD(session);
+                SolicitudAdopcionCP solCP = new SolicitudAdopcionCP();
+                SolicitudAdopcionCEN solCEN = new SolicitudAdopcionCEN(solCAD);
+
+                IList<SolicitudAdopcionEN> sols = solCEN.Dame_Todas(0,-1);
+
+                string[] resultados = new string[sols.Count];
+                int i = 0;
+
+                foreach (SolicitudAdopcionEN soli in sols)
+                {
+                    resultados[i] = solCP.Rechazar_Solicitud(soli.Id, soli.Usuario.Email);
+
+                    i = i + 1;
+                }
+
+                SessionClose();
+
+                return RedirectToAction("Index"); //mostrar mensaje modal
+
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

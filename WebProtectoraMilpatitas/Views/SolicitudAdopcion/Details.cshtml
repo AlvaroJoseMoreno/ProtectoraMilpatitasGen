@@ -107,8 +107,12 @@
         </dd>
 
     </dl>
+    <p>@Html.ActionLink("Aceptar solicitud", "AceptarSolicitud", new { idSol = Model.Id, idUsu = Model.idUsuario, idAni = Model.NomAnimal })</p>
+    <p>@Html.ActionLink("Rechazar solicitud", "RechazarSolicitud", new { idSol = Model.Id, idUsu = Model.idUsuario, idAni = Model.NomAnimal })</p>
 </div>
+
 <p>
+
     @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Volver a la lista", "Index")
 </p>

@@ -72,6 +72,8 @@
 
         <div>
             <p>@Html.ActionLink("Aceptar solicitud", "AceptarSolicitud", new { idSol=item.Id, idUsu=item.idUsuario, idAni=item.NomAnimal})</p>
+            <p>@Html.ActionLink("Rechazar solicitud", "RechazarSolicitud", new { idSol = item.Id, idUsu = item.idUsuario, idAni = item.NomAnimal })</p>
+            <p>@Html.ActionLink("Rechazar todas", "RechazarTodasSolicitud")</p>
             <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
             <p>@Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
             <p>@Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>

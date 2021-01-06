@@ -39,7 +39,7 @@ public string Aceptar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
         MensajeCEN mensaCEN = null;
         MensajeEN mensaEn = null;
 
-            string result = "";
+        string result = "";
 
         try
         {
@@ -47,7 +47,8 @@ public string Aceptar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
                 solicitudAdopcionCAD = new SolicitudAdopcionCAD (session);
                 solicitudAdopcionCEN = new SolicitudAdopcionCEN (solicitudAdopcionCAD);
                 solicitudAdopcionCP = new SolicitudAdopcionCP ();
-                solicitudAdopcionEN = new SolicitudAdopcionEN ();
+
+                solicitudAdopcionEN = solicitudAdopcionCEN.Ver_Solicitud(p_SolicitudAdopcion);
 
                 usuCAD = new UsuarioCAD (session);
                 usuCEN = new UsuarioCEN (usuCAD);
@@ -60,7 +61,7 @@ public string Aceptar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
                 mensaCEN = new MensajeCEN (mensaCAD);
                 mensaEn = new MensajeEN ();
 
-
+                ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum anterior = solicitudAdopcionEN.Estado;
 
                 IList<UsuarioEN> usuarios = usuCEN.Dame_Todos (0, -1);
 
@@ -69,19 +70,29 @@ public string Aceptar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
                                 if (usu.Email.Equals (p_Usuario)) {
                                         notificacionEN.Mensaje = "Solicitud Aceptada";
                                         mensaEn.Texto = "Solicitud aceptada";
-                                        solicitudAdopcionEN.Id = p_SolicitudAdopcion;
-                                        solicitudAdopcionEN.Estado = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.aceptado;
-                                        solicitudAdopcionCP.Actualizar_Estado (solicitudAdopcionEN.Id, solicitudAdopcionEN.Estado); //tiene que ser solicitudAdopcionCP
 
-                                        solicitudAdopcionCAD.Actualizar_Estado(solicitudAdopcionEN);
+                                        solicitudAdopcionCP.Actualizar_Estado (p_SolicitudAdopcion, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.aceptado); //tiene que ser solicitudAdopcionCP
 
                                         notiCEN.Enviar (notificacionEN.Id, p_Usuario, mensaEn.Texto);
 
-                                        result = "La solicitud ha sido aceptada";
+                                        if (anterior != solicitudAdopcionCEN.Ver_Solicitud (p_SolicitudAdopcion).Estado) {
+                                                result = "La solicitud ha sido aceptada";
+                                        }
+                                        else{
+                                                result = "Ha habido un error al aceptar la solicitud";
+                                        }
                                 }
                                 else{
-                                        notificacionEN.Mensaje = "Solicitud Denegada";
-                                        mensaEn.Texto = "Solicitud denegada";
+                                        notificacionEN.Mensaje = "Solicitud en espera";
+                                        mensaEn.Texto = "Solicitud en espera";
+
+                                        IList<SolicitudAdopcionEN> sols = solicitudAdopcionCEN.Obtener_Solicitud_Usuario (usu.Email);
+
+                                        foreach (SolicitudAdopcionEN soli in sols) {
+                                                if (soli.Animal.Id == solicitudAdopcionCEN.Ver_Solicitud (p_SolicitudAdopcion).Animal.Id) {
+                                                        solicitudAdopcionCP.Actualizar_Estado (soli.Id, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
+                                                }
+                                        }
 
                                         notiCEN.Enviar (notificacionEN.Id, p_Usuario, mensaEn.Texto);
                                 }
@@ -95,6 +106,9 @@ public string Aceptar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
         catch (Exception ex)
         {
                 SessionRollBack ();
+
+                result = "Ha habido un error al aceptar la solicitud";
+
                 throw ex;
         }
         finally
@@ -102,7 +116,7 @@ public string Aceptar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
                 SessionClose ();
         }
 
-            return result;
+        return result;
         /*PROTECTED REGION END*/
 }
 }
