@@ -57,23 +57,32 @@
                     <p>
                         @Html.ActionLink("Editar", "Edit", new { email = Model.Email })
                     </p>
-                    <p>
-                        @Html.ActionLink("Ver mis mascotas", "ObtenerAnimalesPorUsuario", "Animal", new { email = Model.Email }, htmlAttributes: null)
-                    </p>
-                    <p>
-                        @Html.ActionLink("Ver mis solicitudes de adopción", "ObtenerSolicitudUsuario", "SolicitudAdopcion", new { email = Model.Email }, htmlAttributes: null)
-                    </p>
-                    <p>
-                        @Html.ActionLink("Ver mis contratos de adopción", "ObtenerContratoUsuario", "ContratoAdopcion", new { email = Model.Email }, htmlAttributes: null)
-                    </p>
-                    <p>
-                        @Html.ActionLink("Ver mis seguimientos", "ObtenerSeguimientoUsuario", "Seguimiento", new { email = Model.Email }, htmlAttributes: null)
-                    </p>
-                    <p>
-                        <a href="~/chat.html">Chatear con administrador</a>
-                    </p>
-                    <p>
-                </div>
+                    @{
+
+                        if (Session["Usuario"] != null)
+                        {
+                            if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(UsuarioEN))
+                            {
+                                <p>
+                                    @Html.ActionLink("Ver mis mascotas", "ObtenerAnimalesPorUsuario", "Animal", new { email = Model.Email }, htmlAttributes: null)
+                                </p>
+                                <p>
+                                    @Html.ActionLink("Ver mis solicitudes de adopción", "ObtenerSolicitudUsuario", "SolicitudAdopcion", new { email = Model.Email }, htmlAttributes: null)
+                                </p>
+                                <p>
+                                    @Html.ActionLink("Ver mis contratos de adopción", "ObtenerContratoUsuario", "ContratoAdopcion", new { email = Model.Email }, htmlAttributes: null)
+                                </p>
+                                <p>
+                                    @Html.ActionLink("Ver mis seguimientos", "ObtenerSeguimientoUsuario", "Seguimiento", new { email = Model.Email }, htmlAttributes: null)
+                                </p>
+                                }
+                            }
+                        }
+                                <p>
+                                    <a href="~/chat.html">Chatear con administrador</a>
+                                </p>
+                                <p>
+                            </div>
             </article>
         </main>
     </section>

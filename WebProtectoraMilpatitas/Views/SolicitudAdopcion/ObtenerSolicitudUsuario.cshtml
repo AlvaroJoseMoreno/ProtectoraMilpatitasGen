@@ -98,18 +98,21 @@
     }
     else
     {
-        <article class="articulos">
-            <h2>Este usuario no tiene solicitudes de adopción</h2>
-        </article>
+        
+            <h2 style="margin-left: auto;margin-right: auto;">Este usuario no tiene solicitudes de adopción</h2>
+       
     }
 
 
 </main>
-        Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+
+@if (Model.Any())
+{
+  <p style="text-align: center;">Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>
 
         @Html.PagedListPager(Model, page => Url.Action("Index",
-            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-
+             new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+}
 <p>
     @{
 

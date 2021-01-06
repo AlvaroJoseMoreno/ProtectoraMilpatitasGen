@@ -37,8 +37,7 @@ b{
 
 
 body {
-    margin-top: 10px;
-    padding-top: 10px;
+    margin-top: 0;
     margin-left: 0px;
     margin-right: 0px;
     padding-bottom: 20px;
@@ -225,7 +224,7 @@ ul {
 #busqueda_Rapida > input[type="search"]:hover{
     cursor: pointer;
 }
-.formGuapo, .formNoTanGuapo {
+.formGuapo, .formNoTanGuapo, .formIncreible {
     border: 2px solid #fc810e;
     padding: 1em;
     margin-left: auto;
@@ -439,7 +438,28 @@ form {
         display: block;
         margin-top: -16px;
     }
-
+.fa-search{
+    margin-right: 10px;
+    color: #fc810e;
+}
+.fa-search:hover{
+    color: #fff99f;
+    cursor: pointer;
+}
+.formIncreible>.notext{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.formIncreible>.notext>input{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+}
+.arri, header{
+    background-color: #fc810e;
+}
 /*
 .listaarriba input[type = "checkbox"]{
     display: none;
@@ -480,31 +500,46 @@ form {
     
 }
 */
+.detalle > .img > img {
+    width: 220px;
+    height: 220px;
+}
 @media all and (min-width: 550px) {
-    .listaarriba>label{
+    .listaarriba > label {
         display: none;
     }
-    .listaarriba>div>nav>ul {
+
+    .listaarriba > div > nav > ul {
         display: flex;
         flex-direction: column;
         left: 0;
         justify-content: center;
         transition: .5s;
     }
+
     #partemenu {
         display: flex;
         flex-direction: column;
         left: 0;
         justify-content: center;
     }
-    .navbar-right{
+
+    .navbar-right {
         visibility: visible;
     }
-}
 
+    .detalle > .img > img {
+        width: 275px;
+        height: 275px;
+    }
+
+    #mainart > .articulos {
+        width: 85%;
+    }
+}
 @media all and (min-width: 620px){
     /*Aqui escribimos el codigo de los formularios*/
-    .formGuapo, .formNoTanGuapo{
+    .formGuapo, .formNoTanGuapo, .formIncreible {
         width: 580px;
     }
     .formGuapo > .text, .formNoTanGuapo>.text {
@@ -566,7 +601,9 @@ form {
         width: 300px;
         transition: width 1.2s;
     }
-
+    #mainart > .articulos {
+        width: 75%;
+    }
 }
 
 @media all and (min-width: 680px) { 
@@ -586,6 +623,10 @@ form {
     #secanim > .articulos {
         width: 600px;
     }
+    .detalle > .img > img {
+        width: 350px;
+        height: 350px;
+    }
 }
 
 
@@ -597,6 +638,10 @@ form {
         margin-bottom: 10px;
     }
     .detalle>div{
+        display: flex;
+        flex-direction: column;
+    }
+    #divAnim{
         display: flex;
         flex-direction: row;
     }
@@ -611,10 +656,16 @@ form {
         display: flex;
         flex-wrap: wrap;
     }
-    #datis, #enlacis{
+    #mainart > .articulos > .animIndex {
+        width: 90%;
+    }
+    #datis, #enlacis {
         width: 42%;
     }
-    
+    .detalle > .img > img {
+        width: 400px;
+        height: 400px;
+    }
 }
 @media all and (min-width: 1020px) {
     #mainart > .articulos {

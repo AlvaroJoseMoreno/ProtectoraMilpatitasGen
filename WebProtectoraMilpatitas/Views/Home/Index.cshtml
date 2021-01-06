@@ -46,7 +46,7 @@
         <h2>@Html.ActionLink(item.Nombre, "Details", "Animal", new { id = item.Id }, htmlAttributes: null)</h2>
 
         <img src="/@Html.DisplayFor(modelItem => item.Foto)" />
-        <div>
+        <div class="animIndex"> 
             <p>
                 <b>Edad: </b>
                 @Html.DisplayFor(modelItem => item.Edad)
@@ -97,7 +97,7 @@
 
         </div>
 
-        <p>@Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
+       @* <p>@Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>*@
 
         @{
             bool comprobar = false;
@@ -146,7 +146,7 @@
 
 
 <br />
-    Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+<p style="text-align: center;"> Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>
 
     @Html.PagedListPager(Model, page => Url.Action("Index",
         new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

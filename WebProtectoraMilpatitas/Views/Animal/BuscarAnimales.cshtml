@@ -8,77 +8,60 @@
 <h2>Buscar</h2>
 
 
-@using (Html.BeginForm("BuscarAnimales", "Animal", FormMethod.Post))
+@using (Html.BeginForm("BuscarAnimales", "Animal", FormMethod.Post, new { @class="formGuapo"  }))
 {
     @Html.AntiForgeryToken()
 
 
-<div class="form-horizontal">
+
     <hr />
 
-    <div class="form-group">
+    <p class="text">
         @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        
             @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>
-
-    <div class="form-group">
+    </p>
+    <p class="text">
         @Html.LabelFor(model => model.Edad, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        
             @Html.EditorFor(model => model.Edad, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>
-
-    <div class="form-group">
+    </p>
+    <p class="text">
         @Html.LabelFor(model => model.Sexo, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Sexo, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>
-
-    <div class="form-group">
+        @Html.EditorFor(model => model.Sexo, new { htmlAttributes = new { @class = "form-control" } })
+    </p>
+    <p class="text">
         @Html.LabelFor(model => model.Centro, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
             @Html.EditorFor(model => model.Centro, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>
-
-    <div class="form-group">
+    </p>
+    <p class="text">
         @Html.LabelFor(model => model.DatosMedicos, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+
             @Html.EnumDropDownListFor(model => model.DatosMedicos, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>
+    </p>
 
-    <div class="form-group">
+    <p class="text">
         @Html.LabelFor(model => model.Caracter, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+
             @Html.EditorFor(model => model.Caracter, new { htmlAttributes = new { @class = "form-control" } })
-        </div>
-    </div>
-
-    <div class="form-group">
+    </p>
+    <p class="text">
         @Html.LabelFor(model => model.idBusEspecie, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.idBusEspecie, ViewData["idBusEspecie"] as SelectList, "Selecciona una especie")
-        </div>
-    </div>
 
-    <div class="form-group">
+        @Html.DropDownListFor(model => model.idBusEspecie, ViewData["idBusEspecie"] as SelectList, "Selecciona una especie")
+    </p>
+    <p class="text">
         @Html.LabelFor(model => model.idBusRaza, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.idBusRaza, ViewData["idBusRaza"] as SelectList, "Selecciona una raza")
-        </div>
-    </div>
 
+        @Html.DropDownListFor(model => model.idBusRaza, ViewData["idBusRaza"] as SelectList, "Selecciona una raza")
+    </p>
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Buscar" class="btn btn-default" />
         </div>
     </div>
-</div>
+
 }
 <div>
     @Html.ActionLink("Volver a inicio", "Index", "Home")

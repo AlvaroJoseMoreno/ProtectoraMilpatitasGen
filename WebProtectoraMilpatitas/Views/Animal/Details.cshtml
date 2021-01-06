@@ -24,7 +24,7 @@
         <article class="detalle">
             <h2>@Html.ActionLink(Model.Nombre, "Details", new { id = Model.Id })</h2>
             <img src="/@Html.DisplayFor(modelItem => Model.Foto)" />
-            <div>
+            <div id="divAnim">
                 <div id="datis">
                     <p>
                         <b>@Html.DisplayNameFor(model => model.Edad): </b> @Html.DisplayFor(modelItem => Model.Edad)
