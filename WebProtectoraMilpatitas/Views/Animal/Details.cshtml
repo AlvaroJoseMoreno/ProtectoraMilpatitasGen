@@ -3,7 +3,19 @@
 
 @{
     ViewBag.Title = "Protectoramilpatitas-Pagina de detalle de animal";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    if (Session["Usuario"] != null)
+    {
+        if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+        {
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+        else
+        {
+            Layout = "~/Views/Shared/_LayoutUsu.cshtml";
+        }
+    }
+
 }
 
 <h2>Detalles del animal</h2>
@@ -40,7 +52,7 @@
                     </p>
                     <p>
                         <b>@Html.DisplayNameFor(model => model.idEspecie): </b>
-                        @Html.DisplayFor(modelItem=>Model.NomEspecie)
+                        @Html.DisplayFor(modelItem => Model.NomEspecie)
                     </p>
                     <p>
                         <b>@Html.DisplayNameFor(model => model.idRaza): </b>
@@ -161,6 +173,18 @@
         </dl>
     </div>*@
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Volver a la lista", "Index")
+    @{
+
+        if (Session["Usuario"] != null)
+        {
+            if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+            {
+                @Html.ActionLink("Volver a la lista", "Index")
+            }
+            else
+            {
+                @Html.ActionLink("Volver a inicio", "Index", "Home")
+            }
+        }
+    }
 </p>

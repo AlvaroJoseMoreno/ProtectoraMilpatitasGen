@@ -1,5 +1,6 @@
 ﻿@model PagedList.IPagedList<WebProtectoraMilpatitas.Models.AnimalViewModel>
 @using PagedList.Mvc
+@using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 
 @{
     ViewBag.Title = "Resultado Busqueda";
@@ -8,84 +9,97 @@
 
 <h2>Resultado Busqueda</h2>
 
-
-@if (!Model.Any()){
-<p>No se han encontrado animales con esos criterios de búsqueda</p>
-}else{
-
-
-
 <main id="mainart">
-    @foreach (var item in Model)
+
+    @if (!Model.Any())
     {
         <article class="articulos">
-            <h2>@Html.ActionLink(item.Nombre, "Details", new { id = item.Id })</h2>
-
-            <img src="/@Html.DisplayFor(modelItem => item.Foto)" />
-            <div>
-                <p>
-                    <b>Edad: </b>
-                    @Html.DisplayFor(modelItem => item.Edad)
-                </p>
-                <p>
-                    <b>Sexo: </b>
-
-                    @if (item.Sexo.ToString().Equals("H"))
-                    {
-                        <label style="font-weight:normal;">Hembra.</label>
-                    }
-                    else
-                    {
-                        <label style="font-weight:normal;">Macho.</label>
-                    }
-                </p>
-                <p>
-                    <b>
-                        Centro:
-                    </b> @Html.DisplayFor(modelItem => item.Centro)
-                </p>
-                <p>
-                    <b>
-                        Caracter:
-                    </b> @Html.DisplayFor(modelItem => item.Caracter)
-                </p>
-                <p>
-                    <b>Datos Medicos: </b>
-                    @if (item.DatosMedicos.ToString().Equals("enRecuperacion"))
-                    {
-                        <label style="font-weight:normal;">En Recuperación</label>
-                    }
-                    else
-                    {
-                        @Html.DisplayFor(modelItem => item.DatosMedicos)
-
-                    }
-                </p>
-                <p>
-                    <b>Especie: </b>
-                    @Html.ActionLink(item.NomEspecie, "ObtenerAnimalesPorEspecie", new { p_especie = item.idEspecie }, htmlAttributes: null)
-                </p>
-                <p>
-                    <b>Raza: </b>
-                    @Html.DisplayFor(modelItem => item.NomRaza)
-                </p>
-                <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
-                <p>@Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id }) </p>
-                <p>@Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = item.Id })</p>
-                <p>@Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
-                <p>@Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
-
-
-            </div>
+            <p>No se han encontrado animales con esos criterios de búsqueda</p>
         </article>
     }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <article class="articulos">
+                <h2>@Html.ActionLink(item.Nombre, "Details", new { id = item.Id })</h2>
+
+                <img src="/@Html.DisplayFor(modelItem => item.Foto)" />
+                <div>
+                    <p>
+                        <b>Edad: </b>
+                        @Html.DisplayFor(modelItem => item.Edad)
+                    </p>
+                    <p>
+                        <b>Sexo: </b>
+
+                        @if (item.Sexo.ToString().Equals("H"))
+                        {
+                            <label style="font-weight:normal;">Hembra.</label>
+                        }
+                        else
+                        {
+                            <label style="font-weight:normal;">Macho.</label>
+                        }
+                    </p>
+                    <p>
+                        <b>
+                            Centro:
+                        </b> @Html.DisplayFor(modelItem => item.Centro)
+                    </p>
+                    <p>
+                        <b>
+                            Caracter:
+                        </b> @Html.DisplayFor(modelItem => item.Caracter)
+                    </p>
+                    <p>
+                        <b>Datos Medicos: </b>
+                        @if (item.DatosMedicos.ToString().Equals("enRecuperacion"))
+                        {
+                            <label style="font-weight:normal;">En Recuperación</label>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.DatosMedicos)
+
+                        }
+                    </p>
+                    <p>
+                        <b>Especie: </b>
+                        @Html.ActionLink(item.NomEspecie, "ObtenerAnimalesPorEspecie", new { p_especie = item.idEspecie }, htmlAttributes: null)
+                    </p>
+                    <p>
+                        <b>Raza: </b>
+                        @Html.DisplayFor(modelItem => item.NomRaza)
+                    </p>
+                    <p>@Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
+
+                    @if (Session["Usuario"] != null)
+                    {
+                        if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                        {
+                            <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
+                            <p>@Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id }) </p>
+                            <p>@Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = item.Id })</p>
+
+                            <p>@Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
+                        }
+                    }
+
+
+
+                </div>
+            </article>
+        }
+
+    }
 </main>
-}
-        Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
 
-        @Html.PagedListPager(Model, page => Url.Action("ResultadoBuscar",
-            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
 
-        <div>
-            @Html.ActionLink("Volver a inicio", "Index", "Home")
-        </div>
+@Html.PagedListPager(Model, page => Url.Action("ResultadoBuscar",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+<p>
+    @Html.ActionLink("Volver a inicio", "Index", "Home")
+</p>

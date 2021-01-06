@@ -3,7 +3,18 @@
 
 @{
     ViewBag.Title = "Detalles de la Solicitud de Adopcion";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    if (Session["Usuario"] != null)
+    {
+        if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+        {
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+        else
+        {
+            Layout = "~/Views/Shared/_LayoutUsu.cshtml";
+        }
+    }
 }
 
 <h2>Detalles de la Solicitud de Adopcion</h2>

@@ -1,8 +1,20 @@
 ﻿@model WebProtectoraMilpatitas.Models.SeguimientoViewModel
+@using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    if (Session["Usuario"] != null)
+    {
+        if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+        {
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+        else
+        {
+            Layout = "~/Views/Shared/_LayoutUsu.cshtml";
+        }
+    }
 }
 
 <h2>Detalles Seguimiento</h2>
@@ -15,19 +27,19 @@
                 @Html.DisplayFor(model => model.NomUsuario)
             </h2>
             <div>
-                
+
 
                 <p>
-                   
-                
+
+
                     <img style="display:block;margin:auto; width: 200px;height: 200px; border-radius: 80%;" src="/@Html.DisplayFor(model => model.FotoUsuario)" />
                 </p>
 
-                
-                    <h2>@Html.DisplayFor(model => model.NomAnimal)</h2>
 
-                   
-               
+                <h2>@Html.DisplayFor(model => model.NomAnimal)</h2>
+
+
+
 
 
 
@@ -56,10 +68,36 @@
             </div>
             <div>
                 <p>
-                    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-                    @Html.ActionLink("Volver a la lista", "Index")
+                    @{
+
+                        if (Session["Usuario"] != null)
+                        {
+                            if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                            {
+                                @Html.ActionLink("Editar", "Edit", new { id = Model.Id })
+                            }
+                        }
+                    }
+                </p>
+
+                <p>
+                    
+                    @{
+
+                        if (Session["Usuario"] != null)
+                        {
+                            if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                            {
+                                @Html.ActionLink("Volver a la lista", "Index")
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Volver a inicio", "Index", "Home")
+                            }
+                        }
+                    }
                 </p>
             </div>
-            </article>
-            </main>
-           </section>
+        </article>
+    </main>
+</section>
