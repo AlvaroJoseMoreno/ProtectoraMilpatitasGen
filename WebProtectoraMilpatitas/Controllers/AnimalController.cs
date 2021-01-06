@@ -558,7 +558,7 @@ namespace WebProtectoraMilpatitas.Controllers
             
             SessionClose();
 
-            int pageSize = 2;
+            int pageSize = 6;
             int pageNumber = (page ?? 1);
 
             return View(babiesView.ToPagedList(pageNumber, pageSize));
@@ -578,7 +578,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
             SessionClose();
 
-            int pageSize = 2;
+            int pageSize = 6;
             int pageNumber = (page ?? 1);
 
             return View(recientesView.ToPagedList(pageNumber, pageSize));
@@ -598,7 +598,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
             SessionClose();
 
-            int pageSize = 2;
+            int pageSize = 6;
             int pageNumber = (page ?? 1);
 
             return View(especialesView.ToPagedList(pageNumber, pageSize));
@@ -618,7 +618,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
             SessionClose();
 
-            int pageSize = 2;
+            int pageSize = 6;
             int pageNumber = (page ?? 1);
 
             return View(urgentesView.ToPagedList(pageNumber, pageSize));

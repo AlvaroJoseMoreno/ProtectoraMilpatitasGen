@@ -301,7 +301,7 @@ public static void InitializeData ()
                 DateTime date1 = new DateTime (2008, 5, 1, 8, 30, 52);
 
                 int idseg = seguimientoCEN.Nuevo (manu, chihuahua.Id, idcon1);
-                seguimientoCEN.Modificar (idseg, date1);
+                seguimientoCEN.Modificar (idseg, date1, "está correcto");
                 seguimientoCP.Actualizar_Estado (idseg, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSeguimientoEnum.pendienteRevision);
 
                 Console.WriteLine ();

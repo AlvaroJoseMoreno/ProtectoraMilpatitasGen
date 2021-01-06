@@ -376,5 +376,56 @@ namespace WebProtectoraMilpatitas.Controllers
                 return View();
             }
         }
+
+        public ActionResult AceptarSolicitud (int idSol, string idUsu, string idAni)
+        {
+            
+
+            SessionInitialize();
+
+            UsuarioCAD usuCAD = new UsuarioCAD(session);
+            UsuarioCEN usuCEN = new UsuarioCEN(usuCAD);
+            UsuarioEN usuEN = usuCEN.Dame_Por_Email(idUsu);
+
+            ViewData["idSol"] = idSol;
+            ViewData["idUsu"] = usuEN.Nombre;
+            ViewData["idAni"] = idAni;
+
+            SessionClose();
+            
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AceptarSolicitud (int idSol, string idUsu, SolicitudAdopcionViewModel sol)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                //   filename =" + filename;
+                SessionInitialize();
+
+                SolicitudAdopcionCAD solCAD = new SolicitudAdopcionCAD(session);
+                SolicitudAdopcionCP solCP = new SolicitudAdopcionCP();
+
+                string resultado=solCP.Aceptar_Solicitud(idSol, idUsu);
+
+                SessionClose();
+
+                return RedirectToAction("ResultadoAceptar");
+
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult ResultadoAceptar()
+        {
+            return View();
+        }
+
     }
 }

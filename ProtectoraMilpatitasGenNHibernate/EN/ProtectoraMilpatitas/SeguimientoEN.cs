@@ -47,6 +47,13 @@ private ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopci
 
 
 
+/**
+ *	Atributo descripcion
+ */
+private string descripcion;
+
+
+
 
 
 
@@ -86,6 +93,12 @@ public virtual ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.Contrat
 
 
 
+public virtual string Descripcion {
+        get { return descripcion; } set { descripcion = value;  }
+}
+
+
+
 
 
 public SeguimientoEN()
@@ -94,20 +107,20 @@ public SeguimientoEN()
 
 
 
-public SeguimientoEN(int id, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSeguimientoEnum estado, Nullable<DateTime> fecha, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN usuario, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN animal, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN contratoAdopcion
+public SeguimientoEN(int id, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSeguimientoEnum estado, Nullable<DateTime> fecha, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN usuario, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN animal, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN contratoAdopcion, string descripcion
                      )
 {
-        this.init (Id, estado, fecha, usuario, animal, contratoAdopcion);
+        this.init (Id, estado, fecha, usuario, animal, contratoAdopcion, descripcion);
 }
 
 
 public SeguimientoEN(SeguimientoEN seguimiento)
 {
-        this.init (Id, seguimiento.Estado, seguimiento.Fecha, seguimiento.Usuario, seguimiento.Animal, seguimiento.ContratoAdopcion);
+        this.init (Id, seguimiento.Estado, seguimiento.Fecha, seguimiento.Usuario, seguimiento.Animal, seguimiento.ContratoAdopcion, seguimiento.Descripcion);
 }
 
 private void init (int id
-                   , ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSeguimientoEnum estado, Nullable<DateTime> fecha, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN usuario, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN animal, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN contratoAdopcion)
+                   , ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSeguimientoEnum estado, Nullable<DateTime> fecha, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN usuario, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN animal, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.ContratoAdopcionEN contratoAdopcion, string descripcion)
 {
         this.Id = id;
 
@@ -121,6 +134,8 @@ private void init (int id
         this.Animal = animal;
 
         this.ContratoAdopcion = contratoAdopcion;
+
+        this.Descripcion = descripcion;
 }
 
 public override bool Equals (object obj)

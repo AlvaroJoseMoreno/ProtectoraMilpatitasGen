@@ -45,6 +45,10 @@
                 <b>Estado:</b>
                 @Html.DisplayFor(modelItem => item.Estado)
             </p>
+            <p>
+                <b>Descripción:</b>
+                @Html.DisplayFor(modelItem=>item.Descripcion)
+            </p>
         </div>
         <div>
             <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>

@@ -1,0 +1,11 @@
+﻿@model WebProtectoraMilpatitas.Models.SolicitudAdopcionViewModel
+
+@{
+    ViewBag.Title = "Resultado Aceptar Solicitud de Adopcion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Aceptada Solicitud de Adopcion @ViewData["idSol"] de @ViewData["idUsu"] para el animal @ViewData["idAni"]</h2>
+
+<p>@Html.ActionLink("Volver a la lista", "Index")</p>
+

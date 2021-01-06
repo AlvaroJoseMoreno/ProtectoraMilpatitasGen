@@ -1,0 +1,21 @@
+﻿@model WebProtectoraMilpatitas.Models.SolicitudAdopcionViewModel
+
+@{
+    ViewBag.Title = "AceptarSolicitud";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Aceptar Solicitud</h2>
+
+<h3>¿Estás seguro de querer aceptar la solicitud de adopcion @ViewData["idSol"] de @ViewData["idUsu"] para el animal @ViewData["idAni"]?</h3>
+<div>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Aceptar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a la lista", "Index")
+        </div>
+    }
+</div>
