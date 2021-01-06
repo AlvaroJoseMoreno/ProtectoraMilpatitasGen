@@ -21,18 +21,27 @@ namespace WebProtectoraMilpatitas.Assemblers
             contrato.FirmaCompromiso = con.FirmaCompromiso;
             contrato.Estado = con.Estado;
 
-            contrato.idUsuario = con.Usuario.Email;
-            contrato.NomUsuario = con.Usuario.Nombre;
-            contrato.FotoUsuario = con.Usuario.Foto;
-
-            contrato.idAnimal = con.Animal.Id;
-            if (con.Animal.Nombre != null)
+            if (con.Usuario != null)
             {
-                contrato.NomAnimal = con.Animal.Nombre;
+                contrato.idUsuario = con.Usuario.Email;
+                contrato.NomUsuario = con.Usuario.Nombre;
+                contrato.FotoUsuario = con.Usuario.Foto;
             }
-                contrato.FotoAnimal = con.Animal.Foto;
+            if (con.Animal != null)
+            {
+                contrato.idAnimal = con.Animal.Id;
 
-            contrato.idSolicitud = con.SolicitudAdopcion.Id;
+                if (con.Animal.Nombre != null)
+                {
+                    contrato.NomAnimal = con.Animal.Nombre;
+                }
+                contrato.FotoAnimal = con.Animal.Foto;
+            }
+
+            if (con.SolicitudAdopcion != null)
+            {
+                contrato.idSolicitud = con.SolicitudAdopcion.Id;
+            }
 
             return contrato;
         }

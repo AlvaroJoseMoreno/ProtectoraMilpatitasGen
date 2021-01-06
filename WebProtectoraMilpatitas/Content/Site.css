@@ -356,8 +356,13 @@ form {
 .fa-bars , .fa-times{
     cursor: pointer;
 }
-.respmenu>nav>ul{
-    width: 80%;
+.respmenu > nav > ul {
+    width: 100%;
+}
+.navbar-nav:active {
+    position: static;
+    opacity: 1;
+    transition: opacity 1s linear;
 }
 .respmenu>nav>ul>li{
     width: 100%;
@@ -386,6 +391,7 @@ form {
     width: 48px;
     height: 48px;
     color: #fff99f;
+    
 }
 .respmenu > .fa-bars:hover, .respmenu > .fa-times:hover, .respmenu input[type="checkbox"]:hover{
     color: yellow;
@@ -413,9 +419,12 @@ form {
     .respmenu nav {
         display: none;
     }
-
-    .respmenu input:checked ~ nav {
+    #form_registro{
+        display: none;
+    }
+    .respmenu input:checked ~ nav  {
         display: block;
+        
     }
 
     .respmenu input:checked ~ .fa-bars {
@@ -424,6 +433,11 @@ form {
 
     .respmenu input:not(:checked) ~ .fa-times {
         display: none;
+    }
+
+    input:checked ~ #form_registro{
+        display: block;
+        margin-top: -16px;
     }
 
 /*
@@ -466,17 +480,16 @@ form {
     
 }
 */
-
-
-@media all and (min-width: 550px){
+@media all and (min-width: 550px) {
     .listaarriba>label{
         display: none;
     }
-    .listaarriba ul {
+    .listaarriba>div>nav>ul {
         display: flex;
         flex-direction: column;
         left: 0;
         justify-content: center;
+        transition: .5s;
     }
     #partemenu {
         display: flex;
@@ -556,7 +569,7 @@ form {
 
 }
 
-@media all and (min-width: 680px) {
+@media all and (min-width: 680px) { 
     #mainart {
         display: flex;
         flex-wrap: wrap;
@@ -575,13 +588,17 @@ form {
     }
 }
 
+
+
 @media all and (min-width: 900px) {
-    .listaarriba ul {
-        flex-direction: row;
-    }
+
     #details>div{
         width: 45%;
         margin-bottom: 10px;
+    }
+    .detalle>div{
+        display: flex;
+        flex-direction: row;
     }
     .detalle>img{
         width: 600px;
@@ -590,9 +607,44 @@ form {
     #details{
         margin-left: auto;
         margin-right: auto;
-        width: 600px;
+        width: 800px;
         display: flex;
         flex-wrap: wrap;
+    }
+    #datis, #enlacis{
+        width: 42%;
+    }
+    .listaarriba>.respmenu>.fas{
+        display: none;
+    }
+    .listaarriba > div > nav,  #form_registro {
+        display: block;
+    }
+    #form_registro {
+        padding-bottom: .1em;
+        width: 30%;
+        margin-left: auto;
+        margin-top: -82px;
+    }
+    .listaarriba > div > nav > ul{
+        width: 100%;
+    }
+    .listaarriba>div>nav{
+       padding: .1em;
+       width: 60%;
+    }
+    .listaarriba > div > nav > ul>li{
+        width: 170px;
+        height: 49px;
+        
+        margin-left: 0;
+    }
+    .listaarriba > div > nav > ul, #form_registro>ul {
+        display: flex;
+        flex-direction: row;
+        left: 0;
+        justify-content: center;
+        transition: .5s;
     }
 }
 @media all and (min-width: 1020px) {
