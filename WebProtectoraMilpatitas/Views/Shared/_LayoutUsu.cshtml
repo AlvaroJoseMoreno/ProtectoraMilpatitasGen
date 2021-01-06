@@ -38,13 +38,13 @@
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                     <li>@Html.ActionLink("Buscar", "BuscarAnimales", "Animal")</li>
                     <li>@Html.ActionLink("Test Animal Ideal", "RellenarTest", "TestAnimalIdeal")</li>
-                    <li>@Html.ActionLink("Perfil", "Perfil", "Usuario")</li>
                 </ul>
             </nav>
+            <div id="form_registro">
+                @Html.Partial("_LoginPartial")
+            </div>
         </div>
-        <div id="form_registro">
-            @Html.Partial("_LoginPartial")
-        </div>
+        
 
     </div>
 
