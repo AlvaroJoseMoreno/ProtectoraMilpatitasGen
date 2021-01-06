@@ -208,10 +208,14 @@ namespace WebProtectoraMilpatitas.Controllers
                 AnimalCP animalCP = new AnimalCP();
                 animalCP.Nuevo(ani.Nombre, ani.Edad, ani.Sexo, ani.Centro, ani.DatosMedicos, ani.Caracter, ani.idEspecie, filename, ani.FechaLlegada, ani.idRaza);
 
+                TempData["mensajeModalAnimal"] = "Se ha creado correctamente el animal";
+
                 return RedirectToAction("Index");
             }
             catch
             {
+                TempData["mensajeModalAnimal"] = "Ha habido un error al crear el animal";
+
                 return View();
             }
         }
@@ -491,7 +495,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 IEnumerable<AnimalViewModel> anifiltrados = new AnimalAssembler().ConvertListENToModel(animalesfiltrados).ToList();
                 SessionClose();
 
-                TempData["Animales"] = anifiltrados;
+                Session["Animales"] = anifiltrados;
 
                 return RedirectToAction("ResultadoBuscar");
 
@@ -525,7 +529,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 
                 SessionClose();
 
-                TempData["Animales"] = anifiltrados;
+                Session["Animales"] = anifiltrados;
 
                 return RedirectToAction("ResultadoBuscar");
 
@@ -536,12 +540,12 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
-        public ActionResult ResultadoBuscar(/*int? page*/)
+        public ActionResult ResultadoBuscar(int? page)
         {
-            //int pageSize = 6;
-            //int pageNumber = (page ?? 1);
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
 
-            return View(TempData["Animales"]);
+            return View(((IEnumerable<AnimalViewModel>)Session["Animales"]).ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult ObtenerBabies(int? page)

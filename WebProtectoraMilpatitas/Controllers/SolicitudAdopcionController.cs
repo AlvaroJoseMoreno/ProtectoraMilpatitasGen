@@ -125,6 +125,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
                 soliCEN.Nuevo(sol.idUsuario, sol.idAnimal, DateTime.Today);
 
+                TempData["mensajeModal"] = "¡Enhorabuena! Has creado una solicitud";
                 return RedirectToAction("Index");
             }
             catch
@@ -187,7 +188,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 solCEN.Rellenar_Solicitud(sol.Id, sol.Nombre, sol.AnimalesAcargo,
                     sol.AmbienteConvivencia, sol.TiempoLibre, sol.TodosAcuerdo, sol.MotivosAdopcion);
 
-               
+                TempData["mensajeModal"] = "¡Enhorabuena! Has modificado la información de la solicitud";
                 return RedirectToAction("Index");
             }
             catch
@@ -248,7 +249,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
                 solCP.Actualizar_Estado(sol.Id, sol.Estado);
 
-
+                TempData["mensajeModal"] = "Se ha actualizado el estado de la solicitud con exito";
                 return RedirectToAction("Index");
             }
             catch
@@ -282,6 +283,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 SolicitudAdopcionCP soliCP = new SolicitudAdopcionCP();
                 soliCP.Actualizar_Estado(id,ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
                 SessionClose();
+                TempData["mensajeModal"] = "¡Enhorabuena! Tu solicitud de adopción esta en tramite";
                 return RedirectToAction("Index");
                 
             }
@@ -369,6 +371,7 @@ namespace WebProtectoraMilpatitas.Controllers
                
                 solCEN.Eliminar(id);
 
+                TempData["mensajeModal"] = "Has eliminado la solicitud";
                 return RedirectToAction("Index");
             }
             catch
@@ -413,7 +416,8 @@ namespace WebProtectoraMilpatitas.Controllers
 
                 SessionClose();
 
-                return RedirectToAction("ResultadoAceptar");
+                TempData["mensajeModal"] = "¡Solicitud Aceptada!";
+                return RedirectToAction("Index"); //mostrar mensaje modal
 
             }
             catch
@@ -422,10 +426,90 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
-        public ActionResult ResultadoAceptar()
+        public ActionResult RechazarSolicitud(int idSol, string idUsu, string idAni)
+        {
+
+
+            SessionInitialize();
+
+            UsuarioCAD usuCAD = new UsuarioCAD(session);
+            UsuarioCEN usuCEN = new UsuarioCEN(usuCAD);
+            UsuarioEN usuEN = usuCEN.Dame_Por_Email(idUsu);
+
+            ViewData["idSol"] = idSol;
+            ViewData["idUsu"] = usuEN.Nombre;
+            ViewData["idAni"] = idAni;
+
+            SessionClose();
+
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult RechazarSolicitud(int idSol, string idUsu, SolicitudAdopcionViewModel sol)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                //   filename =" + filename;
+                SessionInitialize();
+
+                SolicitudAdopcionCAD solCAD = new SolicitudAdopcionCAD(session);
+                SolicitudAdopcionCP solCP = new SolicitudAdopcionCP();
+
+                string resultado = solCP.Rechazar_Solicitud(idSol, idUsu);
+
+                SessionClose();
+                TempData["mensajeModal"] = "Solicitud de adopción rechazada";
+                return RedirectToAction("Index"); //mostrar mensaje modal
+
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult RechazarTodasSolicitud()
         {
             return View();
         }
 
+        [HttpPost]
+        public ActionResult RechazarTodasSolicitud(SolicitudAdopcionViewModel sol)
+        {
+            try
+            {
+                // TODO: Add insert logic here
+                //   filename =" + filename;
+                SessionInitialize();
+
+                SolicitudAdopcionCAD solCAD = new SolicitudAdopcionCAD(session);
+                SolicitudAdopcionCP solCP = new SolicitudAdopcionCP();
+                SolicitudAdopcionCEN solCEN = new SolicitudAdopcionCEN(solCAD);
+
+                IList<SolicitudAdopcionEN> sols = solCEN.Dame_Todas(0,-1);
+
+                string[] resultados = new string[sols.Count];
+                int i = 0;
+
+                foreach (SolicitudAdopcionEN soli in sols)
+                {
+                    resultados[i] = solCP.Rechazar_Solicitud(soli.Id, soli.Usuario.Email);
+
+                    i = i + 1;
+                }
+
+                SessionClose();
+                TempData["mensajeModal"] = "Todas las solicitudes han sido rechazadas";
+                return RedirectToAction("Index"); //mostrar mensaje modal
+
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

@@ -16,13 +16,19 @@ namespace WebProtectoraMilpatitas.Assemblers
             seguimiento.Estado = segui.Estado;
             seguimiento.Fecha = segui.Fecha;
 
+        if (segui.Usuario != null) 
+            { 
             seguimiento.idUsuario = segui.Usuario.Email;
             seguimiento.NomUsuario = segui.Usuario.Nombre;
             seguimiento.FotoUsuario = segui.Usuario.Foto;
+            }
 
-            seguimiento.idAnimal = segui.Animal.Id;
-            seguimiento.NomAnimal = segui.Animal.Nombre;
-            seguimiento.FotoAnimal = segui.Animal.Foto;
+        if (segui.Animal != null)
+            {
+                seguimiento.idAnimal = segui.Animal.Id;
+                seguimiento.NomAnimal = segui.Animal.Nombre;
+                seguimiento.FotoAnimal = segui.Animal.Foto;
+            }
 
             seguimiento.Descripcion = segui.Descripcion;
 

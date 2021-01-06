@@ -1,0 +1,23 @@
+﻿@model WebProtectoraMilpatitas.Models.SolicitudAdopcionViewModel
+
+@{
+    ViewBag.Title = "RechazarSolicitudes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Rechazar Solicitudes</h2>
+
+<h3>¿Estás seguro de querer rechazar todas las solicitudes?</h3>
+<div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Rechazar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a la lista", "Index")
+        </div>
+    }
+</div>
+

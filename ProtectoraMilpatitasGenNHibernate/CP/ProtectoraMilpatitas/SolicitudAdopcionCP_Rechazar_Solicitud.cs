@@ -21,7 +21,7 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
 {
 public partial class SolicitudAdopcionCP : BasicCP
 {
-public void Rechazar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
+public string Rechazar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
 {
         /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_SolicitudAdopcion_Rechazar_Solicitud) ENABLED START*/
 
@@ -38,6 +38,7 @@ public void Rechazar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
         MensajeCEN mensaCEN = null;
         MensajeEN mensaEn = null;
 
+            string result = "";
 
         try
         {
@@ -45,7 +46,10 @@ public void Rechazar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
                 solicitudAdopcionCAD = new SolicitudAdopcionCAD (session);
                 solicitudAdopcionCEN = new SolicitudAdopcionCEN (solicitudAdopcionCAD);
                 solicitudAdopcionCP = new SolicitudAdopcionCP ();
-                solicitudAdopcionEN = new SolicitudAdopcionEN ();
+
+                solicitudAdopcionEN = solicitudAdopcionCEN.Ver_Solicitud(p_SolicitudAdopcion);
+
+                ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum anterior = solicitudAdopcionEN.Estado;
 
                 usuCAD = new UsuarioCAD (session);
                 usuCEN = new UsuarioCEN (usuCAD);
@@ -61,8 +65,17 @@ public void Rechazar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
 
                 notificacionEN.Mensaje = "Solicitud Denegada";
                 mensaEn.Texto = "Solicitud denegada";
-                solicitudAdopcionEN.Estado = ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.rechazado;
-                solicitudAdopcionCP.Actualizar_Estado (p_SolicitudAdopcion, solicitudAdopcionEN.Estado);
+
+                solicitudAdopcionCP.Actualizar_Estado (p_SolicitudAdopcion, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.rechazado);
+
+                if (anterior!=solicitudAdopcionCEN.Ver_Solicitud(p_SolicitudAdopcion).Estado)
+                {
+                    result = "La solicitud ha sido rechazada";
+                } else
+                {
+                    result = "Ha habido un error al rechazar la solicitud";
+                }
+
                 notiCEN.Enviar (notificacionEN.Id, p_Usuario, mensaEn.Texto);
 
 
@@ -71,6 +84,9 @@ public void Rechazar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
         catch (Exception ex)
         {
                 SessionRollBack ();
+
+                result = "Ha habido un error al rechazar la solicitud";
+
                 throw ex;
         }
         finally
@@ -78,6 +94,7 @@ public void Rechazar_Solicitud (int p_SolicitudAdopcion, string p_Usuario)
                 SessionClose ();
         }
 
+            return result;
 
         /*PROTECTED REGION END*/
 }

@@ -107,7 +107,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 filename = "Imagenes/usuarios" + filename;
                 UsuarioCEN usarioCEN = new UsuarioCEN();
                 usarioCEN.Registrarse(usuario.Nombre, usuario.Email, usuario.Password, filename);
-
+                TempData["mensajeModal"] = "¡Enhorabuena! Has creado un usuario";
                 return RedirectToAction("Index");
             }
             catch
@@ -147,6 +147,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 // TODO: Add update logic here
                 UsuarioCEN usuarioCEN = new UsuarioCEN();
                 usuarioCEN.Modificar(usu.Email, usu.Nombre, usu.Password, filename);
+                TempData["mensajeModal"] = "¡Enhorabuena! Has editado la información del usuario con exito";
                 return RedirectToAction("Index");
             }
             catch
@@ -200,6 +201,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 // TODO: Add delete logic here
                 UsuarioCEN usucen = new UsuarioCEN();
                 usucen.Eliminar(usuario.Email);
+                TempData["mensajeModal"] = "Has eliminado la información del usuario con exito";
                 return RedirectToAction("Index");
             }
             catch

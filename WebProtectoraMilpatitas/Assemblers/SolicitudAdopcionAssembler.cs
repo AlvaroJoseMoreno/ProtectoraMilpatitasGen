@@ -21,13 +21,17 @@ namespace WebProtectoraMilpatitas.Assemblers
             solicitud.MotivosAdopcion = soli.MotivosAdopcion;
             solicitud.Estado = soli.Estado;
 
+        if (soli.Usuario != null) {    
             solicitud.idUsuario = soli.Usuario.Email;
             solicitud.NomUsuario = soli.Usuario.Nombre;
             solicitud.FotoUsuario = soli.Usuario.Foto;
-
-            solicitud.idAnimal = soli.Animal.Id;
-            solicitud.NomAnimal = soli.Animal.Nombre;
-            solicitud.FotoAnimal = soli.Animal.Foto;
+        }
+            if (soli.Animal != null)
+            {
+                solicitud.idAnimal = soli.Animal.Id;
+                solicitud.NomAnimal = soli.Animal.Nombre;
+                solicitud.FotoAnimal = soli.Animal.Foto;
+            }
 
         if (soli.ContratoAdopcion != null) { 
             solicitud.idContrato = soli.ContratoAdopcion.Id; 
