@@ -14,83 +14,79 @@
 <p>
     @Html.ActionLink("Volver a usuarios", "Index", "Usuario")
 </p>
-<table class="table">
-    @{
-        if (Model.Any())
-        {
-            <tr>
-                <th>
-                    Nombre
-                </th>
-                <th>
-                    Animales a cargo
-                </th>
-                <th>
-                    Ambiente convivencia
-                </th>
-                <th>
-                    Tiempo libre
-                </th>
-                <th>
-                    Todos de acuerdo
-                </th>
-                <th>
-                    Motivos de adopción
-                </th>
-                <th>
-                    Fecha solicitud
-                </th>
-            </tr>
-        }
-        else
-        {
-            <tr>No tiene solicitudes de adopcion</tr>
-        }
-    }
+<main id="mainart">
+
+
+
+
+
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AnimalesAcargo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AmbienteConvivencia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TiempoLibre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TodosAcuerdo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MotivosAdopcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaSoli)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }) |
-            </td>
-            <td>
-
-                @if (item.Estado.ToString().Equals("aceptado"))
+        <article class="articulos">
+            <div>
+                @if (item.Nombre != null && !item.Nombre.Equals(""))
                 {
 
-                    <p>@Html.ActionLink("Contrato", "contratoRellenar", "ContratoAdopcion", new { idCon = item.idContrato }, new { @class = "Buttons" })</p>
-                }
-            </td>
-            
-        </tr>
-    }
 
-</table>
-<br />
+                    <h2>@Html.ActionLink(item.Nombre, "Details", new { id = item.Id })</h2>
+
+
+                }
+                else
+                {
+                    <h2> @Html.DisplayFor(modelItem => item.Nombre);</h2>
+                }
+
+
+                <p>
+                    <b>Usuario:</b>
+                    @Html.ActionLink(item.NomUsuario, "Details", "Usuario", new { email = item.idUsuario }, htmlAttributes: null)
+                </p>
+                <img style="margin:auto; border-radius: 80%; width: 100px;height: 100px;" src="/@Html.DisplayFor(modelItem => item.FotoUsuario)" />
+
+                <p>
+                    <b>Animal:</b>
+                    @Html.ActionLink(item.NomAnimal, "Details", "Animal", new { id = item.idAnimal }, htmlAttributes: null)
+                </p>
+                <img style="margin:auto; border-radius: 80%; width: 100px;height: 100px;" src="/@Html.DisplayFor(modelItem => item.FotoAnimal)" />
+
+
+                @if (item.Estado.ToString().Equals("enEspera"))
+                {
+                    <p>
+                        <b>Estado:</b>
+                        En espera
+                    </p>
+                }
+                else
+                {
+
+                    <p>
+                        <b>Estado:</b>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </p>
+
+                }
+
+                <p>
+                    <b>Fecha de Solicitud:</b>
+                    @Html.DisplayFor(modelItem => item.FechaSoli)
+                </p>
+            </div>
+
+            <div>
+                <p>@Html.ActionLink("Aceptar solicitud", "AceptarSolicitud", new { idSol = item.Id, idUsu = item.idUsuario, idAni = item.NomAnimal })</p>
+                <p>@Html.ActionLink("Rechazar solicitud", "RechazarSolicitud", new { idSol = item.Id, idUsu = item.idUsuario, idAni = item.NomAnimal })</p>
+                <p>@Html.ActionLink("Rechazar todas", "RechazarTodasSolicitud")</p>
+                <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
+                <p>@Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
+                <p>@Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
+                <p>@Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
+            </div>
+        </article>
+    }
+</main>
 Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
 
 @Html.PagedListPager(Model, page => Url.Action("Index",

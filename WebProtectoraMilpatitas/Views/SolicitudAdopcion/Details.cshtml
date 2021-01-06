@@ -6,113 +6,96 @@
 }
 
 <h2>Detalles de la Solicitud de Adopcion</h2>
+<section id="secanim">
+    <main id="details">
+        <article class="detalle">
+           
+               <div>
+                    <h2>
+                      
+                   
+                        @Html.DisplayFor(model => model.Nombre)
+                    </h2>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
+                    <p>
+                        <b>@Html.DisplayNameFor(model => model.NomUsuario)</b>
+                   
+                        @Html.DisplayFor(model => model.NomUsuario)
+                    </p>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
+                    <p>
+                      
+                    
+                        <img style="display:block;margin:auto; width: 200px;height: 200px;" border-radius: 80%; src="/@Html.DisplayFor(model => model.FotoUsuario)" />
+                    </p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NomUsuario)
-        </dt>
+                    <h2>
+                       
+                   
 
-        <dd>
-            @Html.DisplayFor(model => model.NomUsuario)
-        </dd>
+                    
+                        @Html.DisplayFor(model => model.NomAnimal)
+                    </h2>
+                      
+                   
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FotoUsuario)
-        </dt>
+                    <p>
+                        <img style="display:block;margin:auto; width: 200px;height: 200px;" border-radius: 80%; src="/@Html.DisplayFor(model => model.FotoAnimal)" />
+                    </p>
 
-        <dd>
-            <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(model => model.FotoUsuario)" />
-        </dd>
+                    <p>
+                        <b>@Html.DisplayNameFor(model => model.AnimalesAcargo)</b>
+                    
+                        @Html.DisplayFor(model => model.AnimalesAcargo)
+                    </p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NomAnimal)
-        </dt>
+                    <p>
+                        <b>@Html.DisplayNameFor(model => model.AmbienteConvivencia)</b>
+                    
+                        @Html.DisplayFor(model => model.AmbienteConvivencia)
+                    </p>
 
-        <dd>
-            @Html.DisplayFor(model => model.NomAnimal)
-        </dd>
+                    <p>
+                        <b>@Html.DisplayNameFor(model => model.TiempoLibre)</b>
+                    
+                        @Html.DisplayFor(model => model.TiempoLibre)
+                    </p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FotoAnimal)
-        </dt>
+                    <p>
+                        <b>@Html.DisplayNameFor(model => model.TodosAcuerdo)</b>
+                   
+                        @Html.DisplayFor(model => model.TodosAcuerdo)
+                    </p>
 
-        <dd>
-            <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(model => model.FotoAnimal)" />
-        </dd>
+                    <p>
+                        <b>@Html.DisplayNameFor(model => model.MotivosAdopcion)</b>
+                   
+                        @Html.DisplayFor(model => model.MotivosAdopcion)
+                    </p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AnimalesAcargo)
-        </dt>
+                    <p>
+                        <b>@Html.DisplayNameFor(model => model.Estado)</b>
 
-        <dd>
-            @Html.DisplayFor(model => model.AnimalesAcargo)
-        </dd>
+                        @Html.DisplayFor(model => model.Estado)
+                    </p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AmbienteConvivencia)
-        </dt>
+                    <p>
+                        <b>@Html.DisplayNameFor(model => model.FechaSoli)</b>
+                   
+                        @Html.DisplayFor(model => model.FechaSoli)
+                    </p>
 
-        <dd>
-            @Html.DisplayFor(model => model.AmbienteConvivencia)
-        </dd>
+                </div>
+               <div>
+                   <p>@Html.ActionLink("Aceptar solicitud", "AceptarSolicitud", new { idSol = Model.Id, idUsu = Model.idUsuario, idAni = Model.NomAnimal })</p>
+                   <p>@Html.ActionLink("Rechazar solicitud", "RechazarSolicitud", new { idSol = Model.Id, idUsu = Model.idUsuario, idAni = Model.NomAnimal })</p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TiempoLibre)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TiempoLibre)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TodosAcuerdo)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TodosAcuerdo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MotivosAdopcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MotivosAdopcion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaSoli)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FechaSoli)
-        </dd>
-
-    </dl>
-    <p>@Html.ActionLink("Aceptar solicitud", "AceptarSolicitud", new { idSol = Model.Id, idUsu = Model.idUsuario, idAni = Model.NomAnimal })</p>
-    <p>@Html.ActionLink("Rechazar solicitud", "RechazarSolicitud", new { idSol = Model.Id, idUsu = Model.idUsuario, idAni = Model.NomAnimal })</p>
-</div>
-
-<p>
-
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Volver a la lista", "Index")
-</p>
+                   <p> @Html.ActionLink("Editar", "Edit", new { id = Model.Id })</p>
+                   <p>@Html.ActionLink("Volver a la lista", "Index")</p>
+               </div>
+           </article>
+        </main>
+    </section>
