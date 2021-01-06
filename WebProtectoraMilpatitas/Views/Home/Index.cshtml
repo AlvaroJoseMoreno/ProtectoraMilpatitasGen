@@ -13,8 +13,8 @@
     @Html.AntiForgeryToken()
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         
-                <input type="search" placeholder="busca animal por nombre" name="nom" />
-                <input type="submit" value="Buscar" class="btn btn-default" />
+<label for="buscarRapid" class="fas fa-search"></label><input type="search" placeholder="busca animal por nombre" name="nom" />
+                <input type="submit" style="display:none;" value="Buscar" id="buscarRapid" class="btn btn-default" />
            
 }
 @if (((string)TempData["mensajeModal"]) != null && ((string)TempData["mensajeModal"]).Equals("¡Enhorabuena!, Has creado el contrato con éxito, haga click en el enlace de abajo para descargarlo"))
