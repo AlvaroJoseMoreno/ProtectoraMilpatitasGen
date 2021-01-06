@@ -89,7 +89,7 @@
     else
     {
         <article class="articulos">
-            <h2>Este usuario no tiene contratos de adopción.</h2>
+            <h2>Este usuario no tiene contratos de adopción</h2>
         </article>
     }
 
@@ -102,7 +102,20 @@ Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.P
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
 <p>
-    @Html.ActionLink("Volver a usuarios", "Index", "Usuario")
+    @{
+
+        if (Session["Usuario"] != null)
+        {
+            if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+            {
+                @Html.ActionLink("Volver a usuarios", "Index", "Usuario")
+            }
+            else
+            {
+                @Html.ActionLink("Volver a perfil", "Perfil", "Usuario", new { email = ((UsuarioEN)Session["Usuario"]).Email }, htmlAttributes: null)
+            }
+        }
+    }
 </p>
 
 

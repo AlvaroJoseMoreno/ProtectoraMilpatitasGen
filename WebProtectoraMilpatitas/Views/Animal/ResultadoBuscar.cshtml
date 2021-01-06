@@ -1,5 +1,7 @@
 ﻿@model PagedList.IPagedList<WebProtectoraMilpatitas.Models.AnimalViewModel>
 @using PagedList.Mvc
+@using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
+@using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
 @using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 
 @{
@@ -83,6 +85,47 @@
                             <p>@Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = item.Id })</p>
 
                             <p>@Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
+                        }
+                    }
+
+                    @{
+                        bool comprobar = false;
+                        string nombreUsu = "";
+                        string idUsu = "";
+
+                        if (Session["Usuario"] != null)
+                        {
+                            nombreUsu = ((UsuarioEN)Session["Usuario"]).Nombre;
+                            idUsu = ((UsuarioEN)Session["Usuario"]).Email;
+                        }
+
+                        IList<SolicitudAdopcionEN>
+                            soliEN = new SolicitudAdopcionCEN().Obtener_Solicitud_Usuario(idUsu);
+
+                        foreach (SolicitudAdopcionEN sol in soliEN)
+                        {
+                            if (sol.Animal.Id == item.Id && sol.Usuario.Email.Equals(idUsu))
+                            {
+                                comprobar = true;
+                                break;
+                            }
+                        }
+
+                        if (comprobar)
+                        {
+                            <p>Ya has realizado una solicitud a este animal</p>
+                        }
+                        else
+                        {
+                            if (item.EstadoAdopcion.ToString().Equals("SinTramite") || item.EstadoAdopcion.ToString().Equals("EnSolicitud"))
+                            {
+                                <p><i class="fas fa-hand-holding-heart"></i> @Html.ActionLink("Adoptar", "Encuesta", "SolicitudAdopcion", new { id = item.Id }, new { @class = "Buttons" })</p>
+                            }
+                            else
+                            {
+
+                                <p>Animal no disponible!</p>
+                            }
                         }
                     }
 
