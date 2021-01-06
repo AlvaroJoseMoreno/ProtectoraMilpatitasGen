@@ -17,7 +17,7 @@ namespace WebProtectoraMilpatitas.Controllers
         [Authorize]
 
         // GET: Raza
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string sortOrder, string nameRazaSearch, string nameEspecieSearch)
         {
             if (Session["Usuario"] != null)
             {
@@ -37,6 +37,32 @@ namespace WebProtectoraMilpatitas.Controllers
             RazaCEN razCEN = new RazaCEN(razCAD);
 
             IList<RazaEN> razsEN = razCEN.Dame_Todas(0, -1);
+
+            ViewBag.NameRazaSort = String.IsNullOrEmpty(sortOrder) ? "nameRaza_desc" : "";
+            ViewBag.NameEspecieSort = String.IsNullOrEmpty(sortOrder) ? "nameEspecie_desc" : "";
+
+            if (!String.IsNullOrEmpty(nameRazaSearch))
+            {
+                razsEN = razsEN.Where(s => s.Nombre.Contains(nameRazaSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(nameEspecieSearch))
+            {
+                razsEN = razsEN.Where(s => s.Especie.Nombre.Contains(nameEspecieSearch)).ToList();
+            }
+
+            switch (sortOrder)
+            {
+                case "nameRaza_desc":
+                    razsEN = razsEN.OrderByDescending(s => s.Nombre).ToList();
+                    break;
+                case "nameEspecie_desc":
+                    razsEN = razsEN.OrderByDescending(s => s.Especie.Nombre).ToList();
+                    break;
+                default:
+                    razsEN = razsEN.OrderBy(s => s.Nombre).ToList();
+                    break;
+            }
 
             IEnumerable<RazaViewModel> listaRazas = new RazaAssembler().ConvertListENToModel(razsEN).ToList();
 
@@ -137,7 +163,7 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
-        public ActionResult ObtenerRazasPorEspecie(int p_especie, int? page)
+        public ActionResult ObtenerRazasPorEspecie(int p_especie, int? page, string sortOrder, string nameRazaSearch, string nameEspecieSearch)
         {
             if (Session["Usuario"] != null)
             {
@@ -157,6 +183,33 @@ namespace WebProtectoraMilpatitas.Controllers
             EspecieCAD espeCad = new EspecieCAD(session);
             RazaCEN razCEN = new RazaCEN(razCad);
             IList<RazaEN> listRaz = razCEN.Dame_Raza_Por_Especie(p_especie);
+
+            ViewBag.NameRazaSort = String.IsNullOrEmpty(sortOrder) ? "nameRaza_desc" : "";
+            ViewBag.NameEspecieSort = String.IsNullOrEmpty(sortOrder) ? "nameEspecie_desc" : "";
+
+            if (!String.IsNullOrEmpty(nameRazaSearch))
+            {
+                listRaz = listRaz.Where(s => s.Nombre.Contains(nameRazaSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(nameEspecieSearch))
+            {
+                listRaz = listRaz.Where(s => s.Especie.Nombre.Contains(nameEspecieSearch)).ToList();
+            }
+
+            switch (sortOrder)
+            {
+                case "nameRaza_desc":
+                    listRaz = listRaz.OrderByDescending(s => s.Nombre).ToList();
+                    break;
+                case "nameEspecie_desc":
+                    listRaz = listRaz.OrderByDescending(s => s.Especie.Nombre).ToList();
+                    break;
+                default:
+                    listRaz = listRaz.OrderBy(s => s.Nombre).ToList();
+                    break;
+            }
+
             IEnumerable<RazaViewModel> listRaz2 = new RazaAssembler().ConvertListENToModel(listRaz).ToList();
             EspecieEN espEN = espeCad.Dame_Por_Id(p_especie);
 

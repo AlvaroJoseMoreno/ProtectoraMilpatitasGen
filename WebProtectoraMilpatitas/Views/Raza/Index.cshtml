@@ -12,6 +12,22 @@
     @Html.ActionLink("Crear nueva raza", "Create")
 </p>
 
+@using (Html.BeginForm())
+{
+    <p>
+        Buscar por nombre raza: @Html.TextBox("nameRazaSearch")
+        <input type="submit" value="Buscar" />
+    </p>
+}
+
+@using (Html.BeginForm())
+{
+    <p>
+        Buscar por nombre especie: @Html.TextBox("nameEspecieSearch")
+        <input type="submit" value="Buscar" />
+    </p>
+}
+
 @if (((string)TempData["mensajeModalRaza"]) != null)
 {
     <div id="capafondo">
@@ -31,10 +47,10 @@
 <table class="table">
     <tr>
         <th>
-            Nombre Raza
+            @Html.ActionLink("Nombre Raza", "Index", new { sortOrder = ViewBag.NameRazaSort })
         </th>
         <th>
-            Nombre Especie
+            @Html.ActionLink("Nombre Especie", "Index", new { sortOrder = ViewBag.NameEspecieSort })
         </th>
         <th></th>
     </tr>

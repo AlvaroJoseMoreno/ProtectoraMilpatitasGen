@@ -30,10 +30,18 @@
 
 }
 
+@using(Html.BeginForm())
+{
+    <p>
+        Buscar por nombre: @Html.TextBox("nameSearch")
+        <input type="submit" value="Buscar"/>
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
-            Nombre Especie
+            @Html.ActionLink("Nombre Especie", "Index", new { sortOrder=ViewBag.NameSort})
         </th>
         <th></th>
     </tr>

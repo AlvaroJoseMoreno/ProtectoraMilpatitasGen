@@ -17,7 +17,7 @@ namespace WebProtectoraMilpatitas.Controllers
     public class TestAnimalIdealController : BasicController
     {
         // GET: TestAnimalIdeal
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string sortOrder, string aficionSearch, string colorSearch, string personSearch, string usuSearch)
         {
             if (Session["Usuario"] != null)
             {
@@ -37,6 +37,54 @@ namespace WebProtectoraMilpatitas.Controllers
             TestAnimalIdealCEN testCEN = new TestAnimalIdealCEN(testCAD);
 
             IList<TestAnimalIdealEN> listEN = testCEN.Dame_Todos(0, -1);
+
+            ViewBag.AficionSort = String.IsNullOrEmpty(sortOrder) ? "aficion_desc" : "";
+            ViewBag.PersonalidadSort = String.IsNullOrEmpty(sortOrder) ? "personalidad_desc" : "";
+            ViewBag.ColorSort = String.IsNullOrEmpty(sortOrder) ? "color_desc" : "";
+            ViewBag.UsuarioSort = String.IsNullOrEmpty(sortOrder) ? "usuario_desc" : "";
+
+            if (!String.IsNullOrEmpty(aficionSearch))
+            {
+                listEN = listEN.Where(s => s.AficionFavorita.Contains(aficionSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(colorSearch))
+            {
+                listEN = listEN.Where(s => s.ColorFavorito.Contains(colorSearch)).ToList();
+            }
+
+            if(!String.IsNullOrEmpty(personSearch))
+            {
+                listEN = listEN.Where(s => s.Personalidad.Contains(personSearch)).ToList();
+            }
+
+            if(!String.IsNullOrEmpty(usuSearch))
+            {
+                listEN = listEN.Where(s => s.Usuario.Email.Contains(usuSearch)).ToList();
+            }
+
+            switch (sortOrder)
+            {
+                case "aficion_desc":
+                    listEN = listEN.OrderByDescending(s => s.AficionFavorita).ToList();
+                    break;
+
+                case "personalidad_desc":
+                    listEN = listEN.OrderByDescending(s => s.Personalidad).ToList();
+                    break;
+
+                case "color_desc":
+                    listEN = listEN.OrderByDescending(s => s.ColorFavorito).ToList();
+                    break;
+                case "usuario_desc":
+                    listEN = listEN.OrderByDescending(s => s.Usuario.Email).ToList();
+                    break;
+
+                default:
+                    listEN = listEN.OrderBy(s => s.Usuario.Email).ToList();
+                    break;
+            }
+
             IEnumerable<TestAnimalIdealViewModel> listView = new TestAnimalIdealAssembler().ConvertListENToModel(listEN).ToList();
 
             SessionClose();

@@ -17,7 +17,7 @@ namespace WebProtectoraMilpatitas.Controllers
     public class EspecieController : BasicController
     {
         // GET: Especie
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string sortOrder, string nameSearch)
         {
             if (Session["Usuario"] != null)
             {
@@ -36,6 +36,24 @@ namespace WebProtectoraMilpatitas.Controllers
             EspecieCAD especieCAD = new EspecieCAD(session);
             EspecieCEN especieCEN = new EspecieCEN(especieCAD);
             IList<EspecieEN> listaEspecie = especieCEN.Dame_Todas(0, -1);
+
+            ViewBag.NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+            if (!String.IsNullOrEmpty(nameSearch))
+            {
+                listaEspecie = listaEspecie.Where(s => s.Nombre.Contains(nameSearch)).ToList();
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    listaEspecie = listaEspecie.OrderByDescending(s => s.Nombre).ToList();
+                    break;
+                default:
+                    listaEspecie = listaEspecie.OrderBy(s => s.Nombre).ToList();
+                    break;
+            }
+
             IEnumerable<EspecieViewModel> listaView = new EspecieAssembler().ConvertListENToModel(listaEspecie).ToList();
 
             SessionClose();

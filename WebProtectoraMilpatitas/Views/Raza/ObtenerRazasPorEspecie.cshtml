@@ -6,21 +6,37 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Obtener Razas Por Especie</h2>
+<h2>Razas de la especie @ViewData["NombreEspecie"]</h2>
 
 <p>
     @Html.ActionLink("Crear nueva raza", "Create")
 </p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Buscar por nombre raza: @Html.TextBox("nameRazaSearch")
+        <input type="submit" value="Buscar" />
+    </p>
+}
+
+@using (Html.BeginForm())
+{
+    <p>
+        Buscar por nombre especie: @Html.TextBox("nameEspecieSearch")
+        <input type="submit" value="Buscar" />
+    </p>
+}
 <table class="table">
     @{
         if (Model.Any())
         {
             <tr>
                 <th>
-                    Nombre Raza
+                    @Html.ActionLink("Nombre Raza", "ObtenerRazasPorEspecie", new { p_especie= ViewData["idEspecie"], sortOrder = ViewBag.NameRazaSort })
                 </th>
                 <th>
-                    Nombre Especie
+                    @Html.ActionLink("Nombre Especie", "ObtenerRazasPorEspecie", new { p_especie = ViewData["idEspecie"], sortOrder = ViewBag.NameEspecieSort })
                 </th>
                 <th></th>
             </tr>
