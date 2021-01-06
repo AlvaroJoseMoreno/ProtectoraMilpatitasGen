@@ -11,53 +11,68 @@
 <p>
     @Html.ActionLink("Crear nuevo seguimiento", "Create")
 </p>
+@if (((string)TempData["mensajeModalSeguimiento"]) != null)
+{
+    <div id="capafondo">
+
+        <article id="ar">
+            <h2>Seguimiento</h2>
+            <p>
+                @((string)TempData["mensajeModalSeguimiento"])
+            </p>
+            <footer><button class="button" onclick="cerrarMensajeModal();">cerrar</button></footer>
+        </article>
+    </div>
+
+
+}
 <main id="mainart">
-    
+
 
     @foreach (var item in Model)
     {
-    <article class="articulos">
+        <article class="articulos">
 
-        <div>
-            <p>
-                <b>Usuario:</b>
-                @Html.ActionLink(item.NomUsuario, "Details", "Usuario", new { email = item.idUsuario }, htmlAttributes: null) 
-            </p>
+            <div>
+                <p>
+                    <b>Usuario:</b>
+                    @Html.ActionLink(item.NomUsuario, "Details", "Usuario", new { email = item.idUsuario }, htmlAttributes: null)
+                </p>
                 <p>
                     <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.FotoUsuario)" />
 
                 </p>
 
 
-            <p>
-                <b>Animal:</b>
-                @Html.ActionLink(item.NomAnimal, "Details", "Animal", new { id = item.idAnimal }, htmlAttributes: null)
-             </p>
-                <p> 
-                <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.FotoAnimal)" />
-            </p>
+                <p>
+                    <b>Animal:</b>
+                    @Html.ActionLink(item.NomAnimal, "Details", "Animal", new { id = item.idAnimal }, htmlAttributes: null)
+                </p>
+                <p>
+                    <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.FotoAnimal)" />
+                </p>
 
-            <p>
-                <b>Fecha:</b>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </p>
-            <p>
-                <b>Estado:</b>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </p>
-            <p>
-                <b>Descripción:</b>
-                @Html.DisplayFor(modelItem=>item.Descripcion)
-            </p>
-        </div>
-        <div>
-            <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
-            <p>@Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
-            <p>@Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
-        </div>
+                <p>
+                    <b>Fecha:</b>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </p>
+                <p>
+                    <b>Estado:</b>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </p>
+                <p>
+                    <b>Descripción:</b>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </p>
+            </div>
+            <div>
+                <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
+                <p>@Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
+                <p>@Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
+            </div>
 
-    </article>
-     }
+        </article>
+    }
 
 </main>
 

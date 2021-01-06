@@ -11,6 +11,23 @@
 <p>
     @Html.ActionLink("Crear nuevo test animal ideal", "Create")
 </p>
+
+@if (((string)TempData["mensajeModalTest"]) != null)
+{
+    <div id="capafondo">
+
+        <article id="ar">
+            <h2>Test animal ideal</h2>
+            <p>
+                @((string)TempData["mensajeModalTest"])
+            </p>
+            <footer><button class="button" onclick="cerrarMensajeModal();">cerrar</button></footer>
+        </article>
+    </div>
+
+
+}
+
 <table class="table">
     <tr>
         <th>

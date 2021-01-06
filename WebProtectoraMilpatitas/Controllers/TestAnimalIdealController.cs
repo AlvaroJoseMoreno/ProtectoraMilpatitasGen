@@ -143,11 +143,13 @@ namespace WebProtectoraMilpatitas.Controllers
                 TestAnimalIdealCEN testCEN = new TestAnimalIdealCEN();
                 testCEN.Nuevo(test.idUsuario);
 
+                TempData["mensajeModalTest"] = "Test creado correctamente";
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                TempData["mensajeModalTest"] = "Ha habido un error al crear el test";
+                return RedirectToAction("Index");
             }
         }
 
@@ -200,11 +202,13 @@ namespace WebProtectoraMilpatitas.Controllers
 
                 testCEN.Rellenar_Test(test.Id, test.AficionFavorita, test.Personalidad, test.ColorFavorito);
 
+                TempData["mensajeModalTest"] = "Test editado correctamente";
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                TempData["mensajeModalTest"] = "Ha habido un error al editar el test";
+                return RedirectToAction("Index");
             }
         }
 
@@ -234,7 +238,8 @@ namespace WebProtectoraMilpatitas.Controllers
             }
             catch
             {
-                return View();
+                TempData["mensajeModalTest"] = "Ha habido un error al rellenar el test";
+                return RedirectToAction("Index");
             }
         }
 
@@ -288,11 +293,13 @@ namespace WebProtectoraMilpatitas.Controllers
                 TestAnimalIdealCEN testCEN = new TestAnimalIdealCEN();
                 testCEN.Eliminar(test.Id);
 
+                TempData["mensajeModalTest"] = "Test eliminado correctamente";
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                TempData["mensajeModalTest"] = "Ha habido un error al eliminar el test";
+                return RedirectToAction("Index");
             }
         }
     }

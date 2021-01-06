@@ -130,11 +130,14 @@ namespace WebProtectoraMilpatitas.Controllers
                 // TODO: Add insert logic here
                 SeguimientoCEN segCEN = new SeguimientoCEN();
                 segCEN.Nuevo(segui.Usuario, segui.Animal,segui.Contrato );
+
+                TempData["mensajeModalSeguimiento"] = "Seguimiento creado correctamente";
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                TempData["mensajeModalSeguimiento"] = "Ha habido un error al crear el seguimiento";
+                return RedirectToAction("Index");
             }
         }
 
@@ -188,13 +191,15 @@ namespace WebProtectoraMilpatitas.Controllers
                 SeguimientoCEN segCEN = new SeguimientoCEN();
 
                 segCEN.Modificar(segui.Id, segui.Fecha, segui.Descripcion);
-            
 
+
+                TempData["mensajeModalSeguimiento"] = "Seguimiento editado correctamente";
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                TempData["mensajeModalSeguimiento"] = "Ha habido un error al editar el seguimiento";
+                return RedirectToAction("Index");
             }
         }
 
@@ -225,6 +230,37 @@ namespace WebProtectoraMilpatitas.Controllers
 
             return View(seg);
 
+        }
+
+        [HttpPost]
+        public ActionResult ActualizarEstado(SeguimientoViewModel seg)
+        {
+            if (Session["Usuario"] != null)
+            {
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
+            try
+            {
+                // TODO: Add update logic here
+                SeguimientoCP segCP = new SeguimientoCP();
+                segCP.Actualizar_Estado(seg.Id, seg.Estado);
+
+                TempData["mensajeModalSeguimiento"] = "El estado del seguimiento se ha actualizado correctamente";
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                TempData["mensajeModalSeguimiento"] = "Ha habido un error al actualizar el estado del seguimiento";
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult ObtenerSeguimientoUsuario(string email, int? page)
@@ -305,11 +341,13 @@ namespace WebProtectoraMilpatitas.Controllers
                 SeguimientoCEN segui = new SeguimientoCEN();
                 segui.Eliminar(id);
 
+                TempData["mensajeModalSeguimiento"] = "Seguimiento eliminado correctamente";
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                TempData["mensajeModalSeguimiento"] = "Ha habido un error al eliminar el seguimiento";
+                return RedirectToAction("Index");
             }
         }
     }
