@@ -217,7 +217,7 @@ namespace WebProtectoraMilpatitas.Controllers
             {
                 TempData["mensajeModalAnimal"] = "Ha habido un error al crear el animal";
 
-                return View();
+                return RedirectToAction("Index");
             }
         }
 
