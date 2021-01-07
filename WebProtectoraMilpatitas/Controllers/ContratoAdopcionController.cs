@@ -20,7 +20,7 @@ namespace WebProtectoraMilpatitas.Controllers
     public class ContratoAdopcionController : BasicController
     {
         // GET: ContratoAdopcion
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string sortOrder, string nameSearch, string usuSearch, string aniSearch)
         {
             if (Session["Usuario"] != null)
             {
@@ -40,6 +40,41 @@ namespace WebProtectoraMilpatitas.Controllers
             ContratoAdopcionCEN conCEN = new ContratoAdopcionCEN(conCAD);
 
             IList<ContratoAdopcionEN> contsEN = conCEN.Dame_Todos(0, -1);
+
+            ViewBag.NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.UsuSort = String.IsNullOrEmpty(sortOrder) ? "usu_desc" : "";
+            ViewBag.AniSort = String.IsNullOrEmpty(sortOrder) ? "ani_desc" : "";
+
+            if (!String.IsNullOrEmpty(nameSearch))
+            {
+                contsEN = contsEN.Where(s => s.Nombre.Contains(nameSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(usuSearch))
+            {
+                contsEN = contsEN.Where(s => s.Usuario.Nombre.Contains(usuSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(aniSearch))
+            {
+                contsEN = contsEN.Where(s => s.Animal.Nombre.Contains(aniSearch)).ToList();
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    contsEN = contsEN.OrderByDescending(s => s.Nombre).ToList();
+                    break;
+                case "usu_desc":
+                    contsEN = contsEN.OrderByDescending(s => s.Usuario.Nombre).ToList();
+                    break;
+                case "ani_desc":
+                    contsEN = contsEN.OrderByDescending(s => s.Animal.Nombre).ToList();
+                    break;
+                default:
+                    contsEN = contsEN.OrderBy(s => s.Nombre).ToList();
+                    break;
+            }
 
             IEnumerable<ContratoAdopcionViewModel> listaContratos = new ContratoAdopcionAssembler().ConvertListENToModel(contsEN).ToList();
 
@@ -411,7 +446,7 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
-        public ActionResult ObtenerContratoUsuario(string email, int? page)
+        public ActionResult ObtenerContratoUsuario(string email, int? page, string sortOrder, string nameSearch, string usuSearch, string aniSearch)
         {
             SessionInitialize();
 
@@ -420,6 +455,41 @@ namespace WebProtectoraMilpatitas.Controllers
             ContratoAdopcionCEN conCEN = new ContratoAdopcionCEN(conCAD);
 
             IList<ContratoAdopcionEN> listaConEN = conCEN.Obtener_Contrato_Usuario(email);
+
+            ViewBag.NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.UsuSort = String.IsNullOrEmpty(sortOrder) ? "usu_desc" : "";
+            ViewBag.AniSort = String.IsNullOrEmpty(sortOrder) ? "ani_desc" : "";
+
+            if (!String.IsNullOrEmpty(nameSearch))
+            {
+                listaConEN = listaConEN.Where(s => s.Nombre.Contains(nameSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(usuSearch))
+            {
+                listaConEN = listaConEN.Where(s => s.Usuario.Nombre.Contains(usuSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(aniSearch))
+            {
+                listaConEN = listaConEN.Where(s => s.Animal.Nombre.Contains(aniSearch)).ToList();
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    listaConEN = listaConEN.OrderByDescending(s => s.Nombre).ToList();
+                    break;
+                case "usu_desc":
+                    listaConEN = listaConEN.OrderByDescending(s => s.Usuario.Nombre).ToList();
+                    break;
+                case "ani_desc":
+                    listaConEN = listaConEN.OrderByDescending(s => s.Animal.Nombre).ToList();
+                    break;
+                default:
+                    listaConEN = listaConEN.OrderBy(s => s.Nombre).ToList();
+                    break;
+            }
 
             IEnumerable<ContratoAdopcionViewModel> listaCon = new ContratoAdopcionAssembler().ConvertListENToModel(listaConEN).ToList();
 
