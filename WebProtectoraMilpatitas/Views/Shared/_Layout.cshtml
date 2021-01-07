@@ -10,9 +10,11 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <script src="~/Scripts/codigo.js"></script>
-
+    
 </head>
-
+<header style="background-color: #fc810e">
+    <img style="display: block; margin: auto;" src="~/Imagenes/patas.png" />
+</header>
 
 <body class="arriba">
 
@@ -51,7 +53,7 @@
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
-
+</div>
         <div class="container body-content">
             <p>Estás aquí: @Html.MvcSiteMap().SiteMapPath()</p>
             @RenderBody()
