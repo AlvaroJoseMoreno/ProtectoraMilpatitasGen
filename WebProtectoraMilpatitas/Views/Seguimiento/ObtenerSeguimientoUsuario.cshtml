@@ -22,6 +22,55 @@
     }
 </p>
 
+<table style="width:50%; margin-left:auto; margin-right:auto; margin-bottom:1em;" class="table">
+    <tr>
+
+        @using (Html.BeginForm())
+        {
+            <th style="padding:1em;">
+                Usuario : @Html.TextBox("usuSearch") <input style="display:none;" type="submit" value="Buscar" />
+            </th>
+        }
+
+        @using (Html.BeginForm())
+        {
+            <th style="padding:1em;">
+                Nombre : @Html.TextBox("aniSearch") <input style="display:none;" type="submit" value="Buscar" />
+            </th>
+        }
+
+        @using (Html.BeginForm())
+        {
+            <th style="padding:1em;">
+                Fecha(dd/mm/yyyy): @Html.TextBox("dateSearch") <input style="display:none;" type="submit" value="Buscar" />
+            </th>
+        }
+
+        @using (Html.BeginForm())
+        {
+            <th style="padding:1em;">
+                Estado : @Html.TextBox("estSearch") <input style="display:none;" type="submit" value="Buscar" />
+            </th>
+        }
+    </tr>
+
+    <tr>
+        <th>
+            @Html.ActionLink("Ordenar por Usuario", "Index", new { email= ViewData["idUsuario"], sortOrder = ViewBag.UsuSort })
+        </th>
+        <th>
+            @Html.ActionLink("Ordenar por Animal", "Index", new { email = ViewData["idUsuario"], sortOrder = ViewBag.AniSort })
+        </th>
+
+        <th>
+            @Html.ActionLink("Ordenar por Fecha", "Index", new { email = ViewData["idUsuario"], sortOrder = ViewBag.DateSort })
+        </th>
+        <th>
+            @Html.ActionLink("Ordenar por Estado", "Index", new { email = ViewData["idUsuario"], sortOrder = ViewBag.EstSort })
+        </th>
+    </tr>
+</table>
+
 <main id="mainart">
     @if (Model.Any())
     {

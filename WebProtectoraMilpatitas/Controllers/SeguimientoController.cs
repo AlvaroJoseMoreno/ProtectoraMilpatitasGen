@@ -17,7 +17,7 @@ namespace WebProtectoraMilpatitas.Controllers
     public class SeguimientoController : BasicController
     {
         // GET: Seguimiento
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string sortOrder, string usuSearch, string aniSearch, string dateSearch, string estSearch)
         {
             if (Session["Usuario"] != null)
             {
@@ -37,7 +37,54 @@ namespace WebProtectoraMilpatitas.Controllers
             SeguimientoCEN segCEN = new SeguimientoCEN(segCAD);
 
             IList<SeguimientoEN> segEN = segCEN.Dame_Todos(0, -1);
-           
+
+            ViewBag.UsuSort = String.IsNullOrEmpty(sortOrder) ? "usu_desc" : "";
+            ViewBag.AniSort = String.IsNullOrEmpty(sortOrder) ? "ani_desc" : "";
+            ViewBag.DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.EstSort = String.IsNullOrEmpty(sortOrder) ? "est_desc" : "";
+
+
+            if (!String.IsNullOrEmpty(usuSearch))
+            {
+                segEN = segEN.Where(s => s.Usuario.Nombre.Contains(usuSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(aniSearch))
+            {
+                segEN = segEN.Where(s => s.Animal.Nombre.Contains(aniSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(estSearch))
+            {
+                segEN = segEN.Where(s => s.Estado.ToString().Contains(estSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(dateSearch))
+            {
+                segEN = segEN.Where(s => s.Fecha.ToString().Contains(dateSearch)).ToList();
+            }
+
+            switch (sortOrder)
+            {
+                case "usu_desc":
+                    segEN = segEN.OrderByDescending(s => s.Usuario.Nombre).ToList();
+                    break;
+                case "ani_desc":
+                    segEN = segEN.OrderByDescending(s => s.Animal.Nombre).ToList();
+                    break;
+                case "Date":
+                    segEN = segEN.OrderBy(s => s.Fecha).ToList();
+                    break;
+                case "date_desc":
+                    segEN = segEN.OrderByDescending(s => s.Fecha).ToList();
+                    break;
+                case "est_desc":
+                    segEN = segEN.OrderByDescending(s => s.Estado).ToList();
+                    break;
+                default:
+                    segEN = segEN.OrderBy(s => s.Usuario.Nombre).ToList();
+                    break;
+            }
 
             IEnumerable<SeguimientoViewModel> listaSeguimiento = new SeguimientoAssembler().ConvertListENToModel(segEN).ToList();
 
@@ -263,7 +310,7 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
-        public ActionResult ObtenerSeguimientoUsuario(string email, int? page)
+        public ActionResult ObtenerSeguimientoUsuario(string email, int? page, string sortOrder, string usuSearch, string aniSearch, string dateSearch, string estSearch)
         {
             SessionInitialize();
 
@@ -272,6 +319,54 @@ namespace WebProtectoraMilpatitas.Controllers
             SeguimientoCEN segCEN = new SeguimientoCEN(segCAD);
 
             IList<SeguimientoEN> listaSolEN = segCEN.Obtener_Seguimiento_Usuario(email);
+
+            ViewBag.UsuSort = String.IsNullOrEmpty(sortOrder) ? "usu_desc" : "";
+            ViewBag.AniSort = String.IsNullOrEmpty(sortOrder) ? "ani_desc" : "";
+            ViewBag.DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.EstSort = String.IsNullOrEmpty(sortOrder) ? "est_desc" : "";
+
+
+            if (!String.IsNullOrEmpty(usuSearch))
+            {
+                listaSolEN = listaSolEN.Where(s => s.Usuario.Nombre.Contains(usuSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(aniSearch))
+            {
+                listaSolEN = listaSolEN.Where(s => s.Animal.Nombre.Contains(aniSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(estSearch))
+            {
+                listaSolEN = listaSolEN.Where(s => s.Estado.ToString().Contains(estSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(dateSearch))
+            {
+                listaSolEN = listaSolEN.Where(s => s.Fecha.ToString().Contains(dateSearch)).ToList();
+            }
+
+            switch (sortOrder)
+            {
+                case "usu_desc":
+                    listaSolEN = listaSolEN.OrderByDescending(s => s.Usuario.Nombre).ToList();
+                    break;
+                case "ani_desc":
+                    listaSolEN = listaSolEN.OrderByDescending(s => s.Animal.Nombre).ToList();
+                    break;
+                case "Date":
+                    listaSolEN = listaSolEN.OrderBy(s => s.Fecha).ToList();
+                    break;
+                case "date_desc":
+                    listaSolEN = listaSolEN.OrderByDescending(s => s.Fecha).ToList();
+                    break;
+                case "est_desc":
+                    listaSolEN = listaSolEN.OrderByDescending(s => s.Estado).ToList();
+                    break;
+                default:
+                    listaSolEN = listaSolEN.OrderBy(s => s.Usuario.Nombre).ToList();
+                    break;
+            }
 
             IEnumerable<SeguimientoViewModel> listaSeg = new SeguimientoAssembler().ConvertListENToModel(listaSolEN).ToList();
 
