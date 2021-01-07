@@ -64,7 +64,7 @@ namespace WebProtectoraMilpatitas.Controllers
             return View();
         }
 
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string sortOrder, string nameSearch, string edadSearch, string sexoSearch, string centroSearch, string caracterSearch, string estSearch, string espSearch, string razSearch)
         {
             SessionInitialize();
 
@@ -73,6 +73,86 @@ namespace WebProtectoraMilpatitas.Controllers
             IList<AnimalEN> listaAnimal = animalCEN.Dame_Todos(0, -1);
 
             IList<AnimalEN> ordenada = listaAnimal.OrderByDescending(o => o.FechaLlegada).ToList();
+
+            ViewBag.NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.EdadSort = String.IsNullOrEmpty(sortOrder) ? "edad_desc" : "";
+            ViewBag.SexoSort = String.IsNullOrEmpty(sortOrder) ? "sexo_desc" : "";
+            ViewBag.CentroSort = String.IsNullOrEmpty(sortOrder) ? "centro_desc" : "";
+            ViewBag.CaracterSort = String.IsNullOrEmpty(sortOrder) ? "carac_desc" : "";
+            ViewBag.EstadoSort = String.IsNullOrEmpty(sortOrder) ? "est_desc" : "";
+            ViewBag.EspecieSort = String.IsNullOrEmpty(sortOrder) ? "esp_desc" : "";
+            ViewBag.RazaSort = String.IsNullOrEmpty(sortOrder) ? "raz_desc" : "";
+
+            if (!String.IsNullOrEmpty(nameSearch))
+            {
+                ordenada = ordenada.Where(s => s.Nombre.Contains(nameSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(edadSearch))
+            {
+                ordenada = ordenada.Where(s => s.Edad.ToString() == edadSearch).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(sexoSearch))
+            {
+                ordenada = ordenada.Where(s => s.Sexo.ToString() == sexoSearch).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(centroSearch))
+            {
+                ordenada = ordenada.Where(s => s.Centro.Contains(centroSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(caracterSearch))
+            {
+                ordenada = ordenada.Where(s => s.Caracter.Contains(caracterSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(estSearch))
+            {
+                ordenada = ordenada.Where(s => s.DatosMedicos.ToString().Contains(estSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(espSearch))
+            {
+                ordenada = ordenada.Where(s => s.Especie.Nombre.Contains(espSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(razSearch))
+            {
+                ordenada = ordenada.Where(s => s.Raza.Nombre.Contains(razSearch)).ToList();
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    ordenada = ordenada.OrderByDescending(s => s.Nombre).ToList();
+                    break;
+                case "edad_desc":
+                    ordenada = ordenada.OrderByDescending(s => s.Edad).ToList();
+                    break;
+                case "sexo_desc":
+                    ordenada = ordenada.OrderByDescending(s => s.Sexo).ToList();
+                    break;
+                case "centro_desc":
+                    ordenada = ordenada.OrderByDescending(s => s.Centro).ToList();
+                    break;
+                case "carac_desc":
+                    ordenada = ordenada.OrderByDescending(s => s.Caracter).ToList();
+                    break;
+                case "est_desc":
+                    ordenada = ordenada.OrderByDescending(s => s.EstadoAdopcion).ToList();
+                    break;
+                case "esp_desc":
+                    ordenada = ordenada.OrderByDescending(s => s.Especie.Nombre).ToList();
+                    break;
+                case "raz_desc":
+                    ordenada = ordenada.OrderByDescending(s => s.Raza.Nombre).ToList();
+                    break;
+                default:
+                    ordenada = ordenada.OrderBy(s => s.Nombre).ToList();
+                    break;
+            }
 
             IEnumerable<AnimalViewModel> listaView = new AnimalAssembler().ConvertListENToModel(ordenada).ToList();
 
