@@ -9,15 +9,15 @@
 <h2>Detalle de usuario</h2>
 <section id="secanim">
     <main id="details">
-        <article class="detalle">
+        <article class="detalleUsu">
 
 
             <h2>@Html.DisplayFor(model => model.Nombre)</h2>
             <div class="img">
-                <img style="border-radius: 80%;" src="/@Html.DisplayFor(model => model.Foto)" />
+                <img style="border-radius: 80%;display: block;margin: auto;" src="/@Html.DisplayFor(model => model.Foto)" />
             </div>
             
-            <div id="datis">
+            <div id="datisUsu">
                 <p>
                     <b>Nombre:</b>
                     @Html.DisplayFor(modelItem => Model.Nombre)

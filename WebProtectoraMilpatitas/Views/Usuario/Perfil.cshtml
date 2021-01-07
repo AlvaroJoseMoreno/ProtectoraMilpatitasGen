@@ -38,13 +38,7 @@
                         @Html.DisplayFor(model => model.Email)
                     </p>
 
-                    <p>
-                        <b>@Html.DisplayNameFor(model => model.Password)</b>
-
-
-
-                        @Html.DisplayFor(model => model.Password)
-                    </p>
+                 
 
 
 
@@ -79,7 +73,7 @@
                             }
                         }
                                 <p>
-                                    <a href="~/chat.html?=@Model.Nombre">Chatear con administrador</a>
+                                    @Html.ActionLink("Chat con protectora", "Index", "Mensaje",new { email = Model.Email }, htmlAttributes: null)
                                 </p>
                                 <p>
                             </div>
