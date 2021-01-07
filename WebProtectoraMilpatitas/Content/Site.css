@@ -89,7 +89,13 @@ h3{
     left: 50%;
     transform: translateX(-50%);
 }
-
+header, footer {
+    padding: .5em;
+    box-shadow: inset 0px -3px 7px 0px #FEA046;
+    background: linear-gradient(to bottom, #FC993B 5%, #FC800B 100%);
+    background-color: #fc810e;
+    text-align: center;
+}
     #capafondo > article > h2 {
         background: linear-gradient(to bottom, #CEF0D0 5%, #c4f2c6 100%);
         background-color: #fff99f;
@@ -350,7 +356,7 @@ form {
 }
 */
 .navbar-nav {
-    margin-left: -39px;
+    margin-left: -27px;
 }
 .fa-bars , .fa-times{
     cursor: pointer;
@@ -420,6 +426,7 @@ form {
     }
     #form_registro{
         display: none;
+        padding-bottom: .1em;
     }
     .respmenu input:checked ~ nav  {
         display: block;
