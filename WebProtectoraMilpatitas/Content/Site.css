@@ -40,7 +40,7 @@ body {
     margin-top: 0;
     margin-left: 0px;
     margin-right: 0px;
-    padding-bottom: 20px;
+    margin-bottom: 0;
     background-color: #c4f2c6;
     min-width: 340px;
 }
@@ -285,7 +285,7 @@ form {
 /***********************PAGINA DETALLE ANIMAL*********************************/
 
 
-.detalle {
+.detalle, .detalleUsu {
     padding: 1em;
     width: 90%;
     background-color: #c4f2c6;
@@ -306,7 +306,7 @@ form {
         margin-bottom: 10px;
     }
 
-#datis {
+#datis, #datisUsu {
     width: 95%;
     margin-left: auto;
     margin-right: auto;
@@ -314,6 +314,9 @@ form {
     background-color: #fff99f;
     padding: 1em;
     margin-bottom: 10px;
+}
+#datisUsu{
+    margin-top: 2em;
 }
 
 #enlacis {
@@ -420,7 +423,9 @@ form {
     background: #fc810e;
     min-height: 48px;
 }
-
+th{
+    padding: .1em;
+}
     .respmenu nav {
         display: none;
     }
@@ -511,11 +516,27 @@ form {
     width: 220px;
     height: 220px;
 }
+#details > article > h2, .articulos > .titleUsus {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+@media all and (min-width: 475px){
+    #details > article > h2 {
+        font-size: 24px;
+    }
+}
+
 @media all and (min-width: 550px) {
     .listaarriba > label {
         display: none;
     }
-
+    #datisUsu{
+        width: 85%;
+    }
+    #details > article > h2 {
+        font-size: 28px;
+    }
     .listaarriba > div > nav > ul {
         display: flex;
         flex-direction: column;
@@ -548,6 +569,9 @@ form {
     /*Aqui escribimos el codigo de los formularios*/
     .formGuapo, .formNoTanGuapo, .formIncreible {
         width: 580px;
+    }
+    #datisUsu{
+        width: 80%;
     }
     .formGuapo > .text, .formNoTanGuapo>.text {
         display: flex;
@@ -618,12 +642,18 @@ form {
         display: flex;
         flex-wrap: wrap;
     }
+    #details > article > h2 {
+        font-size: 32px;
+    }
     .detalle > img {
         width: 500px;
         height: 450px;
     }
+    #datisUsu{
+        width: 70%;
+    }
     #mainart > .articulos {
-        width: 40%;
+        width: 44%;
         margin-top: 1em;
     }
 
@@ -644,7 +674,11 @@ form {
         width: 45%;
         margin-bottom: 10px;
     }
-    .detalle>div{
+    .articulos > .titleUsus {
+        font-size: 25px;
+        text-align: center;
+    }
+    .detalle > div {
         display: flex;
         flex-direction: column;
     }
@@ -652,7 +686,10 @@ form {
         display: flex;
         flex-direction: row;
     }
-    .detalle>img{
+    #datisUsu{
+        width: 65%;
+    }
+    .detalle > img {
         width: 600px;
         height: 450px;
     }
@@ -680,7 +717,9 @@ form {
         margin-right: 0%;
         width: 30%;
     }
-
+    #datisUsu{
+        width: 55%
+    }
     #mainart {
         display: flex;
         flex-wrap: wrap;
