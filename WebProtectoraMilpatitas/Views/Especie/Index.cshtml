@@ -34,13 +34,13 @@
     @using (Html.BeginForm())
     {
         <tr>
-            <th>Nombre Especie: @Html.TextBox("nameSearch") <input style="display:none;" type="submit" value="Buscar" /></th>
+            <th>Buscar por nombre: @Html.TextBox("nameSearch") <input style="display:none;" type="submit" value="Buscar" /></th>
             <th></th>
         </tr>
     }
     <tr>
         <th>
-            @Html.ActionLink("Nombre Especie", "Index", new { sortOrder = ViewBag.NameSort })
+            @Html.ActionLink("Ordenar por nombre", "Index", new { sortOrder = ViewBag.NameSort })
         </th>
         <th></th>
     </tr>
