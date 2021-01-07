@@ -22,6 +22,44 @@
         }
     }
 }
+
+<table style="width:50%; margin-left:auto; margin-right:auto; margin-bottom:1em;" class="table">
+    <tr>
+        @using (Html.BeginForm())
+        {
+            <th style="padding:1em;">
+                Nombre : @Html.TextBox("nameSearch") <input style="display:none;" type="submit" value="Buscar" />
+            </th>
+        }
+
+        @using (Html.BeginForm())
+        {
+            <th style="padding:1em;">
+                Usuario : @Html.TextBox("usuSearch") <input style="display:none;" type="submit" value="Buscar" />
+            </th>
+        }
+
+        @using (Html.BeginForm())
+        {
+            <th style="padding:1em;">
+                Nombre : @Html.TextBox("aniSearch") <input style="display:none;" type="submit" value="Buscar" />
+            </th>
+        }
+    </tr>
+
+    <tr>
+        <th>
+            @Html.ActionLink("Ordenar por Nombre", "Index", new { email= ViewData["idUsuario"], sortOrder = ViewBag.NameSort })
+        </th>
+        <th>
+            @Html.ActionLink("Ordenar por Usuario", "Index", new { email = ViewData["idUsuario"], sortOrder = ViewBag.UsuSort })
+        </th>
+        <th>
+            @Html.ActionLink("Ordenar por Animal", "Index", new { email = ViewData["idUsuario"], sortOrder = ViewBag.AniSort })
+        </th>
+    </tr>
+</table>
+
 <main id="mainart">
     @if (Model.Any())
     {

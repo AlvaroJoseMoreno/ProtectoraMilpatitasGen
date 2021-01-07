@@ -277,11 +277,16 @@ namespace WebProtectoraMilpatitas.Controllers
                 filename = "Imagenes/animales/" + filename;
                 AnimalCEN anicen = new AnimalCEN();
                 anicen.Modificar(ani.Id,ani.Nombre,ani.Edad,ani.Sexo,ani.Centro,ani.Caracter,filename);
+
+                TempData["mensajeModalAnimal"] = "Se ha editado correctamente el animal";
+
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                TempData["mensajeModalAnimal"] = "Ha habido un error al editar el animal";
+
+                return RedirectToAction("Index");
             }
         }
 
@@ -331,11 +336,16 @@ namespace WebProtectoraMilpatitas.Controllers
                 // TODO: Add update logic here
                 AnimalCEN anicen = new AnimalCEN();
                 anicen.Actualizar_Estado(ani.Id, ani.EstadoAdopcion);
+
+                TempData["mensajeModalAnimal"] = "Se ha actualizado el estado de adopción del animal correctamente";
+
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                TempData["mensajeModalAnimal"] = "Ha habido un error al actualizar el estado de adopción del animal";
+
+                return RedirectToAction("Index");
             }
         }
 
@@ -384,11 +394,16 @@ namespace WebProtectoraMilpatitas.Controllers
                 // TODO: Add update logic here
                 AnimalCEN anicen = new AnimalCEN();
                 anicen.Actualizar_DatosMedicos(ani.Id, ani.DatosMedicos);
+
+                TempData["mensajeModalAnimal"] = "Se ha actualizado el estado de salud del animal correctamente";
+
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                TempData["mensajeModalAnimal"] = "Ha habido un error al actualizar el estado de salud del animal";
+
+                return RedirectToAction("Index");
             }
         }
 
@@ -440,12 +455,16 @@ namespace WebProtectoraMilpatitas.Controllers
                
                 AnimalCEN animalCEN = new AnimalCEN();
                 animalCEN.Eliminar(ani.Id);
-                
+
+                TempData["mensajeModalAnimal"] = "Se ha eliminado correctamente el animal";
+
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                TempData["mensajeModalAnimal"] = "Ha habido un error al eliminar el animal";
+
+                return RedirectToAction("Index");
             }
         }
 
