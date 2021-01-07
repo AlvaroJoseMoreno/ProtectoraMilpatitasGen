@@ -12,14 +12,14 @@
     <script src="~/Scripts/codigo.js"></script>
     
 </head>
-<header style="background-color: #fc810e">
-    <img style="display: block; margin: auto;" src="~/Imagenes/patas.png" />
+<header>
+    <a href="/Home/Indexad"><img style="display: block; margin: auto;" src="~/Imagenes/patas.png" /></a>
 </header>
 
 <body class="arriba">
 
 
-    <div class="arri">
+    @*<div class="arri">
         <div class="container">
             <div class="navbar-header">
 
@@ -31,15 +31,15 @@
 
 
         </div>
-    </div>
+    </div>*@
 
     <div class="listaarriba">
         <div class="respmenu">
             <input id="chekbox" type="checkbox" style="display: none;">
-            <label for="chekbox" class="fas fa-bars"></label>
-            <label for="chekbox" class="fas fa-times"></label>
+            <label style="padding-left: 15px;" for="chekbox" class="fas fa-bars"></label>
+            <label style="padding-left: 15px;" for="chekbox" class="fas fa-times"></label>
             <nav>
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" >
                     <li>@Html.ActionLink("Inicio", "Indexad", "Home")</li>
                     <li>@Html.ActionLink("Animales", "Index", "Animal")</li>
                     <li>@Html.ActionLink("Tests", "Index", "TestAnimalIdeal")</li>
@@ -53,18 +53,19 @@
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
-</div>
-        <div class="container body-content">
-            <p>Estás aquí: @Html.MvcSiteMap().SiteMapPath()</p>
-            @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-            </footer>
-        </div>
+    </div>
+    <div class="container body-content">
+        <p>Estás aquí: @Html.MvcSiteMap().SiteMapPath()</p>
+        @RenderBody()
+        <hr />
 
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <footer style="margin-bottom: 0">
+        <p>&copy; @DateTime.Now.Year - Protectora mil Patitas</p>
+    </footer>
 </body>
 </html>

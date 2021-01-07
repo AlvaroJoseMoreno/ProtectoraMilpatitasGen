@@ -36,7 +36,7 @@
 
     <tr>
         <th>
-            @Html.ActionLink("Nombre", "Index", new { sortOrder = ViewBag.NameSort })
+            @Html.ActionLink("Ordenar por Nombre", "Index", new { sortOrder = ViewBag.NameSort })
         </th>
     </tr>
 </table>
@@ -46,34 +46,27 @@
     @foreach (var item in Model)
     {
 
-        <article class="articulos">
-            <div>
-                @if (item.Nombre != null && !item.Nombre.Equals(""))
-                {
-
-
-                    <h2>@Html.DisplayFor(modelItem => item.Nombre)</h2>
-
-
-                }
-                else
-                {
-                    <h2> @Html.DisplayFor(modelItem => item.Nombre);</h2>
-                }
-
-
-
-                <img src="/@Html.DisplayFor(modelItem => item.Foto)" />
-            </div>
-            <div>
-                <p>@Html.ActionLink("Detalles", "Details", new { email = item.Email })</p>
-                <p>@Html.ActionLink("Obtener Solicitudes Adopcion", "ObtenerSolicitudUsuario", "SolicitudAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
-                <p>@Html.ActionLink("Obtener Contratos Adopcion", "ObtenerContratoUsuario", "ContratoAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
-                <p>@Html.ActionLink("Obtener Seguimientos", "ObtenerSeguimientoUsuario", "Seguimiento", new { email = item.Email }, htmlAttributes: null)</p>
-                <p>@Html.ActionLink("Obtener Mascotas", "ObtenerAnimalesPorUsuario", "Animal", new { email = item.Email }, htmlAttributes: null)</p>
-                <p>@Html.ActionLink("Eliminar", "Delete", new { email = item.Email })</p>
-            </div>
-        </article>
+    <article class="articulos">
+        @if (item.Nombre != null && !item.Nombre.Equals(""))
+        {
+            <h2 class="titleUsus">@Html.DisplayFor(modelItem => item.Nombre)</h2>
+        }
+        else
+        {
+            <h2 class="titleUsus">  @Html.DisplayFor(modelItem => item.Nombre);</h2>
+        }
+        <div style="display: block;margin: auto;">
+            <img style="display: block;margin: auto;" src="/@Html.DisplayFor(modelItem => item.Foto)" />
+        </div>
+        <div>
+            <p>@Html.ActionLink("Detalles", "Details", new { email = item.Email })</p>
+            <p>@Html.ActionLink("Obtener Solicitudes Adopcion", "ObtenerSolicitudUsuario", "SolicitudAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
+            <p>@Html.ActionLink("Obtener Contratos Adopcion", "ObtenerContratoUsuario", "ContratoAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
+            <p>@Html.ActionLink("Obtener Seguimientos", "ObtenerSeguimientoUsuario", "Seguimiento", new { email = item.Email }, htmlAttributes: null)</p>
+            <p>@Html.ActionLink("Obtener Mascotas", "ObtenerAnimalesPorUsuario", "Animal", new { email = item.Email }, htmlAttributes: null)</p>
+            <p>@Html.ActionLink("Eliminar", "Delete", new { email = item.Email })</p>
+        </div>
+    </article>
     }
 </main>
 

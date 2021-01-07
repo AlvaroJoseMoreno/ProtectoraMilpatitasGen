@@ -16,7 +16,7 @@ namespace WebProtectoraMilpatitas.Controllers
     [Authorize]
     public class SolicitudAdopcionController : BasicController
     {
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string sortOrder, string nameSearch, string usuSearch, string aniSearch, string dateSearch, string estSearch)
         {
             if (Session["Usuario"] != null)
             {
@@ -36,6 +36,62 @@ namespace WebProtectoraMilpatitas.Controllers
             SolicitudAdopcionCEN solCEN = new SolicitudAdopcionCEN(solCAD);
 
             IList<SolicitudAdopcionEN> solsEN = solCEN.Dame_Todas(0, -1);
+
+            ViewBag.NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.UsuSort = String.IsNullOrEmpty(sortOrder) ? "usu_desc" : "";
+            ViewBag.AniSort = String.IsNullOrEmpty(sortOrder) ? "ani_desc" : "";
+            ViewBag.DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.EstSort = String.IsNullOrEmpty(sortOrder) ? "est_desc" : "";
+
+            if (!String.IsNullOrEmpty(nameSearch))
+            {
+                solsEN = solsEN.Where(s => s.Nombre.Contains(nameSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(usuSearch))
+            {
+                solsEN = solsEN.Where(s => s.Usuario.Nombre.Contains(usuSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(aniSearch))
+            {
+                solsEN = solsEN.Where(s => s.Animal.Nombre.Contains(aniSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(estSearch))
+            {
+                solsEN = solsEN.Where(s => s.Estado.ToString().Contains(estSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(dateSearch))
+            {
+                solsEN = solsEN.Where(s => s.FechaSolicitud.ToString().Contains(dateSearch)).ToList();
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    solsEN = solsEN.OrderByDescending(s => s.Nombre).ToList();
+                    break;
+                case "usu_desc":
+                    solsEN = solsEN.OrderByDescending(s => s.Usuario.Nombre).ToList();
+                    break;
+                case "ani_desc":
+                    solsEN = solsEN.OrderByDescending(s => s.Animal.Nombre).ToList();
+                    break;
+                case "Date":
+                    solsEN = solsEN.OrderBy(s => s.FechaSolicitud).ToList();
+                    break;
+                case "date_desc":
+                    solsEN = solsEN.OrderByDescending(s => s.FechaSolicitud).ToList();
+                    break;
+                case "est_desc":
+                    solsEN = solsEN.OrderByDescending(s => s.Estado).ToList();
+                    break;
+                default:
+                    solsEN = solsEN.OrderBy(s => s.Nombre).ToList();
+                    break;
+            }
 
             IEnumerable<SolicitudAdopcionViewModel> listaSolicitudes = new SolicitudAdopcionAssembler().ConvertListENToModel(solsEN).ToList();
 
@@ -293,7 +349,7 @@ namespace WebProtectoraMilpatitas.Controllers
             }
         }
 
-        public ActionResult ObtenerSolicitudUsuario(string email, int? page)
+        public ActionResult ObtenerSolicitudUsuario(string email, int? page, string sortOrder, string nameSearch, string usuSearch, string aniSearch, string dateSearch, string estSearch)
         {
             SessionInitialize();
 
@@ -302,6 +358,62 @@ namespace WebProtectoraMilpatitas.Controllers
             SolicitudAdopcionCEN solCEN = new SolicitudAdopcionCEN(solCAD);
 
             IList<SolicitudAdopcionEN> listaSolEN = solCEN.Obtener_Solicitud_Usuario(email);
+
+            ViewBag.NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.UsuSort = String.IsNullOrEmpty(sortOrder) ? "usu_desc" : "";
+            ViewBag.AniSort = String.IsNullOrEmpty(sortOrder) ? "ani_desc" : "";
+            ViewBag.DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.EstSort = String.IsNullOrEmpty(sortOrder) ? "est_desc" : "";
+
+            if (!String.IsNullOrEmpty(nameSearch))
+            {
+                listaSolEN = listaSolEN.Where(s => s.Nombre.Contains(nameSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(usuSearch))
+            {
+                listaSolEN = listaSolEN.Where(s => s.Usuario.Nombre.Contains(usuSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(aniSearch))
+            {
+                listaSolEN = listaSolEN.Where(s => s.Animal.Nombre.Contains(aniSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(estSearch))
+            {
+                listaSolEN = listaSolEN.Where(s => s.Estado.ToString().Contains(estSearch)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(dateSearch))
+            {
+                listaSolEN = listaSolEN.Where(s => s.FechaSolicitud.ToString().Contains(dateSearch)).ToList();
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    listaSolEN = listaSolEN.OrderByDescending(s => s.Nombre).ToList();
+                    break;
+                case "usu_desc":
+                    listaSolEN = listaSolEN.OrderByDescending(s => s.Usuario.Nombre).ToList();
+                    break;
+                case "ani_desc":
+                    listaSolEN = listaSolEN.OrderByDescending(s => s.Animal.Nombre).ToList();
+                    break;
+                case "Date":
+                    listaSolEN = listaSolEN.OrderBy(s => s.FechaSolicitud).ToList();
+                    break;
+                case "date_desc":
+                    listaSolEN = listaSolEN.OrderByDescending(s => s.FechaSolicitud).ToList();
+                    break;
+                case "est_desc":
+                    listaSolEN = listaSolEN.OrderByDescending(s => s.Estado).ToList();
+                    break;
+                default:
+                    listaSolEN = listaSolEN.OrderBy(s => s.Nombre).ToList();
+                    break;
+            }
 
             IEnumerable<SolicitudAdopcionViewModel> listaSol = new SolicitudAdopcionAssembler().ConvertListENToModel(listaSolEN).ToList();
 

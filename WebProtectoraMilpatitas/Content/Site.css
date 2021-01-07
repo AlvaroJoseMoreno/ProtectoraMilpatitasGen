@@ -40,7 +40,7 @@ body {
     margin-top: 0;
     margin-left: 0px;
     margin-right: 0px;
-    padding-bottom: 20px;
+    margin-bottom: 0;
     background-color: #c4f2c6;
     min-width: 340px;
 }
@@ -89,7 +89,13 @@ h3{
     left: 50%;
     transform: translateX(-50%);
 }
-
+header, footer {
+    padding: .5em;
+    box-shadow: inset 0px -3px 7px 0px #FEA046;
+    background: linear-gradient(to bottom, #FC993B 5%, #FC800B 100%);
+    background-color: #fc810e;
+    text-align: center;
+}
     #capafondo > article > h2 {
         background: linear-gradient(to bottom, #CEF0D0 5%, #c4f2c6 100%);
         background-color: #fff99f;
@@ -279,7 +285,7 @@ form {
 /***********************PAGINA DETALLE ANIMAL*********************************/
 
 
-.detalle {
+.detalle, .detalleUsu {
     padding: 1em;
     width: 90%;
     background-color: #c4f2c6;
@@ -300,7 +306,7 @@ form {
         margin-bottom: 10px;
     }
 
-#datis {
+#datis, #datisUsu {
     width: 95%;
     margin-left: auto;
     margin-right: auto;
@@ -308,6 +314,9 @@ form {
     background-color: #fff99f;
     padding: 1em;
     margin-bottom: 10px;
+}
+#datisUsu{
+    margin-top: 2em;
 }
 
 #enlacis {
@@ -350,7 +359,7 @@ form {
 }
 */
 .navbar-nav {
-    margin-left: -39px;
+    margin-left: -27px;
 }
 .fa-bars , .fa-times{
     cursor: pointer;
@@ -414,12 +423,15 @@ form {
     background: #fc810e;
     min-height: 48px;
 }
-
+th{
+    padding: .1em;
+}
     .respmenu nav {
         display: none;
     }
     #form_registro{
         display: none;
+        padding-bottom: .1em;
     }
     .respmenu input:checked ~ nav  {
         display: block;
@@ -504,11 +516,27 @@ form {
     width: 220px;
     height: 220px;
 }
+#details > article > h2, .articulos > .titleUsus {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+@media all and (min-width: 475px){
+    #details > article > h2 {
+        font-size: 24px;
+    }
+}
+
 @media all and (min-width: 550px) {
     .listaarriba > label {
         display: none;
     }
-
+    #datisUsu{
+        width: 85%;
+    }
+    #details > article > h2 {
+        font-size: 28px;
+    }
     .listaarriba > div > nav > ul {
         display: flex;
         flex-direction: column;
@@ -541,6 +569,9 @@ form {
     /*Aqui escribimos el codigo de los formularios*/
     .formGuapo, .formNoTanGuapo, .formIncreible {
         width: 580px;
+    }
+    #datisUsu{
+        width: 80%;
     }
     .formGuapo > .text, .formNoTanGuapo>.text {
         display: flex;
@@ -611,12 +642,18 @@ form {
         display: flex;
         flex-wrap: wrap;
     }
+    #details > article > h2 {
+        font-size: 32px;
+    }
     .detalle > img {
         width: 500px;
         height: 450px;
     }
+    #datisUsu{
+        width: 70%;
+    }
     #mainart > .articulos {
-        width: 40%;
+        width: 44%;
         margin-top: 1em;
     }
 
@@ -637,7 +674,11 @@ form {
         width: 45%;
         margin-bottom: 10px;
     }
-    .detalle>div{
+    .articulos > .titleUsus {
+        font-size: 25px;
+        text-align: center;
+    }
+    .detalle > div {
         display: flex;
         flex-direction: column;
     }
@@ -645,7 +686,10 @@ form {
         display: flex;
         flex-direction: row;
     }
-    .detalle>img{
+    #datisUsu{
+        width: 65%;
+    }
+    .detalle > img {
         width: 600px;
         height: 450px;
     }
@@ -673,7 +717,9 @@ form {
         margin-right: 0%;
         width: 30%;
     }
-
+    #datisUsu{
+        width: 55%
+    }
     #mainart {
         display: flex;
         flex-wrap: wrap;
