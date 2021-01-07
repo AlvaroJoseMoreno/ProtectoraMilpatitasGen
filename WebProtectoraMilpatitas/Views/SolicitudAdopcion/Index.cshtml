@@ -15,16 +15,16 @@
     <tr>
         @using (Html.BeginForm())
         {
-                <th style="padding:1em;">
-                    Nombre : @Html.TextBox("nameSearch") <input style="display:none;" type="submit" value="Buscar" />
-                </th>
+            <th style="padding:1em;">
+                Nombre : @Html.TextBox("nameSearch") <input style="display:none;" type="submit" value="Buscar" />
+            </th>
         }
 
         @using (Html.BeginForm())
         {
-                <th style="padding:1em;">
-                    Usuario : @Html.TextBox("usuSearch") <input style="display:none;" type="submit" value="Buscar" />
-                </th>
+            <th style="padding:1em;">
+                Usuario : @Html.TextBox("usuSearch") <input style="display:none;" type="submit" value="Buscar" />
+            </th>
         }
 
         @using (Html.BeginForm())
@@ -104,7 +104,7 @@
                 }
                 else
                 {
-                    <h2> @Html.DisplayFor(modelItem => item.Nombre);</h2>
+                    <h2> @Html.DisplayFor(modelItem => item.Nombre)</h2>
                 }
 
 
@@ -147,7 +147,7 @@
             <div>
                 <p>@Html.ActionLink("Aceptar solicitud", "AceptarSolicitud", new { idSol = item.Id, idUsu = item.idUsuario, idAni = item.NomAnimal })</p>
                 <p>@Html.ActionLink("Rechazar solicitud", "RechazarSolicitud", new { idSol = item.Id, idUsu = item.idUsuario, idAni = item.NomAnimal })</p>
-                <p>@Html.ActionLink("Rechazar todas", "RechazarTodasSolicitud")</p>
+
                 <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
                 <p>@Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
                 <p>@Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
@@ -156,12 +156,15 @@
         </article>
     }
 </main>
-       
-        <br />
+
+<br />
         Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
 
         @Html.PagedListPager(Model, page => Url.Action("Index",
             new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-        <div>
-            @Html.ActionLink("Volver a inicio", "Indexad", "Home")
-        </div>
+<p>@Html.ActionLink("Rechazar todas", "RechazarTodasSolicitud")</p>
+<p>
+    @Html.ActionLink("Volver a inicio", "Indexad", "Home")
+</p>
+        
+

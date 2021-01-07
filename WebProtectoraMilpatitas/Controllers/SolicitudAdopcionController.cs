@@ -35,7 +35,7 @@ namespace WebProtectoraMilpatitas.Controllers
             SolicitudAdopcionCAD solCAD = new SolicitudAdopcionCAD(session);
             SolicitudAdopcionCEN solCEN = new SolicitudAdopcionCEN(solCAD);
 
-            IList<SolicitudAdopcionEN> solsEN = solCEN.Dame_Todas(0, -1);
+            IList<SolicitudAdopcionEN> solsEN = solCEN.Dame_Todas(0, -1).Where(s=>s.Estado!=ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.rechazado).ToList();
 
             ViewBag.NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.UsuSort = String.IsNullOrEmpty(sortOrder) ? "usu_desc" : "";
@@ -179,7 +179,10 @@ namespace WebProtectoraMilpatitas.Controllers
                 // TODO: Add insert logic here
                 SolicitudAdopcionCEN soliCEN = new SolicitudAdopcionCEN();
 
-                soliCEN.Nuevo(sol.idUsuario, sol.idAnimal, DateTime.Today);
+                int idsol=soliCEN.Nuevo(sol.idUsuario, sol.idAnimal, DateTime.Today);
+
+                SolicitudAdopcionCP solCP = new SolicitudAdopcionCP();
+                solCP.Actualizar_Estado(idsol, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
 
                 TempData["mensajeModal"] = "¡Enhorabuena! Has creado una solicitud";
                 return RedirectToAction("Index");
@@ -357,7 +360,7 @@ namespace WebProtectoraMilpatitas.Controllers
             UsuarioCAD usuCAD = new UsuarioCAD(session);
             SolicitudAdopcionCEN solCEN = new SolicitudAdopcionCEN(solCAD);
 
-            IList<SolicitudAdopcionEN> listaSolEN = solCEN.Obtener_Solicitud_Usuario(email);
+            IList<SolicitudAdopcionEN> listaSolEN = solCEN.Obtener_Solicitud_Usuario(email).Where(s => s.Estado != ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.rechazado).ToList();
 
             ViewBag.NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.UsuSort = String.IsNullOrEmpty(sortOrder) ? "usu_desc" : "";
