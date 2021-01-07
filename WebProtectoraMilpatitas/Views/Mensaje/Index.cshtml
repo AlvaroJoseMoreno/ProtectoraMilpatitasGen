@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WebProtectoraMilpatitas.Models.MensajeViewModel>
+@using PagedList.Mvc;
+@using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
+
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chat</h2>
+
+
+<table class="table">
+    <tr>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        if (Session["Usuario"] != null)
+        {
+            if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN) || ((UsuarioEN)Session["Usuario"]).Email.Equals(item.Usuario))
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Usuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Texto)
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+
+            }
+        }
+    }
+
+
+
+</table>
+
+<p>
+    @Html.ActionLink("Enviar mensaje", "Create")
+</p>

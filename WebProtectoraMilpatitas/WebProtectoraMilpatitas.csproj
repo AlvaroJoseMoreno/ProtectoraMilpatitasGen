@@ -231,6 +231,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Assemblers\AnimalAssembler.cs" />
+    <Compile Include="Assemblers\MensajeAssembler.cs" />
     <Compile Include="Assemblers\ContratoAdopcionAssembler.cs" />
     <Compile Include="Assemblers\EspecieAssembler.cs" />
     <Compile Include="Assemblers\RazaAssembler.cs" />
@@ -241,6 +242,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnimalController.cs" />
     <Compile Include="Controllers\BasicController.cs" />
+    <Compile Include="Controllers\MensajeController.cs" />
     <Compile Include="Controllers\ContratoAdopcionController.cs" />
     <Compile Include="Controllers\EspecieController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -256,6 +258,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AnimalViewModel.cs" />
     <Compile Include="Models\BuscarAnimalViewModel.cs" />
+    <Compile Include="Models\MensajeViewModel.cs" />
     <Compile Include="Models\ContratoAdopcionViewModel.cs" />
     <Compile Include="Models\EspecieViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -466,6 +469,8 @@
     <Content Include="Views\SolicitudAdopcion\AceptarSolicitud.cshtml" />
     <Content Include="Views\SolicitudAdopcion\RechazarSolicitud.cshtml" />
     <Content Include="Views\SolicitudAdopcion\RechazarTodasSolicitud.cshtml" />
+    <Content Include="Views\Mensaje\Index.cshtml" />
+    <Content Include="Views\Mensaje\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
