@@ -230,7 +230,7 @@ ul {
 #busqueda_Rapida > input[type="search"]:hover{
     cursor: pointer;
 }
-.formGuapo, .formNoTanGuapo, .formIncreible {
+.formGuapo, .formNoTanGuapo, .formIncreible, .formTestIdeal {
     border: 2px solid #fc810e;
     padding: 1em;
     margin-left: auto;
@@ -256,7 +256,18 @@ ul {
         margin-left: 18em;
         border: 2px solid #fc810e;
     }
-
+.formTestIdeal > .form-group > .textIdeal {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.textIdeal>img, .textIdeal>input[type="radio"]{
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+}
 
 .form-horizontal div{
     padding: 0.5em;
@@ -554,6 +565,13 @@ th{
 }
 
 @media all and (min-width: 550px) {
+    .formTestIdeal > .form-group{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .formTestIdeal > .form-group > .textIdeal {
+        width: 40%;
+    }
     .listaarriba > label {
         display: none;
     }
@@ -700,7 +718,11 @@ th{
     }
 }
 
-
+@media all and (min-width: 775px){
+    .formTestIdeal > .form-group > .textIdeal{
+        width: 30%;
+    }
+}
 
 @media all and (min-width: 900px) {
 
@@ -745,6 +767,16 @@ th{
         height: 400px;
     }
 }
+
+@media all and (min-width: 975px){
+    .formTestIdeal{
+        width: 878px;
+    }
+    .formTestIdeal > .form-group > .textIdeal{
+        width: 22%;
+    }
+}
+
 @media all and (min-width: 1020px) {
     #mainart > .articulos {
         margin-left: 2.4%;
