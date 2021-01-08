@@ -461,7 +461,11 @@ th{
     color: #fff99f;
     cursor: pointer;
 }
-.formIncreible>.notext{
+.listaarriba > div > nav > ul > li > i:hover {
+    color: darkslateblue;
+    cursor: context-menu;
+}
+.formIncreible > .notext {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -528,6 +532,19 @@ th{
 }
 .listaarriba > div > nav > ul > li, #form_registro > form > ul > li, #form_registro > ul > li {
     text-align: left;
+}
+#enlacesAnims{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#enlacesAnims>h3{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border: 2px solid #fc810e;
+    background-color: #fff99f;
 }
 
 @media all and (min-width: 475px) {
@@ -672,6 +689,14 @@ th{
     .detalle > .img > img {
         width: 350px;
         height: 350px;
+    }
+    #enlacesAnims{
+        display: flex;
+    }
+    #enlacesAnims > h3 {
+        margin-left: 10px;
+        width: 40%;
+     
     }
 }
 
