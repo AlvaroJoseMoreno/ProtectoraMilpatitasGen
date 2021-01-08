@@ -123,10 +123,14 @@ namespace WebProtectoraMilpatitas.Controllers
             {
                 // TODO: Add insert logic here
                 filename = "Imagenes/usuarios" + filename;
-                UsuarioCEN usarioCEN = new UsuarioCEN();
-                UsuarioCP usuarioCP = new UsuarioCP();
+                UsuarioCEN usuCEN = new UsuarioCEN();
 
-                usuarioCP.Registrarse(usuario.Nombre, usuario.Email, usuario.Password, filename);
+                string mail = usuCEN.Registrarse(usuario.Nombre, usuario.Email, usuario.Password, filename);
+
+                AdministradorEN admin = new AdministradorCEN().Dame_Todos(0, -1)[0];
+                UsuarioEN usu = usuCEN.Dame_Por_Email(mail);
+                MensajeEN menP = new MensajeCP().Nuevo(admin.Email, usu.Email, "Hola  " + usu.Nombre, DateTime.Now);
+
                 TempData["mensajeModal"] = "¡Enhorabuena! Has creado un usuario";
                 return RedirectToAction("Index");
             }

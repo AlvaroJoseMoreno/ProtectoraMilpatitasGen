@@ -208,9 +208,12 @@ namespace WebProtectoraMilpatitas.Controllers
                     }
                     filename = "Imagenes/usuarios/" + filename;
                     UsuarioCEN usuCEN = new UsuarioCEN();
-                    UsuarioCP usuCP = new UsuarioCP();
 
-                    usuCP.Registrarse(model.Nombre, model.Email, model.Password, filename);
+                    string mail=usuCEN.Registrarse(model.Nombre, model.Email, model.Password, filename);
+
+                    AdministradorEN admin = new AdministradorCEN().Dame_Todos(0, -1)[0];
+                    UsuarioEN usu = usuCEN.Dame_Por_Email(mail);
+                    MensajeEN menP = new MensajeCP().Nuevo(admin.Email, usu.Email, "Hola  " + usu.Nombre, DateTime.Now);
 
                     Session["Usuario"] = usuCEN.Dame_Por_Email(model.Email);
 

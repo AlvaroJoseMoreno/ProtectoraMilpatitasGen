@@ -280,8 +280,6 @@ public void AsignarUsuario (int p_Mensaje_OID, string p_usuario_OID)
 
                 mensajeEN.Usuario.MensajeChat.Add (mensajeEN);
 
-
-
                 session.Update (mensajeEN);
                 SessionCommit ();
         }
@@ -310,8 +308,6 @@ public void AsignarAdministrador (int p_Mensaje_OID, string p_administrador_OID)
                 mensajeEN.Administrador = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AdministradorEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AdministradorEN), p_administrador_OID);
 
                 mensajeEN.Administrador.MensajeAdmin.Add (mensajeEN);
-
-
 
                 session.Update (mensajeEN);
                 SessionCommit ();
