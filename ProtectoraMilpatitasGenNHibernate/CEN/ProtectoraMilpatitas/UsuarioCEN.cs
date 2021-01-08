@@ -39,27 +39,6 @@ public IUsuarioCAD get_IUsuarioCAD ()
         return this._IUsuarioCAD;
 }
 
-public string Registrarse (string p_nombre, string p_email, String p_password, string p_foto)
-{
-        UsuarioEN usuarioEN = null;
-        string oid;
-
-        //Initialized UsuarioEN
-        usuarioEN = new UsuarioEN ();
-        usuarioEN.Nombre = p_nombre;
-
-        usuarioEN.Email = p_email;
-
-        usuarioEN.Password = Utils.Util.GetEncondeMD5 (p_password);
-
-        usuarioEN.Foto = p_foto;
-
-        //Call to UsuarioCAD
-
-        oid = _IUsuarioCAD.Registrarse (usuarioEN);
-        return oid;
-}
-
 public void Eliminar (string email
                       )
 {

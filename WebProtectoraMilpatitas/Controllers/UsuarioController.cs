@@ -124,7 +124,9 @@ namespace WebProtectoraMilpatitas.Controllers
                 // TODO: Add insert logic here
                 filename = "Imagenes/usuarios" + filename;
                 UsuarioCEN usarioCEN = new UsuarioCEN();
-                usarioCEN.Registrarse(usuario.Nombre, usuario.Email, usuario.Password, filename);
+                UsuarioCP usuarioCP = new UsuarioCP();
+
+                usuarioCP.Registrarse(usuario.Nombre, usuario.Email, usuario.Password, filename);
                 TempData["mensajeModal"] = "¡Enhorabuena! Has creado un usuario";
                 return RedirectToAction("Index");
             }

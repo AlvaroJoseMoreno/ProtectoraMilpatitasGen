@@ -181,7 +181,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
             UsuarioEN usuEN = usuCEN.Dame_Por_Email(email);
 
-            IList<AnimalEN> listAni = usuEN.Mascotas;
+            IList<AnimalEN> listAni = aniCEN.Obtener_Animal_Usuario(usuEN.Email);
             IEnumerable<AnimalViewModel> listAni2 = new AnimalAssembler().ConvertListENToModel(listAni).ToList();
 
             ViewData["NombreUsu"] = usuEN.Nombre;
