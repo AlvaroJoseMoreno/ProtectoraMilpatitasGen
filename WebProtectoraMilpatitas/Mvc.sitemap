@@ -51,6 +51,11 @@
     <mvcSiteMapNode title="Index" controller="Home" action="Index"/>
     <mvcSiteMapNode title="Indexad" controller="Home" action="Indexad"/>
 
+    <mvcSiteMapNode title="Chat" controller="Mensaje" action="Index">
+      <mvcSiteMapNode title="Crear Mensaje" controller="Mensaje" action="Create"/>
+      <mvcSiteMapNode title="Chat" controller="Mensaje" action="Index"/>
+    </mvcSiteMapNode>
+    
     <mvcSiteMapNode title="Raza" controller="Raza" action="Index">
       <mvcSiteMapNode title="Crear Raza" controller="Raza" action="Create"/>
       <mvcSiteMapNode title="Eliminar Raza" controller="Raza" action="Delete" preservedRouteParameters="id"/>
