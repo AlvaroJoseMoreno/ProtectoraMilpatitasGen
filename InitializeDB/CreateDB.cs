@@ -89,14 +89,14 @@ public static void InitializeData ()
                         Console.WriteLine ("El login de administrador es correcto");
                 }
 
-                AdministradorEN admin = new AdministradorCEN().Dame_Todos(0, -1)[0];
+                AdministradorEN admin = new AdministradorCEN ().Dame_Todos (0, -1) [0];
 
                 //Creacion de usuarios
                 UsuarioCEN usuCEN = new UsuarioCEN ();
                 string perico = usuCEN.Registrarse ("Perico", "pericoinventado5@gmail.com", "Ciclismo-5", "Imagenes/usuarios/imagen.png");
 
-                UsuarioEN usuPerico = usuCEN.Dame_Por_Email(perico);
-                MensajeEN menP = new MensajeCP().Nuevo(admin.Email, usuPerico.Email, "Hola  " + usuPerico.Nombre, DateTime.Now);
+                UsuarioEN usuPerico = usuCEN.Dame_Por_Email (perico);
+                MensajeEN menP = new MensajeCP ().Nuevo (admin.Email, usuPerico.Email, "Hola  " + usuPerico.Nombre, DateTime.Now, admin.Nombre);
 
                 if (usuCEN.Iniciar_Sesion ("pericoinventado5@gmail.com", "12356794") != null) {
                         Console.WriteLine ("El login de: " + usuPerico.Nombre + " es correcto");
@@ -106,22 +106,22 @@ public static void InitializeData ()
                 UsuarioCEN juan99 = new UsuarioCEN ();
                 string juan = juan99.Registrarse ("Juan", "juaninventado243@gmail.com", "Constantino-12", "Imagenes/usuarios/imagen1.png");
 
-                UsuarioEN usuJuan = juan99.Dame_Por_Email(juan);
-                MensajeEN menJ = new MensajeCP().Nuevo(admin.Email, usuJuan.Email, "Hola  " + usuJuan.Nombre, DateTime.Now);
+                UsuarioEN usuJuan = juan99.Dame_Por_Email (juan);
+                MensajeEN menJ = new MensajeCP ().Nuevo (admin.Email, usuJuan.Email, "Hola  " + usuJuan.Nombre, DateTime.Now, admin.Nombre);
 
 
                 UsuarioCEN manuel = new UsuarioCEN ();
                 string manu = manuel.Registrarse ("Manuel45", "manuelinventado03@gmail.com", "Jugueton=5", "Imagenes/usuarios/imagen3.png");
 
-                UsuarioEN usuManu = manuel.Dame_Por_Email(manu);
-                MensajeEN menM = new MensajeCP().Nuevo(admin.Email, usuManu.Email, "Hola  " + usuManu.Nombre, DateTime.Now);
+                UsuarioEN usuManu = manuel.Dame_Por_Email (manu);
+                MensajeEN menM = new MensajeCP ().Nuevo (admin.Email, usuManu.Email, "Hola  " + usuManu.Nombre, DateTime.Now, admin.Nombre);
 
 
                 UsuarioCEN Antonio = new UsuarioCEN ();
                 string anto = Antonio.Registrarse ("Antonio53", "antonioinventado780@gmail.com", "Villena-92", "Imagenes/usuarios/imagen5.jpg");
 
-                UsuarioEN usuAnto = Antonio.Dame_Por_Email(anto);
-                MensajeEN menA = new MensajeCP().Nuevo(admin.Email, usuAnto.Email, "Hola  " + usuAnto.Nombre, DateTime.Now);
+                UsuarioEN usuAnto = Antonio.Dame_Por_Email (anto);
+                MensajeEN menA = new MensajeCP ().Nuevo (admin.Email, usuAnto.Email, "Hola  " + usuAnto.Nombre, DateTime.Now, admin.Nombre);
 
                 Console.WriteLine ();
 

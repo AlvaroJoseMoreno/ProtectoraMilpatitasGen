@@ -47,6 +47,13 @@ private Nullable<DateTime> fecha;
 
 
 
+/**
+ *	Atributo enviador
+ */
+private string enviador;
+
+
+
 
 
 
@@ -86,6 +93,12 @@ public virtual Nullable<DateTime> Fecha {
 
 
 
+public virtual string Enviador {
+        get { return enviador; } set { enviador = value;  }
+}
+
+
+
 
 
 public MensajeEN()
@@ -95,20 +108,20 @@ public MensajeEN()
 
 
 
-public MensajeEN(int id, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AdministradorEN administrador, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN usuario, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.NotificacionEN> notificacion, string texto, Nullable<DateTime> fecha
+public MensajeEN(int id, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AdministradorEN administrador, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN usuario, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.NotificacionEN> notificacion, string texto, Nullable<DateTime> fecha, string enviador
                  )
 {
-        this.init (Id, administrador, usuario, notificacion, texto, fecha);
+        this.init (Id, administrador, usuario, notificacion, texto, fecha, enviador);
 }
 
 
 public MensajeEN(MensajeEN mensaje)
 {
-        this.init (Id, mensaje.Administrador, mensaje.Usuario, mensaje.Notificacion, mensaje.Texto, mensaje.Fecha);
+        this.init (Id, mensaje.Administrador, mensaje.Usuario, mensaje.Notificacion, mensaje.Texto, mensaje.Fecha, mensaje.Enviador);
 }
 
 private void init (int id
-                   , ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AdministradorEN administrador, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN usuario, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.NotificacionEN> notificacion, string texto, Nullable<DateTime> fecha)
+                   , ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AdministradorEN administrador, ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN usuario, System.Collections.Generic.IList<ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.NotificacionEN> notificacion, string texto, Nullable<DateTime> fecha, string enviador)
 {
         this.Id = id;
 
@@ -122,6 +135,8 @@ private void init (int id
         this.Texto = texto;
 
         this.Fecha = fecha;
+
+        this.Enviador = enviador;
 }
 
 public override bool Equals (object obj)

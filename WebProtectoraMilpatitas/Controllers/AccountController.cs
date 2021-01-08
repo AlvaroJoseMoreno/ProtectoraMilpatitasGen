@@ -213,7 +213,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
                     AdministradorEN admin = new AdministradorCEN().Dame_Todos(0, -1)[0];
                     UsuarioEN usu = usuCEN.Dame_Por_Email(mail);
-                    MensajeEN menP = new MensajeCP().Nuevo(admin.Email, usu.Email, "Hola  " + usu.Nombre, DateTime.Now);
+                    MensajeEN menP = new MensajeCP().Nuevo(admin.Email, usu.Email, "Hola  " + usu.Nombre, DateTime.Now, admin.Nombre);
 
                     Session["Usuario"] = usuCEN.Dame_Por_Email(model.Email);
 

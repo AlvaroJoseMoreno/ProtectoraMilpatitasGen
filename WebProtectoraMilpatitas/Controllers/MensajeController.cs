@@ -30,37 +30,18 @@ namespace WebProtectoraMilpatitas.Controllers
             MensajeCAD menCAD = new MensajeCAD(session);
             MensajeCEN menCEN = new MensajeCEN(menCAD);
 
-            IList<MensajeEN> todosU = menCEN.Dame_Todos(0, -1);
-            IList<MensajeEN> todosA = menCEN.Dame_Todos(0, -1);
+            IList<MensajeEN> todos = menCEN.Dame_Todos(0, -1);
 
             IList<MensajeEN> mensajesUsu = new List<MensajeEN>();
             IList<MensajeEN> mensajesAdmin = new List<MensajeEN>();
 
-            if (todosU.Count>0)
+            if (todos.Count>0)
             {
-                foreach(MensajeEN m in todosU)
-                {
-                    if (m.Usuario.Email==usuen.Email)
-                    {
-                        mensajesUsu = m.Usuario.MensajeChat;
-                        break;
-                    }
-                }
-            }
+                mensajesUsu = todos.Where(s => s.Enviador == usuen.Nombre).ToList();
 
-            if (todosA.Count>0)
-            {
-                foreach(MensajeEN m in todosA)
-                {
-                    if(m.Administrador.Email==admin.Email)
-                    {
-                        mensajesAdmin = m.Administrador.MensajeAdmin;
-                        break;
-                    }
-                }
+                mensajesAdmin = todos.Where(s => s.Enviador == admin.Nombre).ToList();
+                mensajesAdmin = mensajesAdmin.Where(s => s.Usuario.Email == usuen.Email).ToList();
             }
-
-            mensajesAdmin = mensajesAdmin.Where(s => s.Usuario.Email == usuen.Email).ToList();
             
             IList<MensajeEN> mensajes= new List<MensajeEN>();
             
@@ -111,7 +92,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
                 UsuarioEN usuen = ((UsuarioEN)Session["Usuario"]);
 
-                menCP.Nuevo("protectoramilpatitasalicante@gmail.com",usuen.Email,mensa.Texto, DateTime.Now);
+                menCP.Nuevo("protectoramilpatitasalicante@gmail.com",usuen.Email,mensa.Texto, DateTime.Now, usuen.Nombre);
                
 
                 TempData["mensajeModalSeguimiento"] = "Mensaje enviado con exiro";
