@@ -245,9 +245,12 @@
 	<Compile Include="CAD\ProtectoraMilpatitas\IMensajeCAD.cs" />
 	<Compile Include="CAD\ProtectoraMilpatitas\MensajeCAD.cs" />
 	<Compile Include="CP\ProtectoraMilpatitas\MensajeCP.cs" />
+			<Compile Include="CP\ProtectoraMilpatitas\MensajeCP_Nuevo.cs" />
 			
 			
 			<Compile Include="CP\ProtectoraMilpatitas\MensajeCP_Responder.cs" />
+			
+			
 			
 			
 			

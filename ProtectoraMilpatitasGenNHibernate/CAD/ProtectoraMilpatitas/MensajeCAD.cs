@@ -265,5 +265,67 @@ public System.Collections.Generic.IList<MensajeEN> Dame_Todos (int first, int si
 
         return result;
 }
+
+public void AsignarUsuario (int p_Mensaje_OID, string p_usuario_OID)
+{
+        ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.MensajeEN mensajeEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                mensajeEN = (MensajeEN)session.Load (typeof(MensajeEN), p_Mensaje_OID);
+                mensajeEN.Usuario = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN), p_usuario_OID);
+
+                mensajeEN.Usuario.MensajeChat.Add (mensajeEN);
+
+
+
+                session.Update (mensajeEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is ProtectoraMilpatitasGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new ProtectoraMilpatitasGenNHibernate.Exceptions.DataLayerException ("Error in MensajeCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
+
+public void AsignarAdministrador (int p_Mensaje_OID, string p_administrador_OID)
+{
+        ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.MensajeEN mensajeEN = null;
+        try
+        {
+                SessionInitializeTransaction ();
+                mensajeEN = (MensajeEN)session.Load (typeof(MensajeEN), p_Mensaje_OID);
+                mensajeEN.Administrador = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AdministradorEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AdministradorEN), p_administrador_OID);
+
+                mensajeEN.Administrador.MensajeAdmin.Add (mensajeEN);
+
+
+
+                session.Update (mensajeEN);
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is ProtectoraMilpatitasGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new ProtectoraMilpatitasGenNHibernate.Exceptions.DataLayerException ("Error in MensajeCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+}
 }
 }

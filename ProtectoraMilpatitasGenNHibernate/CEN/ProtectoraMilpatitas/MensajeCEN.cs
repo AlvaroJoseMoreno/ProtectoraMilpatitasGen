@@ -39,37 +39,6 @@ public IMensajeCAD get_IMensajeCAD ()
         return this._IMensajeCAD;
 }
 
-public int Nuevo (string p_administrador, string p_usuario, string p_texto)
-{
-        MensajeEN mensajeEN = null;
-        int oid;
-
-        //Initialized MensajeEN
-        mensajeEN = new MensajeEN ();
-
-        if (p_administrador != null) {
-                // El argumento p_administrador -> Property administrador es oid = false
-                // Lista de oids id
-                mensajeEN.Administrador = new ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AdministradorEN ();
-                mensajeEN.Administrador.Email = p_administrador;
-        }
-
-
-        if (p_usuario != null) {
-                // El argumento p_usuario -> Property usuario es oid = false
-                // Lista de oids id
-                mensajeEN.Usuario = new ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN ();
-                mensajeEN.Usuario.Email = p_usuario;
-        }
-
-        mensajeEN.Texto = p_texto;
-
-        //Call to MensajeCAD
-
-        oid = _IMensajeCAD.Nuevo (mensajeEN);
-        return oid;
-}
-
 public void Eliminar (int id
                       )
 {
@@ -91,6 +60,18 @@ public System.Collections.Generic.IList<MensajeEN> Dame_Todos (int first, int si
 
         list = _IMensajeCAD.Dame_Todos (first, size);
         return list;
+}
+public void AsignarUsuario (int p_Mensaje_OID, string p_usuario_OID)
+{
+        //Call to MensajeCAD
+
+        _IMensajeCAD.AsignarUsuario (p_Mensaje_OID, p_usuario_OID);
+}
+public void AsignarAdministrador (int p_Mensaje_OID, string p_administrador_OID)
+{
+        //Call to MensajeCAD
+
+        _IMensajeCAD.AsignarAdministrador (p_Mensaje_OID, p_administrador_OID);
 }
 }
 }
