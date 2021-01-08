@@ -119,7 +119,6 @@
 	<Compile Include="CP\ProtectoraMilpatitas\UsuarioCP.cs" />
 			<Compile Include="CEN\ProtectoraMilpatitas\UsuarioCEN_Cerrar_Sesion.cs" />
 			
-			<Compile Include="CP\ProtectoraMilpatitas\UsuarioCP_Registrarse.cs" />
 			
 			<Compile Include="CEN\ProtectoraMilpatitas\UsuarioCEN_Modificar.cs" />
 			

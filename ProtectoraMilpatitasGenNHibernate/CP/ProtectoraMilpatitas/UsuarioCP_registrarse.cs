@@ -37,9 +37,6 @@ public ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN Regis
                 usuarioCAD = new UsuarioCAD (session);
                 usuarioCEN = new  UsuarioCEN (usuarioCAD);
 
-
-
-
                 string oid;
                 //Initialized UsuarioEN
                 UsuarioEN usuarioEN;
@@ -58,12 +55,10 @@ public ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN Regis
 
                 AdministradorEN admin = new AdministradorCEN().Dame_Todos(0, -1)[0];
 
-                //MensajeEN men = new MensajeCP().Nuevo(admin.Email, oid, "Hola nuevo usuario " + usuarioEN.Nombre, DateTime.Now);
+
+                MensajeEN men = new MensajeCP().Nuevo(admin.Email, usuarioEN.Email, "Hola nuevo usuario " + usuarioEN.Nombre, DateTime.Now);
 
                 result = usuarioCAD.ReadOIDDefault (oid);
-              //  MensajeEN men = new MensajeCP().Nuevo(admin.Email, oid, "Hola nuevo usuario " + usuarioEN.Nombre, DateTime.Now);
-
-
 
                 SessionCommit ();
         }

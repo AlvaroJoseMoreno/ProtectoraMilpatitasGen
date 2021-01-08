@@ -63,8 +63,10 @@ public ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.MensajeEN Nuevo
                 //Call to MensajeCAD
 
                 oid = mensajeCAD.Nuevo (mensajeEN);
+
                 mensajeCEN.AsignarUsuario (oid, p_usuario);
                 mensajeCEN.AsignarAdministrador (oid, p_administrador);
+
                 result = mensajeCAD.ReadOIDDefault (oid);
 
 
