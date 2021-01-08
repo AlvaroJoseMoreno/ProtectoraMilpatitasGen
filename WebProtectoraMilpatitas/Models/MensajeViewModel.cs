@@ -20,6 +20,10 @@ namespace WebProtectoraMilpatitas.Models
         public DateTime? Fecha { get; set; }
 
         [ScaffoldColumn(false)]
+        [Display(Prompt = "Enviado", Description = "Usuario que envia el mensaje", Name = "Enviado por")]
+        public String Enviador { get; set; }
+
+        [ScaffoldColumn(false)]
         public String Usuario { get; set; }
 
         [ScaffoldColumn(false)]

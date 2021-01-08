@@ -27,7 +27,7 @@
     {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Usuario)
+            @Html.DisplayFor(modelItem => item.Enviador)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Texto)
@@ -35,10 +35,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.Fecha)
         </td>
+        @if(((UsuarioEN)Session["Usuario"]).Nombre.Equals(item.Enviador)){ 
         <td>
            
             @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
         </td>
+        }
     </tr>
     }
 

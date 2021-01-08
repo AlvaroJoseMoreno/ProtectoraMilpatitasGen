@@ -15,17 +15,41 @@ namespace WebProtectoraMilpatitas.Controllers
 {
     public class MensajeController:BasicController
     {
-        public ActionResult Index()
+        public ActionResult Index(string email)
         {
             
 
             SessionInitialize();
             AdministradorCAD admiCAD = new AdministradorCAD(session);
             AdministradorCEN adminiCEN = new AdministradorCEN(admiCAD);
+            
 
             IList<AdministradorEN> administradores = adminiCEN.Dame_Todos(0, -1);
             AdministradorEN admin = administradores[0];
-            UsuarioEN usuen = ((UsuarioEN)Session["Usuario"]);
+            UsuarioEN usuen = new UsuarioEN();
+
+            if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+            {
+                UsuarioCAD usuarioCAD = new UsuarioCAD(session);
+                
+                   IList<UsuarioEN> usuarios = usuarioCAD.Dame_Todos(0,-1);
+                foreach(UsuarioEN usu in usuarios)
+                {
+                    if (usu.Email.Equals(email))
+                    {
+                        usuen = usu;
+                    }
+                }
+
+                
+                TempData["emailUsu"] = email;
+
+            }
+            else {
+
+              usuen = ((UsuarioEN)Session["Usuario"]);
+            }
+           
 
             MensajeCAD menCAD = new MensajeCAD(session);
             MensajeCEN menCEN = new MensajeCEN(menCAD);
@@ -103,18 +127,61 @@ namespace WebProtectoraMilpatitas.Controllers
                 AdministradorEN admin = administradores[0];
 
                 //si el usuario de la sesion es el admin, hay que obtener los datos del usuario del chat para pasar el email
-                menCP.Nuevo(admin.Email,usuen.Email,mensa.Texto, DateTime.Now, usuen.Nombre);
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+                    menCP.Nuevo(admin.Email, (string)TempData["emailUsu"], mensa.Texto, DateTime.Now, usuen.Nombre);
+                }
+                else
+                {
+                    menCP.Nuevo(admin.Email, usuen.Email, mensa.Texto, DateTime.Now, usuen.Nombre);
+                }
                
 
                 TempData["mensajeModalSeguimiento"] = "Mensaje enviado con exito";
 
                 SessionClose();
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+                    return RedirectToAction("Index", new { email = (string)TempData["emailUsu"] });
+                }
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
             }
             catch
             {
                 TempData["mensajeModalSeguimiento"] = "Ha habido un error al enviar el mensaje";
+                return RedirectToAction("Index");
+            }
+        }
+
+        public ActionResult Delete(int id)
+        {
+          
+            return View();
+        }
+
+        // POST: Especie/Delete/5
+        [HttpPost]
+        public ActionResult Delete(MensajeViewModel men)
+        {
+            
+
+            try
+            {
+                // TODO: Add delete logic here
+                MensajeCEN mensajeCEN = new MensajeCEN();
+                mensajeCEN.Eliminar(men.Id);
+
+                TempData["mensajeModalEspecie"] = "Mensaje eliminado correctamente";
+                if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+                {
+                    return RedirectToAction("Index", new { email = (string)TempData["emailUsu"] });
+                }
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                TempData["mensajeModalEspecie"] = "Ha habido un error al eliminar el mensaje";
                 return RedirectToAction("Index");
             }
         }

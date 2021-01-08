@@ -16,6 +16,7 @@ namespace WebProtectoraMilpatitas.Assemblers
             mensaje.Id = men.Id;
             mensaje.Texto = men.Texto;
             mensaje.Fecha = men.Fecha;
+            mensaje.Enviador = men.Enviador;
             if (men.Usuario != null)
             {
                 mensaje.Usuario = men.Usuario.Email;

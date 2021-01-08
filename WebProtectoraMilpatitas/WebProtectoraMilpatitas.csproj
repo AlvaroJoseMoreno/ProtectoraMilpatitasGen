@@ -471,6 +471,7 @@
     <Content Include="Views\SolicitudAdopcion\RechazarTodasSolicitud.cshtml" />
     <Content Include="Views\Mensaje\Index.cshtml" />
     <Content Include="Views\Mensaje\Create.cshtml" />
+    <Content Include="Views\Mensaje\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
