@@ -52,11 +52,11 @@ namespace WebProtectoraMilpatitas.Controllers
             try
             {
                 // TODO: Add insert logic here
-                MensajeCEN menCEN = new MensajeCEN();
+                MensajeCP menCP = new MensajeCP();
 
                 UsuarioEN usuen = ((UsuarioEN)Session["Usuario"]);
 
-                menCEN.Nuevo("protectoramilpatitasalicante@gmail.com",usuen.Email,mensa.Texto);
+                menCP.Nuevo("protectoramilpatitasalicante@gmail.com",usuen.Email,mensa.Texto, DateTime.Now);
                
 
                 TempData["mensajeModalSeguimiento"] = "Mensaje enviado con exiro";

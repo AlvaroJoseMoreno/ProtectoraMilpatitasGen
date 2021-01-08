@@ -253,10 +253,10 @@ public static void InitializeData ()
                 SolicitudAdopcionCEN solicitudAdopcionCEN = new SolicitudAdopcionCEN ();
                 SolicitudAdopcionCP solicitudAdopcionCP = new SolicitudAdopcionCP ();
 
-                int idsol = solicitudAdopcionCEN.Nuevo (juan, chihuahua.Id, DateTime.Today);
+                int idsol = solicitudAdopcionCEN.Nuevo (juan, chihuahua.Id, new DateTime(2020, 10, 15, 8, 30, 52));
                 solicitudAdopcionCP.Actualizar_Estado (idsol, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
 
-                int idsol1 = solicitudAdopcionCEN.Nuevo (manu, chihuahua.Id, DateTime.Today);
+                int idsol1 = solicitudAdopcionCEN.Nuevo (manu, chihuahua.Id, new DateTime(2021, 1, 5, 8, 30, 52));
                 solicitudAdopcionCP.Actualizar_Estado (idsol1, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
 
                 solicitudAdopcionCEN.Rellenar_Solicitud (idsol, "Juan", 2, "lugar tranquilo", 3, true, "nos gustan los animales");

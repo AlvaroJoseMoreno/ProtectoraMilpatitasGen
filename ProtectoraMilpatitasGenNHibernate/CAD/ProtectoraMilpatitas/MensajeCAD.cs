@@ -96,6 +96,9 @@ public void ModifyDefault (MensajeEN mensaje)
 
                 mensajeEN.Texto = mensaje.Texto;
 
+
+                mensajeEN.Fecha = mensaje.Fecha;
+
                 session.Update (mensajeEN);
                 SessionCommit ();
         }

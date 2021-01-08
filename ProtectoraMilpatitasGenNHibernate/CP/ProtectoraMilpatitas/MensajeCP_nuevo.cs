@@ -21,7 +21,7 @@ namespace ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas
 {
 public partial class MensajeCP : BasicCP
 {
-public ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.MensajeEN Nuevo (string p_administrador, string p_usuario, string p_texto)
+public ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.MensajeEN Nuevo (string p_administrador, string p_usuario, string p_texto, Nullable<DateTime> p_fecha)
 {
         /*PROTECTED REGION ID(ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas_Mensaje_nuevo) ENABLED START*/
 
@@ -58,11 +58,13 @@ public ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.MensajeEN Nuevo
 
                 mensajeEN.Texto = p_texto;
 
+                mensajeEN.Fecha = p_fecha;
+
                 //Call to MensajeCAD
 
                 oid = mensajeCAD.Nuevo (mensajeEN);
-                mensajeCEN.AsignarUsuario(oid, p_usuario);
-                mensajeCEN.AsignarAdministrador(oid, p_administrador);
+                mensajeCEN.AsignarUsuario (oid, p_usuario);
+                mensajeCEN.AsignarAdministrador (oid, p_administrador);
                 result = mensajeCAD.ReadOIDDefault (oid);
 
 
