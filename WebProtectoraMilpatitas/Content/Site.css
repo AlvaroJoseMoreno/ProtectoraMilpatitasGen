@@ -408,7 +408,10 @@ form {
     font-size: 48px;
     pointer-events: none;
 }
-
+.pagination>li{
+    font-size: 20px;
+    margin-left: 15px;
+}
 .respmenu > label {
     font-size: 48px;
 }
@@ -520,8 +523,14 @@ th{
     font-size: 20px;
     margin-bottom: 15px;
 }
+.listaarriba > div > nav > ul > li > i, #form_registro > form > ul > li > i, #form_registro > ul > li>i {
+    color: darkslateblue;
+}
+.listaarriba > div > nav > ul > li, #form_registro > form > ul > li, #form_registro > ul > li {
+    text-align: left;
+}
 
-@media all and (min-width: 475px){
+@media all and (min-width: 475px) {
     #details > article > h2 {
         font-size: 24px;
     }
@@ -769,15 +778,24 @@ th{
 
         .listaarriba > div > nav > ul > li {
             width: 170px;
-            height: 49px;
+            height: 70px;
             margin-left: 0;
         }
-
-        .listaarriba > div > nav > ul, #form_registro > ul {
-            display: flex;
-            flex-direction: row;
-            left: 0;
-            justify-content: center;
-            transition: .5s;
+        .listaarriba > div > nav > ul > li, #form_registro > form > ul > li, #form_registro > ul > li {
+            text-align: center;
         }
+        .listaarriba > div > nav > ul > li, #form_registro > form > ul > li, #form_registro > ul > li {
+            display: flex;
+            flex-direction: column;
+        }
+    #form_registro > form > ul > li, #form_registro > ul > li {
+        margin-top: -18px;
+    }
+    .listaarriba > div > nav > ul, #form_registro > ul {
+        display: flex;
+        flex-direction: row;
+        left: 0;
+        justify-content: center;
+        transition: .5s;
+    }
 }
