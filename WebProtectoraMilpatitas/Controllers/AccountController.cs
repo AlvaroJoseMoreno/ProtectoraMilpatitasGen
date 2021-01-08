@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
 using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
+using ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas;
 using WebProtectoraMilpatitas.Models;
 
 namespace WebProtectoraMilpatitas.Controllers
@@ -207,8 +208,9 @@ namespace WebProtectoraMilpatitas.Controllers
                     }
                     filename = "Imagenes/usuarios/" + filename;
                     UsuarioCEN usuCEN = new UsuarioCEN();
+                    UsuarioCP usuCP = new UsuarioCP();
 
-                    usuCEN.Registrarse(model.Nombre, model.Email, model.Password, filename);
+                    usuCP.Registrarse(model.Nombre, model.Email, model.Password, filename);
 
                     Session["Usuario"] = usuCEN.Dame_Por_Email(model.Email);
 

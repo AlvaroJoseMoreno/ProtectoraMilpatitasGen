@@ -127,15 +127,13 @@ public int Nuevo (MensajeEN mensaje)
                         // Argumento OID y no colección.
                         mensaje.Administrador = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AdministradorEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AdministradorEN), mensaje.Administrador.Email);
 
-                        mensaje.Administrador.MensajeAdmin
-                        .Add (mensaje);
+                        mensaje.Administrador.MensajeChat.Add (mensaje);
                 }
                 if (mensaje.Usuario != null) {
                         // Argumento OID y no colección.
                         mensaje.Usuario = (ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN)session.Load (typeof(ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.UsuarioEN), mensaje.Usuario.Email);
 
-                        mensaje.Usuario.MensajeChat
-                        .Add (mensaje);
+                        mensaje.Usuario.MensajeChat.Add (mensaje);
                 }
 
                 session.Save (mensaje);

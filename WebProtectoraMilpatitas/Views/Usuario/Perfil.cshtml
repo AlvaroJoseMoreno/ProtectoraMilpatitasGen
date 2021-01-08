@@ -69,14 +69,15 @@
                                 <p>
                                     @Html.ActionLink("Ver mis seguimientos", "ObtenerSeguimientoUsuario", "Seguimiento", new { email = Model.Email }, htmlAttributes: null)
                                 </p>
-                                }
+                                <p>
+                                    @Html.ActionLink("Chat con protectora", "Index", "Mensaje", new { email = Model.Email }, htmlAttributes: null)
+                                </p>
                             }
                         }
-                                <p>
-                                    @Html.ActionLink("Chat con protectora", "Index", "Mensaje",new { email = Model.Email }, htmlAttributes: null)
-                                </p>
-                                <p>
-                            </div>
+                    }
+
+                    <p>
+                </div>
             </article>
         </main>
     </section>

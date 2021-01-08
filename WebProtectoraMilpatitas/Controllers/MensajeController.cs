@@ -20,14 +20,43 @@ namespace WebProtectoraMilpatitas.Controllers
             
 
             SessionInitialize();
-
-            MensajeCAD menCAD = new MensajeCAD(session);
-            MensajeCEN menCEN = new MensajeCEN(menCAD);
-
-            IList<MensajeEN> menEN = menCEN.Dame_Todos(0, -1);
+            AdministradorCAD admiCAD = new AdministradorCAD(session);
+            AdministradorCEN adminiCEN = new AdministradorCEN(admiCAD);
+            
 
 
-            IEnumerable<MensajeViewModel> listaMensajes = new MensajeAssembler().ConvertListENToModel(menEN).ToList();
+
+            IList<AdministradorEN> administradores = adminiCEN.Dame_Todos(0, -1);
+            AdministradorEN admin = administradores[0];
+            UsuarioEN usuen = ((UsuarioEN)Session["Usuario"]);
+
+            IList<MensajeEN> mensajesAdmin = admin.MensajeAdmin;
+            IList<MensajeEN> mensajesUsu = usuen.MensajeChat;
+            IList<MensajeEN> mensajes= usuen.MensajeChat;
+
+            if (mensajesAdmin.Count > 0 )
+            {
+                foreach (MensajeEN men in mensajesAdmin)
+                {
+                    mensajesUsu.Add(men);
+                }
+                 mensajes = mensajesUsu;
+            }
+            else if (mensajesUsu.Count > 0)
+            {
+                foreach (MensajeEN men in mensajesUsu)
+                {
+                    mensajesAdmin.Add(men);
+                }
+                mensajes = mensajesAdmin;
+            }
+
+            IEnumerable<MensajeEN> mensajesOrden = mensajes.OrderBy(f => f.Fecha);
+            IList<MensajeEN> sortedList = mensajesOrden.ToList();
+
+
+
+            IEnumerable<MensajeViewModel> listaMensajes = new MensajeAssembler().ConvertListENToModel(sortedList).ToList();
 
             SessionClose();
 
