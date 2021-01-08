@@ -102,8 +102,6 @@ public ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas.AnimalEN Nuevo 
                                                 MensajeCEN mensajeCEN = new MensajeCEN ();
 
                                                 MensajeEN men = mensajeCP.Nuevo (adminEN.Email, usuen.Email, notificacionEN.Mensaje, DateTime.Now, adminEN.Nombre);
-
-                                                //mensajeCP.Responder (men.Id, notificacionEN.Mensaje, usuen.Email);
                                         }
                                 }
                         }

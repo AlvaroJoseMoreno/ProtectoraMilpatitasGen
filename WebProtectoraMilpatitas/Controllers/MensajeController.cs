@@ -37,8 +37,11 @@ namespace WebProtectoraMilpatitas.Controllers
 
             if (todos.Count>0)
             {
+                //me quedo con los mensajes que ha enviado el usuario
                 mensajesUsu = todos.Where(s => s.Enviador == usuen.Nombre).ToList();
 
+                //me quedo con los mensajes que ha enviado el administrador
+                //luego me quedo con los que ha enviado al usuario del chat
                 mensajesAdmin = todos.Where(s => s.Enviador == admin.Nombre).ToList();
                 mensajesAdmin = mensajesAdmin.Where(s => s.Usuario.Email == usuen.Email).ToList();
             }
@@ -88,14 +91,25 @@ namespace WebProtectoraMilpatitas.Controllers
             try
             {
                 // TODO: Add insert logic here
+                SessionInitialize();
                 MensajeCP menCP = new MensajeCP();
 
                 UsuarioEN usuen = ((UsuarioEN)Session["Usuario"]);
 
-                menCP.Nuevo("protectoramilpatitasalicante@gmail.com",usuen.Email,mensa.Texto, DateTime.Now, usuen.Nombre);
+                AdministradorCAD admiCAD = new AdministradorCAD(session);
+                AdministradorCEN adminiCEN = new AdministradorCEN(admiCAD);
+
+                IList<AdministradorEN> administradores = adminiCEN.Dame_Todos(0, -1);
+                AdministradorEN admin = administradores[0];
+
+                //si el usuario de la sesion es el admin, hay que obtener los datos del usuario del chat para pasar el email
+                menCP.Nuevo(admin.Email,usuen.Email,mensa.Texto, DateTime.Now, usuen.Nombre);
                
 
-                TempData["mensajeModalSeguimiento"] = "Mensaje enviado con exiro";
+                TempData["mensajeModalSeguimiento"] = "Mensaje enviado con exito";
+
+                SessionClose();
+
                 return RedirectToAction("Index");
             }
             catch
