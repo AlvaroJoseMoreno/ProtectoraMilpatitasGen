@@ -91,18 +91,22 @@ public static void InitializeData ()
 
                 //Creacion de usuarios
                 UsuarioCEN usuCEN = new UsuarioCEN ();
-                string idusu = usuCEN.Registrarse ("Perico", "pericoinventado5@gmail.com", "Ciclismo-5", "Imagenes/usuarios/imagen.png");
+                UsuarioCP usuCP = new UsuarioCP();
+
+                UsuarioEN perico = usuCP.Registrarse("Perico", "pericoinventado5@gmail.com", "Ciclismo-5", "Imagenes/usuarios/imagen.png");
 
                 if (usuCEN.Iniciar_Sesion ("pericoinventado5@gmail.com", "12356794") != null) {
-                        Console.WriteLine ("El login de: " + idusu + " es correcto");
+                        Console.WriteLine ("El login de: " + perico.Nombre + " es correcto");
                 }
 
-                UsuarioCEN juan99 = new UsuarioCEN ();
-                string juan = juan99.Registrarse ("Juan", "juaninventado243@gmail.com", "Constantino-12", "Imagenes/usuarios/imagen1.png");
-                UsuarioCEN manuel = new UsuarioCEN ();
-                string manu = manuel.Registrarse ("Manuel45", "manuelinventado03@gmail.com", "Jugueton=5", "Imagenes/usuarios/imagen3.png");
-                UsuarioCEN Antonio = new UsuarioCEN ();
-                string anto = Antonio.Registrarse ("Antonio53", "antonioinventado780@gmail.com", "Villena-92", "Imagenes/usuarios/imagen5.jpg");
+                UsuarioCP juan99 = new UsuarioCP ();
+                UsuarioEN juan = juan99.Registrarse ("Juan", "juaninventado243@gmail.com", "Constantino-12", "Imagenes/usuarios/imagen1.png");
+                
+                UsuarioCP manuel = new UsuarioCP ();
+                UsuarioEN manu = manuel.Registrarse ("Manuel45", "manuelinventado03@gmail.com", "Jugueton=5", "Imagenes/usuarios/imagen3.png");
+                
+                UsuarioCP Antonio = new UsuarioCP ();
+                UsuarioEN anto = Antonio.Registrarse ("Antonio53", "antonioinventado780@gmail.com", "Villena-92", "Imagenes/usuarios/imagen5.jpg");
 
                 Console.WriteLine ();
 
@@ -241,7 +245,7 @@ public static void InitializeData ()
 
                 //Creacion de tests
                 TestAnimalIdealCEN test1 = new TestAnimalIdealCEN ();
-                int idtest1 = test1.Nuevo (juan);
+                int idtest1 = test1.Nuevo (juan.Email);
                 Console.WriteLine ("Id del test: " + idtest1);
                 test1.Rellenar_Test (idtest1, "Manualidades", "Inteligente", "Rojo");
                 TestAnimalIdealEN restest1 = test1.Ver_Resultado (idtest1);
@@ -253,10 +257,10 @@ public static void InitializeData ()
                 SolicitudAdopcionCEN solicitudAdopcionCEN = new SolicitudAdopcionCEN ();
                 SolicitudAdopcionCP solicitudAdopcionCP = new SolicitudAdopcionCP ();
 
-                int idsol = solicitudAdopcionCEN.Nuevo (juan, chihuahua.Id, new DateTime (2020, 10, 15, 8, 30, 52));
+                int idsol = solicitudAdopcionCEN.Nuevo (juan.Email, chihuahua.Id, new DateTime (2020, 10, 15, 8, 30, 52));
                 solicitudAdopcionCP.Actualizar_Estado (idsol, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
 
-                int idsol1 = solicitudAdopcionCEN.Nuevo (manu, chihuahua.Id, new DateTime (2021, 1, 5, 8, 30, 52));
+                int idsol1 = solicitudAdopcionCEN.Nuevo (manu.Email, chihuahua.Id, new DateTime (2021, 1, 5, 8, 30, 52));
                 solicitudAdopcionCP.Actualizar_Estado (idsol1, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
 
                 solicitudAdopcionCEN.Rellenar_Solicitud (idsol, "Juan", 2, "lugar tranquilo", 3, true, "nos gustan los animales");
@@ -264,7 +268,7 @@ public static void InitializeData ()
 
                 Console.WriteLine ();
 
-                IList<SolicitudAdopcionEN> sols = solicitudAdopcionCEN.Obtener_Solicitud_Usuario (juan);
+                IList<SolicitudAdopcionEN> sols = solicitudAdopcionCEN.Obtener_Solicitud_Usuario (juan.Email);
                 foreach (SolicitudAdopcionEN sol in sols) {
                         Console.WriteLine ("Solicitud : " + sol.Id + " " + sol.Nombre + " " + sol.FechaSolicitud);
                 }
@@ -276,10 +280,10 @@ public static void InitializeData ()
                 ContratoAdopcionCEN contratoAdopcionCEN = new ContratoAdopcionCEN ();
                 ContratoAdopcionCP contratoAdopcionCP = new ContratoAdopcionCP ();
 
-                int idcon = contratoAdopcionCEN.Nuevo (juan, idsol, chihuahua.Id);
+                int idcon = contratoAdopcionCEN.Nuevo (juan.Email, idsol, chihuahua.Id);
                 contratoAdopcionCP.Actualizar_Estado (idcon, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum.entregado);
 
-                int idcon1 = contratoAdopcionCEN.Nuevo (manu, idsol1, chihuahua.Id);
+                int idcon1 = contratoAdopcionCEN.Nuevo (manu.Email, idsol1, chihuahua.Id);
                 contratoAdopcionCP.Actualizar_Estado (idcon1, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum.entregado);
 
                 contratoAdopcionCEN.Rellenar_Contrato (idcon, "Juan", "1111111F", "micasa.pdf", "pago.jpg", "alicante", true);
@@ -287,7 +291,7 @@ public static void InitializeData ()
 
                 Console.WriteLine ();
 
-                IList<ContratoAdopcionEN> cons = contratoAdopcionCEN.Obtener_Contrato_Usuario (manu);
+                IList<ContratoAdopcionEN> cons = contratoAdopcionCEN.Obtener_Contrato_Usuario (manu.Email);
                 foreach (ContratoAdopcionEN con in cons) {
                         Console.WriteLine ("Contrato : " + con.Id + " " + con.Nombre);
                 }
@@ -300,13 +304,13 @@ public static void InitializeData ()
 
                 DateTime date1 = new DateTime (2008, 5, 1, 8, 30, 52);
 
-                int idseg = seguimientoCEN.Nuevo (manu, chihuahua.Id, idcon1);
+                int idseg = seguimientoCEN.Nuevo (manu.Email, chihuahua.Id, idcon1);
                 seguimientoCEN.Modificar (idseg, date1, "está correcto");
                 seguimientoCP.Actualizar_Estado (idseg, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSeguimientoEnum.pendienteRevision);
 
                 Console.WriteLine ();
 
-                IList<SeguimientoEN> segs = seguimientoCEN.Obtener_Seguimiento_Usuario (manu);
+                IList<SeguimientoEN> segs = seguimientoCEN.Obtener_Seguimiento_Usuario (manu.Email);
                 foreach (SeguimientoEN seg in segs) {
                         Console.WriteLine ("Seguimiento de Manu : " + seg.Id);
                 }
