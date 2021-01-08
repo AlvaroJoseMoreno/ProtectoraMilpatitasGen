@@ -91,7 +91,7 @@ public static void InitializeData ()
 
                 //Creacion de usuarios
                 UsuarioCEN usuCEN = new UsuarioCEN ();
-                string idusu = usuCEN.Registrarse ("Perico", "pericoinventado5@gmail.com", "12356794", "Imagenes/usuarios/imagen.png");
+                string idusu = usuCEN.Registrarse ("Perico", "pericoinventado5@gmail.com", "Ciclismo-5", "Imagenes/usuarios/imagen.png");
 
                 if (usuCEN.Iniciar_Sesion ("pericoinventado5@gmail.com", "12356794") != null) {
                         Console.WriteLine ("El login de: " + idusu + " es correcto");
@@ -100,9 +100,9 @@ public static void InitializeData ()
                 UsuarioCEN juan99 = new UsuarioCEN ();
                 string juan = juan99.Registrarse ("Juan", "juaninventado243@gmail.com", "Constantino-12", "Imagenes/usuarios/imagen1.png");
                 UsuarioCEN manuel = new UsuarioCEN ();
-                string manu = manuel.Registrarse ("Manuel45", "manuelinventado03@gmail.com", "password=5", "Imagenes/usuarios/imagen3.png");
+                string manu = manuel.Registrarse ("Manuel45", "manuelinventado03@gmail.com", "Jugueton=5", "Imagenes/usuarios/imagen3.png");
                 UsuarioCEN Antonio = new UsuarioCEN ();
-                string anto = Antonio.Registrarse ("Antonio53", "antonioinventado780@gmail.com", "villena92", "Imagenes/usuarios/imagen5.jpg");
+                string anto = Antonio.Registrarse ("Antonio53", "antonioinventado780@gmail.com", "Villena-92", "Imagenes/usuarios/imagen5.jpg");
 
                 Console.WriteLine ();
 
