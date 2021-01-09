@@ -136,7 +136,8 @@ namespace WebProtectoraMilpatitas.Controllers
             }
             catch
             {
-                return View();
+                TempData["mensajeModal"] = "Ha habido un error al crear el usuario";
+                return RedirectToAction("Index");
             }
         }
 
@@ -176,7 +177,8 @@ namespace WebProtectoraMilpatitas.Controllers
             }
             catch
             {
-                return View();
+                TempData["mensajeModal"] = "Ha habido un error al editar el usuario";
+                return RedirectToAction("Index");
             }
         }
 
@@ -230,7 +232,8 @@ namespace WebProtectoraMilpatitas.Controllers
             }
             catch
             {
-                return View();
+                TempData["mensajeModal"] = "Ha habido un error al eliminar el usuario";
+                return RedirectToAction("Index");
             }
         }
     }
