@@ -15,6 +15,8 @@ namespace WebProtectoraMilpatitas.Assemblers
             MensajeViewModel mensaje = new MensajeViewModel();
             mensaje.Id = men.Id;
             mensaje.Texto = men.Texto;
+            mensaje.Fecha = men.Fecha;
+            mensaje.Enviador = men.Enviador;
             if (men.Usuario != null)
             {
                 mensaje.Usuario = men.Usuario.Email;

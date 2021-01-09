@@ -29,5 +29,10 @@ MensajeEN Ver_Mensaje (int id
 
 
 System.Collections.Generic.IList<MensajeEN> Dame_Todos (int first, int size);
+
+
+void AsignarUsuario (int p_Mensaje_OID, string p_usuario_OID);
+
+void AsignarAdministrador (int p_Mensaje_OID, string p_administrador_OID);
 }
 }

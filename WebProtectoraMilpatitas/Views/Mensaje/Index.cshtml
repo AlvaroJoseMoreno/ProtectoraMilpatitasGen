@@ -1,6 +1,14 @@
 ﻿@model IEnumerable<WebProtectoraMilpatitas.Models.MensajeViewModel>
 @using PagedList.Mvc;
 @using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
+@using ProtectoraMilpatitasGenNHibernate.CEN.ProtectoraMilpatitas;
+@using System;
+@using System.Collections.Generic;
+
+@using ProtectoraMilpatitasGenNHibernate.CAD.ProtectoraMilpatitas;
+
+@using ProtectoraMilpatitasGenNHibernate.CP.ProtectoraMilpatitas;
+
 
 
 
@@ -13,36 +21,28 @@
 
 
 <table class="table">
-    <tr>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
+ 
+   
+@foreach (var item in Model)
     {
-
-        if (Session["Usuario"] != null)
-        {
-            if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN) || ((UsuarioEN)Session["Usuario"]).Email.Equals(item.Usuario))
-            {
-
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Usuario)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Texto)
-                    </td>
-                    <td>
-
-                        @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
-                    </td>
-                </tr>
-
-            }
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Enviador)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Texto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        @if(((UsuarioEN)Session["Usuario"]).Nombre.Equals(item.Enviador)){ 
+        <td>
+           
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+        </td>
         }
+    </tr>
     }
-
-
 
 </table>
 

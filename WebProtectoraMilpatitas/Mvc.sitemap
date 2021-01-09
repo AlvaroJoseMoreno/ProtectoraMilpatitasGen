@@ -51,6 +51,11 @@
     <mvcSiteMapNode title="Index" controller="Home" action="Index"/>
     <mvcSiteMapNode title="Indexad" controller="Home" action="Indexad"/>
 
+    <mvcSiteMapNode title="Chat" controller="Mensaje" action="Index">
+      <mvcSiteMapNode title="Crear Mensaje" controller="Mensaje" action="Create"/>
+      <mvcSiteMapNode title="Chat" controller="Mensaje" action="Index"/>
+    </mvcSiteMapNode>
+    
     <mvcSiteMapNode title="Raza" controller="Raza" action="Index">
       <mvcSiteMapNode title="Crear Raza" controller="Raza" action="Create"/>
       <mvcSiteMapNode title="Eliminar Raza" controller="Raza" action="Delete" preservedRouteParameters="id"/>
@@ -70,6 +75,7 @@
     </mvcSiteMapNode>
 
     <mvcSiteMapNode title="Solicitud Adopcion" controller="SolicitudAdopcion" action="Index">
+      <mvcSiteMapNode title="Aceptar Solicitud Adopcion" controller="SolicitudAdopcion" action="AceptarSolicitud" preservedRouteParameters="id"/>
       <mvcSiteMapNode title="Actualizar Estado Solicitud Adopcion" controller="SolicitudAdopcion" action="ActualizarEstado" preservedRouteParameters="id"/>
       <mvcSiteMapNode title="Crear Solicitud Adopcion" controller="SolicitudAdopcion" action="Create"/>
       <mvcSiteMapNode title="Eliminar Solicitud Adopcion" controller="SolicitudAdopcion" action="Delete" preservedRouteParameters="id"/>
@@ -78,6 +84,8 @@
       <mvcSiteMapNode title="Encuesta Solicitud Adopcion" controller="SolicitudAdopcion" action="Encuesta" preservedRouteParameters="id"/>
       <mvcSiteMapNode title="Index Solicitud Adopcion" controller="SolicitudAdopcion" action="Index"/>
       <mvcSiteMapNode title="Obtener Solicitud Adopcion" controller="SolicitudAdopcion" action="ObtenerSolicitudUsuario" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Rechazar Solicitud Adopcion" controller="SolicitudAdopcion" action="RechazarSolicitud" preservedRouteParameters="id"/>
+      <mvcSiteMapNode title="Rechazar todas Solicitud Adopcion" controller="SolicitudAdopcion" action="RechazarTodasSolicitud"/>
     </mvcSiteMapNode>
     
     <mvcSiteMapNode title="TestAnimalIdeal" controller="TestAnimalIdeal" action="Index">

@@ -10,64 +10,62 @@
 <div>
 
     <hr />
-    <dl class="dl-horizontal">
+    <main id="mainart">
+        
 
-        <dt>
-            
-        </dt>
+            <h2 style="width: 100%">
+                @Html.DisplayFor(model => model.Resultado)
+            </h2>
+            <p style="width: 100%;">
+                @{
+                    string foto = "";
 
-        <dd>
-            @Html.DisplayFor(model => model.Resultado)
-        </dd>
-        <dd>
-            @{
-                string foto = "";
-
-                if (Model.Resultado.Contains("perro"))
-                {
-                    foto = "perro";
-                }
-                else
-                {
-                    if (Model.Resultado.Contains("gato"))
+                    if (Model.Resultado.Contains("perro"))
                     {
-                        foto = "gato";
+                        foto = "perro";
                     }
                     else
                     {
-                        if (Model.Resultado.Contains("pez"))
+                        if (Model.Resultado.Contains("gato"))
                         {
-                            foto = "pez";
+                            foto = "gato";
                         }
                         else
                         {
-                            if (Model.Resultado.Contains("pajaro"))
+                            if (Model.Resultado.Contains("pez"))
                             {
-                                foto = "pajaro";
+                                foto = "pez";
                             }
                             else
                             {
-                                if (Model.Resultado.Contains("tortuga"))
+                                if (Model.Resultado.Contains("pajaro"))
                                 {
-                                    foto = "tortuga";
+                                    foto = "pajaro";
                                 }
                                 else
                                 {
-                                    if (Model.Resultado.Contains("geco"))
+                                    if (Model.Resultado.Contains("tortuga"))
                                     {
-                                        foto = "geco";
+                                        foto = "tortuga";
                                     }
                                     else
                                     {
-                                        if (Model.Resultado.Contains("conejo"))
+                                        if (Model.Resultado.Contains("geco"))
                                         {
-                                            foto = "conejo";
+                                            foto = "geco";
                                         }
                                         else
                                         {
-                                            if (Model.Resultado.Contains("hamster"))
+                                            if (Model.Resultado.Contains("conejo"))
                                             {
-                                                foto = "hamster";
+                                                foto = "conejo";
+                                            }
+                                            else
+                                            {
+                                                if (Model.Resultado.Contains("hamster"))
+                                                {
+                                                    foto = "hamster";
+                                                }
                                             }
                                         }
                                     }
@@ -75,17 +73,17 @@
                             }
                         }
                     }
+
+                    string ruta = "";
+                    ruta = @"Imagenes/Test/Resultado/" + foto + ".jpg";
+                    <img style="display:block; margin:auto;" src=~/@ruta />
                 }
+            </p>
+            
 
-                string ruta = "";
-                ruta = @"Imagenes/Test/Resultado/" + foto + ".jpg";
-                <img src=~/@ruta />
-            }
-
-        </dd>
-
-    </dl>
+        
+    </main>
 </div>
-<p>
+<p style="text-align: center;">
     @Html.ActionLink("Volver a inicio", "Index", "Home")
 </p>
