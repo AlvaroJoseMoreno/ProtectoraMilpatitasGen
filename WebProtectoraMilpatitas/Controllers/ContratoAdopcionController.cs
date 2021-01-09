@@ -623,7 +623,7 @@ namespace WebProtectoraMilpatitas.Controllers
             catch
             {
                 TempData["mensajeModal"] = "Ha habido un error al eliminar el contrato";
-                return View();
+                return RedirectToAction("Index");
             }
         }
     }
