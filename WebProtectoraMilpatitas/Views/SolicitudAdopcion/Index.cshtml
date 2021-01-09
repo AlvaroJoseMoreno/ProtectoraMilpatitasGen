@@ -90,8 +90,10 @@
 
 
 
-    @foreach (var item in Model)
-    {
+    @if (Model.Any()) {
+
+        foreach (var item in Model)
+        {
         <article class="articulos">
             <div>
                 @if (item.Nombre != null && !item.Nombre.Equals(""))
@@ -154,6 +156,11 @@
                 <p><i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
             </div>
         </article>
+        }
+    }
+    else
+    {
+        <h2 style="margin-left: auto;margin-right: auto">No hay ninguna solicitud de adopción disponible</h2>
     }
 </main>
 

@@ -189,7 +189,8 @@ namespace WebProtectoraMilpatitas.Controllers
             }
             catch
             {
-                return View();
+                TempData["mensajeModal"] = "Ha habido un error al crear la solicitud";
+                return RedirectToAction("Index");
             }
         }
 
@@ -252,7 +253,8 @@ namespace WebProtectoraMilpatitas.Controllers
             }
             catch
             {
-                return View();
+                TempData["mensajeModal"] = "Ha habido un error al editar la solicitud";
+                return RedirectToAction("Index");
             }
         }
 
@@ -313,7 +315,8 @@ namespace WebProtectoraMilpatitas.Controllers
             }
             catch
             {
-                return View();
+                TempData["mensajeModal"] = "Ha habido un error al actualizar el estado de la solicitud";
+                return RedirectToAction("Index");
             }
         }
         public ActionResult Encuesta(int id)
@@ -348,7 +351,8 @@ namespace WebProtectoraMilpatitas.Controllers
             }
             catch
             {
-                return View();
+                TempData["mensajeModal"] = "Ha habido un error al rellenar la solicitud";
+                return RedirectToAction("Index");
             }
         }
 
@@ -491,7 +495,8 @@ namespace WebProtectoraMilpatitas.Controllers
             }
             catch
             {
-                return View();
+                TempData["mensajeModal"] = "Ha habido un error al eliminar la solicitud";
+                return RedirectToAction("Index");
             }
         }
 
@@ -537,7 +542,8 @@ namespace WebProtectoraMilpatitas.Controllers
             }
             catch
             {
-                return View();
+                TempData["mensajeModal"] = "Ha habido un error al aceptar la solicitud";
+                return RedirectToAction("Index");
             }
         }
 
@@ -582,7 +588,8 @@ namespace WebProtectoraMilpatitas.Controllers
             }
             catch
             {
-                return View();
+                TempData["mensajeModal"] = "Ha habido un error al rechazar la solicitud";
+                return RedirectToAction("Index");
             }
         }
 
@@ -623,7 +630,8 @@ namespace WebProtectoraMilpatitas.Controllers
             }
             catch
             {
-                return View();
+                TempData["mensajeModal"] = "Ha habido un error al rechazar las solicitudes";
+                return RedirectToAction("Index");
             }
         }
     }

@@ -70,8 +70,10 @@
 </table>
 
 <main id="mainart">
-    @foreach (var item in Model)
+    @if (Model.Any())
     {
+        foreach (var item in Model)
+        {
         <article class="articulos">
             <div>
 
@@ -117,8 +119,12 @@
 
             </div>
         </article>
+        }
     }
-
+    else
+    {
+        <h2 style="margin-left: auto; margin-right: auto;">No hay ningún contrato de adopción disponible</h2>
+    }
 </main>
 <br />
 @*Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount*@

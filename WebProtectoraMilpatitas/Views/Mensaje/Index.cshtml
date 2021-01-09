@@ -19,29 +19,46 @@
 
 <h2>Chat</h2>
 
+@if (((string)TempData["mensajeModal"]) != null)
+{
+    <div id="capafondo">
+
+        <article id="ar">
+            <h2>Chat</h2>
+            <p>
+                @((string)TempData["mensajeModal"])
+            </p>
+            <footer><button class="button" onclick="cerrarMensajeModal();">cerrar</button></footer>
+        </article>
+    </div>
+
+
+}
+
 
 <table class="table">
- 
-   
-@foreach (var item in Model)
+
+
+    @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Enviador)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Texto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha)
-        </td>
-        @if(((UsuarioEN)Session["Usuario"]).Nombre.Equals(item.Enviador)){ 
-        <td>
-           
-            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
-        </td>
-        }
-    </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Enviador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Texto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            @if (((UsuarioEN)Session["Usuario"]).Nombre.Equals(item.Enviador))
+            {
+                <td>
+
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                </td>
+            }
+        </tr>
     }
 
 </table>
