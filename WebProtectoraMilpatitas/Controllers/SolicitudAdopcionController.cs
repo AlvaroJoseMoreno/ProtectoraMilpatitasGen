@@ -491,6 +491,7 @@ namespace WebProtectoraMilpatitas.Controllers
             }
             catch
             {
+                TempData["mensajeModal"] = "Ha habido un error al eliminar la solicitud";
                 return View();
             }
         }
