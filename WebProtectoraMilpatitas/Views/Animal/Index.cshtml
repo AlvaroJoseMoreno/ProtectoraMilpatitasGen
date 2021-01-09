@@ -29,94 +29,151 @@
     <i class="fas fa-plus"></i> @Html.ActionLink("Subir nuevo animal", "Create")
 </p>
 
-<h2>Animales</h2>
+<h2 style="text-align: center;">Filtrar por: </h2>
 
-<table style="width:50%; margin-left:auto; margin-right:auto; margin-bottom:1em;" class="table">
-    <tr>
-        @using (Html.BeginForm())
-        {
-            <th style="padding:1em;">
-                Nombre : @Html.TextBox("nameSearch") <input style="display:none;" type="submit" value="Buscar" />
-            </th>
+<div class="readFilters" style="margin-right: auto;margin-left: auto;">
+    <ul class="readFiltersUls">
+        <li class="readFiltersLis">
+            @using (Html.BeginForm())
+            {
+
+                <p>
+                    <label class="textLabel">Nombre: </label>
+                    <label class="searchPoner">
+                        @Html.TextBox("nameSearch")
+                        <input type="submit" id="buscsarch" style="display:none;" value="Buscar" />
+                        <label for="buscsarch" style="margin-left: 10px;" class="fas fa-search"></label>
+                    </label>
+                </p>
+
+            }
+        </li>
+        <li>
+            @using (Html.BeginForm())
+            {
+
+                <p>
+                    <label class="textLabel"> Edad: </label>
+                    <label class="searchPoner">
+                        @Html.TextBox("edadSearch")
+                        <input style="display:none;" id="buscEdad" type="submit" value="Buscar" />
+                        <label for="buscEdad" style="margin-left: 10px;" class="fas fa-search"></label>
+                    </label>
+                </p>
+
+            }
+        </li>
+        <li>
+            @using (Html.BeginForm())
+            {
+
+                <p>
+                    <label class="textLabel">Sexo(H / M) : </label>
+                    <label class="searchPoner">
+                        @Html.TextBox("sexoSearch")
+                        <input style="display: none" id="buscSexo" type="submit" value="Buscar" />
+                        <label for="buscSexo" style="margin-left: 10px;" class="fas fa-search"></label>
+                    </label>
+                </p>
+            }
+        </li>
+        <li>
+            @using (Html.BeginForm())
+            {
+
+                <p>
+                    <label class="textLabel">Centro: </label>
+                    <label class="searchPoner">
+                        @Html.TextBox("centroSearch")
+                    <input style="display:none" id="buscCentro" type="submit" value="Buscar" />
+                    <label for="buscCentro" style="margin-left: 10px;" class="fas fa-search"></label>
+                </label>
+            </p>
+
         }
+        </li>
+        <li>
+            @using (Html.BeginForm())
+            {
 
-        @using (Html.BeginForm())
-        {
-            <th style="padding:1em;">
-                Edad : @Html.TextBox("edadSearch") <input style="display:none;" type="submit" value="Buscar" />
-            </th>
+                <p>
+                    <label class="textLabel">Caracter: </label>
+                    <label class="searchPoner">
+                        @Html.TextBox("caracterSearch")
+                    <input style="display:none;" id="buscCaracter" type="submit" value="Buscar" />
+                    <label for="buscCaracter" style="margin-left: 10px;" class="fas fa-search"></label>
+                </label>
+            </p>
+
         }
+        </li>
+        <li>
+            @using (Html.BeginForm())
+            {
 
-        @using (Html.BeginForm())
-        {
-            <th style="padding:1em;">
-                Sexo(H/M) : @Html.TextBox("sexoSearch") <input style="display:none;" type="submit" value="Buscar" />
-            </th>
+                <p>
+                    <label class="textLabel">Estado Salud: </label>
+                    <label class="searchPoner">
+                        @Html.TextBox("estSearch")
+                    <input style="display:none;" id="buscEstado" type="submit" value="Buscar" />
+                    <label for="buscEstado" style="margin-left: 10px;" class="fas fa-search"></label>
+                </label>
+            </p>
         }
+        </li>
+        <li>
+            @using (Html.BeginForm())
+            {
 
-        @using (Html.BeginForm())
-        {
-            <th style="padding:1em;">
-                Centro : @Html.TextBox("centroSearch") <input style="display:none;" type="submit" value="Buscar" />
-            </th>
+                <p>
+                    <label class="textLabel">Especie: </label>
+                    <label class="searchPoner">
+                        @Html.TextBox("espSearch")
+                    <input style="display:none;" id="buscEspecie" type="submit" value="Buscar" />
+                    <label for="buscEspecie" style="margin-left: 10px;" class="fas fa-search"></label>
+                </label>
+            </p>
         }
+        </li>
+        <li style="margin-bottom: 25px;">
+            @using (Html.BeginForm())
+            {
 
-        @using (Html.BeginForm())
-        {
-            <th style="padding:1em;">
-                Caracter : @Html.TextBox("caracterSearch") <input style="display:none;" type="submit" value="Buscar" />
-            </th>
+                <p>
+                    <label class="textLabel">Raza: </label>
+                    <label class="searchPoner">
+                        @Html.TextBox("razSearch")
+                    <input style="display:none;" id="buscRaza" type="submit" value="Buscar" />
+                    <label for="buscRaza" style="margin-left: 10px;" class="fas fa-search"></label>
+                </label>
+            </p>
         }
+        </li>
+    </ul>
+</div>
 
-        @using (Html.BeginForm())
-        {
-            <th style="padding:1em;">
-                Estado Salud: @Html.TextBox("estSearch") <input style="display:none;" type="submit" value="Buscar" />
-            </th>
-        }
+<div>
+    <h2>Ordenar por: </h2>
+    <div>
+        @Html.ActionLink("Nombre", "Index", new { sortOrder = ViewBag.NameSort })
 
-        @using (Html.BeginForm())
-        {
-            <th style="padding:1em;">
-                Especie : @Html.TextBox("espSearch") <input style="display:none;" type="submit" value="Buscar" />
-            </th>
-        }
+        @Html.ActionLink("Edad", "Index", new { sortOrder = ViewBag.EdadSort })
 
-        @using (Html.BeginForm())
-        {
-            <th style="padding:1em;">
-                Raza: @Html.TextBox("razSearch") <input style="display:none;" type="submit" value="Buscar" />
-            </th>
-        }
-    </tr>
+        @Html.ActionLink("Sexo", "Index", new { sortOrder = ViewBag.SexoSort })
 
-    <tr>
-        <th>
-            @Html.ActionLink("Ordenar por Nombre", "Index", new { sortOrder = ViewBag.NameSort })
-        </th>
-        <th>
-            @Html.ActionLink("Ordenar por Edad", "Index", new { sortOrder = ViewBag.EdadSort })
-        </th>
-        <th>
-            @Html.ActionLink("Ordenar por Sexo", "Index", new { sortOrder = ViewBag.SexoSort })
-        </th>
-        <th>
-            @Html.ActionLink("Ordenar por Centro", "Index", new { sortOrder = ViewBag.CentroSort })
-        </th>
-        <th>
-            @Html.ActionLink("Ordenar por Caracter", "Index", new { sortOrder = ViewBag.CaracterSort })
-        </th>
-        <th>
-            @Html.ActionLink("Ordenar por Estado Salud", "Index", new { sortOrder = ViewBag.EstadoSort })
-        </th>
-        <th>
-            @Html.ActionLink("Ordenar por Especie", "Index", new { sortOrder = ViewBag.EspecieSort })
-        </th>
-        <th>
-            @Html.ActionLink("Ordenar por Raza", "Index", new { sortOrder = ViewBag.RazaSort })
-        </th>
-    </tr>
-</table>
+        @Html.ActionLink("Centro", "Index", new { sortOrder = ViewBag.CentroSort })
+
+        @Html.ActionLink("Caracter", "Index", new { sortOrder = ViewBag.CaracterSort })
+
+        @Html.ActionLink("Estado Salud", "Index", new { sortOrder = ViewBag.EstadoSort })
+
+        @Html.ActionLink("Especie", "Index", new { sortOrder = ViewBag.EspecieSort })
+
+        @Html.ActionLink("Raza", "Index", new { sortOrder = ViewBag.RazaSort })
+    </div>
+</div>
+
+<h2 style="text-align: center;">Animales: </h2>
 
 <main id="mainart">
     @foreach (var item in Model)

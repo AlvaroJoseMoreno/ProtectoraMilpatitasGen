@@ -14,6 +14,11 @@ img{
     height: 200px;
     
 }
+#mainart > .articulos > img {
+    margin-top: 20px;
+    width: 70%;
+    height: 230px;
+}
 .parrafoCentrar{
     text-align: center;
     margin-top: 20px;
@@ -297,9 +302,32 @@ form {
     margin: 2em;
 }
 
+/***********************  Readfilters  ************************/
+
+.readFilters{
+    width: 90%;
+    margin-left: auto;
+    margin-left: auto;
+    border: 2px solid #fc810e;
+    background-color: #fff99f;
+}
+.readFilters>ul{
+    padding-left: inherit;
+}
+.readFilters>ul>li>form>p{
+    display: flex;
+    flex-direction: column;
+}
+.readFilters > ul > li > form > p >.searchPoner{
+        width: 100%;
+ }
+.readFilters>ul>li>form>p>.searchPoner>[type="text"]{
+    width: 80%;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
 /***********************PAGINA DETALLE ANIMAL*********************************/
-
-
 .detalle, .detalleUsu {
     padding: 1em;
     width: 90%;
@@ -385,7 +413,7 @@ form {
 .navbar-nav:active {
     position: static;
     opacity: 1;
-    transition: opacity 1s linear;
+   
 }
 .respmenu>nav>ul>li{
     width: 100%;
@@ -579,7 +607,14 @@ th{
     .listaarriba > label {
         display: none;
     }
-    #datisUsu{
+    .datisEspecial{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .datisEspecial>p{
+        margin-left: 10%;
+    }
+    #datisUsu {
         width: 85%;
     }
     #details > article > h2 {
@@ -590,7 +625,7 @@ th{
         flex-direction: column;
         left: 0;
         justify-content: center;
-        transition: .5s;
+        
     }
 
     #partemenu {
@@ -618,7 +653,26 @@ th{
     .formGuapo, .formNoTanGuapo, .formIncreible {
         width: 580px;
     }
-    #datisUsu{
+    .readFilters{
+        width: 580px;
+    }
+    .readFilters>ul>li>form>p{
+        flex-direction: row;
+    }
+    .readFilters>ul>li>form>p>.textLabel{
+        width: 100px;
+        margin-left: 15px;
+        margin-top: 15px;
+        text-align: left;
+    }
+    .readFilters > ul > li > form > p >.searchPoner{
+        width: 80%;
+    }
+    .readFilters > ul > li > form > p >.searchPoner> input[type="text"] {
+        width: 80%;
+    }
+
+    #datisUsu {
         width: 80%;
     }
     .formGuapo > .text, .formNoTanGuapo>.text {
@@ -857,6 +911,6 @@ th{
         flex-direction: row;
         left: 0;
         justify-content: center;
-        transition: .5s;
+        
     }
 }
