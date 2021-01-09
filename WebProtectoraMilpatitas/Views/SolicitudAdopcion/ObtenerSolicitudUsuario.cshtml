@@ -14,7 +14,7 @@
     if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
     {
         <p>
-            @Html.ActionLink("Crear nueva solicitud", "Create")
+            <i class="fas fa-plus"></i> @Html.ActionLink("Crear nueva solicitud", "Create")
         </p>
     }
 }
@@ -140,13 +140,13 @@
                     {
                         if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
                         {
-                            <p>@Html.ActionLink("Aceptar solicitud", "AceptarSolicitud", new { idSol = item.Id, idUsu = item.idUsuario, idAni = item.NomAnimal })</p>
-                            <p>@Html.ActionLink("Rechazar solicitud", "RechazarSolicitud", new { idSol = item.Id, idUsu = item.idUsuario, idAni = item.NomAnimal })</p>
-                            <p>@Html.ActionLink("Rechazar todas", "RechazarTodasSolicitud")</p>
-                            <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
-                            <p>@Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
+                            <p><i class="fas fa-thumbs-up"></i> @Html.ActionLink("Aceptar solicitud", "AceptarSolicitud", new { idSol = item.Id, idUsu = item.idUsuario, idAni = item.NomAnimal })</p>
+                            <p><i class="fas fa-thumbs-down"></i> @Html.ActionLink("Rechazar solicitud", "RechazarSolicitud", new { idSol = item.Id, idUsu = item.idUsuario, idAni = item.NomAnimal })</p>
 
-                            <p>@Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
+                            <p><i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
+                            <p><i class="fas fa-redo"></i> @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
+
+                            <p><i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
                         }
                     }
                 </div>
@@ -177,11 +177,11 @@
         {
             if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
             {
-                @Html.ActionLink("Volver a usuarios", "Index", "Usuario")
+                <i class="fas fa-user"></i> @Html.ActionLink("Volver a usuarios", "Index", "Usuario")
             }
             else
             {
-                @Html.ActionLink("Volver a perfil", "Perfil", "Usuario", new { email = ((UsuarioEN)Session["Usuario"]).Email }, htmlAttributes: null)
+                <i class="fas fa-id-badge"></i> @Html.ActionLink("Volver a perfil", "Perfil", "Usuario", new { email = ((UsuarioEN)Session["Usuario"]).Email }, htmlAttributes: null)
             }
         }
     }

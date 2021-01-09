@@ -11,7 +11,7 @@
 <h3>@Html.ActionLink("Razas", "Index", "Raza")</h3>
 
 <p>
-    @Html.ActionLink("Crear nueva especie", "Create")
+    <i class="fas fa-plus"></i> @Html.ActionLink("Crear nueva especie", "Create")
 </p>
 
 @if (((string)TempData["mensajeModalEspecie"]) != null)
@@ -52,10 +52,10 @@
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                <i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Obtener animales por especie", "ObtenerAnimalesPorEspecie", "Animal", new { p_especie = item.Id }, htmlAttributes: null) |
                 @Html.ActionLink("Obtener razas por especie", "ObtenerRazasPorEspecie", "Raza", new { p_especie = item.Id }, htmlAttributes: null) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                <i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
             </td>
         </tr>
     }
@@ -67,5 +67,5 @@ Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.P
 @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 <p>
-    @Html.ActionLink("Volver a animales", "Index", "Animal")
+    <i class="fas fa-paw"></i> @Html.ActionLink("Volver a animales", "Index", "Animal")
 </p>

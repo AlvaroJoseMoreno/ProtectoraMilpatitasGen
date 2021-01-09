@@ -99,7 +99,7 @@
                         {
                             if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
                             {
-                                @Html.ActionLink("Editar", "Edit", new { id = Model.Id })
+                                <i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = Model.Id })
                             }
                         }
                     }
@@ -111,11 +111,11 @@
                         {
                             if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
                             {
-                                @Html.ActionLink("Volver a la lista", "Index")
+                                <i class="fas fa-file-signature"></i> @Html.ActionLink("Volver a la lista", "Index")
                             }
                             else
                             {
-                                @Html.ActionLink("Volver a inicio", "Index", "Home")
+                                <i class="fas fa-home"></i> @Html.ActionLink("Volver a inicio", "Index", "Home")
                             }
                         }
                     }

@@ -49,3 +49,19 @@
 <p>
     @Html.ActionLink("Enviar mensaje", "Create")
 </p>
+<p>
+    @{
+
+        if (Session["Usuario"] != null)
+        {
+            if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+            {
+                <i class="fas fa-user"></i> @Html.ActionLink("Volver a usuarios", "Index", "Usuario")
+            }
+            else
+            {
+                <i class="fas fa-id-badge"></i> @Html.ActionLink("Volver a perfil", "Perfil", "Usuario", new { email = ((UsuarioEN)Session["Usuario"]).Email }, htmlAttributes: null)
+            }
+        }
+    }
+</p>

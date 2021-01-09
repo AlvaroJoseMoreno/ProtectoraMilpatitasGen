@@ -59,13 +59,13 @@
             <img style="display: block;margin: auto;" src="/@Html.DisplayFor(modelItem => item.Foto)" />
         </div>
         <div>
-            <p>@Html.ActionLink("Detalles", "Details", new { email = item.Email })</p>
-            <p>@Html.ActionLink("Chatear con Usuario", "Index", "Mensaje", new { email = item.Email }, htmlAttributes: null)</p>
-            <p>@Html.ActionLink("Obtener Solicitudes Adopcion", "ObtenerSolicitudUsuario", "SolicitudAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
-            <p>@Html.ActionLink("Obtener Contratos Adopcion", "ObtenerContratoUsuario", "ContratoAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
-            <p>@Html.ActionLink("Obtener Seguimientos", "ObtenerSeguimientoUsuario", "Seguimiento", new { email = item.Email }, htmlAttributes: null)</p>
-            <p>@Html.ActionLink("Obtener Mascotas", "ObtenerAnimalesPorUsuario", "Animal", new { email = item.Email }, htmlAttributes: null)</p>
-            <p>@Html.ActionLink("Eliminar", "Delete", new { email = item.Email })</p>
+            <p><i class="fas fa-info"></i> @Html.ActionLink("Detalles", "Details", new { email = item.Email })</p>
+            <p><i class="fas fa-comment-dots"></i> @Html.ActionLink("Chatear con Usuario", "Index", "Mensaje", new { email = item.Email }, htmlAttributes: null)</p>
+            <p><i class="fas fa-edit"></i> @Html.ActionLink("Obtener Solicitudes", "ObtenerSolicitudUsuario", "SolicitudAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
+            <p><i class="fas fa-file-signature"></i> @Html.ActionLink("Obtener Contratos", "ObtenerContratoUsuario", "ContratoAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
+            <p><i class="fas fa-eye"></i> @Html.ActionLink("Obtener Seguimientos", "ObtenerSeguimientoUsuario", "Seguimiento", new { email = item.Email }, htmlAttributes: null)</p>
+            <p><i class="fas fa-paw"></i> @Html.ActionLink("Obtener Mascotas", "ObtenerAnimalesPorUsuario", "Animal", new { email = item.Email }, htmlAttributes: null)</p>
+            <p><i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { email = item.Email })</p>
         </div>
     </article>
     }
@@ -77,5 +77,5 @@ Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.P
 @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 <p>
-    @Html.ActionLink("Volver a inicio", "Indexad", "Home")
+    <i class="fas fa-home"></i> @Html.ActionLink("Volver a inicio", "Indexad", "Home")
 </p>

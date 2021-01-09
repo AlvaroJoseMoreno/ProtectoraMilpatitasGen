@@ -68,7 +68,7 @@
 
         </div>
 
-        <p>@Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
+        <p><i class="fas fa-info"></i> @Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
 
         @{
             bool comprobar = false;
@@ -121,5 +121,5 @@ Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.P
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
 <div>
-    @Html.ActionLink("Volver a inicio", "Index", "Home")
+    <i class="fas fa-home"></i> @Html.ActionLink("Volver a inicio", "Index", "Home")
 </div>

@@ -9,7 +9,7 @@
 <h2>Razas</h2>
 
 <p>
-    @Html.ActionLink("Crear nueva raza", "Create")
+    <i class="fas fa-plus"></i> @Html.ActionLink("Crear nueva raza", "Create")
 </p>
 
 @if (((string)TempData["mensajeModalRaza"]) != null)
@@ -65,8 +65,8 @@
                 @Html.DisplayFor(modelItem => item.NomEspecie)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                <i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                <i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
             </td>
         </tr>
     }

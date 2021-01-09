@@ -66,14 +66,14 @@
                     {
                         <div id="enlacis">
                             <p>
-                                @Html.ActionLink("Editar", "Edit", new { id = Model.Id })
+                                <i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = Model.Id })
                             </p>
-                            <p> @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = Model.Id })</p>
+                            <p> <i class="fas fa-redo"></i> @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = Model.Id })</p>
 
 
-                            <p> @Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = Model.Id })</p>
+                            <p> <i class="fas fa-redo"></i> @Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = Model.Id })</p>
 
-                            @Html.ActionLink("Eliminar", "Delete", new { id = Model.Id })
+                            <p><i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { id = Model.Id })</p>
                         </div>
                     }
                 }
@@ -91,87 +91,6 @@
         </article>
     </main>
 </section>
-@*<div>
-        <h4>@Html.DisplayFor(model => model.Nombre)</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Nombre)
-            </dd>
-            <dt>
-                    @Html.DisplayNameFor(model => model.Foto)
-            </dt>
-
-            <dd>
-               <img style="width: 200px;height: 200px;" src="/@Html.DisplayFor(model => model.Foto)" />
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Edad)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Edad)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Sexo)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Sexo)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Centro)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Centro)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Caracter)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Caracter)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.DatosMedicos)
-            </dt>
-            @if (Model.DatosMedicos.ToString().Equals("enRecuperacion"))
-            {
-                <dd>
-                    En recuperación
-                </dd>
-            }
-            else
-            {
-                <dd>
-                    @Html.DisplayFor(model => model.DatosMedicos)
-                </dd>
-            }
-            <dt>
-                @Html.DisplayNameFor(model => model.EstadoAdopcion)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.EstadoAdopcion)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.idEspecie)
-            </dt>
-            <dd>
-
-                @Html.DisplayFor(model => @ViewData["NombreEsp"])
-            </dd>
-
-        </dl>
-    </div>*@
 <p>
     @{
 
@@ -179,11 +98,11 @@
         {
             if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
             {
-                @Html.ActionLink("Volver a la lista", "Index")
+                <i class="fas fa-paw"></i> @Html.ActionLink("Volver a la lista", "Index")
             }
             else
             {
-                @Html.ActionLink("Volver a inicio", "Index", "Home")
+                <i class="fas fa-home"></i> @Html.ActionLink("Volver a inicio", "Index", "Home")
             }
         }
     }

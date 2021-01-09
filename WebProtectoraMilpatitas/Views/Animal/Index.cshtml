@@ -26,7 +26,7 @@
 <h3>@Html.ActionLink("Especies", "Index", "Especie")</h3>
 
 <p>
-    @Html.ActionLink("Subir nuevo animal", "Create")
+    <i class="fas fa-plus"></i> @Html.ActionLink("Subir nuevo animal", "Create")
 </p>
 
 <h2>Animales</h2>
@@ -172,11 +172,11 @@
                     <b>Raza: </b>
                     @Html.DisplayFor(modelItem => item.NomRaza)
                 </p>
-                <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
-                <p>@Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id }) </p>
-                <p>@Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = item.Id })</p>
-                <p>@Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
-                <p>@Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
+                <p><i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
+                <p><i class="fas fa-redo"></i> @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id }) </p>
+                <p><i class="fas fa-redo"></i> @Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = item.Id })</p>
+                <p><i class="fas fa-info"></i> @Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
+                <p><i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
 
 
             </div>
@@ -213,7 +213,7 @@
                 {
                     if (item.EstadoAdopcion.ToString().Equals("SinTramite") || item.EstadoAdopcion.ToString().Equals("EnSolicitud"))
                     {
-                        <p>@Html.ActionLink("Adoptar", "Encuesta", "SolicitudAdopcion", new { id = item.Id }, new { @class = "Buttons" })</p>
+                        <p><i class="fas fa-hand-holding-heart"></i> @Html.ActionLink("Adoptar", "Encuesta", "SolicitudAdopcion", new { id = item.Id }, new { @class = "Buttons" })</p>
                     }
                     else
                     {
@@ -233,5 +233,5 @@ Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.P
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
 <div>
-    @Html.ActionLink("Volver a inicio", "Indexad", "Home")
+    <i class="fas fa-home"></i> @Html.ActionLink("Volver a inicio", "Indexad", "Home")
 </div>

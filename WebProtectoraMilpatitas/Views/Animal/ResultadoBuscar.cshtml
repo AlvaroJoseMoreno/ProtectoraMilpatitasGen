@@ -74,17 +74,17 @@
                         <b>Raza: </b>
                         @Html.DisplayFor(modelItem => item.NomRaza)
                     </p>
-                    <p>@Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
+                    <p><i class="fas fa-info"></i> @Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
 
                     @if (Session["Usuario"] != null)
                     {
                         if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
                         {
-                            <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
-                            <p>@Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id }) </p>
-                            <p>@Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = item.Id })</p>
+                            <p><i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
+                            <p><i class="fas fa-recycle"></i> @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id }) </p>
+                            <p><i class="fas fa-recycle"></i> @Html.ActionLink("Actualizar Datos Medicos", "ActualizarDatosMedicos", new { id = item.Id })</p>
 
-                            <p>@Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
+                            <p><i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
                         }
                     }
 
@@ -144,5 +144,5 @@ Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.P
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
 <p>
-    @Html.ActionLink("Volver a inicio", "Index", "Home")
+    <i class="fas fa-home"></i> @Html.ActionLink("Volver a inicio", "Index", "Home")
 </p>

@@ -16,7 +16,7 @@
         {
             if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
             {
-                @Html.ActionLink("Crear nuevo seguimiento", "Create")
+                <i class="fas fa-plus"></i> @Html.ActionLink("Crear nuevo seguimiento", "Create")
             }
         }
     }
@@ -111,16 +111,16 @@
                     </p>
                 </div>
                 <div>
-                    <p>@Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
+                    <p><i class="fas fa-info"></i> @Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
                     @{
 
                         if (Session["Usuario"] != null)
                         {
                             if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
                             {
-                                <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
-                                <p>@Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
-                                <p>@Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
+                                <p><i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
+                                <p><i class="fas fa-redo"></i> @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
+                                <p><i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
                             }
                         }
                     }
@@ -151,11 +151,11 @@
         {
             if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
             {
-                @Html.ActionLink("Volver a usuarios", "Index", "Usuario")
+                <i class="fas fa-user"></i> @Html.ActionLink("Volver a usuarios", "Index", "Usuario")
             }
             else
             {
-                @Html.ActionLink("Volver a perfil", "Perfil", "Usuario", new { email = ((UsuarioEN)Session["Usuario"]).Email }, htmlAttributes: null)
+                <i class="fas fa-id-badge"></i> @Html.ActionLink("Volver a perfil", "Perfil", "Usuario", new { email = ((UsuarioEN)Session["Usuario"]).Email }, htmlAttributes: null)
             }
         }
     }

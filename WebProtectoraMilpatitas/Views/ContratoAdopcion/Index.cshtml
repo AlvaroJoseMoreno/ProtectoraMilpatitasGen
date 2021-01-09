@@ -9,7 +9,7 @@
 <h2>Contratos de Adopcion</h2>
 
 <p>
-    @Html.ActionLink("Crear nuevo contrato", "Create")
+    <i class="fas fa-plus"></i> @Html.ActionLink("Crear nuevo contrato", "Create")
 </p>
 
 @if (((string)TempData["mensajeModal"]) != null)
@@ -23,7 +23,7 @@
             </p>
             @if(((string)TempData["mensajeModal"]).Equals("¡Enhorabuena!, Has creado el contrato con éxito, haga click en el enlace de abajo para descargarlo"))
             {
-                <p>@Html.ActionLink("Contrato", "Imprimir", "ContratoAdopcion", new { target = "_blank" })</p>
+                <p><i class="fas fa-print"></i> @Html.ActionLink("Contrato", "Imprimir", "ContratoAdopcion", new { target = "_blank" })</p>
             }
             <footer><button class="button" onclick="cerrarMensajeModal();">cerrar</button></footer>
         </article>
@@ -104,16 +104,16 @@
                 <p>
                     <img style="margin:auto; width: 100px;height: 100px;" border-radius: 90%; src="/@Html.DisplayFor(modelItem => item.FotoAnimal)" />
                 </p>
+
+                <p>
+                    @Html.ActionLink("Ver solicitud " + item.idSolicitud, "Details", "SolicitudAdopcion", new { id = item.idSolicitud }, htmlAttributes: null)
+                </p>
             </div>
             <div>
-                <p>
-                    @Html.DisplayFor(modelItem => item.idSolicitud)
-                </p>
-
-                <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
-                <p>@Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
-                <p>@Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
-                <p>@Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
+                <p><i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
+                <p><i class="fas fa-redo"></i> @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
+                <p><i class="fas fa-info"></i> @Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
+                <p><i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
 
             </div>
         </article>
@@ -126,5 +126,5 @@ Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.P
 @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 <div>
-    @Html.ActionLink("Volver a inicio", "Indexad", "Home")
+    <i class="fas fa-home"></i> @Html.ActionLink("Volver a inicio", "Indexad", "Home")
 </div>

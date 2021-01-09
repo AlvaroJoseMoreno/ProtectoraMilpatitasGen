@@ -8,7 +8,7 @@
 <h2>Solicitudes de adopcion</h2>
 
 <p>
-    @Html.ActionLink("Crear nueva solicitud", "Create")
+    <i class="fas fa-plus"></i> @Html.ActionLink("Crear nueva solicitud", "Create")
 </p>
 
 <table style="width:50%; margin-left:auto; margin-right:auto; margin-bottom:1em;" class="table">
@@ -145,13 +145,13 @@
             </div>
 
             <div>
-                <p>@Html.ActionLink("Aceptar solicitud", "AceptarSolicitud", new { idSol = item.Id, idUsu = item.idUsuario, idAni = item.NomAnimal })</p>
-                <p>@Html.ActionLink("Rechazar solicitud", "RechazarSolicitud", new { idSol = item.Id, idUsu = item.idUsuario, idAni = item.NomAnimal })</p>
+                <p><i class="fas fa-thumbs-up"></i> @Html.ActionLink("Aceptar solicitud", "AceptarSolicitud", new { idSol = item.Id, idUsu = item.idUsuario, idAni = item.NomAnimal })</p>
+                <p><i class="fas fa-thumbs-down"></i> @Html.ActionLink("Rechazar solicitud", "RechazarSolicitud", new { idSol = item.Id, idUsu = item.idUsuario, idAni = item.NomAnimal })</p>
 
-                <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
-                <p>@Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
-                <p>@Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
-                <p>@Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
+                <p><i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
+                <p><i class="fas fa-redo"></i> @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
+                <p><i class="fas fa-info"></i> @Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
+                <p><i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
             </div>
         </article>
     }
@@ -162,9 +162,9 @@
 
         @Html.PagedListPager(Model, page => Url.Action("Index",
             new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-<p>@Html.ActionLink("Rechazar todas", "RechazarTodasSolicitud")</p>
+<p><i class="fas fa-thumbs-down"></i> @Html.ActionLink("Rechazar todas", "RechazarTodasSolicitud")</p>
 <p>
-    @Html.ActionLink("Volver a inicio", "Indexad", "Home")
+    <i class="fas fa-home"></i> @Html.ActionLink("Volver a inicio", "Indexad", "Home")
 </p>
         
 

@@ -9,7 +9,7 @@
 <h2>Seguimientos</h2>
 
 <p>
-    @Html.ActionLink("Crear nuevo seguimiento", "Create")
+    <i class="fas fa-plus"></i> @Html.ActionLink("Crear nuevo seguimiento", "Create")
 </p>
 @if (((string)TempData["mensajeModalSeguimiento"]) != null)
 {
@@ -114,9 +114,9 @@
                 </p>
             </div>
             <div>
-                <p>@Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
-                <p>@Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
-                <p>@Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
+                <p><i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
+                <p><i class="fas fa-redo"></i> @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
+                <p><i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
             </div>
 
         </article>
@@ -129,5 +129,5 @@ Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.P
 @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 <div>
-    @Html.ActionLink("Volver a inicio", "Indexad", "Home")
+    <i class="fas fa-home"></i> @Html.ActionLink("Volver a inicio", "Indexad", "Home")
 </div>
