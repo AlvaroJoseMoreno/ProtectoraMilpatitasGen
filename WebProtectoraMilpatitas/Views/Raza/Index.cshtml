@@ -27,51 +27,58 @@
 
 
 }
-
-<table class="table">
-    <tr>
+<h2>Filtrar razas por: </h2>
+<div class="readFilters" style="margin-right: auto;margin-left: auto;">
+    <ul class="readFiltersUls">
+        <li>
+    
         @using (Html.BeginForm())
         {
-            <th>
-                Nombre Raza: @Html.TextBox("nameRazaSearch") <input style="display:none;" type="submit" value="Buscar" />
-            </th>
+            <p>
+                <label class="textLabel">Nombre Raza: </label>
+                <label class="searchPoner">
+                    @Html.TextBox("nameRazaSearch") <input style="display:none;"  id="buscRaza" type="submit" value="Buscar" />
+                    <label for="buscRaza" style="margin-left: 10px;" class="fas fa-search"></label>
+                </label>
+            </p>
         }
-
+        </li>
+        <li>
         @using (Html.BeginForm())
         {
-            <th>
-                Nombre Especie: @Html.TextBox("nameEspecieSearch") <input style="display:none;" type="submit" value="Buscar" />
-            </th>
+            <p>
+                <label class="textLabel">Nombre Especie: </label>
+                <label class="searchPoner">
+                    @Html.TextBox("nameEspecieSearch") <input style="display:none;" id="buscNombreEsp" type="submit" value="Buscar" />
+                    <label for="buscNombreEsp" style="margin-left: 10px;" class="fas fa-search"></label>
+                </label>
+            </p>
         }
-        <th></th>
-    </tr>
-    <tr>
-        <th>
+        </li>
+    </ul>
+</div>
             @Html.ActionLink("Ordenar por raza", "Index", new { sortOrder = ViewBag.NameRazaSort })
-        </th>
-        <th>
+        
             @Html.ActionLink("Ordenar por especie", "Index", new { sortOrder = ViewBag.NameEspecieSort })
-        </th>
-        <th></th>
-    </tr>
+        
+    <table class="table">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomEspecie)
+                </td>
+                <td>
+                    <i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                    <i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NomEspecie)
-            </td>
-            <td>
-                <i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-                <i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-    }
-
-</table>
+    </table>
 <br />
 @*Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount*@
 @if (Model.Any())

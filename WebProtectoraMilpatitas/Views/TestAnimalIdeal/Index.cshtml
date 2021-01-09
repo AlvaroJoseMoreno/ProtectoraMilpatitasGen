@@ -28,103 +28,118 @@
 
 }
 
-<table class="table">
-    <tr>
-        @using (Html.BeginForm())
-        {
-            <th>
-                Afición: @Html.TextBox("aficionSearch") <input style="display:none;" type="submit" value="Buscar" />
-            </th>
-        }
-
-        @using (Html.BeginForm())
-        {
-            <th>
-                Personalidad: @Html.TextBox("personSearch") <input style="display:none;" type="submit" value="Buscar" />
-            </th>
-        }
-
-        @using (Html.BeginForm())
-        {
-            <th>
-                Color: @Html.TextBox("colorSearch") <input style="display:none;" type="submit" value="Buscar" />
-            </th>
-        }
-
-        @using (Html.BeginForm())
-        {
-            <th>
-                Usuario: @Html.TextBox("usuSearch") <input style="display:none;" type="submit" value="Buscar" />
-            </th>
-        }
-        <th></th>
-    </tr>
-    <tr>
-        <th>
-            @Html.ActionLink("Ordenar por Aficion", "Index", new { sortOrder = ViewBag.AficionSort })
-        </th>
-        <th>
-            @Html.ActionLink("Ordenar por Personalidad", "Index", new { sortOrder = ViewBag.PersonalidadSort })
-        </th>
-        <th>
-            @Html.ActionLink("Ordenar por Color", "Index", new { sortOrder = ViewBag.ColorSort })
-        </th>
-        <th>
-            @Html.ActionLink("Ordenar por Usuario", "Index", new { sortOrder = ViewBag.UsuarioSort })
-        </th>
-        <th></th>
-    </tr>
-</table>
-<main id="mainart" style="margin-top: 20px;">
-    @{ 
-        int x = 1;
-        foreach (var item in Model)
-        {
-        
-        <article class="articulos">
-            <h2>Test de Animal Ideal @x</h2>
-            <div style="width: 95%;">
-                <p>
-                    <label><b>Afición Favorita: </b></label>
-                    @Html.DisplayFor(modelItem => item.AficionFavorita)
-                </p>
-                <p>
-                    <label><b>Personalidad: </b></label>
-                    @Html.DisplayFor(modelItem => item.Personalidad)
-                </p>
-                <p>
-                    <label><b>Color Favorito: </b></label>
-                    @Html.DisplayFor(modelItem => item.ColorFavorito)
-                </p>
-                <p>
-                    <label><b>Email de usuario: </b></label>
-                    @Html.DisplayFor(modelItem => item.idUsuario)
-                </p>
-                <p>
-                    <i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id })
-                </p> 
-                <p>
-                    <i class="fas fa-info"></i> @Html.ActionLink("Detalles", "Details", new { id = item.Id })
-                </p>
-                <p>
-                    <i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
-                </p> 
-            </div>
-        </article>
-            x++;
+<h2>Filtrar Tests Animal Ideal por: </h2>
+<div class="readFilters" style="margin-right: auto;margin-left: auto;">
+    <ul class="readFiltersUls">
+        <li>
+            @using (Html.BeginForm())
+            {
+            <p>
+                <label class="textLabel"> Afición: </label>
+                <label class="searchPoner">
+                    @Html.TextBox("aficionSearch")<input style="display:none;" id="buscTestAf" type="submit" value="Buscar" />
+                    <label for="buscTestAf" style="margin-left: 10px;" class="fas fa-search"></label>
+                </label>
+            </p>
             }
-        }
-    </main>
-
-<br />
-@*Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount*@
-@if (Model.Any())
-{
-    <p style="text-align: center;margin-top: 10px;font-size: 18px"> Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>
-    @*<p style="text-align: center;">Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>*@
-}
-@Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-<div class="parrafoCentrar">
-    <i class="fas fa-home"></i> @Html.ActionLink("Volver a inicio", "Indexad", "Home")
+        </li>
+        <li>
+            @using (Html.BeginForm())
+            {
+            <p>
+                <label class="textLabel">Personalidad: </label>
+                <label class="searchPoner">
+                    @Html.TextBox("personSearch")<input style="display:none;" id="buscPersonTest" type="submit" value="Buscar" />
+                    <label for="buscPersonTest" style="margin-left: 10px;" class="fas fa-search"></label>
+                </label>
+            </p>
+            }
+        </li>
+        <li>
+            @using (Html.BeginForm())
+            {
+            <p>
+                <label class="textLabel">Color:</label>
+                <label class="searchPoner">
+                    @Html.TextBox("colorSearch")<input style="display:none;" id="buscColorTest" type="submit" value="Buscar" />
+                    <label for="buscColorTest" style="margin-left: 10px;" class="fas fa-search"></label>
+                </label>
+            </p>
+            }
+        </li>
+        <li>
+            @using (Html.BeginForm())
+            {
+            <p>
+                <label class="textLabel"> Usuario: </label>
+                <label class="searchPoner">
+                    @Html.TextBox("usuSearch")<input style="display:none;" id="buscUsuTest" type="submit" value="Buscar" />
+                    <label for="buscUsuTest" style="margin-left: 10px;" class="fas fa-search"></label>
+                </label>
+            </p>
+            }
+        </li>
+    </ul>
 </div>
+            @Html.ActionLink("Ordenar por Aficion", "Index", new { sortOrder = ViewBag.AficionSort })
+
+            @Html.ActionLink("Ordenar por Personalidad", "Index", new { sortOrder = ViewBag.PersonalidadSort })
+
+            @Html.ActionLink("Ordenar por Color", "Index", new { sortOrder = ViewBag.ColorSort })
+
+            @Html.ActionLink("Ordenar por Usuario", "Index", new { sortOrder = ViewBag.UsuarioSort })
+
+            <h2>Tests Animal Ideal</h2>
+            <main id="mainart" style="margin-top: 20px;">
+                @{
+                    int x = 1;
+                    foreach (var item in Model)
+                    {
+
+                        <article class="articulos">
+                            <h2>Test de Animal Ideal @x</h2>
+                            <div style="width: 95%;">
+                                <p>
+                                    <label><b>Afición Favorita: </b></label>
+                                    @Html.DisplayFor(modelItem => item.AficionFavorita)
+                                </p>
+                                <p>
+                                    <label><b>Personalidad: </b></label>
+                                    @Html.DisplayFor(modelItem => item.Personalidad)
+                                </p>
+                                <p>
+                                    <label><b>Color Favorito: </b></label>
+                                    @Html.DisplayFor(modelItem => item.ColorFavorito)
+                                </p>
+                                <p>
+                                    <label><b>Email de usuario: </b></label>
+                                    @Html.DisplayFor(modelItem => item.idUsuario)
+                                </p>
+                                <p>
+                                    <i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id })
+                                </p>
+                                <p>
+                                    <i class="fas fa-info"></i> @Html.ActionLink("Detalles", "Details", new { id = item.Id })
+                                </p>
+                                <p>
+                                    <i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                                </p>
+                            </div>
+                        </article>
+                        x++;
+                    }
+                }
+            </main>
+
+            <br />
+            @*Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount*@
+            @if (Model.Any())
+            {
+                <p style="text-align: center;margin-top: 10px;font-size: 18px"> Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>
+                @*<p style="text-align: center;">Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>*@
+            }
+            @Html.PagedListPager(Model, page => Url.Action("Index",
+                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+            <div class="parrafoCentrar">
+                <i class="fas fa-home"></i> @Html.ActionLink("Volver a inicio", "Indexad", "Home")
+            </div>

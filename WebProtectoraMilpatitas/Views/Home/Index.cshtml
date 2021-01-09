@@ -39,11 +39,11 @@
     <h3>@Html.ActionLink("Más urgentes", "ObtenerCasosEspeciales", "Animal")</h3>
 </div>
 
-<h2 style="text-align: center;">Filtrar por: </h2>
+<h2 style="text-align: center;">Filtrar Animales por: </h2>
 
 <div class="readFilters" style="margin-right: auto;margin-left: auto;">
     <ul class="readFiltersUls">
-        <li class="readFiltersLis">
+        <li>
             @using (Html.BeginForm())
             {
             <p>
@@ -157,7 +157,7 @@
 </div>
 
 <div>
-    <h2>Ordenar por: </h2>
+    <h2>Ordenar Animales por: </h2>
     <div>
         @Html.ActionLink("Nombre", "Index", new { sortOrder = ViewBag.NameSort })
 

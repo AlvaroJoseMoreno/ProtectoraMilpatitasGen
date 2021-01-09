@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Seguimientos</h2>
+
 
 <p>
     <i class="fas fa-plus"></i> @Html.ActionLink("Crear nuevo seguimiento", "Create")
@@ -27,118 +27,132 @@
 
 }
 
-<table style="width:50%; margin-left:auto; margin-right:auto; margin-bottom:1em;" class="table">
-    <tr>
+<h2>Filtra Seguimientos por:</h2>
+<div class="readFilters" style="margin-right: auto;margin-left: auto;">
+    <ul class="readFiltersUls">
+        <li>
+            @using (Html.BeginForm())
+            {
 
-        @using (Html.BeginForm())
-        {
-            <th style="padding:1em;">
-                Usuario : @Html.TextBox("usuSearch") <input style="display:none;" type="submit" value="Buscar" />
-            </th>
-        }
-
-        @using (Html.BeginForm())
-        {
-            <th style="padding:1em;">
-                Nombre : @Html.TextBox("aniSearch") <input style="display:none;" type="submit" value="Buscar" />
-            </th>
-        }
-
-        @using (Html.BeginForm())
-        {
-            <th style="padding:1em;">
-                Fecha(dd/mm/yyyy): @Html.TextBox("dateSearch") <input style="display:none;" type="submit" value="Buscar" />
-            </th>
-        }
-
-        @using (Html.BeginForm())
-        {
-            <th style="padding:1em;">
-                Estado : @Html.TextBox("estSearch") <input style="display:none;" type="submit" value="Buscar" />
-            </th>
-        }
-    </tr>
-
-    <tr>
-        <th>
-            @Html.ActionLink("Ordenar por Usuario", "Index", new { sortOrder = ViewBag.UsuSort })
-        </th>
-        <th>
-            @Html.ActionLink("Ordenar por Animal", "Index", new { sortOrder = ViewBag.AniSort })
-        </th>
-
-        <th>
-            @Html.ActionLink("Ordenar por Fecha", "Index", new { sortOrder = ViewBag.DateSort })
-        </th>
-        <th>
-            @Html.ActionLink("Ordenar por Estado", "Index", new { sortOrder = ViewBag.EstSort })
-        </th>
-    </tr>
-</table>
-
-<main id="mainart">
-
-    @if (Model.Any())
-    {
-    foreach (var item in Model)
-    {
-        <article class="articulos">
-
-            <div>
-                <p>
-                    <b>Usuario:</b>
-                    @Html.ActionLink(item.NomUsuario, "Details", "Usuario", new { email = item.idUsuario }, htmlAttributes: null)
-                </p>
-                <p>
-                    <img style="display:block;margin:auto; width: 200px;height: 200px; border-radius:80%; " src="/@Html.DisplayFor(modelItem => item.FotoUsuario)" />
-
-                </p>
-                <p>
-                    <b>Animal:</b>
-                    @Html.ActionLink(item.NomAnimal, "Details", "Animal", new { id = item.idAnimal }, htmlAttributes: null)
-                </p>
-                <p>
-                    <img style="display:block;margin:auto; width: 200px;height: 200px; border-radius:80%;" src="/@Html.DisplayFor(modelItem => item.FotoAnimal)" />
-                </p>
-
-                <p>
-                    <b>Fecha:</b>
-                    @Html.DisplayFor(modelItem => item.Fecha)
-                </p>
-                <p>
-                    <b>Estado:</b>
-                    @Html.DisplayFor(modelItem => item.Estado)
-                </p>
-                <p>
-                    <b>Descripción:</b>
-                    @Html.DisplayFor(modelItem => item.Descripcion)
-                </p>
-            </div>
-            <div>
-                <p><i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
-                <p><i class="fas fa-redo"></i> @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
-                <p><i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
-            </div>
-
-        </article>
-    }
-    }
-    else
-    {
-        
-            <h2 style="margin-left: auto;margin-right: auto;">No hay ningún seguimiento disponible.</h2>
-       
-    }
-</main>
-
-@*Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount*@
-@if (Model.Any())
-{
-    <p style="text-align: center;margin-top: 10px;font-size: 18px"> Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>
-    @*<p style="text-align: center;">Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>*@
-}
-@Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-<div class="parrafoCentrar">
-    <i class="fas fa-home"></i> @Html.ActionLink("Volver a inicio", "Indexad", "Home")
+            <p>
+                <label class="textLabel">Usuario: </label>
+                <label class="searchPoner">
+                    @Html.TextBox("usuSearch")<input style="display:none;" id="buscsarch" type="submit" value="Buscar" />
+                    <label for="buscsarch" style="margin-left: 10px;" class="fas fa-search"></label>
+                </label>
+            </p>
+            }
+            </li>
+            <li>
+            @using (Html.BeginForm())
+            {
+            <p>
+                <label class="textLabel">Nombre: </label>
+                <label class="searchPoner">
+                    @Html.TextBox("aniSearch")<input style="display:none;" id="buscAniSarch" type="submit" value="Buscar" />
+                    <label for="buscAniSarch" style="margin-left: 10px;" class="fas fa-search"></label>
+                </label>
+            </p>
+             }
+            </li>
+            <li>
+            @using (Html.BeginForm())
+            {
+            <p>
+                <label class="textLabel">Fecha(dd/mm/yyyy): </label>
+                <label class="searchPoner">
+                    @Html.TextBox("dateSearch")<input style="display:none;" id="buscFechaDate" type="submit" value="Buscar" />
+                    <label for="buscFechaDate" style="margin-left: 10px;" class="fas fa-search"></label>
+                </label>
+            </p>
+            }
+            </li>
+            <li>
+            @using (Html.BeginForm())
+            {
+            <p>
+                <label class="textLabel">Estado: </label>
+                <label class="searchPoner">
+                    @Html.TextBox("estSearch")<input style="display:none;" id="buscSeguiEst" type="submit" value="Buscar" />
+                    <label for="buscSeguiEst" style="margin-left: 10px;" class="fas fa-search"></label>
+                </label>
+            </p>
+            }
+            </li>
+    </ul>
 </div>
+            @Html.ActionLink("Ordenar por Usuario", "Index", new { sortOrder = ViewBag.UsuSort })
+
+            @Html.ActionLink("Ordenar por Animal", "Index", new { sortOrder = ViewBag.AniSort })
+
+            @Html.ActionLink("Ordenar por Fecha", "Index", new { sortOrder = ViewBag.DateSort })
+
+            @Html.ActionLink("Ordenar por Estado", "Index", new { sortOrder = ViewBag.EstSort })
+
+            <h2>Seguimientos</h2>
+            <main id="mainart">
+
+                @if (Model.Any())
+                {
+                    foreach (var item in Model)
+                    {
+                        <article class="articulos">
+
+                            <div>
+                                <p>
+                                    <b>Usuario:</b>
+                                    @Html.ActionLink(item.NomUsuario, "Details", "Usuario", new { email = item.idUsuario }, htmlAttributes: null)
+                                </p>
+                                <p>
+                                    <img style="display:block;margin:auto; width: 200px;height: 200px; border-radius:80%; " src="/@Html.DisplayFor(modelItem => item.FotoUsuario)" />
+
+                                </p>
+                                <p>
+                                    <b>Animal:</b>
+                                    @Html.ActionLink(item.NomAnimal, "Details", "Animal", new { id = item.idAnimal }, htmlAttributes: null)
+                                </p>
+                                <p>
+                                    <img style="display:block;margin:auto; width: 200px;height: 200px; border-radius:80%;" src="/@Html.DisplayFor(modelItem => item.FotoAnimal)" />
+                                </p>
+
+                                <p>
+                                    <b>Fecha:</b>
+                                    @Html.DisplayFor(modelItem => item.Fecha)
+                                </p>
+                                <p>
+                                    <b>Estado:</b>
+                                    @Html.DisplayFor(modelItem => item.Estado)
+                                </p>
+                                <p>
+                                    <b>Descripción:</b>
+                                    @Html.DisplayFor(modelItem => item.Descripcion)
+                                </p>
+                            </div>
+                            <div>
+                                <p><i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
+                                <p><i class="fas fa-redo"></i> @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
+                                <p><i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
+                            </div>
+
+                        </article>
+                    }
+                }
+                else
+                {
+
+                    <h2 style="margin-left: auto;margin-right: auto;">No hay ningún seguimiento disponible.</h2>
+
+                }
+            </main>
+
+            @*Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount*@
+            @if (Model.Any())
+            {
+                <p style="text-align: center;margin-top: 10px;font-size: 18px"> Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>
+                @*<p style="text-align: center;">Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>*@
+            }
+            @Html.PagedListPager(Model, page => Url.Action("Index",
+                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+            <div class="parrafoCentrar">
+                <i class="fas fa-home"></i> @Html.ActionLink("Volver a inicio", "Indexad", "Home")
+            </div>

@@ -29,47 +29,53 @@
 
 
 }
+<h2>Filtrar especies por: </h2>
+<div class="readFilters" style="margin-right: auto;margin-left: auto;">
+    <ul class="readFiltersUls">
+        <li>
+            @using (Html.BeginForm())
+            {
+            <p>
 
-<table class="table">
-    @using (Html.BeginForm())
-    {
-        <tr>
-            <th>Buscar por nombre: @Html.TextBox("nameSearch") <input style="display:none;" type="submit" value="Buscar" /></th>
-            <th></th>
-        </tr>
-    }
-    <tr>
-        <th>
+                <label class="textLabel">Buscar por nombre: </label>
+                <label class="searchPoner">
+                    @Html.TextBox("nameSearch")<input style="display:none;" id="buscEspecie" type="submit" value="Buscar" />
+                    <label for="buscEspecie" style="margin-left: 10px;" class="fas fa-search"></label>
+                </label>
+            </p>
+
+            }
+        </li>
+    </ul>
+</div>
+
             @Html.ActionLink("Ordenar por nombre", "Index", new { sortOrder = ViewBag.NameSort })
-        </th>
-        <th></th>
-    </tr>
+<table class="table">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        <i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Obtener animales por especie", "ObtenerAnimalesPorEspecie", "Animal", new { p_especie = item.Id }, htmlAttributes: null) |
+                        @Html.ActionLink("Obtener razas por especie", "ObtenerRazasPorEspecie", "Raza", new { p_especie = item.Id }, htmlAttributes: null) |
+                        <i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                <i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Obtener animales por especie", "ObtenerAnimalesPorEspecie", "Animal", new { p_especie = item.Id }, htmlAttributes: null) |
-                @Html.ActionLink("Obtener razas por especie", "ObtenerRazasPorEspecie", "Raza", new { p_especie = item.Id }, htmlAttributes: null) |
-                <i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-    }
-
-</table>
-<br />
-@*Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount*@
-@if (Model.Any())
-{
-    <p style="text-align: center;margin-top: 10px;font-size: 18px"> Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>
-    @*<p style="text-align: center;">Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>*@
-}
-@Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-<p>
-    <i class="fas fa-paw"></i> @Html.ActionLink("Volver a animales", "Index", "Animal")
-</p>
+            </table>
+            <br />
+            @*Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount*@
+            @if (Model.Any())
+            {
+                <p style="text-align: center;margin-top: 10px;font-size: 18px"> Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>
+                @*<p style="text-align: center;">Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>*@
+            }
+            @Html.PagedListPager(Model, page => Url.Action("Index",
+                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+            <p>
+                <i class="fas fa-paw"></i> @Html.ActionLink("Volver a animales", "Index", "Animal")
+            </p>

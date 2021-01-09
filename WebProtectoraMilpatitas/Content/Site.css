@@ -659,16 +659,18 @@ th{
         flex-direction: row;
     }
     .readFilters>ul>li>form>p>.textLabel{
-        width: 100px;
+        width: 140px;
         margin-left: 15px;
         margin-top: 15px;
         text-align: left;
     }
     .readFilters > ul > li > form > p >.searchPoner{
-        width: 80%;
+        width: 60%;
+        margin-right: 5%;
+        margin-left: auto;
     }
     .readFilters > ul > li > form > p >.searchPoner> input[type="text"] {
-        width: 80%;
+        width: 85%;
     }
 
     #datisUsu {
