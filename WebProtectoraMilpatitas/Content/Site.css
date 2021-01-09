@@ -625,7 +625,6 @@ th{
         flex-direction: column;
         left: 0;
         justify-content: center;
-        
     }
 
     #partemenu {
@@ -649,7 +648,7 @@ th{
     }
 }
 @media all and (min-width: 620px){
-    /*Aqui escribimos el codigo de los formularios*/
+ /*Aqui escribimos el codigo de los formularios*/
     .formGuapo, .formNoTanGuapo, .formIncreible {
         width: 580px;
     }
