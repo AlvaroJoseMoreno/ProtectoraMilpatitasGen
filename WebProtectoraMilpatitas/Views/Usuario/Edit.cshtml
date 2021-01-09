@@ -42,7 +42,7 @@
 <p class="parFoto">
     @Html.LabelFor(model => model.Foto)
     <br />
-    <label for="foto"><img style="width:200px;height:200px;" src="/@Html.DisplayFor(model => model.Foto)" /></label>
+    <label for="foto"><img style="width:200px;height:200px; border-radius:80%;" src="/@Html.DisplayFor(model => model.Foto)" /></label>
     <input onchange="cargarFoto(this);" style="display:none;" id="foto" type="file" name="file" />
 </p>
 <p class="busFot"><label for="foto">Buscar Foto</label></p>
