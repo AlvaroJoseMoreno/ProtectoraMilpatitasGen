@@ -6,17 +6,16 @@
 }
 
 <h2>Eliminar contrato de adopcion</h2>
-
-<h3>¿Estás seguro de que quieres eliminar el contrato @ViewData["IdCon"] de @ViewData["NombreCon"]?</h3>
+<div class="formEliminarGuapo">
+    <h2>¿Estás seguro de que quieres eliminar el contrato @ViewData["IdCon"] de @ViewData["NombreCon"]?</h2>
+</div>
 <div>
-    <hr />
-    <dl class="dl-horizontal">
-    </dl>
+    
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
+        <div class="form-actions no-color parrafoCentrar">
             <input type="submit" value="Eliminar" class="btn btn-default" /> |
             <i class="fas fa-file-signature"></i> @Html.ActionLink("Volver a la lista", "Index")
         </div>

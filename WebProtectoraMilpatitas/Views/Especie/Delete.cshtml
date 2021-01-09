@@ -6,16 +6,17 @@
 }
 
 <h2>Eliminar especie</h2>
-
-<h3>¿Estás seguro de que quieres eliminar la especie @ViewData["NombreEsp"]?</h3>
+<div class="formEliminarGuapo">
+    <h2>¿Estás seguro de que quieres eliminar la especie @ViewData["NombreEsp"]?</h2>
+</div>
 <div>
     <hr />
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+        <div class="form-actions no-color parrafoCentrar">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> | <i class="fas fa-paw"></i>
             @Html.ActionLink("Volver a la lista", "Index")
         </div>
     }

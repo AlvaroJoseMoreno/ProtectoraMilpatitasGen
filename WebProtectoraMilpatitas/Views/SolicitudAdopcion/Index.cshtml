@@ -158,13 +158,17 @@
 </main>
 
 <br />
-        Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
-
-        @Html.PagedListPager(Model, page => Url.Action("Index",
-            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-<p><i class="fas fa-thumbs-down"></i> @Html.ActionLink("Rechazar todas", "RechazarTodasSolicitud")</p>
-<p>
+@*Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount*@
+@if (Model.Any())
+{
+    <p style="text-align: center;margin-top: 10px;font-size: 18px"> Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>
+    @*<p style="text-align: center;">Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>*@
+}
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+<p class="parrafoCentrar"><i class="fas fa-thumbs-down"></i> @Html.ActionLink("Rechazar todas", "RechazarTodasSolicitud")</p>
+<p class="parrafoCentrar">
     <i class="fas fa-home"></i> @Html.ActionLink("Volver a inicio", "Indexad", "Home")
 </p>
-        
+
 

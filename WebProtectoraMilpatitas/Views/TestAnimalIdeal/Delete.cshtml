@@ -6,15 +6,16 @@
 }
 
 <h2>Eliminar Test Animal Ideal</h2>
-
-<h3>¿Estás seguro de que quieres eliminar el test @ViewData["IdTest"] de @ViewData["NombreTest"]?</h3>
+<div class="formEliminarGuapo">
+    <h2>¿Estás seguro de que quieres eliminar el test @ViewData["IdTest"] de @ViewData["NombreTest"]?</h2>
+</div>
 <div>
     <hr />
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
+        <div class="form-actions no-color parrafoCentrar">
             <input type="submit" value="Eliminar" class="btn btn-default" /> |
             <i class="fas fa-clipboard-list"></i> @Html.ActionLink("Volver a la lista", "Index")
         </div>

@@ -5,18 +5,18 @@
 }
 
 <h2>Eliminar mensaje</h2>
-
-<h3>¿Estas seguro de que deseas eliminar este mensaje?</h3>
+<div class="formEliminarGuapo">
+    <h2>¿Estas seguro de que deseas eliminar este mensaje?</h2>
+</div>
 <div>
     
     <hr />
-    <dl class="dl-horizontal">
-    </dl>
+
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
+        <div class="form-actions no-color parrafoCentrar">
             <input type="submit" value="Delete" class="btn btn-default" /> |
             <i class="fas fa-comment-dots"></i> @Html.ActionLink("Volver al chat", "Index")
         </div>

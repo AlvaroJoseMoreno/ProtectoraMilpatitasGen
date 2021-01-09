@@ -14,7 +14,10 @@ img{
     height: 200px;
     
 }
-
+.parrafoCentrar{
+    text-align: center;
+    margin-top: 20px;
+}
 a {
     color: darkslateblue;
     text-decoration: none;
@@ -24,6 +27,7 @@ a:hover {
 }
 .pagination {
     display: flex;
+    width: 98%;
 }
 p{
     padding: 0.1em;
@@ -230,7 +234,7 @@ ul {
 #busqueda_Rapida > input[type="search"]:hover{
     cursor: pointer;
 }
-.formGuapo, .formNoTanGuapo, .formIncreible, .formTestIdeal {
+.formGuapo, .formNoTanGuapo, .formIncreible, .formTestIdeal, .formEliminarGuapo {
     border: 2px solid #fc810e;
     padding: 1em;
     margin-left: auto;

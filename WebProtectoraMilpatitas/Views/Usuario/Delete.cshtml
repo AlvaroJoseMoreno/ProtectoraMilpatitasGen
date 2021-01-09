@@ -6,17 +6,16 @@
 }
 
 <h2>Eliminar usuario</h2>
-
-<h3>¿Estás seguro de querer eliminar al usuario @ViewData["NombreUsu"]?</h3>
+<div class="formEliminarGuapo">
+    <h2>¿Estás seguro de querer eliminar al usuario @ViewData["NombreUsu"]?</h2>
+</div>
 <div>
     <hr />
-    <dl class="dl-horizontal">
-    </dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
+        <div class="form-actions no-color parrafoCentrar">
             <input type="submit" value="Eliminar" class="btn btn-default" /> |
             <i class="fas fa-user"></i> @Html.ActionLink("Volver a la lista", "Index")
         </div>

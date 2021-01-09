@@ -7,52 +7,35 @@
 
 <h2>Detalles Test Animal Ideal</h2>
 
-<div>
+<div class="detalleUsu">
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
+    <p class="text">
             @Html.DisplayNameFor(model => model.AficionFavorita)
-        </dt>
-
-        <dd>
             @Html.DisplayFor(model => model.AficionFavorita)
-        </dd>
-
-        <dt>
+     </p>  
+        <p class="text">
             @Html.DisplayNameFor(model => model.Personalidad)
-        </dt>
-
-        <dd>
             @Html.DisplayFor(model => model.Personalidad)
-        </dd>
-
-        <dt>
+        </p>
+        <p class="text">
             @Html.DisplayNameFor(model => model.ColorFavorito)
-        </dt>
-
-        <dd>
+        
             @Html.DisplayFor(model => model.ColorFavorito)
-        </dd>
-
-        <dt>
+        </p>
+           <p class="text">
             @Html.DisplayNameFor(model => model.idUsuario)
-        </dt>
-
-        <dd>
+        
             @Html.DisplayFor(model => model.idUsuario)
-        </dd>
-
-        <dt>
+        </p>
+           <p class="text">
             @Html.DisplayNameFor(model => model.Resultado)
-        </dt>
-
-        <dd>
+        
             @Html.DisplayFor(model => model.Resultado)
-        </dd>
+       </p>
 
-    </dl>
+    
 </div>
-<p>
+<p class="parrafoCentrar">
     <i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
     <i class="fas fa-clipboard-list"></i> @Html.ActionLink("Volver a la lista", "Index")
 </p>

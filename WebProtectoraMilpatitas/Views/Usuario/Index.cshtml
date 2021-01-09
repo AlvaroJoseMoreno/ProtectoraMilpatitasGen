@@ -46,36 +46,40 @@
     @foreach (var item in Model)
     {
 
-    <article class="articulos">
-        @if (item.Nombre != null && !item.Nombre.Equals(""))
-        {
-            <h2 class="titleUsus">@Html.DisplayFor(modelItem => item.Nombre)</h2>
-        }
-        else
-        {
-            <h2 class="titleUsus">  @Html.DisplayFor(modelItem => item.Nombre);</h2>
-        }
-        <div style="display: block;margin: auto;">
-            <img style="display: block;margin: auto;" src="/@Html.DisplayFor(modelItem => item.Foto)" />
-        </div>
-        <div>
-            <p><i class="fas fa-info"></i> @Html.ActionLink("Detalles", "Details", new { email = item.Email })</p>
-            <p><i class="fas fa-comment-dots"></i> @Html.ActionLink("Chatear con Usuario", "Index", "Mensaje", new { email = item.Email }, htmlAttributes: null)</p>
-            <p><i class="fas fa-edit"></i> @Html.ActionLink("Obtener Solicitudes", "ObtenerSolicitudUsuario", "SolicitudAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
-            <p><i class="fas fa-file-signature"></i> @Html.ActionLink("Obtener Contratos", "ObtenerContratoUsuario", "ContratoAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
-            <p><i class="fas fa-eye"></i> @Html.ActionLink("Obtener Seguimientos", "ObtenerSeguimientoUsuario", "Seguimiento", new { email = item.Email }, htmlAttributes: null)</p>
-            <p><i class="fas fa-paw"></i> @Html.ActionLink("Obtener Mascotas", "ObtenerAnimalesPorUsuario", "Animal", new { email = item.Email }, htmlAttributes: null)</p>
-            <p><i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { email = item.Email })</p>
-        </div>
-    </article>
+        <article class="articulos">
+            @if (item.Nombre != null && !item.Nombre.Equals(""))
+            {
+                <h2 class="titleUsus">@Html.DisplayFor(modelItem => item.Nombre)</h2>
+            }
+            else
+            {
+                <h2 class="titleUsus">  @Html.DisplayFor(modelItem => item.Nombre);</h2>
+            }
+            <div style="display: block;margin: auto;">
+                <img style="display: block;margin: auto;" src="/@Html.DisplayFor(modelItem => item.Foto)" />
+            </div>
+            <div>
+                <p><i class="fas fa-info"></i> @Html.ActionLink("Detalles", "Details", new { email = item.Email })</p>
+                <p><i class="fas fa-comment-dots"></i> @Html.ActionLink("Chatear con Usuario", "Index", "Mensaje", new { email = item.Email }, htmlAttributes: null)</p>
+                <p><i class="fas fa-edit"></i> @Html.ActionLink("Obtener Solicitudes", "ObtenerSolicitudUsuario", "SolicitudAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
+                <p><i class="fas fa-file-signature"></i> @Html.ActionLink("Obtener Contratos", "ObtenerContratoUsuario", "ContratoAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
+                <p><i class="fas fa-eye"></i> @Html.ActionLink("Obtener Seguimientos", "ObtenerSeguimientoUsuario", "Seguimiento", new { email = item.Email }, htmlAttributes: null)</p>
+                <p><i class="fas fa-paw"></i> @Html.ActionLink("Obtener Mascotas", "ObtenerAnimalesPorUsuario", "Animal", new { email = item.Email }, htmlAttributes: null)</p>
+                <p><i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { email = item.Email })</p>
+            </div>
+        </article>
     }
 </main>
 
 <br />
-Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
-
+@*Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount*@
+@if (Model.Any())
+{
+    <p style="text-align: center;margin-top: 10px;font-size: 18px"> Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>
+    @*<p style="text-align: center;">Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>*@
+}
 @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-<p>
+<p class="parrafoCentrar">
     <i class="fas fa-home"></i> @Html.ActionLink("Volver a inicio", "Indexad", "Home")
 </p>

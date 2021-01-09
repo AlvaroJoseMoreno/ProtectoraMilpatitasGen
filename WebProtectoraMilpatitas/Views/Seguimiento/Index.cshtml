@@ -78,8 +78,9 @@
 
 <main id="mainart">
 
-
-    @foreach (var item in Model)
+    @if (Model.Any())
+    {
+    foreach (var item in Model)
     {
         <article class="articulos">
 
@@ -121,13 +122,23 @@
 
         </article>
     }
-
+    }
+    else
+    {
+        
+            <h2 style="margin-left: auto;margin-right: auto;">No hay ningún seguimiento disponible.</h2>
+       
+    }
 </main>
 
-Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
-
+@*Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount*@
+@if (Model.Any())
+{
+    <p style="text-align: center;margin-top: 10px;font-size: 18px"> Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>
+    @*<p style="text-align: center;">Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>*@
+}
 @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-<div>
+<div class="parrafoCentrar">
     <i class="fas fa-home"></i> @Html.ActionLink("Volver a inicio", "Indexad", "Home")
 </div>

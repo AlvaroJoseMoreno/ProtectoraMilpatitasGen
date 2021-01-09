@@ -15,13 +15,13 @@
 @if (((string)TempData["mensajeModal"]) != null)
 {
     <div id="capafondo">
-     
+
         <article id="ar">
             <h2>Contrato de adopción</h2>
             <p>
                 @((string)TempData["mensajeModal"])
             </p>
-            @if(((string)TempData["mensajeModal"]).Equals("¡Enhorabuena!, Has creado el contrato con éxito, haga click en el enlace de abajo para descargarlo"))
+            @if (((string)TempData["mensajeModal"]).Equals("¡Enhorabuena!, Has creado el contrato con éxito, haga click en el enlace de abajo para descargarlo"))
             {
                 <p><i class="fas fa-print"></i> @Html.ActionLink("Contrato", "Imprimir", "ContratoAdopcion", new { target = "_blank" })</p>
             }
@@ -121,10 +121,14 @@
 
 </main>
 <br />
-Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
-
+@*Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount*@
+@if (Model.Any())
+{
+    <p style="text-align: center;margin-top: 10px;font-size: 18px"> Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>
+    @*<p style="text-align: center;">Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>*@
+}
 @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-<div>
+<div class="parrafoCentrar">
     <i class="fas fa-home"></i> @Html.ActionLink("Volver a inicio", "Indexad", "Home")
 </div>

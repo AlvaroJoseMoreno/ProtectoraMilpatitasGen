@@ -464,7 +464,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
         // POST: SolicitudAdopcion/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(SolicitudAdopcionViewModel sol, FormCollection collection)
         {
             if (Session["Usuario"] != null)
             {
@@ -484,7 +484,7 @@ namespace WebProtectoraMilpatitas.Controllers
 
                 SolicitudAdopcionCEN solCEN = new SolicitudAdopcionCEN();
                
-                solCEN.Eliminar(id);
+                solCEN.Eliminar(sol.Id);
 
                 TempData["mensajeModal"] = "Has eliminado la solicitud";
                 return RedirectToAction("Index");
