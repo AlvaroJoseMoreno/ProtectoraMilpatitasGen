@@ -181,7 +181,7 @@
         <article class="articulos">
             <h2>@Html.ActionLink(item.Nombre, "Details", new { id = item.Id })</h2>
 
-            <img src="/@Html.DisplayFor(modelItem => item.Foto)" />
+            <img style:"border-radius: 80%; width: 250px; height: 250px;" src="/@Html.DisplayFor(modelItem => item.Foto)" />
             <div>
                 <p>
                     <b>Edad: </b>

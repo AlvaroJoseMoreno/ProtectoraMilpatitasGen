@@ -90,7 +90,7 @@
                     @Html.ActionLink(item.NomUsuario, "Details", "Usuario", new { email = item.idUsuario }, htmlAttributes: null)
                 </p>
                 <p>
-                    <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.FotoUsuario)" />
+                    <img style="display:block;margin:auto; width: 200px;height: 200px; border-radius:80%; " src="/@Html.DisplayFor(modelItem => item.FotoUsuario)" />
 
                 </p>
                 <p>
@@ -98,7 +98,7 @@
                     @Html.ActionLink(item.NomAnimal, "Details", "Animal", new { id = item.idAnimal }, htmlAttributes: null)
                 </p>
                 <p>
-                    <img style="display:block;margin:auto; width: 200px;height: 200px;" src="/@Html.DisplayFor(modelItem => item.FotoAnimal)" />
+                    <img style="display:block;margin:auto; width: 200px;height: 200px; border-radius:80%;" src="/@Html.DisplayFor(modelItem => item.FotoAnimal)" />
                 </p>
 
                 <p>

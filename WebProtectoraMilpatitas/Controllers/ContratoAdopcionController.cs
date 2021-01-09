@@ -178,7 +178,8 @@ namespace WebProtectoraMilpatitas.Controllers
             }
             catch
             {
-                return View();
+                TempData["mensajeModal"] = "Ha habido un error al crear el contrato";
+                return RedirectToAction("Index");
             }
         }
 
@@ -383,7 +384,8 @@ namespace WebProtectoraMilpatitas.Controllers
             }
             catch
             {
-                return View();
+                TempData["mensajeModal"] = "Ha habido un error al editar el contrato";
+                return RedirectToAction("Index");
             }
         }
 
@@ -442,7 +444,8 @@ namespace WebProtectoraMilpatitas.Controllers
             }
             catch
             {
-                return View();
+                TempData["mensajeModal"] = "Ha habido un error al actualizar el estado del contrato";
+                return RedirectToAction("Index");
             }
         }
 
@@ -565,7 +568,8 @@ namespace WebProtectoraMilpatitas.Controllers
             }
             catch
             {
-                return View();
+                TempData["mensajeModal"] = "Ha habido un error al rellenar el contrato";
+                return RedirectToAction("Index");
             }
         }
 
@@ -622,7 +626,8 @@ namespace WebProtectoraMilpatitas.Controllers
             }
             catch
             {
-                return View();
+                TempData["mensajeModal"] = "Ha habido un error al eliminar el contrato";
+                return RedirectToAction("Index");
             }
         }
     }
