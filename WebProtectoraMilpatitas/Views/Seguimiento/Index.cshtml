@@ -81,14 +81,13 @@
             </li>
     </ul>
 </div>
-            @Html.ActionLink("Ordenar por Usuario", "Index", new { sortOrder = ViewBag.UsuSort })
-
-            @Html.ActionLink("Ordenar por Animal", "Index", new { sortOrder = ViewBag.AniSort })
-
-            @Html.ActionLink("Ordenar por Fecha", "Index", new { sortOrder = ViewBag.DateSort })
-
-            @Html.ActionLink("Ordenar por Estado", "Index", new { sortOrder = ViewBag.EstSort })
-
+<h2>Ordenar seguimientos por:</h2>
+<div class="enlacesOrdenar">
+            <h3>@Html.ActionLink("Ordenar por Usuario", "Index", new { sortOrder = ViewBag.UsuSort })</h3>
+            <h3>@Html.ActionLink("Ordenar por Animal", "Index", new { sortOrder = ViewBag.AniSort })</h3>
+            <h3>@Html.ActionLink("Ordenar por Fecha", "Index", new { sortOrder = ViewBag.DateSort })</h3>
+            <h3>@Html.ActionLink("Ordenar por Estado", "Index", new { sortOrder = ViewBag.EstSort })</h3>
+</div>
             <h2>Seguimientos</h2>
             <main id="mainart">
 

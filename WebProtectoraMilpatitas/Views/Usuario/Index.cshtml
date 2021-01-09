@@ -41,8 +41,10 @@
         </li>
     </ul>
 </div>   
-    @Html.ActionLink("Ordenar por Nombre", "Index", new { sortOrder = ViewBag.NameSort })
-
+<h2>Ordenar usuarios por:</h2>
+<div class="enlacesOrdenar">
+    <h3 style="margin-left: auto;margin-right: auto;">@Html.ActionLink("Ordenar por Nombre", "Index", new { sortOrder = ViewBag.NameSort })</h3>
+</div>
             <h2>Usuarios</h2>
 
             <main id="mainart">

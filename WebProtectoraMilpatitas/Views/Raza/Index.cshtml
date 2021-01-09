@@ -6,8 +6,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Razas</h2>
-
 <p>
     <i class="fas fa-plus"></i> @Html.ActionLink("Crear nueva raza", "Create")
 </p>
@@ -31,36 +29,41 @@
 <div class="readFilters" style="margin-right: auto;margin-left: auto;">
     <ul class="readFiltersUls">
         <li>
-    
-        @using (Html.BeginForm())
-        {
-            <p>
-                <label class="textLabel">Nombre Raza: </label>
-                <label class="searchPoner">
-                    @Html.TextBox("nameRazaSearch") <input style="display:none;"  id="buscRaza" type="submit" value="Buscar" />
-                    <label for="buscRaza" style="margin-left: 10px;" class="fas fa-search"></label>
-                </label>
-            </p>
-        }
+
+            @using (Html.BeginForm())
+            {
+                <p>
+                    <label class="textLabel">Nombre Raza: </label>
+                    <label class="searchPoner">
+                        @Html.TextBox("nameRazaSearch") <input style="display:none;" id="buscRaza" type="submit" value="Buscar" />
+                        <label for="buscRaza" style="margin-left: 10px;" class="fas fa-search"></label>
+                    </label>
+                </p>
+            }
         </li>
         <li>
-        @using (Html.BeginForm())
-        {
-            <p>
-                <label class="textLabel">Nombre Especie: </label>
-                <label class="searchPoner">
-                    @Html.TextBox("nameEspecieSearch") <input style="display:none;" id="buscNombreEsp" type="submit" value="Buscar" />
-                    <label for="buscNombreEsp" style="margin-left: 10px;" class="fas fa-search"></label>
-                </label>
-            </p>
-        }
+            @using (Html.BeginForm())
+            {
+                <p>
+                    <label class="textLabel">Nombre Especie: </label>
+                    <label class="searchPoner">
+                        @Html.TextBox("nameEspecieSearch") <input style="display:none;" id="buscNombreEsp" type="submit" value="Buscar" />
+                        <label for="buscNombreEsp" style="margin-left: 10px;" class="fas fa-search"></label>
+                    </label>
+                </p>
+            }
         </li>
     </ul>
 </div>
-            @Html.ActionLink("Ordenar por raza", "Index", new { sortOrder = ViewBag.NameRazaSort })
-        
-            @Html.ActionLink("Ordenar por especie", "Index", new { sortOrder = ViewBag.NameEspecieSort })
-        
+
+<h2>Ordenar razas por:</h2>
+<div class="enlacesOrdenar">
+    <h3>@Html.ActionLink("Ordenar por raza", "Index", new { sortOrder = ViewBag.NameRazaSort })</h3>
+    <h3>@Html.ActionLink("Ordenar por especie", "Index", new { sortOrder = ViewBag.NameEspecieSort })</h3>
+</div>
+
+<h2>Razas</h2>
+
     <table class="table">
         @foreach (var item in Model)
         {
@@ -79,15 +82,15 @@
         }
 
     </table>
-<br />
-@*Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount*@
-@if (Model.Any())
-{
-    <p style="text-align: center;margin-top: 10px;font-size: 18px"> Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>
-    @*<p style="text-align: center;">Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>*@
-}
-@Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-<div class="parrafoCentrar">
-    @Html.ActionLink("Volver a especies", "Index", "Especie")
-</div>
+    <br />
+    @*Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount*@
+    @if (Model.Any())
+    {
+        <p style="text-align: center;margin-top: 10px;font-size: 18px"> Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>
+        @*<p style="text-align: center;">Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>*@
+    }
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    <div class="parrafoCentrar">
+        @Html.ActionLink("Volver a especies", "Index", "Especie")
+    </div>

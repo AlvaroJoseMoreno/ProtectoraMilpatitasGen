@@ -6,8 +6,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Tests Animal Ideal</h2>
-
 <p>
     <i class="fas fa-plus"></i> @Html.ActionLink("Crear nuevo test animal ideal", "Create")
 </p>
@@ -81,14 +79,13 @@
         </li>
     </ul>
 </div>
-            @Html.ActionLink("Ordenar por Aficion", "Index", new { sortOrder = ViewBag.AficionSort })
-
-            @Html.ActionLink("Ordenar por Personalidad", "Index", new { sortOrder = ViewBag.PersonalidadSort })
-
-            @Html.ActionLink("Ordenar por Color", "Index", new { sortOrder = ViewBag.ColorSort })
-
-            @Html.ActionLink("Ordenar por Usuario", "Index", new { sortOrder = ViewBag.UsuarioSort })
-
+<h2>Ordenar Test animal ideal por:</h2>
+<div class="enlacesOrdenar">
+            <h3>@Html.ActionLink("Ordenar por Aficion", "Index", new { sortOrder = ViewBag.AficionSort })</h3>
+            <h3>@Html.ActionLink("Ordenar por Personalidad", "Index", new { sortOrder = ViewBag.PersonalidadSort })</h3>
+            <h3>@Html.ActionLink("Ordenar por Color", "Index", new { sortOrder = ViewBag.ColorSort })</h3>
+            <h3>@Html.ActionLink("Ordenar por Usuario", "Index", new { sortOrder = ViewBag.UsuarioSort })</h3>
+</div>
             <h2>Tests Animal Ideal</h2>
             <main id="mainart" style="margin-top: 20px;">
                 @{

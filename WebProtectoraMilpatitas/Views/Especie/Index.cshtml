@@ -48,8 +48,10 @@
         </li>
     </ul>
 </div>
-
-            @Html.ActionLink("Ordenar por nombre", "Index", new { sortOrder = ViewBag.NameSort })
+<h2>Ordenar especies por:</h2>
+<div class="enlacesOrdenar">
+            <h3 style="margin-left: auto;margin-right: auto;">@Html.ActionLink("Ordenar por nombre", "Index", new { sortOrder = ViewBag.NameSort })</h3>
+</div>
 <table class="table">
             @foreach (var item in Model)
             {

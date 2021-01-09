@@ -5,8 +5,6 @@
     ViewBag.Title = "Solicitudes de adopcion";
 }
 
-<h2>Solicitudes de adopcion</h2>
-
 <p>
     <i class="fas fa-plus"></i> @Html.ActionLink("Crear nueva solicitud", "Create")
 </p>
@@ -17,185 +15,184 @@
         <li>
             @using (Html.BeginForm())
             {
-            <p>
-                <label class="textLabel">Nombre: </label>
-                <label class="searchPoner">
-                    @Html.TextBox("nameSearch")<input style="display:none;" id="buscNombreSol" type="submit" value="Buscar" />
-                    <label for="buscNombreSol" style="margin-left: 10px;" class="fas fa-search"></label>
-                </label>
-            </p>
+                <p>
+                    <label class="textLabel">Nombre: </label>
+                    <label class="searchPoner">
+                        @Html.TextBox("nameSearch")<input style="display:none;" id="buscNombreSol" type="submit" value="Buscar" />
+                        <label for="buscNombreSol" style="margin-left: 10px;" class="fas fa-search"></label>
+                    </label>
+                </p>
             }
         </li>
         <li>
             @using (Html.BeginForm())
             {
-            <p> 
-                <label class="textLabel">Usuario: </label>
-                <label class="searchPoner">
-                    @Html.TextBox("usuSearch")<input style="display:none;" id="buscUsuSol" type="submit" value="Buscar" />
-                    <label for="buscUsuSol" style="margin-left: 10px;" class="fas fa-search"></label>
-                </label>
-            </p>
+                <p>
+                    <label class="textLabel">Usuario: </label>
+                    <label class="searchPoner">
+                        @Html.TextBox("usuSearch")<input style="display:none;" id="buscUsuSol" type="submit" value="Buscar" />
+                        <label for="buscUsuSol" style="margin-left: 10px;" class="fas fa-search"></label>
+                    </label>
+                </p>
             }
         </li>
         <li>
             @using (Html.BeginForm())
             {
-            <p>
-               <label class="textLabel"> Nombre: </label>
-               <label class="searchPoner">
-                   @Html.TextBox("aniSearch")<input style="display:none;" id="buscAnimalSol" type="submit" value="Buscar" />
-                   <label for="buscAnimalSol" style="margin-left: 10px;" class="fas fa-search"></label>
-               </label>
-            </p>   
+                <p>
+                    <label class="textLabel"> Nombre: </label>
+                    <label class="searchPoner">
+                        @Html.TextBox("aniSearch")<input style="display:none;" id="buscAnimalSol" type="submit" value="Buscar" />
+                        <label for="buscAnimalSol" style="margin-left: 10px;" class="fas fa-search"></label>
+                    </label>
+                </p>
             }
         </li>
         <li>
             @using (Html.BeginForm())
             {
-            <p> 
-                <label class="textLabel"> Estado: </label>
-                <label class="searchPoner">
-                    @Html.TextBox("estSearch")<input style="display:none;" id="buscEstSol" type="submit" value="Buscar" />
-                    <label for="buscEstSol" style="margin-left: 10px;" class="fas fa-search"></label>
-                </label>
-            </p>
+                <p>
+                    <label class="textLabel"> Estado: </label>
+                    <label class="searchPoner">
+                        @Html.TextBox("estSearch")<input style="display:none;" id="buscEstSol" type="submit" value="Buscar" />
+                        <label for="buscEstSol" style="margin-left: 10px;" class="fas fa-search"></label>
+                    </label>
+                </p>
             }
         </li>
         <li>
             @using (Html.BeginForm())
             {
-            <p>
-                <label class="textLabel"> Fecha(dd/mm/yyyy): </label>
-                <label class="searchPoner">
-                    @Html.TextBox("dateSearch")<input style="display:none;" id="buscFechaSol" type="submit" value="Buscar" />
-                    <label for="buscFechaSol" style="margin-left: 10px;" class="fas fa-search"></label>
-                </label>
-            </p>
+                <p>
+                    <label class="textLabel"> Fecha(dd/mm/yyyy): </label>
+                    <label class="searchPoner">
+                        @Html.TextBox("dateSearch")<input style="display:none;" id="buscFechaSol" type="submit" value="Buscar" />
+                        <label for="buscFechaSol" style="margin-left: 10px;" class="fas fa-search"></label>
+                    </label>
+                </p>
             }
         </li>
     </ul>
 </div>
-            @Html.ActionLink("Ordenar por Nombre", "Index", new { sortOrder = ViewBag.NameSort })
+<h2>Ordenar solicitudes de adopción por:</h2>
+<div class="enlacesOrdenar">
+    <h3>@Html.ActionLink("Ordenar por Nombre", "Index", new { sortOrder = ViewBag.NameSort })</h3>
+    <h3>@Html.ActionLink("Ordenar por Usuario", "Index", new { sortOrder = ViewBag.UsuSort })</h3>
+    <h3>@Html.ActionLink("Ordenar por Animal", "Index", new { sortOrder = ViewBag.AniSort })</h3>
+    <h3>@Html.ActionLink("Ordenar por Estado", "Index", new { sortOrder = ViewBag.EstSort })</h3>
+    <h3>@Html.ActionLink("Ordenar por Fecha", "Index", new { sortOrder = ViewBag.DateSort })</h3>
+</div>
+    <h2>Solicitudes de adopcion</h2>
 
-            @Html.ActionLink("Ordenar por Usuario", "Index", new { sortOrder = ViewBag.UsuSort })
-
-            @Html.ActionLink("Ordenar por Animal", "Index", new { sortOrder = ViewBag.AniSort })
-
-            @Html.ActionLink("Ordenar por Estado", "Index", new { sortOrder = ViewBag.EstSort })
-
-            @Html.ActionLink("Ordenar por Fecha", "Index", new { sortOrder = ViewBag.DateSort })
+    <main id="mainart">
 
 
-            <main id="mainart">
+        @if (((string)TempData["mensajeModal"]) != null)
+        {
+            <div id="capafondo">
+                <!--  <script>"mensajeModal();"</script> -->
+                <article id="ar">
+                    <h2>Solicitud de Adopción</h2>
+                    <p>
+                        @((string)TempData["mensajeModal"])
+                    </p>
+
+                    <footer><button class="button" onclick="cerrarMensajeModal();">cerrar</button></footer>
+                </article>
+            </div>
 
 
-                @if (((string)TempData["mensajeModal"]) != null)
-                {
-                    <div id="capafondo">
-                        <!--  <script>"mensajeModal();"</script> -->
-                        <article id="ar">
-                            <h2>Solicitud de Adopción</h2>
+        }
+
+
+
+        @if (Model.Any())
+        {
+
+            foreach (var item in Model)
+            {
+                <article class="articulos">
+                    <div>
+                        @if (item.Nombre != null && !item.Nombre.Equals(""))
+                        {
+
+
+                            <h2>@Html.ActionLink(item.Nombre, "Details", new { id = item.Id })</h2>
+
+
+                        }
+                        else
+                        {
+                            <h2> @Html.DisplayFor(modelItem => item.Nombre)</h2>
+                        }
+
+
+                        <p>
+                            <b>Usuario:</b>
+                            @Html.ActionLink(item.NomUsuario, "Details", "Usuario", new { email = item.idUsuario }, htmlAttributes: null)
+                        </p>
+                        <img style="margin:auto; border-radius: 80%; width: 100px;height: 100px;" src="/@Html.DisplayFor(modelItem => item.FotoUsuario)" />
+
+                        <p>
+                            <b>Animal:</b>
+                            @Html.ActionLink(item.NomAnimal, "Details", "Animal", new { id = item.idAnimal }, htmlAttributes: null)
+                        </p>
+                        <img style="margin:auto; border-radius: 80%; width: 100px;height: 100px;" src="/@Html.DisplayFor(modelItem => item.FotoAnimal)" />
+
+
+                        @if (item.Estado.ToString().Equals("enEspera"))
+                        {
                             <p>
-                                @((string)TempData["mensajeModal"])
+                                <b>Estado:</b>
+                                En espera
+                            </p>
+                        }
+                        else
+                        {
+
+                            <p>
+                                <b>Estado:</b>
+                                @Html.DisplayFor(modelItem => item.Estado)
                             </p>
 
-                            <footer><button class="button" onclick="cerrarMensajeModal();">cerrar</button></footer>
-                        </article>
+                        }
+
+                        <p>
+                            <b>Fecha de Solicitud:</b>
+                            @Html.DisplayFor(modelItem => item.FechaSoli)
+                        </p>
                     </div>
 
+                    <div>
+                        <p><i class="fas fa-thumbs-up"></i> @Html.ActionLink("Aceptar solicitud", "AceptarSolicitud", new { idSol = item.Id, idUsu = item.idUsuario, idAni = item.NomAnimal })</p>
+                        <p><i class="fas fa-thumbs-down"></i> @Html.ActionLink("Rechazar solicitud", "RechazarSolicitud", new { idSol = item.Id, idUsu = item.idUsuario, idAni = item.NomAnimal })</p>
 
-                }
-
-
-
-                @if (Model.Any())
-                {
-
-                    foreach (var item in Model)
-                    {
-                        <article class="articulos">
-                            <div>
-                                @if (item.Nombre != null && !item.Nombre.Equals(""))
-                                {
-
-
-                                    <h2>@Html.ActionLink(item.Nombre, "Details", new { id = item.Id })</h2>
-
-
-                                }
-                                else
-                                {
-                                    <h2> @Html.DisplayFor(modelItem => item.Nombre)</h2>
-                                }
-
-
-                                <p>
-                                    <b>Usuario:</b>
-                                    @Html.ActionLink(item.NomUsuario, "Details", "Usuario", new { email = item.idUsuario }, htmlAttributes: null)
-                                </p>
-                                <img style="margin:auto; border-radius: 80%; width: 100px;height: 100px;" src="/@Html.DisplayFor(modelItem => item.FotoUsuario)" />
-
-                                <p>
-                                    <b>Animal:</b>
-                                    @Html.ActionLink(item.NomAnimal, "Details", "Animal", new { id = item.idAnimal }, htmlAttributes: null)
-                                </p>
-                                <img style="margin:auto; border-radius: 80%; width: 100px;height: 100px;" src="/@Html.DisplayFor(modelItem => item.FotoAnimal)" />
-
-
-                                @if (item.Estado.ToString().Equals("enEspera"))
-                                {
-                                    <p>
-                                        <b>Estado:</b>
-                                        En espera
-                                    </p>
-                                }
-                                else
-                                {
-
-                                    <p>
-                                        <b>Estado:</b>
-                                        @Html.DisplayFor(modelItem => item.Estado)
-                                    </p>
-
-                                }
-
-                                <p>
-                                    <b>Fecha de Solicitud:</b>
-                                    @Html.DisplayFor(modelItem => item.FechaSoli)
-                                </p>
-                            </div>
-
-                            <div>
-                                <p><i class="fas fa-thumbs-up"></i> @Html.ActionLink("Aceptar solicitud", "AceptarSolicitud", new { idSol = item.Id, idUsu = item.idUsuario, idAni = item.NomAnimal })</p>
-                                <p><i class="fas fa-thumbs-down"></i> @Html.ActionLink("Rechazar solicitud", "RechazarSolicitud", new { idSol = item.Id, idUsu = item.idUsuario, idAni = item.NomAnimal })</p>
-
-                                <p><i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
-                                <p><i class="fas fa-redo"></i> @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
-                                <p><i class="fas fa-info"></i> @Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
-                                <p><i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
-                            </div>
-                        </article>
-                    }
-                }
-                else
-                {
-                    <h2 style="margin-left: auto;margin-right: auto">No hay ninguna solicitud de adopción disponible</h2>
-                }
-            </main>
-
-            <br />
-            @*Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount*@
-            @if (Model.Any())
-            {
-                <p style="text-align: center;margin-top: 10px;font-size: 18px"> Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>
-                @*<p style="text-align: center;">Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>*@
+                        <p><i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = item.Id })</p>
+                        <p><i class="fas fa-redo"></i> @Html.ActionLink("Actualizar Estado", "ActualizarEstado", new { id = item.Id })</p>
+                        <p><i class="fas fa-info"></i> @Html.ActionLink("Detalles", "Details", new { id = item.Id })</p>
+                        <p><i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
+                    </div>
+                </article>
             }
-            @Html.PagedListPager(Model, page => Url.Action("Index",
-                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-            <p class="parrafoCentrar"><i class="fas fa-thumbs-down"></i> @Html.ActionLink("Rechazar todas", "RechazarTodasSolicitud")</p>
-            <p class="parrafoCentrar">
-                <i class="fas fa-home"></i> @Html.ActionLink("Volver a inicio", "Indexad", "Home")
-            </p>
+        }
+        else
+        {
+            <h2 style="margin-left: auto;margin-right: auto">No hay ninguna solicitud de adopción disponible</h2>
+        }
+    </main>
+
+    <br />
+    @*Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount*@
+    @if (Model.Any())
+    {
+        <p style="text-align: center;margin-top: 10px;font-size: 18px"> Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>
+        @*<p style="text-align: center;">Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>*@
+    }
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    <p class="parrafoCentrar"><i class="fas fa-thumbs-down"></i> @Html.ActionLink("Rechazar todas", "RechazarTodasSolicitud")</p>
+    <p class="parrafoCentrar">
+        <i class="fas fa-home"></i> @Html.ActionLink("Volver a inicio", "Indexad", "Home")
+    </p>
 
 

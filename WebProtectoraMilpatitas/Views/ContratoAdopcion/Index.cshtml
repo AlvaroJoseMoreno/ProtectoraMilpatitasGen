@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Contratos de Adopcion</h2>
+
 
 <p>
     <i class="fas fa-plus"></i> @Html.ActionLink("Crear nuevo contrato", "Create")
@@ -79,12 +79,16 @@
         </li>
     </ul>
 </div>
-            @Html.ActionLink("Ordenar por Nombre", "Index", new { sortOrder = ViewBag.NameSort })
+<h2>Ordenar contratos de adopción por:</h2>
+<div class="enlacesOrdenar">
+    <h3>@Html.ActionLink("Ordenar por Nombre", "Index", new { sortOrder = ViewBag.NameSort })</h3>
 
-            @Html.ActionLink("Ordenar por Usuario", "Index", new { sortOrder = ViewBag.UsuSort })
+    <h3>@Html.ActionLink("Ordenar por Usuario", "Index", new { sortOrder = ViewBag.UsuSort })</h3>
 
-            @Html.ActionLink("Ordenar por Animal", "Index", new { sortOrder = ViewBag.AniSort })
+    <h3>@Html.ActionLink("Ordenar por Animal", "Index", new { sortOrder = ViewBag.AniSort })</h3>
+</div>
 
+<h2>Contratos de Adopcion</h2>
             <main id="mainart">
                 @if (Model.Any())
                 {
