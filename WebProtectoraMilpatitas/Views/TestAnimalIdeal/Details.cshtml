@@ -6,36 +6,40 @@
 }
 
 <h2>Detalles Test Animal Ideal</h2>
+<section id="secanim">
+    <main id="details">
+    <div class="detalleUsu">
 
-<div class="detalleUsu">
-    <hr />
-    <p class="text">
+        <hr />
+        <p class="text">
             @Html.DisplayNameFor(model => model.AficionFavorita)
             @Html.DisplayFor(model => model.AficionFavorita)
-     </p>  
+        </p>
         <p class="text">
             @Html.DisplayNameFor(model => model.Personalidad)
             @Html.DisplayFor(model => model.Personalidad)
         </p>
         <p class="text">
             @Html.DisplayNameFor(model => model.ColorFavorito)
-        
+
             @Html.DisplayFor(model => model.ColorFavorito)
         </p>
-           <p class="text">
+        <p class="text">
             @Html.DisplayNameFor(model => model.idUsuario)
-        
+
             @Html.DisplayFor(model => model.idUsuario)
         </p>
-           <p class="text">
+        <p class="text">
             @Html.DisplayNameFor(model => model.Resultado)
-        
-            @Html.DisplayFor(model => model.Resultado)
-       </p>
 
-    
-</div>
-<p class="parrafoCentrar">
-    <i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-    <i class="fas fa-clipboard-list"></i> @Html.ActionLink("Volver a la lista", "Index")
-</p>
+            @Html.DisplayFor(model => model.Resultado)
+        </p>
+
+
+       </div>
+    </main>
+</section>
+    <p class="parrafoCentrar">
+        <i class="fas fa-pen"></i> @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+        <i class="fas fa-clipboard-list"></i> @Html.ActionLink("Volver a la lista", "Index")
+    </p>
