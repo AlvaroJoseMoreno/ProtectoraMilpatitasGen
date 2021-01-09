@@ -135,9 +135,9 @@ namespace WebProtectoraMilpatitas.Controllers
                 {
                     menCP.Nuevo(admin.Email, usuen.Email, mensa.Texto, DateTime.Now, usuen.Nombre);
                 }
-               
 
-                TempData["mensajeModalSeguimiento"] = "Mensaje enviado con exito";
+
+                TempData["mensajeModal"] = "Mensaje enviado con exito";
 
                 SessionClose();
                 if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
@@ -149,7 +149,7 @@ namespace WebProtectoraMilpatitas.Controllers
             }
             catch
             {
-                TempData["mensajeModalSeguimiento"] = "Ha habido un error al enviar el mensaje";
+                TempData["mensajeModal"] = "Ha habido un error al enviar el mensaje";
                 return RedirectToAction("Index");
             }
         }
@@ -172,7 +172,7 @@ namespace WebProtectoraMilpatitas.Controllers
                 MensajeCEN mensajeCEN = new MensajeCEN();
                 mensajeCEN.Eliminar(men.Id);
 
-                TempData["mensajeModalEspecie"] = "Mensaje eliminado correctamente";
+                TempData["mensajeModal"] = "Mensaje eliminado correctamente";
                 if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
                 {
                     return RedirectToAction("Index", new { email = (string)TempData["emailUsu"] });
@@ -181,7 +181,7 @@ namespace WebProtectoraMilpatitas.Controllers
             }
             catch
             {
-                TempData["mensajeModalEspecie"] = "Ha habido un error al eliminar el mensaje";
+                TempData["mensajeModal"] = "Ha habido un error al eliminar el mensaje";
                 return RedirectToAction("Index");
             }
         }
