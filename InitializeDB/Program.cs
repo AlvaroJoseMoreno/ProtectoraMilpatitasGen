@@ -23,7 +23,8 @@ static void Main (string[] args)
         {
                 if (ans.ToLower () == "y") {
                         CreateDB.Create ("ProtectoraMilpatitasGenNHibernate", "nhibernateUser", "nhibernatePass");
-                        var cfg = new Configuration ();
+                    //CreateDB.Create("ProtectoraMilpatitasGenNHibernate", "AdminProtectora", "ProtectoraMilpatitas20");
+                    var cfg = new Configuration ();
                         cfg.Configure ();
                         cfg.AddAssembly (typeof(UsuarioEN).Assembly);
                         new SchemaExport (cfg).Execute (true, true, false);
