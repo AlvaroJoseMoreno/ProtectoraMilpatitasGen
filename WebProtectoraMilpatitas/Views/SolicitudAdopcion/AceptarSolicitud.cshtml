@@ -7,15 +7,18 @@
 
 <h2>Aceptar Solicitud</h2>
 
-<h2>¿Estás seguro de querer aceptar la solicitud de adopcion @ViewData["idSol"] de @ViewData["idUsu"] para el animal @ViewData["idAni"]?</h2>
-<div>
+<div id="mainart">
+    <h2>¿Estás seguro de querer aceptar la solicitud de adopcion @ViewData["idSol"] de @ViewData["idUsu"] para el animal @ViewData["idAni"]?</h2>
+    <div style="margin-left: auto; margin-right: auto;">
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color parrafoCentrar">
-            <input type="submit" value="Aceptar" class="btn btn-default" /> |
-            <i class="fas fa-edit"></i> @Html.ActionLink("Volver a la lista", "Index")
-        </div>
-    }
+            <div class="form-actions no-color parrafoCentrar">
+                <input type="submit" value="Aceptar" class="btn btn-default" /> |
+                <i class="fas fa-edit"></i> @Html.ActionLink("Volver a la lista", "Index")
+            </div>
+        }
+    </div>
 </div>
