@@ -8,9 +8,6 @@
     Layout = "~/Views/Shared/_LayoutUsu.cshtml";
 }
 
-<h2 style="text-align: center;">Últimos animales: </h2>
-
-
 @using (Html.BeginForm("BusquedaRapida", "Animal", FormMethod.Post, new { @id = "busqueda_Rapida" }))
 {
     @Html.AntiForgeryToken()
@@ -35,6 +32,7 @@
 
 
 }
+<h2 style="text-align: center;">Últimos animales: </h2>
 <div id="enlacesAnims">
     <h3>@Html.ActionLink("Babies", "ObtenerBabies", "Animal")</h3>
     <h3>@Html.ActionLink("Recién llegados", "ObtenerRecienLlegados", "Animal")</h3>

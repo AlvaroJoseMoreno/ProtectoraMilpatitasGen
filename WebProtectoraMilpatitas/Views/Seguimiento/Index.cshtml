@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
+<h2>Seguimientos</h2>
 
 <p>
     <i class="fas fa-plus"></i> @Html.ActionLink("Crear nuevo seguimiento", "Create")
@@ -88,7 +88,7 @@
             <h3>@Html.ActionLink("Ordenar por Fecha", "Index", new { sortOrder = ViewBag.DateSort })</h3>
             <h3>@Html.ActionLink("Ordenar por Estado", "Index", new { sortOrder = ViewBag.EstSort })</h3>
 </div>
-            <h2>Seguimientos</h2>
+
             <main id="mainart">
 
                 @if (Model.Any())
