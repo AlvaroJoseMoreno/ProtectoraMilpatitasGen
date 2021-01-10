@@ -273,7 +273,7 @@ public static void InitializeData ()
                 SolicitudAdopcionCEN solicitudAdopcionCEN = new SolicitudAdopcionCEN ();
                 SolicitudAdopcionCP solicitudAdopcionCP = new SolicitudAdopcionCP ();
 
-                int idsol = solicitudAdopcionCEN.Nuevo (usuJuan.Email, chihuahua.Id, new DateTime (2020, 10, 15, 8, 30, 52));
+                int idsol = solicitudAdopcionCEN.Nuevo (usuJuan.Email, siames.Id, new DateTime (2020, 10, 15, 8, 30, 52));
                 solicitudAdopcionCP.Actualizar_Estado (idsol, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.enEspera);
 
                 int idsol1 = solicitudAdopcionCEN.Nuevo (usuManu.Email, chihuahua.Id, new DateTime (2021, 1, 5, 8, 30, 52));
@@ -291,19 +291,47 @@ public static void InitializeData ()
 
                 Console.WriteLine ();
 
+                solicitudAdopcionCP.Actualizar_Estado(idsol, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.aceptado);
+                solicitudAdopcionCP.Actualizar_Estado(idsol1, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoAdopcionEnum.aceptado);
+
+                
 
                 //Contrato de adopcion
                 ContratoAdopcionCEN contratoAdopcionCEN = new ContratoAdopcionCEN ();
                 ContratoAdopcionCP contratoAdopcionCP = new ContratoAdopcionCP ();
 
-                int idcon = contratoAdopcionCEN.Nuevo (usuJuan.Email, idsol, chihuahua.Id);
-                contratoAdopcionCP.Actualizar_Estado (idcon, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum.entregado);
+                IList<ContratoAdopcionEN> contratosJuan = contratoAdopcionCEN.Obtener_Contrato_Usuario(usuJuan.Email);
+                IList<ContratoAdopcionEN> contratosManu = contratoAdopcionCEN.Obtener_Contrato_Usuario(usuManu.Email);
 
-                int idcon1 = contratoAdopcionCEN.Nuevo (usuManu.Email, idsol1, chihuahua.Id);
-                contratoAdopcionCP.Actualizar_Estado (idcon1, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum.entregado);
+                int idconJ = -1;
+                int idconM = -1;
 
-                contratoAdopcionCEN.Rellenar_Contrato (idcon, "Juan", "1111111F", "micasa.pdf", "pago.jpg", "alicante", true);
-                contratoAdopcionCEN.Rellenar_Contrato (idcon1, "Manuel", "22222221F", "micasa.pdf", "pago.jpg", "villena", true);
+                foreach (ContratoAdopcionEN conJ in contratosJuan)
+                {
+                    if (conJ.SolicitudAdopcion.Id==idsol)
+                    {
+                        idconJ = conJ.Id;
+                        break;
+                    }
+                }
+
+                contratoAdopcionCP.Actualizar_Estado(idconJ, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum.entregado);
+
+                foreach (ContratoAdopcionEN conM in contratosManu)
+                {
+                    if (conM.SolicitudAdopcion.Id==idsol1)
+                    {
+                        idconM = conM.Id;
+                        break;
+                    }
+                }
+
+                contratoAdopcionCP.Actualizar_Estado(idconM, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum.entregado);
+
+                contratoAdopcionCEN.Rellenar_Contrato (idconJ, "Juan", "1111111F", "micasa.pdf", "pago.jpg", "alicante", true);
+                
+                contratoAdopcionCEN.Rellenar_Contrato (idconM, "Manuel", "22222221F", "micasa.pdf", "pago.jpg", "villena", true);
+                contratoAdopcionCP.Actualizar_Estado(idconM, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum.firmado);
 
                 Console.WriteLine ();
 
@@ -312,17 +340,30 @@ public static void InitializeData ()
                         Console.WriteLine ("Contrato : " + con.Id + " " + con.Nombre);
                 }
 
+
                 Console.WriteLine ();
 
                 //Seguimiento de adopcion
                 SeguimientoCEN seguimientoCEN = new SeguimientoCEN ();
                 SeguimientoCP seguimientoCP = new SeguimientoCP ();
 
+                IList<SeguimientoEN> seguimientosManu = seguimientoCEN.Obtener_Seguimiento_Usuario(usuManu.Email);
+
+                int idsegM = -1;
+
+                foreach(SeguimientoEN seg in seguimientosManu)
+                {
+                    if (seg.ContratoAdopcion.Id==idconM)
+                    {
+                        idsegM = seg.Id;
+                        break;
+                    }
+                }
+
                 DateTime date1 = new DateTime (2008, 5, 1, 8, 30, 52);
 
-                int idseg = seguimientoCEN.Nuevo (usuManu.Email, chihuahua.Id, idcon1);
-                seguimientoCEN.Modificar (idseg, date1, "está correcto");
-                seguimientoCP.Actualizar_Estado (idseg, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSeguimientoEnum.pendienteRevision);
+                seguimientoCEN.Modificar (idsegM, date1, "está correcto");
+                seguimientoCP.Actualizar_Estado (idsegM, ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoSeguimientoEnum.pendienteRevision);
 
                 Console.WriteLine ();
 
