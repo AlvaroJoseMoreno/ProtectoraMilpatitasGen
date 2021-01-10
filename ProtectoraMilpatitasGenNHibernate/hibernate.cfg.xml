@@ -7,7 +7,6 @@
 			    <property name="connection.connection_string">
             Data Source=(local)\sqlexpress;Initial Catalog=ProtectoraMilpatitasGenNHibernate;User Id=nhibernateUser;Password=nhibernatePass;
             <!--Data Source=Server=tcp:servidormilpatitas.database.windows.net,1433;Initial Catalog=basemilpatitas;Persist Security Info=False;User ID=AdminProtectora;Password=ProtectoraMilpatitas20;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;-->
-            <!--Data Source=(local)\sqlexpress;Initial Catalog=ProtectoraMilpatitasGenNHibernate;User Id=nhibernateUser;Password=nhibernatePass;-->
           </property>
 			    <property name="proxyfactory.factory_class">
 			      NHibernate.ByteCode.LinFu.ProxyFactoryFactory, NHibernate.ByteCode.LinFu
