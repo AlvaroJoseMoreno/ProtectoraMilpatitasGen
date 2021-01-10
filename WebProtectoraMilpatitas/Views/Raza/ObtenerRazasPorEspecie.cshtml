@@ -1,9 +1,25 @@
 ﻿@model PagedList.IPagedList<WebProtectoraMilpatitas.Models.RazaViewModel>
 @using PagedList.Mvc;
+@using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas
 
 @{
     ViewBag.Title = "ObtenerRazasPorEspecie";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@{
+
+    if (Session["Usuario"] != null)
+    {
+        if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+        {
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+        else
+        {
+            Layout = "~/Views/Shared/_LayoutUsu.cshtml";
+        }
+    }
 }
 
 <h2>Razas de la especie @ViewData["NombreEspecie"]</h2>
@@ -71,6 +87,6 @@
 }
 @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-<div class="parrafoCentrar"> 
+<div class="parrafoCentrar">
     @Html.ActionLink("Volver a especies", "Index")
 </div>

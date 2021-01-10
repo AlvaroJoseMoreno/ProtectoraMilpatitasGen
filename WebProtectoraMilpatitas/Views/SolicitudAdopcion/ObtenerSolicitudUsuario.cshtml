@@ -2,10 +2,23 @@
 @using PagedList.Mvc;
 @using ProtectoraMilpatitasGenNHibernate.EN.ProtectoraMilpatitas;
 
+
+@ViewBag.Title = "ObtenerSolicitudUsuario";
 @{
-    ViewBag.Title = "ObtenerSolicitudUsuario";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    if (Session["Usuario"] != null)
+    {
+        if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+        {
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+        else
+        {
+            Layout = "~/Views/Shared/_LayoutUsu.cshtml";
+        }
+    }
 }
+
 
 <h2>Listado de solicitudes de adopcion del usuario: @ViewData["NombreUsuario"]</h2>
 
@@ -75,7 +88,7 @@
         </th>
     </tr>
 </table>
-        
+
 <main id="mainart">
     @if (Model.Any())
     {
@@ -155,9 +168,9 @@
     }
     else
     {
-        
-            <h2 style="margin-left: auto;margin-right: auto;">Este usuario no tiene solicitudes de adopción</h2>
-       
+
+        <h2 style="margin-left: auto;margin-right: auto;">Este usuario no tiene solicitudes de adopción</h2>
+
     }
 
 
@@ -165,10 +178,10 @@
 
 @if (Model.Any())
 {
-  <p style="text-align: center;">Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>
+    <p style="text-align: center;">Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount</p>
 
-        @Html.PagedListPager(Model, page => Url.Action("Index",
-             new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+         new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 }
 <p class="parrafoCentrar">
     @{
