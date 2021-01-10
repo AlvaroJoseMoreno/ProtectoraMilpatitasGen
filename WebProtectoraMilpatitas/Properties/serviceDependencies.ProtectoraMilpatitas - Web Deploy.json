@@ -1,14 +1,9 @@
 {
   "dependencies": {
-    "mssql1": {
-      "type": "mssql.onprem",
-      "connectionId": "DefaultConnection",
-      "secretStore": "AzureAppSettings"
-    },
     "mssql2": {
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/servidormilpatitas/databases/ProtectoraMilpatitasGenNHibernate",
       "type": "mssql.azure",
-      "connectionId": "Prueba",
+      "connectionId": "DefaultConnection",
       "secretStore": "AzureAppSettings"
     }
   }
