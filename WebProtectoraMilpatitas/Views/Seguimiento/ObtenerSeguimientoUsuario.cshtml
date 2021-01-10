@@ -4,7 +4,22 @@
 
 @{
     ViewBag.Title = "ObtenerSeguimientoUsuario";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@{
+
+    if (Session["Usuario"] != null)
+    {
+        if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+        {
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+        else
+        {
+            Layout = "~/Views/Shared/_LayoutUsu.cshtml";
+        }
+    }
 }
 
 <h2>Listado de seguimientos del usuario: @ViewData["NombreUsuario"]</h2>
@@ -23,33 +38,33 @@
 </p>
 
 @*<h2>Filtrar seguimientos de usuario por: </h2>
-        @using (Html.BeginForm())
-        {
-  
-                Usuario : @Html.TextBox("usuSearch") <input style="display:none;" type="submit" value="Buscar" />
-         
-        }
+    @using (Html.BeginForm())
+    {
 
-        @using (Html.BeginForm())
-        {
-       
-                Nombre : @Html.TextBox("aniSearch") <input style="display:none;" type="submit" value="Buscar" />
-           
-        }
+            Usuario : @Html.TextBox("usuSearch") <input style="display:none;" type="submit" value="Buscar" />
 
-        @using (Html.BeginForm())
-        {
-          
-                Fecha(dd/mm/yyyy): @Html.TextBox("dateSearch") <input style="display:none;" type="submit" value="Buscar" />
-          
-        }
+    }
 
-        @using (Html.BeginForm())
-        {
-            
-                Estado : @Html.TextBox("estSearch") <input style="display:none;" type="submit" value="Buscar" />
-            
-        }*@
+    @using (Html.BeginForm())
+    {
+
+            Nombre : @Html.TextBox("aniSearch") <input style="display:none;" type="submit" value="Buscar" />
+
+    }
+
+    @using (Html.BeginForm())
+    {
+
+            Fecha(dd/mm/yyyy): @Html.TextBox("dateSearch") <input style="display:none;" type="submit" value="Buscar" />
+
+    }
+
+    @using (Html.BeginForm())
+    {
+
+            Estado : @Html.TextBox("estSearch") <input style="display:none;" type="submit" value="Buscar" />
+
+    }*@
 
 <div class="readFilters" style="margin-right: auto;margin-left: auto;">
     <ul class="readFiltersUls">
@@ -107,13 +122,13 @@
 
 <h2>Ordenar seguimientos de usuarios por: </h2>
 <div class="enlacesOrdenar">
-            <h3>@Html.ActionLink("Ordenar por Usuario", "Index", new { email= ViewData["idUsuario"], sortOrder = ViewBag.UsuSort })</h3>
- 
-            <h3>@Html.ActionLink("Ordenar por Animal", "Index", new { email = ViewData["idUsuario"], sortOrder = ViewBag.AniSort })</h3>
-  
-            <h3>@Html.ActionLink("Ordenar por Fecha", "Index", new { email = ViewData["idUsuario"], sortOrder = ViewBag.DateSort })</h3>
-      
-            <h3>@Html.ActionLink("Ordenar por Estado", "Index", new { email = ViewData["idUsuario"], sortOrder = ViewBag.EstSort })</h3>
+    <h3>@Html.ActionLink("Ordenar por Usuario", "Index", new { email = ViewData["idUsuario"], sortOrder = ViewBag.UsuSort })</h3>
+
+    <h3>@Html.ActionLink("Ordenar por Animal", "Index", new { email = ViewData["idUsuario"], sortOrder = ViewBag.AniSort })</h3>
+
+    <h3>@Html.ActionLink("Ordenar por Fecha", "Index", new { email = ViewData["idUsuario"], sortOrder = ViewBag.DateSort })</h3>
+
+    <h3>@Html.ActionLink("Ordenar por Estado", "Index", new { email = ViewData["idUsuario"], sortOrder = ViewBag.EstSort })</h3>
 </div>
 <main id="mainart">
     @if (Model.Any())
@@ -174,8 +189,8 @@
         }
     }
     else
-    { 
-            <h2 style="margin-left: auto;margin-right: auto;">Este usuario no tiene seguimientos</h2>
+    {
+        <h2 style="margin-left: auto;margin-right: auto;">Este usuario no tiene seguimientos</h2>
     }
 
 
