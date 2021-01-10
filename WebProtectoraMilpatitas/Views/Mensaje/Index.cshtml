@@ -13,8 +13,18 @@
 
 
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    if (Session["Usuario"] != null)
+    {
+        if (((UsuarioEN)Session["Usuario"]).GetType() == typeof(AdministradorEN))
+        {
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+        else
+        {
+            Layout = "~/Views/Shared/_LayoutUsu.cshtml";
+        }
+    }
 }
 
 <h2>Chat</h2>
@@ -38,10 +48,11 @@
 
 
 <div id="chatFantasia">
-    @{ 
-        foreach(var item in Model)
+    @{
+        foreach (var item in Model)
         {
-            if (!((UsuarioEN)Session["Usuario"]).Nombre.Equals(item.Enviador)){
+            if (!((UsuarioEN)Session["Usuario"]).Nombre.Equals(item.Enviador))
+            {
                 <h2>@Html.DisplayFor(modelItem => item.Enviador)</h2>
                 break;
             }
@@ -53,10 +64,12 @@
         if (((UsuarioEN)Session["Usuario"]).Nombre.Equals(item.Enviador))
         {
             <div class="enviador">
-              <p style="text-align: center"><b> Yo </b></p>
-              <p style="font-size: 20px; margin-top: -10px;">@Html.DisplayFor(modelItem => item.Texto)</p>
-              <p style="font-size: 15px; margin-top: -10px;">  @Html.DisplayFor(modelItem => item.Fecha)
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
+                <p style="text-align: center"><b> Yo </b></p>
+                <p style="font-size: 20px; margin-top: -10px;">@Html.DisplayFor(modelItem => item.Texto)</p>
+                <p style="font-size: 15px; margin-top: -10px;">
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                </p>
             </div>
 
         }
