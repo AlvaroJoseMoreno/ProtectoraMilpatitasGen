@@ -340,8 +340,6 @@
     <Content Include="Imagenes\usuarios\imagen2.png" />
     <Content Include="Imagenes\usuarios\imagen3.png" />
     <Content Include="Imagenes\usuarios\imagen5.jpg" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Mvc.sitemap" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>

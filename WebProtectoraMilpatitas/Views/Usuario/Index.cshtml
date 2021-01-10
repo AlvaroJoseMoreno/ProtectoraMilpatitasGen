@@ -48,32 +48,40 @@
             <h2>Usuarios</h2>
 
             <main id="mainart">
+                @{
+                    if (Model.Any()) { 
 
-                @foreach (var item in Model)
-                {
+                    foreach (var item in Model)
+                    {
 
-                    <article class="articulos">
-                        @if (item.Nombre != null && !item.Nombre.Equals(""))
-                        {
-                            <h2 class="titleUsus">@Html.DisplayFor(modelItem => item.Nombre)</h2>
+                        <article class="articulos">
+                            @if (item.Nombre != null && !item.Nombre.Equals(""))
+                            {
+                                <h2 class="titleUsus">@Html.DisplayFor(modelItem => item.Nombre)</h2>
+                            }
+                            else
+                            {
+                                <h2 class="titleUsus">  @Html.DisplayFor(modelItem => item.Nombre);</h2>
+                            }
+                            <div style="display: block;margin: auto;">
+                                <img style="display: block;margin: auto;" src="/@Html.DisplayFor(modelItem => item.Foto)" />
+                            </div>
+                            <div>
+                                <p><i class="fas fa-info"></i> @Html.ActionLink("Detalles", "Details", new { email = item.Email })</p>
+                                <p><i class="fas fa-comment-dots"></i> @Html.ActionLink("Chatear con Usuario", "Index", "Mensaje", new { email = item.Email }, htmlAttributes: null)</p>
+                                <p><i class="fas fa-edit"></i> @Html.ActionLink("Obtener Solicitudes", "ObtenerSolicitudUsuario", "SolicitudAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
+                                <p><i class="fas fa-file-signature"></i> @Html.ActionLink("Obtener Contratos", "ObtenerContratoUsuario", "ContratoAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
+                                <p><i class="fas fa-eye"></i> @Html.ActionLink("Obtener Seguimientos", "ObtenerSeguimientoUsuario", "Seguimiento", new { email = item.Email }, htmlAttributes: null)</p>
+                                <p><i class="fas fa-paw"></i> @Html.ActionLink("Obtener Mascotas", "ObtenerAnimalesPorUsuario", "Animal", new { email = item.Email }, htmlAttributes: null)</p>
+                                <p><i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { email = item.Email })</p>
+                            </div>
+                        </article>
                         }
-                        else
-                        {
-                            <h2 class="titleUsus">  @Html.DisplayFor(modelItem => item.Nombre);</h2>
-                        }
-                        <div style="display: block;margin: auto;">
-                            <img style="display: block;margin: auto;" src="/@Html.DisplayFor(modelItem => item.Foto)" />
-                        </div>
-                        <div>
-                            <p><i class="fas fa-info"></i> @Html.ActionLink("Detalles", "Details", new { email = item.Email })</p>
-                            <p><i class="fas fa-comment-dots"></i> @Html.ActionLink("Chatear con Usuario", "Index", "Mensaje", new { email = item.Email }, htmlAttributes: null)</p>
-                            <p><i class="fas fa-edit"></i> @Html.ActionLink("Obtener Solicitudes", "ObtenerSolicitudUsuario", "SolicitudAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
-                            <p><i class="fas fa-file-signature"></i> @Html.ActionLink("Obtener Contratos", "ObtenerContratoUsuario", "ContratoAdopcion", new { email = item.Email }, htmlAttributes: null)</p>
-                            <p><i class="fas fa-eye"></i> @Html.ActionLink("Obtener Seguimientos", "ObtenerSeguimientoUsuario", "Seguimiento", new { email = item.Email }, htmlAttributes: null)</p>
-                            <p><i class="fas fa-paw"></i> @Html.ActionLink("Obtener Mascotas", "ObtenerAnimalesPorUsuario", "Animal", new { email = item.Email }, htmlAttributes: null)</p>
-                            <p><i class="fas fa-trash"></i> @Html.ActionLink("Eliminar", "Delete", new { email = item.Email })</p>
-                        </div>
-                    </article>
+                    }
+                    else
+                    {
+                        <h2 style="margin-left: auto; margin-right: auto;">No hay ningún usuario que cumpla este filtro</h2>
+                    }
                 }
             </main>
 

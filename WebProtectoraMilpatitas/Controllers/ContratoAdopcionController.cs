@@ -561,6 +561,9 @@ namespace WebProtectoraMilpatitas.Controllers
 
                 conCEN.Rellenar_Contrato((int)TempData["idCon"], con.Nombre, con.DNI_NIF_Pasaporte, filenameEscritura, filenamePago, con.LugarRecojida, con.FirmaCompromiso);
                 //con.EscrituraHogar;
+                
+                ContratoAdopcionCP contratoCP = new ContratoAdopcionCP();
+                contratoCP.Actualizar_Estado((int)TempData["idCon"], ProtectoraMilpatitasGenNHibernate.Enumerated.ProtectoraMilpatitas.EstadoContratoEnum.firmado);
                 SessionClose();
                 TempData["mensajeModal"] = "¡Enhorabuena!, Has creado el contrato con éxito, haga click en el enlace de abajo para descargarlo";
                 return RedirectToAction("Index");
