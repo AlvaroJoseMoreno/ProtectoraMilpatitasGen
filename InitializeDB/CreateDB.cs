@@ -24,9 +24,10 @@ public static void Create (string databaseArg, string userArg, string passArg)
 
         // Conex DB
         SqlConnection cnn = new SqlConnection (@"Server=(local)\sqlexpress; database=master; integrated security=yes");
+            //SqlConnection cnn = new SqlConnection(@"Server = tcp:servidormilpatitas.database.windows.net,1433; Initial Catalog = basemilpatitas; Persist Security Info = False; User ID = AdminProtectora; Password ={ your_password}; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30; ");
 
-        // Order T-SQL create user
-        String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
+            // Order T-SQL create user
+            String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
             BEGIN
                 CREATE LOGIN ["                                                                                                                                     + user + @"] WITH PASSWORD=N'" + pass + @"', DEFAULT_DATABASE=[master], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
             END"                                                                                                                                                                                                                                                                                    ;
