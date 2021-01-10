@@ -36,37 +36,47 @@
 }
 
 
-<table class="table">
 
+<div id="chatFantasia">
+    @{ 
+        foreach(var item in Model)
+        {
+            if (!((UsuarioEN)Session["Usuario"]).Nombre.Equals(item.Enviador)){
+                <h2>@Html.DisplayFor(modelItem => item.Enviador)</h2>
+                break;
+            }
+        }
+    }
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Enviador)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Texto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            @if (((UsuarioEN)Session["Usuario"]).Nombre.Equals(item.Enviador))
-            {
-                <td>
+        if (((UsuarioEN)Session["Usuario"]).Nombre.Equals(item.Enviador))
+        {
+            <div class="enviador">
+              <p style="text-align: center"><b> Yo </b></p>
+              <p style="font-size: 20px; margin-top: -10px;">@Html.DisplayFor(modelItem => item.Texto)</p>
+              <p style="font-size: 15px; margin-top: -10px;">  @Html.DisplayFor(modelItem => item.Fecha)
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })</p>
+            </div>
 
-                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
-                </td>
-            }
-        </tr>
+        }
+        else
+        {
+            <div class="receptor">
+                <p style="text-align: center;"><b>@Html.DisplayFor(modelItem => item.Enviador)</b></p>
+                <p style="font-size: 20px; margin-top: -10px;">@Html.DisplayFor(modelItem => item.Texto)</p>
+                <p style="font-size: 15px; margin-top: -10px;">@Html.DisplayFor(modelItem => item.Fecha)</p>
+            </div>
+        }
+
     }
+</div>
 
-</table>
 
-<p>
+<p class="parrafoCentrar">
     @Html.ActionLink("Enviar mensaje", "Create")
 </p>
-<p>
+<p class="parrafoCentrar">
     @{
 
         if (Session["Usuario"] != null)

@@ -589,6 +589,46 @@ th{
     border: 2px solid #fc810e;
     background-color: #fff99f;
 }
+.text>textarea{
+    width: 80%;
+    max-width: 80%;
+    min-width: 80%;
+    height: 200px;
+    max-height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+#chatFantasia{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff99f;
+    border: 2px solid #fc810e;
+}
+#chatFantasia>div>p{
+    padding: 0em;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.enviador, .receptor {
+    width: 47%;
+    border: 2px solid #fc810e;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.enviador{
+    margin-left: auto;
+    margin-right: 15px;
+    background-color: #c4f2c6;
+}
+
+.receptor {
+    margin-left: 15px;
+    margin-right: auto;
+}
 
 @media all and (min-width: 475px) {
     #details > article > h2 {
@@ -652,7 +692,13 @@ th{
     .formGuapo, .formNoTanGuapo, .formIncreible {
         width: 580px;
     }
-    .readFilters{
+    #chatFantasia{
+        width: 580px;
+    }
+    .text > textarea{
+        margin-top: 0px;
+    }
+    .readFilters {
         width: 580px;
     }
     .readFilters>ul>li>form>p{
