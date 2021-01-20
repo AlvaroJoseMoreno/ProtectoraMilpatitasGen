@@ -287,7 +287,6 @@
     <Content Include="Imagenes\animales\Gecko_leopardo.png" />
     <Content Include="Imagenes\animales\hamster-dorado.jpg" />
     <Content Include="Imagenes\animales\hamster-roborowski.jpg" />
-    <Content Include="Imagenes\animales\imagen.png" />
     <Content Include="Imagenes\animales\koal.jpg" />
     <Content Include="Imagenes\animales\manchitas.jpg" />
     <Content Include="Imagenes\animales\perfil_perro.jpg" />
@@ -329,10 +328,8 @@
     <Content Include="Imagenes\Test\Resultado\perro.jpg" />
     <Content Include="Imagenes\Test\Resultado\pez.jpg" />
     <Content Include="Imagenes\Test\Resultado\tortuga.jpg" />
-    <Content Include="Imagenes\usuarios\80a6780451a9937cf910d9279e15061f.gif" />
     <Content Include="Imagenes\usuarios\Bombshell-_wholesprite.png" />
     <Content Include="Imagenes\usuarios\B_Spiny_Husk.png" />
-    <Content Include="Imagenes\usuarios\donaldtromp.jpg" />
     <Content Include="Imagenes\usuarios\grootfondo.jpg" />
     <Content Include="Imagenes\usuarios\iconogroot.png" />
     <Content Include="Imagenes\usuarios\imagen.png" />
