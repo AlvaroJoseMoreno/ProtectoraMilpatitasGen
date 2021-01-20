@@ -209,7 +209,7 @@ namespace WebProtectoraMilpatitas.Controllers
                     filename = "Imagenes/usuarios/" + filename;
                     UsuarioCEN usuCEN = new UsuarioCEN();
 
-                    string mail=usuCEN.Registrarse(model.Nombre, model.Email, model.Password, filename);
+                    string mail = usuCEN.Registrarse(model.Nombre, model.Email, model.Password, filename);
 
                     AdministradorEN admin = new AdministradorCEN().Dame_Todos(0, -1)[0];
                     UsuarioEN usu = usuCEN.Dame_Por_Email(mail);

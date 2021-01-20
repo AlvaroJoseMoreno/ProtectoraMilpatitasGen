@@ -22,9 +22,9 @@ public static void Create (string databaseArg, string userArg, string passArg)
         String user = userArg;
         String pass = passArg;
 
-        // Conex DB
-        SqlConnection cnn = new SqlConnection (@"Server=(local)\sqlexpress; database=master; integrated security=yes");
-            //SqlConnection cnn = new SqlConnection(@"Server = tcp:servidormilpatitas.database.windows.net,1433; Initial Catalog = basemilpatitas; Persist Security Info = False; User ID = AdminProtectora; Password ={ your_password}; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30; ");
+            // Conex DB
+            SqlConnection cnn = new SqlConnection(@"Server=(local)\sqlexpress; database=master; integrated security=yes");
+            //SqlConnection cnn = new SqlConnection(@"Server = tcp:servidormilpatitas.database.windows.net,1433; Initial Catalog = ProtectoraMilpatitasGenNHibernate; Persist Security Info = False; User ID = AdminProtectora; Password = ProtectoraMilpatitas20; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30");
 
             // Order T-SQL create user
             String createUser = @"IF NOT EXISTS(SELECT name FROM master.dbo.syslogins WHERE name = '" + user + @"')
