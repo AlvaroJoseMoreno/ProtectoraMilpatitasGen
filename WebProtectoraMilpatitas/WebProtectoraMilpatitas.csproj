@@ -328,6 +328,8 @@
     <Content Include="Imagenes\Test\Resultado\perro.jpg" />
     <Content Include="Imagenes\Test\Resultado\pez.jpg" />
     <Content Include="Imagenes\Test\Resultado\tortuga.jpg" />
+    <Content Include="Imagenes\usuarios\1--groot.jpg" />
+    <Content Include="Imagenes\usuarios\16-bits-png-8.png" />
     <Content Include="Imagenes\usuarios\Bombshell-_wholesprite.png" />
     <Content Include="Imagenes\usuarios\B_Spiny_Husk.png" />
     <Content Include="Imagenes\usuarios\grootfondo.jpg" />
@@ -337,6 +339,10 @@
     <Content Include="Imagenes\usuarios\imagen2.png" />
     <Content Include="Imagenes\usuarios\imagen3.png" />
     <Content Include="Imagenes\usuarios\imagen5.jpg" />
+    <Content Include="Imagenes\usuarios\LNg_Walk1_00009.png" />
+    <Content Include="Imagenes\usuarios\nadal.jpg" />
+    <Content Include="Imagenes\usuarios\perico.jpg" />
+    <Content Include="Imagenes\usuarios\usuariolunes.png" />
     <Content Include="Mvc.sitemap" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
